@@ -1,0 +1,364 @@
+{-Tensor[1 - b, 1 - b, b]/2 + Tensor[1 - b, b, a + del1]/2 + 
+  Tensor[1 - b, b, a - m]/2 - Tensor[1 - b, b, m - n]/2 - 
+  Tensor[1 - b, b, del1 + n]/2 + Tensor[1 - b, b, m - x]/2 - 
+  Tensor[1 - b, b, del1 + x]/2 + Tensor[1 - b, a + del1, b]/2 - 
+  Tensor[1 - b, m - n, b]/2 + Tensor[1 - b, m - n, a - m]/2 - 
+  Tensor[1 - b, m - n, a - n]/2 + Tensor[1 - b, m - n, m - x]/2 - 
+  Tensor[1 - b, m - n, n - y]/2 - Tensor[1 - b, del1 + n, b]/2 + 
+  Tensor[1 - b, a - a*b - m + b*n, b]/2 - 
+  Tensor[1 - b, a - a*b - m + b*n, a - m]/2 + 
+  Tensor[1 - b, a - a*b - m + b*n, a - n]/2 - 
+  Tensor[1 - b, a - a*b - m + b*n, a - x]/2 + 
+  Tensor[1 - b, a - a*b - m + b*n, a - y]/2 - Tensor[1 - b, del1 + x, b]/2 + 
+  Tensor[1 - b, m - b*n - x + b*x, 1 - b]/2 + 
+  Tensor[1 - b, m - b*n - x + b*x, b]/2 + 
+  Tensor[1 - b, m - b*n - x + b*x, m - n]/2 - 
+  Tensor[1 - b, m - b*n - x + b*x, a - a*b - m + b*n]/2 + 
+  Tensor[1 - b, m - b*n - x + b*x, a - x]/2 - 
+  Tensor[1 - b, m - b*n - x + b*x, m - x]/2 - 
+  Tensor[1 - b, m - b*n - x + b*x, m - b*n - x + b*x]/2 + 
+  Tensor[1 - b, m - b*n - x + b*x, x - y]/2 - 
+  Tensor[1 - b, m - b*n - y + b*y, 1 - b]/2 - 
+  Tensor[1 - b, m - b*n - y + b*y, m - n]/2 + 
+  Tensor[1 - b, m - b*n - y + b*y, a - a*b - m + b*n]/2 + 
+  Tensor[1 - b, m - b*n - y + b*y, m - b*n - x + b*x]/2 - 
+  Tensor[1 - b, m - b*n - y + b*y, a - y]/2 + 
+  Tensor[1 - b, m - b*n - y + b*y, n - y]/2 - 
+  Tensor[1 - b, m - b*n - y + b*y, x - y]/2 + Tensor[b, 1 - b, 1 - b]/2 - 
+  Tensor[b, 1 - b, a + del1]/2 + Tensor[b, 1 - b, m - n]/2 + 
+  Tensor[b, 1 - b, del1 + n]/2 - Tensor[b, 1 - b, a - a*b - m + b*n]/2 + 
+  Tensor[b, 1 - b, del1 + x]/2 - Tensor[b, 1 - b, m - b*n - x + b*x]/2 - 
+  Tensor[b, a + del1, 1 - b]/2 + Tensor[b, a + del1, a + del1]/2 + 
+  Tensor[b, a + del1, a - m]/2 - Tensor[b, a + del1, del1 + n]/2 - 
+  Tensor[b, a + del1, a - a*b - m + b*n]/2 - Tensor[b, a + del1, del1 + x]/
+   2 - Tensor[b, a + del1, a - y]/2 + Tensor[b, a + del1, x - y] + 
+  Tensor[b, del1 + m, a + del1]/2 - Tensor[b, del1 + m, a - m]/2 + 
+  Tensor[b, del1 + m, m - n]/2 - Tensor[b, del1 + m, del1 + n]/2 - 
+  Tensor[b, del1 + m, m - x]/2 + Tensor[b, del1 + m, del1 + x]/2 + 
+  Tensor[b, del1 + n, 1 - b]/2 - Tensor[b, del1 + n, a + del1]/2 + 
+  Tensor[b, del1 + n, del1 + n]/2 + Tensor[b, del1 + n, del1 + x]/2 + 
+  Tensor[b, del1 + n, n - y]/2 - Tensor[b, del1 + n, x - y] - 
+  Tensor[b, del1 - b*del1 + m - b*n, 1 - b]/2 - 
+  Tensor[b, del1 - b*del1 + m - b*n, a + del1]/2 - 
+  Tensor[b, del1 - b*del1 + m - b*n, m - n]/2 + 
+  Tensor[b, del1 - b*del1 + m - b*n, del1 + n]/2 + 
+  Tensor[b, del1 - b*del1 + m - b*n, a - a*b - m + b*n]/2 - 
+  Tensor[b, del1 - b*del1 + m - b*n, del1 + x]/2 + 
+  Tensor[b, del1 - b*del1 + m - b*n, m - b*n - x + b*x]/2 + 
+  Tensor[b, del1 + x, 1 - b]/2 - Tensor[b, del1 + x, a + del1]/2 + 
+  Tensor[b, del1 + x, del1 + n]/2 + Tensor[b, del1 + x, m - x]/2 + 
+  Tensor[b, del1 + x, del1 + x]/2 - Tensor[b, del1 + x, m - b*n - x + b*x]/
+   2 - Tensor[b, del1 + x, x - y]/2 + Tensor[b, x - y, a + del1] - 
+  Tensor[b, x - y, del1 + n] - Tensor[b, del1 + y, a + del1]/2 + 
+  Tensor[b, del1 + y, del1 + n]/2 - Tensor[b, del1 + y, del1 + x]/2 + 
+  Tensor[b, del1 + y, a - y]/2 - Tensor[b, del1 + y, n - y]/2 + 
+  Tensor[b, del1 + y, x - y]/2 + Tensor[a + del1, 1 - b, b]/2 - 
+  Tensor[a + del1, b, 1 - b]/2 + Tensor[a + del1, b, a + del1]/2 + 
+  Tensor[a + del1, b, a - m]/2 - Tensor[a + del1, b, del1 + n]/2 - 
+  Tensor[a + del1, b, a - a*b - m + b*n]/2 - Tensor[a + del1, b, del1 + x]/
+   2 - Tensor[a + del1, b, a - y]/2 + Tensor[a + del1, b, x - y] + 
+  Tensor[a + del1, a + del1, b]/2 - Tensor[a + del1, a - m, b]/2 - 
+  Tensor[a + del1, a - m, a - n]/2 + 
+  Tensor[a + del1, a - m, a - a*b - m + b*n]/2 + 
+  Tensor[a + del1, a - m, a - x]/2 - Tensor[a + del1, a - m, x - y]/2 + 
+  Tensor[a + del1, a - n, a - m]/2 - 
+  Tensor[a + del1, a - n, a - a*b - m + b*n]/2 - 
+  Tensor[a + del1, a - n, a - y]/2 + Tensor[a + del1, a - n, x - y]/2 - 
+  Tensor[a + del1, del1 + n, b]/2 + Tensor[a + del1, a - a*b - m + b*n, b]/
+   2 - Tensor[a + del1, a - a*b - m + b*n, a - m]/2 + 
+  Tensor[a + del1, a - a*b - m + b*n, a - n]/2 - 
+  Tensor[a + del1, a - a*b - m + b*n, a - x]/2 + 
+  Tensor[a + del1, a - a*b - m + b*n, a - y]/2 + 
+  Tensor[a + del1, a - x, a - m]/2 - 
+  Tensor[a + del1, a - x, a - a*b - m + b*n]/2 - 
+  Tensor[a + del1, a - x, a - y]/2 + Tensor[a + del1, a - x, x - y]/2 - 
+  Tensor[a + del1, del1 + x, b]/2 - Tensor[a + del1, a - y, b]/2 - 
+  Tensor[a + del1, a - y, a - n]/2 + 
+  Tensor[a + del1, a - y, a - a*b - m + b*n]/2 + 
+  Tensor[a + del1, a - y, a - x]/2 - Tensor[a + del1, a - y, x - y]/2 + 
+  Tensor[a + del1, x - y, b] - Tensor[a + del1, x - y, a - m]/2 + 
+  Tensor[a + del1, x - y, a - n]/2 - Tensor[a + del1, x - y, a - x]/2 + 
+  Tensor[a + del1, x - y, a - y]/2 - Tensor[del1 + m, b, 1 - b]/2 - 
+  Tensor[del1 + m, b, a + del1]/2 - Tensor[del1 + m, b, m - n]/2 + 
+  Tensor[del1 + m, b, del1 + n]/2 + Tensor[del1 + m, b, a - a*b - m + b*n]/
+   2 - Tensor[del1 + m, b, del1 + x]/2 + 
+  Tensor[del1 + m, b, m - b*n - x + b*x]/2 - Tensor[del1 + m, a + del1, b]/
+   2 - Tensor[del1 + m, a + del1, a - n]/2 + 
+  Tensor[del1 + m, a + del1, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + m, a + del1, a - x]/2 - Tensor[del1 + m, a + del1, x - y]/2 + 
+  Tensor[del1 + m, a - m, b]/2 + Tensor[del1 + m, a - m, a - n]/2 - 
+  Tensor[del1 + m, a - m, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + m, a - m, a - x]/2 + Tensor[del1 + m, a - m, x - y]/2 - 
+  Tensor[del1 + m, m - n, 1 - b]/2 - Tensor[del1 + m, m - n, b]/2 - 
+  Tensor[del1 + m, m - n, a - n]/2 + 
+  Tensor[del1 + m, m - n, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + m, m - n, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + m, m - n, x - y]/2 + Tensor[del1 + m, del1 + n, b]/2 - 
+  Tensor[del1 + m, del1 + n, a + del1]/2 + Tensor[del1 + m, del1 + n, a - n]/
+   2 - Tensor[del1 + m, del1 + n, m - n]/2 + 
+  Tensor[del1 + m, del1 + n, del1 + n]/2 - 
+  Tensor[del1 + m, del1 + n, del1 + x]/2 + Tensor[del1 + m, del1 + n, x - y]/
+   2 + Tensor[del1 + m, del1 - b*del1 + m - b*n, 1 - b]/2 + 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, a + del1]/2 + 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, m - n]/2 - 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, del1 + n]/2 - 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, del1 + x]/2 - 
+  Tensor[del1 + m, del1 - b*del1 + m - b*n, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + m, m - x, b]/2 - Tensor[del1 + m, m - x, a - m]/2 + 
+  Tensor[del1 + m, m - x, m - n]/2 + Tensor[del1 + m, m - x, a - x]/2 - 
+  Tensor[del1 + m, m - x, m - x]/2 - 
+  Tensor[del1 + m, m - x, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + m, m - x, x - y]/2 - Tensor[del1 + m, del1 + x, b]/2 + 
+  Tensor[del1 + m, del1 + x, a + del1]/2 - 
+  Tensor[del1 + m, del1 + x, del1 + n]/2 - Tensor[del1 + m, del1 + x, a - x]/
+   2 + Tensor[del1 + m, del1 + x, del1 + x]/2 + 
+  Tensor[del1 + m, del1 + x, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + m, del1 + x, x - y]/2 - Tensor[del1 + m, x - y, a + del1]/2 + 
+  Tensor[del1 + m, x - y, a - m]/2 - Tensor[del1 + m, x - y, m - n]/2 + 
+  Tensor[del1 + m, x - y, del1 + n]/2 + Tensor[del1 + m, x - y, m - x]/2 - 
+  Tensor[del1 + m, x - y, del1 + x]/2 - Tensor[del1 + n, 1 - b, b]/2 + 
+  Tensor[del1 + n, b, 1 - b]/2 - Tensor[del1 + n, b, a + del1]/2 + 
+  Tensor[del1 + n, b, del1 + n]/2 + Tensor[del1 + n, b, del1 + x]/2 + 
+  Tensor[del1 + n, b, n - y]/2 - Tensor[del1 + n, b, x - y] - 
+  Tensor[del1 + n, a + del1, b]/2 + Tensor[del1 + n, a + del1, a - m]/2 - 
+  Tensor[del1 + n, a + del1, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + n, a + del1, a - y]/2 + Tensor[del1 + n, a + del1, x - y]/2 + 
+  Tensor[del1 + n, del1 + m, a + del1]/2 - Tensor[del1 + n, del1 + m, a - m]/
+   2 + Tensor[del1 + n, del1 + m, m - n]/2 - 
+  Tensor[del1 + n, del1 + m, del1 + n]/2 - Tensor[del1 + n, del1 + m, m - x]/
+   2 + Tensor[del1 + n, del1 + m, del1 + x]/2 - 
+  Tensor[del1 + n, a - n, a - m]/2 + 
+  Tensor[del1 + n, a - n, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + n, a - n, a - y]/2 - Tensor[del1 + n, a - n, x - y]/2 + 
+  Tensor[del1 + n, m - n, 1 - b]/2 + Tensor[del1 + n, m - n, a - m]/2 - 
+  Tensor[del1 + n, m - n, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + n, m - n, m - x]/2 - 
+  Tensor[del1 + n, m - n, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + n, m - n, n - y]/2 + Tensor[del1 + n, m - n, x - y]/2 + 
+  Tensor[del1 + n, del1 + n, b]/2 + Tensor[del1 + n, del1 + n, n - y]/2 - 
+  Tensor[del1 + n, del1 + n, x - y]/2 - 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, 1 - b]/2 - 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, a + del1]/2 - 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, m - n]/2 + 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, del1 + n]/2 + 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, del1 + x]/2 + 
+  Tensor[del1 + n, del1 - b*del1 + m - b*n, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + n, n - x, m - x]/2 + 
+  Tensor[del1 + n, n - x, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + n, n - x, n - y]/2 - Tensor[del1 + n, n - x, x - y]/2 + 
+  Tensor[del1 + n, del1 + x, b]/2 + Tensor[del1 + n, del1 + x, m - x]/2 - 
+  Tensor[del1 + n, del1 + x, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + n, n - y, b]/2 + Tensor[del1 + n, n - y, a - n]/2 - 
+  Tensor[del1 + n, n - y, m - n]/2 - Tensor[del1 + n, n - y, a - y]/2 + 
+  Tensor[del1 + n, n - y, n - y]/2 - Tensor[del1 + n, x - y, b] + 
+  Tensor[del1 + n, x - y, a + del1]/2 - Tensor[del1 + n, x - y, a - n]/2 + 
+  Tensor[del1 + n, x - y, m - n]/2 - Tensor[del1 + n, x - y, del1 + n]/2 + 
+  Tensor[del1 + n, x - y, del1 + x]/2 - Tensor[del1 + n, x - y, n - y]/2 - 
+  Tensor[del1 + n, del1 + y, a + del1]/2 + 
+  Tensor[del1 + n, del1 + y, del1 + n]/2 - 
+  Tensor[del1 + n, del1 + y, del1 + x]/2 + Tensor[del1 + n, del1 + y, a - y]/
+   2 - Tensor[del1 + n, del1 + y, n - y]/2 + 
+  Tensor[del1 + n, del1 + y, x - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, 1 - b, b]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, b, a + del1]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, b, a - m]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, b, m - n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, b, del1 + n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, b, m - x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, b, del1 + x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, a + del1, b]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, a + del1, a - m]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, a + del1, a - n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, a + del1, a - x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, a + del1, a - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, a + del1]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, a - m]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, m - n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, del1 + n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, m - x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + m, del1 + x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - n, b]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - n, a - m]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - n, a - n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - n, m - x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - n, n - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, b]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, a + del1]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, a - n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, m - n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, del1 + n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, del1 + x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + n, n - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, a - a*b - m + b*n, b]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, a - a*b - m + b*n, a - m]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, a - a*b - m + b*n, a - n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, a - a*b - m + b*n, a - x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, a - a*b - m + b*n, a - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, b]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, a + del1]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, del1 + n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, a - x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, m - x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, del1 + x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + x, x - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, 1 - b]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, b]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, m - n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, a - a*b - m + b*n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, a - x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, m - x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, m - b*n - x + b*x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - x + b*x, x - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, a + del1]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, del1 + n]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, del1 + x]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, a - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, n - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, del1 + y, x - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, 1 - b]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, m - n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, a - a*b - m + b*n]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, m - b*n - x + b*x]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, a - y]/2 - 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, n - y]/2 + 
+  Tensor[del1 - b*del1 + m - b*n, m - b*n - y + b*y, x - y]/2 - 
+  Tensor[del1 + x, 1 - b, b]/2 + Tensor[del1 + x, b, 1 - b]/2 - 
+  Tensor[del1 + x, b, a + del1]/2 + Tensor[del1 + x, b, del1 + n]/2 + 
+  Tensor[del1 + x, b, m - x]/2 + Tensor[del1 + x, b, del1 + x]/2 - 
+  Tensor[del1 + x, b, m - b*n - x + b*x]/2 - Tensor[del1 + x, b, x - y]/2 - 
+  Tensor[del1 + x, a + del1, b]/2 + Tensor[del1 + x, a + del1, a - m]/2 - 
+  Tensor[del1 + x, a + del1, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + x, a + del1, a - y]/2 + Tensor[del1 + x, a + del1, x - y]/2 + 
+  Tensor[del1 + x, del1 + m, a + del1]/2 - Tensor[del1 + x, del1 + m, a - m]/
+   2 + Tensor[del1 + x, del1 + m, m - n]/2 - 
+  Tensor[del1 + x, del1 + m, del1 + n]/2 - Tensor[del1 + x, del1 + m, m - x]/
+   2 + Tensor[del1 + x, del1 + m, del1 + x]/2 + 
+  Tensor[del1 + x, del1 + n, b]/2 + Tensor[del1 + x, del1 + n, n - y]/2 - 
+  Tensor[del1 + x, del1 + n, x - y]/2 - 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, 1 - b]/2 - 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, a + del1]/2 - 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, m - n]/2 + 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, del1 + n]/2 + 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, del1 + x]/2 + 
+  Tensor[del1 + x, del1 - b*del1 + m - b*n, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + x, a - x, a - m]/2 + 
+  Tensor[del1 + x, a - x, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + x, a - x, a - y]/2 - Tensor[del1 + x, a - x, x - y]/2 - 
+  Tensor[del1 + x, m - x, b]/2 + Tensor[del1 + x, m - x, a - m]/2 - 
+  Tensor[del1 + x, m - x, m - n]/2 - Tensor[del1 + x, m - x, a - x]/2 + 
+  Tensor[del1 + x, m - x, m - x]/2 + 
+  Tensor[del1 + x, m - x, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + x, m - x, x - y]/2 + Tensor[del1 + x, n - x, m - x]/2 - 
+  Tensor[del1 + x, n - x, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + x, n - x, n - y]/2 + Tensor[del1 + x, n - x, x - y]/2 + 
+  Tensor[del1 + x, del1 + x, b]/2 + Tensor[del1 + x, del1 + x, m - x]/2 - 
+  Tensor[del1 + x, del1 + x, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + x, m - b*n - x + b*x, 1 - b]/2 + 
+  Tensor[del1 + x, m - b*n - x + b*x, b]/2 + 
+  Tensor[del1 + x, m - b*n - x + b*x, m - n]/2 - 
+  Tensor[del1 + x, m - b*n - x + b*x, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + x, m - b*n - x + b*x, a - x]/2 - 
+  Tensor[del1 + x, m - b*n - x + b*x, m - x]/2 - 
+  Tensor[del1 + x, m - b*n - x + b*x, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + x, m - b*n - x + b*x, x - y]/2 - 
+  Tensor[del1 + x, x - y, b]/2 + Tensor[del1 + x, x - y, a + del1]/2 - 
+  Tensor[del1 + x, x - y, del1 + n]/2 - Tensor[del1 + x, x - y, m - x]/2 + 
+  Tensor[del1 + x, x - y, del1 + x]/2 + 
+  Tensor[del1 + x, x - y, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + x, x - y, a - y]/2 + Tensor[del1 + x, x - y, n - y]/2 - 
+  Tensor[del1 + x, x - y, x - y]/2 - Tensor[del1 + x, del1 + y, a + del1]/2 + 
+  Tensor[del1 + x, del1 + y, del1 + n]/2 - 
+  Tensor[del1 + x, del1 + y, del1 + x]/2 + Tensor[del1 + x, del1 + y, a - y]/
+   2 - Tensor[del1 + x, del1 + y, n - y]/2 + 
+  Tensor[del1 + x, del1 + y, x - y]/2 + Tensor[x - y, b, a + del1] - 
+  Tensor[x - y, b, del1 + n] + Tensor[x - y, a + del1, b] - 
+  Tensor[x - y, a + del1, a - m]/2 + Tensor[x - y, a + del1, a - n]/2 - 
+  Tensor[x - y, a + del1, a - x]/2 + Tensor[x - y, a + del1, a - y]/2 - 
+  Tensor[x - y, del1 + m, a + del1]/2 + Tensor[x - y, del1 + m, a - m]/2 - 
+  Tensor[x - y, del1 + m, m - n]/2 + Tensor[x - y, del1 + m, del1 + n]/2 + 
+  Tensor[x - y, del1 + m, m - x]/2 - Tensor[x - y, del1 + m, del1 + x]/2 - 
+  Tensor[x - y, del1 + n, b] + Tensor[x - y, del1 + n, a + del1]/2 - 
+  Tensor[x - y, del1 + n, a - n]/2 + Tensor[x - y, del1 + n, m - n]/2 - 
+  Tensor[x - y, del1 + n, del1 + n]/2 + Tensor[x - y, del1 + n, del1 + x]/2 - 
+  Tensor[x - y, del1 + n, n - y]/2 - Tensor[x - y, del1 + x, a + del1]/2 + 
+  Tensor[x - y, del1 + x, del1 + n]/2 + Tensor[x - y, del1 + x, a - x]/2 - 
+  Tensor[x - y, del1 + x, m - x]/2 - Tensor[x - y, del1 + x, del1 + x]/2 + 
+  Tensor[x - y, del1 + x, x - y]/2 + Tensor[x - y, del1 + y, a + del1]/2 - 
+  Tensor[x - y, del1 + y, del1 + n]/2 + Tensor[x - y, del1 + y, del1 + x]/2 - 
+  Tensor[x - y, del1 + y, a - y]/2 + Tensor[x - y, del1 + y, n - y]/2 - 
+  Tensor[x - y, del1 + y, x - y]/2 - Tensor[del1 + y, b, a + del1]/2 + 
+  Tensor[del1 + y, b, del1 + n]/2 - Tensor[del1 + y, b, del1 + x]/2 + 
+  Tensor[del1 + y, b, a - y]/2 - Tensor[del1 + y, b, n - y]/2 + 
+  Tensor[del1 + y, b, x - y]/2 - Tensor[del1 + y, a + del1, b]/2 - 
+  Tensor[del1 + y, a + del1, a - n]/2 + 
+  Tensor[del1 + y, a + del1, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + y, a + del1, a - x]/2 - Tensor[del1 + y, a + del1, x - y]/2 + 
+  Tensor[del1 + y, del1 + n, b]/2 - Tensor[del1 + y, del1 + n, a + del1]/2 + 
+  Tensor[del1 + y, del1 + n, a - n]/2 - Tensor[del1 + y, del1 + n, m - n]/2 + 
+  Tensor[del1 + y, del1 + n, del1 + n]/2 - 
+  Tensor[del1 + y, del1 + n, del1 + x]/2 + Tensor[del1 + y, del1 + n, x - y]/
+   2 + Tensor[del1 + y, del1 - b*del1 + m - b*n, 1 - b]/2 + 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, a + del1]/2 + 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, m - n]/2 - 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, del1 + n]/2 - 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, del1 + x]/2 - 
+  Tensor[del1 + y, del1 - b*del1 + m - b*n, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + y, del1 + x, b]/2 + Tensor[del1 + y, del1 + x, a + del1]/2 - 
+  Tensor[del1 + y, del1 + x, del1 + n]/2 - Tensor[del1 + y, del1 + x, a - x]/
+   2 + Tensor[del1 + y, del1 + x, del1 + x]/2 + 
+  Tensor[del1 + y, del1 + x, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + y, del1 + x, x - y]/2 + Tensor[del1 + y, a - y, b]/2 + 
+  Tensor[del1 + y, a - y, a - n]/2 - 
+  Tensor[del1 + y, a - y, a - a*b - m + b*n]/2 - 
+  Tensor[del1 + y, a - y, a - x]/2 + Tensor[del1 + y, a - y, x - y]/2 - 
+  Tensor[del1 + y, n - y, b]/2 - Tensor[del1 + y, n - y, a - n]/2 + 
+  Tensor[del1 + y, n - y, m - n]/2 + Tensor[del1 + y, n - y, a - y]/2 - 
+  Tensor[del1 + y, n - y, n - y]/2 + Tensor[del1 + y, x - y, b]/2 - 
+  Tensor[del1 + y, x - y, a + del1]/2 + Tensor[del1 + y, x - y, del1 + n]/2 + 
+  Tensor[del1 + y, x - y, a - x]/2 - Tensor[del1 + y, x - y, del1 + x]/2 - 
+  Tensor[del1 + y, x - y, m - b*n - x + b*x]/2 + 
+  Tensor[del1 + y, x - y, x - y]/2 - 
+  Tensor[del1 + y, m - b*n - y + b*y, 1 - b]/2 - 
+  Tensor[del1 + y, m - b*n - y + b*y, m - n]/2 + 
+  Tensor[del1 + y, m - b*n - y + b*y, a - a*b - m + b*n]/2 + 
+  Tensor[del1 + y, m - b*n - y + b*y, m - b*n - x + b*x]/2 - 
+  Tensor[del1 + y, m - b*n - y + b*y, a - y]/2 + 
+  Tensor[del1 + y, m - b*n - y + b*y, n - y]/2 - 
+  Tensor[del1 + y, m - b*n - y + b*y, x - y]/2, 
+ {x -> 1 - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]), 
+  y -> 1 + (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]), 
+  b -> (ab[1, 2, 3, 4]*ab[1, 5, 6, 8])/(ab[1, 2, 5, 6]*ab[1, 3, 4, 8]), 
+  a -> 1 - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (2*ab[1, 2, 3, 4]*ab[1, 5, 6, 8]*ab[3, 4, 5, 6]*ab[7, 8, 1, 2])/
+     (ab[1, 2, 5, 6]*ab[3, 4, 7, 8]*ab[8, 1, 2, cap[{4, 3}, {5, 6, 1}]]), 
+  n -> -1 + (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) + 
+    (2*ab[1, 3, 4, 8]*ab[5, 6, 7, 8])/(ab[1, 5, 6, 8]*ab[3, 4, 7, 8]), 
+  m -> 1 - (2*ab[1, 2, 3, 4]*ab[1, 5, 6, 8])/(ab[1, 2, 5, 6]*
+      ab[1, 3, 4, 8]) - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/
+     (ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) + (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/
+     (ab[1, 2, 5, 6]*ab[3, 4, 7, 8])}, 
+ {x -> 1 - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]), 
+  y -> 1 + (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]), 
+  b -> (ab[1, 3, 4, 8]*ab[5, 6, 7, 8])/(ab[1, 5, 6, 8]*ab[3, 4, 7, 8]), 
+  n -> -1 + (2*ab[1, 2, 3, 4]*ab[1, 5, 6, 8])/(ab[1, 2, 5, 6]*
+      ab[1, 3, 4, 8]) + (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/
+     (ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/
+     (ab[1, 2, 5, 6]*ab[3, 4, 7, 8]), 
+  m -> 1 - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) + 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (2*ab[1, 3, 4, 8]*ab[5, 6, 7, 8])/(ab[1, 5, 6, 8]*ab[3, 4, 7, 8]), 
+  a -> 1 - (ab[1, 2, 7, 8]*ab[3, 4, 5, 6])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) - 
+    (ab[1, 2, 3, 4]*ab[5, 6, 7, 8])/(ab[1, 2, 5, 6]*ab[3, 4, 7, 8]) + 
+    (2*ab[1, 2, 7, 8]*ab[1, 3, 4, 8]*ab[3, 4, 5, 6]*ab[5, 6, 7, 8])/
+     (ab[1, 2, 5, 6]*(ab[1, 6, 7, 8]*ab[3, 4, 5, 8] - 
+       ab[1, 5, 7, 8]*ab[3, 4, 6, 8])*ab[3, 4, 7, 8])}}

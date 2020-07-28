@@ -1,12 +1,12 @@
 #include "wll_interface.h"  // include the header file
 #include <iostream>
 #include <vector>
-#include <numeric>
-#include <string>
-#include <sstream>
-#include <algorithm>
-#include <complex>
-#include <cmath>
+// #include <numeric>
+// #include <string>
+// #include <sstream>
+// #include <algorithm>
+// #include <complex>
+// #include <cmath>
 #include <Eigen/Dense>
 
 using namespace Eigen;
@@ -21,6338 +21,6465 @@ inline int ab(wll::matrix<int> mat, int i, int j, int k, int l){
 }
 
 wll::list<int> numabs(wll::matrix<int> mat){
-wll::list<int> result({ }, {ab(mat, 1, 2, 3, 4), ab(mat, 1, 2, 3, 5), ab(mat, 1, 2, 3, 6), ab(mat, 1, 2, 3, 7), 
- ab(mat, 1, 2, 3, 8), ab(mat, 1, 2, 3, 9), ab(mat, 1, 2, 4, 5), ab(mat, 1, 2, 4, 6), 
- ab(mat, 1, 2, 4, 7), ab(mat, 1, 2, 4, 8), ab(mat, 1, 2, 4, 9), ab(mat, 1, 2, 5, 6), 
- ab(mat, 1, 2, 5, 7), ab(mat, 1, 2, 5, 8), ab(mat, 1, 2, 5, 9), ab(mat, 1, 2, 6, 7), 
- ab(mat, 1, 2, 6, 8), ab(mat, 1, 2, 6, 9), ab(mat, 1, 2, 7, 8), ab(mat, 1, 2, 7, 9), 
- ab(mat, 1, 2, 8, 9), ab(mat, 1, 3, 4, 5), ab(mat, 1, 3, 4, 6), ab(mat, 1, 3, 4, 7), 
- ab(mat, 1, 3, 4, 8), ab(mat, 1, 3, 4, 9), ab(mat, 1, 3, 5, 6), ab(mat, 1, 3, 5, 7), 
- ab(mat, 1, 3, 5, 8), ab(mat, 1, 3, 5, 9), ab(mat, 1, 3, 6, 7), ab(mat, 1, 3, 6, 8), 
- ab(mat, 1, 3, 6, 9), ab(mat, 1, 3, 7, 8), ab(mat, 1, 3, 7, 9), ab(mat, 1, 3, 8, 9), 
- ab(mat, 1, 4, 5, 6), ab(mat, 1, 4, 5, 7), ab(mat, 1, 4, 5, 8), ab(mat, 1, 4, 5, 9), 
- ab(mat, 1, 4, 6, 7), ab(mat, 1, 4, 6, 8), ab(mat, 1, 4, 6, 9), ab(mat, 1, 4, 7, 8), 
- ab(mat, 1, 4, 7, 9), ab(mat, 1, 4, 8, 9), ab(mat, 1, 5, 6, 7), ab(mat, 1, 5, 6, 8), 
- ab(mat, 1, 5, 6, 9), ab(mat, 1, 5, 7, 8), ab(mat, 1, 5, 7, 9), ab(mat, 1, 5, 8, 9), 
- ab(mat, 1, 6, 7, 8), ab(mat, 1, 6, 7, 9), ab(mat, 1, 6, 8, 9), ab(mat, 1, 7, 8, 9), 
- ab(mat, 2, 3, 4, 5), ab(mat, 2, 3, 4, 6), ab(mat, 2, 3, 4, 7), ab(mat, 2, 3, 4, 8), 
- ab(mat, 2, 3, 4, 9), ab(mat, 2, 3, 5, 6), ab(mat, 2, 3, 5, 7), ab(mat, 2, 3, 5, 8), 
- ab(mat, 2, 3, 5, 9), ab(mat, 2, 3, 6, 7), ab(mat, 2, 3, 6, 8), ab(mat, 2, 3, 6, 9), 
- ab(mat, 2, 3, 7, 8), ab(mat, 2, 3, 7, 9), ab(mat, 2, 3, 8, 9), ab(mat, 2, 4, 5, 6), 
- ab(mat, 2, 4, 5, 7), ab(mat, 2, 4, 5, 8), ab(mat, 2, 4, 5, 9), ab(mat, 2, 4, 6, 7), 
- ab(mat, 2, 4, 6, 8), ab(mat, 2, 4, 6, 9), ab(mat, 2, 4, 7, 8), ab(mat, 2, 4, 7, 9), 
- ab(mat, 2, 4, 8, 9), ab(mat, 2, 5, 6, 7), ab(mat, 2, 5, 6, 8), ab(mat, 2, 5, 6, 9), 
- ab(mat, 2, 5, 7, 8), ab(mat, 2, 5, 7, 9), ab(mat, 2, 5, 8, 9), ab(mat, 2, 6, 7, 8), 
- ab(mat, 2, 6, 7, 9), ab(mat, 2, 6, 8, 9), ab(mat, 2, 7, 8, 9), ab(mat, 3, 4, 5, 6), 
- ab(mat, 3, 4, 5, 7), ab(mat, 3, 4, 5, 8), ab(mat, 3, 4, 5, 9), ab(mat, 3, 4, 6, 7), 
- ab(mat, 3, 4, 6, 8), ab(mat, 3, 4, 6, 9), ab(mat, 3, 4, 7, 8), ab(mat, 3, 4, 7, 9), 
- ab(mat, 3, 4, 8, 9), ab(mat, 3, 5, 6, 7), ab(mat, 3, 5, 6, 8), ab(mat, 3, 5, 6, 9), 
- ab(mat, 3, 5, 7, 8), ab(mat, 3, 5, 7, 9), ab(mat, 3, 5, 8, 9), ab(mat, 3, 6, 7, 8), 
- ab(mat, 3, 6, 7, 9), ab(mat, 3, 6, 8, 9), ab(mat, 3, 7, 8, 9), ab(mat, 4, 5, 6, 7), 
- ab(mat, 4, 5, 6, 8), ab(mat, 4, 5, 6, 9), ab(mat, 4, 5, 7, 8), ab(mat, 4, 5, 7, 9), 
- ab(mat, 4, 5, 8, 9), ab(mat, 4, 6, 7, 8), ab(mat, 4, 6, 7, 9), ab(mat, 4, 6, 8, 9), 
- ab(mat, 4, 7, 8, 9), ab(mat, 5, 6, 7, 8), ab(mat, 5, 6, 7, 9), ab(mat, 5, 6, 8, 9), 
- ab(mat, 5, 7, 8, 9), ab(mat, 6, 7, 8, 9), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 3, 6), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 3, 5), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 3, 6), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 3, 4), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 3, 5), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 3, 4), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 3, 7), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 3, 5), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 3, 7), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 3, 4), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 3, 5), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 3, 4), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 3, 8), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 3, 5), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 3, 8), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 3, 4), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 3, 5), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 3, 4), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 3, 7), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 3, 6), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 3, 7), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 3, 4), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 3, 6), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 3, 4), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 3, 4), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 3, 8), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 3, 6), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 3, 8), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 3, 4), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 3, 6), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 3, 4), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 3, 8), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 3, 7), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 3, 8), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 3, 4), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 3, 7), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 3, 4), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 3, 7), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 3, 6), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 3, 7), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 3, 7), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 3, 5), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 3, 6), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 3, 6), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 3, 5), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 3, 5), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 3, 8), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 3, 6), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 3, 8), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 3, 8), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 3, 5), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 3, 6), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 3, 5), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 3, 8), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 3, 7), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 3, 8), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 3, 5), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 3, 7), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 3, 5), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 3, 8), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 3, 7), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 3, 8), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 3, 6), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 3, 7), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 3, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 4, 6), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 4, 5), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 4, 6), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 4, 5), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 4, 7), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 4, 5), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 4, 7), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 4, 5), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 4, 8), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 4, 5), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 4, 8), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 4, 5), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 4, 7), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 4, 6), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 4, 7), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 4, 6), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 4, 8), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 4, 6), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 4, 8), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 4, 6), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 4, 8), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 4, 7), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 4, 8), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 4, 7), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 4, 7), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 4, 6), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 4, 7), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 4, 5), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 4, 6), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 4, 5), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 4, 8), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 4, 6), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 4, 8), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 4, 5), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 4, 6), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 4, 5), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 4, 8), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 4, 7), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 4, 8), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 4, 5), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 4, 7), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 4, 5), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 4, 8), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 4, 7), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 4, 8), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 4, 6), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 4, 7), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 4, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 5, 6), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 5, 7), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 5, 8), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 5, 7), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 5, 6), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 5, 7), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 5, 6), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 5, 8), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 5, 6), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 5, 8), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 5, 6), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 5, 8), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 5, 7), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 5, 8), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 5, 7), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 5, 6), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 5, 7), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 5, 8), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 5, 8), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 5, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 5, 7), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 5, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 5, 7), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 5, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 5, 7), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 5, 8), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 5, 6), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 5, 7), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 5, 6), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 6, 7), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 6, 7), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 6, 7), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 6, 7), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 7, 8), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 4, 6), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 4, 5), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 4, 7), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 4, 5), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 4, 8), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 4, 5), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 4, 7), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 4, 6), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 4, 8), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 4, 6), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 4, 8), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 4, 7), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 4, 7), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 4, 6), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 4, 7), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 4, 7), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 4, 5), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 4, 6), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 4, 6), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 4, 5), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 4, 5), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 4, 8), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 4, 6), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 4, 8), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 4, 8), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 4, 5), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 4, 6), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 4, 5), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 4, 8), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 4, 7), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 4, 8), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 4, 5), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 4, 7), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 4, 5), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 4, 8), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 4, 7), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 4, 8), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 4, 6), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 4, 7), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 4, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 5, 6), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 5, 7), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 5, 8), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 5, 7), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 5, 6), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 5, 8), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 5, 6), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 5, 8), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 5, 7), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 5, 6), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 5, 6), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 5, 6), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 6, 7), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 6, 7), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 6, 7), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 6, 7), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 6, 8), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 6, 8), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 6, 7), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 7, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 5, 7), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 5, 8), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 5, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 5, 7), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 5, 7), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 5, 6), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 5, 8), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 5, 6), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 5, 6), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 6, 7), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 6, 7), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 6, 8), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 6, 8), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 6, 7), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 7, 8), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 7, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 6, 7), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 7, 8), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 7, 8), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 4, 7), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 5, 4, 7), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 4, 6), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 5, 4, 6), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 4, 7), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 6, 4, 7), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 4, 5), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 6, 4, 5), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 4, 6), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 7, 4, 6), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 4, 5), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 7, 4, 5), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 4, 8), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 5, 4, 8), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 4, 6), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 5, 4, 6), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 4, 8), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 6, 4, 8), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 4, 5), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 6, 4, 5), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 4, 6), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 8, 4, 6), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 4, 5), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 8, 4, 5), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 4, 8), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 5, 4, 8), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 4, 7), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 5, 4, 7), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 4, 8), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 7, 4, 8), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 7, 4, 5), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 4, 7), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 8, 4, 7), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 8, 4, 5), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 6, 4, 8), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 6, 4, 7), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 7, 4, 8), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 7, 4, 6), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 8, 4, 7), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 8, 4, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 5, 7), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 4, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 5, 6), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 4, 5, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 5, 7), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 6, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 5, 6), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 7, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 5, 8), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 4, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 4, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 5, 8), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 6, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 8, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 4, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 4, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 7, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 8, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 6, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 6, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 7, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 7, 5, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 8, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 8, 5, 6), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 6, 7), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 4, 6, 7), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 6, 7), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 5, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 6, 8), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 4, 6, 8), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 6, 8), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 5, 6, 8), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 4, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 4, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 7, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 8, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 5, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 5, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 7, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 8, 6, 7), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 7, 8), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 4, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 7, 8), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 5, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 4, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 6, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 5, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 6, 7, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 5, 7), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 3, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 5, 6), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 3, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 5, 8), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 3, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 3, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 3, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 3, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 6, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 6, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 7, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 7, 5, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 8, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 8, 5, 6), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 6, 7), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 3, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 6, 8), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 3, 6, 8), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 3, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 3, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 5, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 5, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 7, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 8, 6, 7), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 7, 8), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 3, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 3, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 5, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 6, 7, 8), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 3, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 3, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 4, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 4, 6, 7), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 3, 7, 8), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 4, 7, 8), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 6, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 6, 5, 8), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 6, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 6, 5, 7), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 7, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 7, 5, 8), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 7, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 7, 5, 6), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 8, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 8, 5, 7), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 8, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 8, 5, 6), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 5, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 5, 6, 8), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 5, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 5, 6, 7), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 7, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 7, 6, 8), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 8, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 8, 6, 7), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 5, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 5, 7, 8), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 6, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 6, 7, 8), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 4, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 4, 6, 8), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 4, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 4, 6, 7), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 4, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 4, 7, 8), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 3, 6), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 3, 5), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 3, 6), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 3, 4), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 3, 5), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 3, 4), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 3, 7), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 3, 5), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 3, 7), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 3, 4), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 3, 5), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 3, 4), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 3, 9), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 3, 5), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 3, 9), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 3, 4), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 3, 5), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 3, 4), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 3, 7), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 3, 6), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 3, 7), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 3, 4), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 3, 6), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 3, 4), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 3, 9), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 3, 6), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 3, 9), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 3, 4), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 3, 6), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 3, 4), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 3, 4), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 3, 9), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 3, 7), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 3, 9), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 3, 4), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 3, 7), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 3, 4), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 3, 7), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 3, 6), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 3, 7), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 3, 5), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 3, 6), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 3, 9), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 3, 6), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 3, 9), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 3, 9), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 3, 5), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 3, 6), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 3, 6), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 3, 5), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 3, 9), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 3, 7), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 3, 9), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 3, 5), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 3, 7), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 3, 7), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 3, 9), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 3, 7), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 3, 9), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 3, 6), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 3, 7), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 3, 6), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 4, 5), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 4, 5), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 4, 9), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 4, 5), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 4, 9), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 4, 6), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 4, 9), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 4, 9), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 4, 9), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 4, 7), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 4, 9), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 4, 7), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 4, 9), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 4, 6), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 4, 9), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 4, 5), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 4, 6), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 4, 9), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 4, 7), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 4, 9), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 4, 5), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 4, 7), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 4, 9), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 4, 7), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 4, 9), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 4, 6), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 4, 7), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 5, 6), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 5, 7), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 5, 7), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 5, 9), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 5, 9), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 5, 9), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 5, 9), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 5, 7), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 5, 9), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 5, 9), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 5, 9), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 5, 9), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 5, 7), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 5, 9), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 5, 7), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 5, 9), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 5, 7), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 5, 9), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 5, 6), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 5, 7), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 6, 7), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 6, 9), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 6, 7), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 6, 9), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 6, 7), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 6, 9), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 6, 7), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 6, 7), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 6, 7), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 6, 7), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 6, 7), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 7, 9), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 4, 5), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 4, 9), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 4, 9), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 4, 9), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 4, 7), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 4, 9), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 4, 6), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 4, 9), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 4, 9), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 4, 5), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 4, 6), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 4, 6), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 4, 5), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 4, 9), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 4, 7), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 4, 9), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 4, 5), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 4, 7), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 4, 7), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 4, 9), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 4, 7), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 4, 9), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 4, 6), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 4, 7), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 5, 7), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 5, 9), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 5, 9), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 5, 9), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 5, 7), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 5, 7), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 5, 7), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 5, 7), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 5, 6), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 6, 7), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 6, 9), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 6, 7), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 6, 9), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 6, 9), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 6, 9), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 6, 7), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 7, 9), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 5, 9), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 5, 9), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 5, 7), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 5, 9), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 5, 6), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 5, 7), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 5, 7), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 5, 7), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 5, 6), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 5, 7), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 5, 6), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 6, 7), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 6, 7), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 6, 9), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 6, 9), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 6, 7), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 6, 7), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 7, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 6, 7), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 6, 7), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 7, 9), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 7, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 4, 9), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 5, 4, 9), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 4, 6), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 5, 4, 6), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 4, 9), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 6, 4, 9), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 4, 5), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 6, 4, 5), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 4, 6), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 9, 4, 6), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 4, 5), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 9, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 4, 9), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 5, 4, 9), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 4, 7), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 5, 4, 7), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 4, 9), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 7, 4, 9), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 7, 4, 5), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 4, 7), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 9, 4, 7), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 9, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 6, 4, 9), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 6, 4, 7), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 7, 4, 9), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 7, 4, 6), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 9, 4, 7), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 7, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 5, 9), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 4, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 4, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 5, 9), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 6, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 9, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 4, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 4, 5, 7), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 7, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 9, 5, 7), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 6, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 6, 5, 7), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 7, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 7, 5, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 9, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 5, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 6, 9), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 4, 6, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 6, 9), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 5, 6, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 4, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 4, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 7, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 9, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 5, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 5, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 7, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 9, 6, 7), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 4, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 5, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 4, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 6, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 5, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 6, 7, 9), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 3, 5, 7), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 3, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 5, 9), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 3, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 5, 6), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 3, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 3, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 5, 7), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 3, 5, 7), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 6, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 6, 5, 7), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 7, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 7, 5, 6), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 9, 5, 7), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 9, 5, 6), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 3, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 6, 9), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 3, 6, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 3, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 6, 7), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 3, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 5, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 5, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 7, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 9, 6, 7), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 3, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 3, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 5, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 6, 7, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 3, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 3, 6, 7), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 4, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 4, 6, 7), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 3, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 4, 7, 9), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 6, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 6, 5, 9), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 6, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 6, 5, 7), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 7, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 7, 5, 9), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 7, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 7, 5, 6), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 9, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 9, 5, 7), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 9, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 9, 5, 6), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 5, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 5, 6, 9), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 5, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 5, 6, 7), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 7, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 7, 6, 9), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 9, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 9, 6, 7), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 5, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 5, 7, 9), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 6, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 6, 7, 9), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 4, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 4, 6, 9), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 4, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 4, 6, 7), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 4, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 4, 7, 9), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 3, 8), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 3, 5), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 3, 8), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 3, 4), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 3, 5), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 3, 4), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 3, 9), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 3, 5), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 3, 9), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 3, 4), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 3, 5), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 3, 4), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 3, 8), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 3, 6), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 3, 8), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 3, 4), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 3, 6), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 3, 4), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 3, 9), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 3, 6), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 3, 9), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 3, 4), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 3, 6), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 3, 4), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 3, 9), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 3, 8), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 3, 9), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 3, 4), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 3, 8), -(ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 3, 4), -(ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 3, 4), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 3, 8), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 3, 6), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 3, 8), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 3, 5), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 3, 6), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 3, 5), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 3, 9), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 3, 6), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 3, 9), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 3, 5), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 3, 6), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 3, 9), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 3, 8), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 3, 9), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 3, 9), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 3, 5), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 3, 8), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 3, 8), -(ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 3, 5), -(ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 3, 9), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 3, 8), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 3, 9), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 3, 6), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 3, 8), -(ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 3, 6), -(ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 3, 6), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 4, 5), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 4, 5), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 4, 6), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 4, 9), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 4, 8), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 4, 9), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 4, 8), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 4, 5), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 4, 6), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 4, 9), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 4, 8), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 4, 9), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 4, 5), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 4, 8), -(ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 4, 9), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 4, 8), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 4, 9), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 4, 6), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 4, 8), -(ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 5, 8), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 5, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 5, 6), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 5, 9), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 5, 8), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 5, 9), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 5, 9), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 5, 8), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 5, 9), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 5, 8), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 5, 9), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 5, 8), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 5, 9), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 5, 6), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 5, 8), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 6, 9), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 6, 9), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 6, 8), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 6, 9), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 6, 8), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 6, 8), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 6, 8), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 6, 8), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 3, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 4, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 3, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 4, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 6, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 6, 8, 9), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 4, 5), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 4, 6), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 4, 9), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 4, 8), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 4, 6), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 4, 5), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 4, 6), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 4, 9), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 4, 8), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 4, 9), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 4, 9), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 4, 5), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 4, 8), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 4, 8), -(ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 4, 5), -(ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 4, 9), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 4, 8), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 4, 9), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 4, 6), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 4, 8), -(ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 4, 6), -(ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 5, 8), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 5, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 5, 6), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 5, 9), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 5, 6), -(ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 6, 9), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 6, 9), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 6, 9), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 6, 8), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 2, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 2, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 4, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 4, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 4, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 6, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 6, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 6, 8, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 5, 6), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 5, 9), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 5, 6), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 5, 9), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 5, 8), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 5, 9), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 5, 6), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 5, 8), -(ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 5, 6), -(ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 5, 6), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 6, 8), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 6, 9), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 6, 9), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 6, 8), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 6, 8), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 2, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 2, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 2, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 3, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 6, 8, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 6, 8), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 2, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 4, 8, 9), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 5, 4, 6), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 6, 4, 5), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 8, 4, 6), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 5, 4, 6), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 6, 4, 5), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 9, 4, 6), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 9, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 4, 9), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 5, 4, 9), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 4, 8), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 5, 4, 8), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 4, 9), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 8, 4, 9), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 8, 4, 5), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 4, 8), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 9, 4, 8), -(ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 4, 5), -(ab(mat, 6, 2, 4, 5)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 9, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 6, 4, 9), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 6, 4, 8), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 8, 4, 9), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 8, 4, 6), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 9, 4, 8), -(ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 4, 6), -(ab(mat, 5, 2, 4, 6)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 9, 4, 6), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 4, 5, 6), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 4, 5, 6), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 9, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 4, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 4, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 8, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 9, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 6, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 6, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 8, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 8, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 9, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 5, 6), -(ab(mat, 4, 2, 5, 6)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 9, 5, 6), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 5, 6, 8), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 5, 6, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 4, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 4, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 8, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 9, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 5, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 5, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 8, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 9, 6, 8), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 4, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 4, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 4, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 5, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 5, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 4, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 4, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 4, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 6, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 6, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 6, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 5, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 5, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 6, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 6, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 6, 8, 9), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 3, 5, 6), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 3, 5, 6), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 5, 9), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 3, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 5, 8), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 3, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 6, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 6, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 8, 5, 9), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 8, 5, 6), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 9, 5, 8), -(ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 5, 6), -(ab(mat, 3, 2, 5, 6)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 9, 5, 6), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 3, 6, 8), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 3, 6, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 6, 9), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 3, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 6, 8), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 3, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 5, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 5, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 8, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 9, 6, 8), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 3, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 3, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 3, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 3, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 5, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 5, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 6, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 6, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 6, 8, 9), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 3, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 3, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 4, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 4, 6, 8), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 3, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 3, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 4, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 4, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 4, 8, 9), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 6, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 6, 5, 9), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 6, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 6, 5, 8), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 8, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 8, 5, 9), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 8, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 8, 5, 6), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 9, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 9, 5, 8), -(ab(mat, 1, 3, 5, 6)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 9, 5, 6), -(ab(mat, 2, 3, 5, 6)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 9, 5, 6), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 5, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 5, 6, 9), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 5, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 5, 6, 8), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 8, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 8, 6, 9), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 9, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 9, 6, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 5, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 5, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 5, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 5, 8, 9), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 6, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 6, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 6, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 6, 8, 9), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 4, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 4, 6, 9), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 4, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 4, 6, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 4, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 4, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 4, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 4, 8, 9), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 3, 8), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 3, 7), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 3, 8), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 3, 4), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 3, 7), -(ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 3, 4), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 3, 9), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 3, 7), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 3, 9), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 3, 4), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 3, 7), -(ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 3, 4), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 3, 9), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 3, 8), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 3, 9), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 3, 4), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 3, 8), -(ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 3, 4), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 3, 8), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 3, 7), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 3, 8), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 3, 5), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 3, 7), -(ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 3, 5), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 3, 9), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 3, 7), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 3, 9), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 3, 5), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 3, 7), -(ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 3, 5), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 3, 9), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 3, 8), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 3, 9), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 3, 5), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 3, 8), -(ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 3, 5), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 3, 9), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 3, 8), -(ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 3, 9), -(ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 3, 9), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 3, 7), -(ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 3, 8), -(ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 3, 8), -(ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 3, 7), -(ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 3, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 4, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 4, 7), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 4, 8), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 4, 8), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 4, 5), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 4, 5), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 4, 8), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 4, 5), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 4, 5), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 4, 9), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 4, 8), -(ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 4, 9), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 4, 7), -(ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 4, 8), -(ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 4, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 5, 8), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 5, 9), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 5, 8), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 5, 9), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 5, 7), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 5, 8), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 5, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 3, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 4, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 3, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 4, 7, 9), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 3, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 5, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 3, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 3, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 3, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 3, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 3, 7, 8), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 8, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 8, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 9, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 9, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 5, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 4, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 4, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 8, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 8, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 9, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 9, 7, 8), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 8, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 8, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 9, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 3, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 3, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 3, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 2, 3)) + 
-  ab(mat, 4, 1, 2, 3)*ab(mat, 4, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 2, 3)) + 
-  ab(mat, 5, 1, 2, 3)*ab(mat, 5, 7, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 4, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 2, 4)) + 
-  ab(mat, 3, 1, 2, 4)*ab(mat, 3, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 2, 4)) + 
-  ab(mat, 5, 1, 2, 4)*ab(mat, 5, 7, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 2, 5)) + 
-  ab(mat, 3, 1, 2, 5)*ab(mat, 3, 7, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 2, 5)) + 
-  ab(mat, 4, 1, 2, 5)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 4, 7), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 4, 8), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 4, 5), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 4, 5), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 4, 5), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 4, 8), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 4, 5), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 4, 5), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 4, 9), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 4, 8), -(ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 4, 9), -(ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 4, 9), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 4, 7), -(ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 4, 8), -(ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 4, 8), -(ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 4, 7), -(ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 4, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 5, 9), -(ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 5, 8), -(ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 5, 7), -(ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 5, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 2, 7, 9), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 2, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 2, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 2, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 2, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 5, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 5, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 4, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 4, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 8, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 9, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 9, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 8, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 9, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 2, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 4, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 3, 4)) + 
-  ab(mat, 2, 1, 3, 4)*ab(mat, 2, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 1, 3, 4)*ab(mat, 5, 7, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 3, 5)) + 
-  ab(mat, 2, 1, 3, 5)*ab(mat, 2, 7, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 1, 3, 5)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 5, 8), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 5, 7), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 5, 9), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 5, 8), -(ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 5, 9), -(ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 5, 9), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 5, 7), -(ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 5, 8), -(ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 5, 8), -(ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 5, 7), -(ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 5, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 2, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 2, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 2, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 2, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 2, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 3, 7, 9), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 3, 7, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 3, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 3, 7, 8), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 8, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 9, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 2, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 2, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 3, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 5, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 1, 4, 5)*ab(mat, 2, 7, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 1, 4, 5)*ab(mat, 3, 7, 8, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 2, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 2, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 2, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 3, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 3, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 3, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 4, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 4, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 4, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 4, 7, 8), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 2, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 4, 8, 9), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 5, 4, 8), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 5, 4, 7), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 7, 4, 5), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 2, 4, 5)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 8, 4, 5), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 5, 4, 9), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 5, 4, 7), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 7, 4, 5), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 2, 4, 5)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 9, 4, 5), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 5, 4, 9), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 5, 4, 8), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 8, 4, 5), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 2, 4, 5)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 9, 4, 5), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 7, 4, 9), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 7, 4, 8), -(ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 4, 9), -(ab(mat, 5, 2, 4, 9)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 8, 4, 9), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 8, 4, 7), -(ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 4, 8), -(ab(mat, 5, 2, 4, 8)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 9, 4, 8), -(ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 4, 7), -(ab(mat, 5, 2, 4, 7)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 9, 4, 7), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 4, 5, 8), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 4, 5, 7), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 8, 5, 7), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 4, 5, 9), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 4, 5, 7), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 9, 5, 7), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 4, 5, 9), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 4, 5, 8), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 9, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 7, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 7, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 5, 9), -(ab(mat, 4, 2, 5, 9)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 8, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 8, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 5, 8), -(ab(mat, 4, 2, 5, 8)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 9, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 5, 7), -(ab(mat, 4, 2, 5, 7)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 9, 5, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 4, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 5, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 5, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 4, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 5, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 5, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 4, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 4, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 4, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 4, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 8, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 8, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 9, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 9, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 9, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 5, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 5, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 8, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 8, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 9, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 9, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 4, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 5, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 4, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 4, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 3, 4)) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 1, 7, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 7, 3, 4)) + 
-  ab(mat, 5, 2, 3, 4)*ab(mat, 5, 7, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 5, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 3, 5)) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 1, 7, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 7, 3, 5)) + 
-  ab(mat, 4, 2, 3, 5)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 3, 5, 8), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 3, 5, 7), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 3, 5, 9), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 3, 5, 7), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 3, 5, 9), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 3, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 7, 5, 9), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 7, 5, 8), -(ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 5, 9), -(ab(mat, 3, 2, 5, 9)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 8, 5, 9), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 8, 5, 7), -(ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 5, 8), -(ab(mat, 3, 2, 5, 8)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 9, 5, 8), -(ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 5, 7), -(ab(mat, 3, 2, 5, 7)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 9, 5, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 3, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 3, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 3, 7, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 3, 7, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 3, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 3, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 3, 7, 8), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 3, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 5, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 5, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 8, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 8, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 9, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 9, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 3, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 3, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 3, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 5, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 5, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 1, 7, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 7, 4, 5)) + 
-  ab(mat, 3, 2, 4, 5)*ab(mat, 3, 7, 8, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 3, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 3, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 3, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 3, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 3, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 4, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 4, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 4, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 4, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 4, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 4, 7, 8), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 3, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 3, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 4, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 4, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 4, 8, 9), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 7, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 7, 5, 9), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 7, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 7, 5, 8), -(ab(mat, 1, 3, 5, 9)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 8, 5, 9), -(ab(mat, 2, 3, 5, 9)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 8, 5, 9), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 8, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 8, 5, 7), -(ab(mat, 1, 3, 5, 8)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 9, 5, 8), -(ab(mat, 2, 3, 5, 8)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 9, 5, 8), -(ab(mat, 1, 3, 5, 7)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 9, 5, 7), -(ab(mat, 2, 3, 5, 7)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 9, 5, 7), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 5, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 5, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 5, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 5, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 8, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 8, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 8, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 8, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 9, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 9, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 9, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 9, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 5, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 5, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 7, 4, 5)) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 1, 7, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 7, 4, 5)) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 2, 7, 8, 9), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 4, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 4, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 4, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 4, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 4, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 4, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 4, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 4, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 4, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 4, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 4, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 4, 8, 9), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 3, 8), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 3, 7), -(ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 3, 8), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 3, 6), -(ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 3, 7), -(ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 3, 6), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 3, 9), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 3, 7), -(ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 3, 9), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 3, 6), -(ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 3, 7), -(ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 3, 6), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 3, 9), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 3, 8), -(ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 3, 9), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 3, 6), -(ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 3, 8), -(ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 3, 6), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 3, 9), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 3, 8), -(ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 3, 9), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 3, 7), -(ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 3, 8), -(ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 3, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 4, 6), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 4, 6), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 4, 8), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 4, 6), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 4, 6), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 4, 9), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 4, 8), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 4, 9), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 4, 7), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 4, 8), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 4, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 3, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 3, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 3, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 3, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 9, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 9, 6, 8), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 3, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 2, 3)) + 
-  ab(mat, 9, 1, 2, 3)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 3, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 2, 3)) + 
-  ab(mat, 8, 1, 2, 3)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 3, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 3, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 9, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 2, 4)) + 
-  ab(mat, 9, 1, 2, 4)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 2, 4)) + 
-  ab(mat, 8, 1, 2, 4)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 9, 7, 8), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 2, 8)) + 
-  ab(mat, 3, 1, 2, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 2, 8)) + 
-  ab(mat, 4, 1, 2, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 2, 9)) + 
-  ab(mat, 3, 1, 2, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 2, 9)) + 
-  ab(mat, 4, 1, 2, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 3, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 2, 3)) + 
-  ab(mat, 7, 1, 2, 3)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 2, 3)) + 
-  ab(mat, 6, 1, 2, 3)*ab(mat, 6, 7, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 2, 4)) + 
-  ab(mat, 7, 1, 2, 4)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 2, 4)) + 
-  ab(mat, 6, 1, 2, 4)*ab(mat, 6, 7, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 2, 7)) + 
-  ab(mat, 3, 1, 2, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 2, 7)) + 
-  ab(mat, 4, 1, 2, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 2, 6)) + 
-  ab(mat, 3, 1, 2, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 2, 6)) + 
-  ab(mat, 4, 1, 2, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 4, 6), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 4, 7), -(ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 4, 6), -(ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 4, 6), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 4, 9), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 4, 8), -(ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 4, 6), -(ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 4, 6), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 4, 9), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 4, 8), -(ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 4, 9), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 4, 7), -(ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 4, 8), -(ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 4, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 2, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 2, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 2, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 2, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 2, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 2, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 9, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 2, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 2, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 1, 3, 4)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 1, 3, 4)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 9, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 3, 8)) + 
-  ab(mat, 2, 1, 3, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 1, 3, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 3, 9)) + 
-  ab(mat, 2, 1, 3, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 1, 3, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 1, 3, 4)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 1, 3, 4)*ab(mat, 6, 7, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 3, 7)) + 
-  ab(mat, 2, 1, 3, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 1, 3, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 3, 6)) + 
-  ab(mat, 2, 1, 3, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 1, 3, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 2, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 2, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 2, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 2, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 2, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 2, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 3, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 3, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 3, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 3, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 2, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 2, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 3, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 3, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 1, 4, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 1, 4, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 1, 4, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 1, 4, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 1, 4, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 1, 4, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 1, 4, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 1, 4, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 2, 6, 8)) + 
-  ab(mat, 3, 1, 6, 8)*ab(mat, 3, 2, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 2, 6, 8)) + 
-  ab(mat, 4, 1, 6, 8)*ab(mat, 4, 2, 7, 9), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 2, 6, 9)) + 
-  ab(mat, 3, 1, 6, 9)*ab(mat, 3, 2, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 2, 6, 9)) + 
-  ab(mat, 4, 1, 6, 9)*ab(mat, 4, 2, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 3, 6, 8)) + 
-  ab(mat, 2, 1, 6, 8)*ab(mat, 2, 3, 7, 9), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 3, 6, 8)) + 
-  ab(mat, 4, 1, 6, 8)*ab(mat, 4, 3, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 3, 6, 9)) + 
-  ab(mat, 2, 1, 6, 9)*ab(mat, 2, 3, 7, 8), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 3, 6, 9)) + 
-  ab(mat, 4, 1, 6, 9)*ab(mat, 4, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 4, 6, 8)) + 
-  ab(mat, 2, 1, 6, 8)*ab(mat, 2, 4, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 4, 6, 8)) + 
-  ab(mat, 3, 1, 6, 8)*ab(mat, 3, 4, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 4, 6, 9)) + 
-  ab(mat, 2, 1, 6, 9)*ab(mat, 2, 4, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 4, 6, 9)) + 
-  ab(mat, 3, 1, 6, 9)*ab(mat, 3, 4, 7, 8), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 2, 6, 7)) + 
-  ab(mat, 3, 1, 6, 7)*ab(mat, 3, 2, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 2, 6, 7)) + 
-  ab(mat, 4, 1, 6, 7)*ab(mat, 4, 2, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 3, 6, 7)) + 
-  ab(mat, 2, 1, 6, 7)*ab(mat, 2, 3, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 3, 6, 7)) + 
-  ab(mat, 4, 1, 6, 7)*ab(mat, 4, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 4, 6, 7)) + 
-  ab(mat, 2, 1, 6, 7)*ab(mat, 2, 4, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 4, 6, 7)) + 
-  ab(mat, 3, 1, 6, 7)*ab(mat, 3, 4, 8, 9), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 6, 4, 8), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 6, 4, 7), -(ab(mat, 9, 2, 4, 8)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 7, 4, 8), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 7, 4, 6), -(ab(mat, 9, 2, 4, 7)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 8, 4, 7), -(ab(mat, 9, 2, 4, 6)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 8, 4, 6), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 6, 4, 9), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 6, 4, 7), -(ab(mat, 8, 2, 4, 9)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 7, 4, 9), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 7, 4, 6), -(ab(mat, 8, 2, 4, 7)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 9, 4, 7), -(ab(mat, 8, 2, 4, 6)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 9, 4, 6), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 6, 4, 9), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 6, 4, 8), -(ab(mat, 7, 2, 4, 9)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 8, 4, 9), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 8, 4, 6), -(ab(mat, 7, 2, 4, 8)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 9, 4, 8), -(ab(mat, 7, 2, 4, 6)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 9, 4, 6), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 7, 4, 9), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 7, 4, 8), -(ab(mat, 6, 2, 4, 9)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 8, 4, 9), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 8, 4, 7), -(ab(mat, 6, 2, 4, 8)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 9, 4, 8), -(ab(mat, 6, 2, 4, 7)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 9, 4, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 4, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 4, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 7, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 8, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 4, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 4, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 7, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 9, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 4, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 4, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 8, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 9, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 9, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 7, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 7, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 8, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 8, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 9, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 9, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 4, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 6, 3, 4)) + 
-  ab(mat, 9, 2, 3, 4)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 4, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 6, 3, 4)) + 
-  ab(mat, 8, 2, 3, 4)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 4, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 4, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 8, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 9, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 9, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 3, 8)) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 6, 3, 8)) + 
-  ab(mat, 4, 2, 3, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 3, 9)) + 
-  ab(mat, 1, 2, 3, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 6, 3, 9)) + 
-  ab(mat, 4, 2, 3, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 8, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 9, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 4, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 6, 3, 4)) + 
-  ab(mat, 7, 2, 3, 4)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 4, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 7, 3, 4)) + 
-  ab(mat, 6, 2, 3, 4)*ab(mat, 6, 7, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 3, 7)) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 6, 3, 7)) + 
-  ab(mat, 4, 2, 3, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 3, 6)) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 7, 3, 6)) + 
-  ab(mat, 4, 2, 3, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 3, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 3, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 3, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 3, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 3, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 3, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 3, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 3, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 3, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 3, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 7, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 7, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 8, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 8, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 9, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 9, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 3, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 3, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 3, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 3, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 3, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 3, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 6, 4, 8)) + 
-  ab(mat, 3, 2, 4, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 2, 4, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 6, 4, 9)) + 
-  ab(mat, 3, 2, 4, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 8, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 9, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 3, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 3, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 3, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 6, 4, 7)) + 
-  ab(mat, 3, 2, 4, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 7, 4, 6)) + 
-  ab(mat, 3, 2, 4, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 3, 6, 8)) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 1, 3, 7, 9), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 3, 6, 8)) + 
-  ab(mat, 4, 2, 6, 8)*ab(mat, 4, 3, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 3, 6, 9)) + 
-  ab(mat, 1, 2, 6, 9)*ab(mat, 1, 3, 7, 8), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 3, 6, 9)) + 
-  ab(mat, 4, 2, 6, 9)*ab(mat, 4, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 4, 6, 8)) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 1, 4, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 4, 6, 8)) + 
-  ab(mat, 3, 2, 6, 8)*ab(mat, 3, 4, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 4, 6, 9)) + 
-  ab(mat, 1, 2, 6, 9)*ab(mat, 1, 4, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 4, 6, 9)) + 
-  ab(mat, 3, 2, 6, 9)*ab(mat, 3, 4, 7, 8), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 3, 6, 7)) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 1, 3, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 3, 6, 7)) + 
-  ab(mat, 4, 2, 6, 7)*ab(mat, 4, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 4, 6, 7)) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 1, 4, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 4, 6, 7)) + 
-  ab(mat, 3, 2, 6, 7)*ab(mat, 3, 4, 8, 9), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 7, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 7, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 7, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 7, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 8, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 8, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 8, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 8, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 9, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 9, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 9, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 9, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 6, 4, 8)) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 6, 4, 8)) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 6, 4, 9)) + 
-  ab(mat, 1, 3, 4, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 6, 4, 9)) + 
-  ab(mat, 2, 3, 4, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 8, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 8, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 9, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 9, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 6, 4, 7)) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 6, 4, 7)) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 7, 4, 6)) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 7, 4, 6)) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 4, 6, 8)) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 1, 4, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 4, 6, 8)) + 
-  ab(mat, 2, 3, 6, 8)*ab(mat, 2, 4, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 4, 6, 9)) + 
-  ab(mat, 1, 3, 6, 9)*ab(mat, 1, 4, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 4, 6, 9)) + 
-  ab(mat, 2, 3, 6, 9)*ab(mat, 2, 4, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 4, 6, 7)) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 1, 4, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 4, 6, 7)) + 
-  ab(mat, 2, 3, 6, 7)*ab(mat, 2, 4, 8, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 2, 7)) + 
-  ab(mat, 9, 1, 2, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 2, 8)) + 
-  ab(mat, 9, 1, 2, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 2, 7)) + 
-  ab(mat, 8, 1, 2, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 2, 9)) + 
-  ab(mat, 8, 1, 2, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 2, 8)) + 
-  ab(mat, 7, 1, 2, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 2, 9)) + 
-  ab(mat, 7, 1, 2, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 2, 6)) + 
-  ab(mat, 9, 1, 2, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 2, 5)) + 
-  ab(mat, 9, 1, 2, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 2, 6)) + 
-  ab(mat, 8, 1, 2, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 2, 5)) + 
-  ab(mat, 8, 1, 2, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 2, 8)) + 
-  ab(mat, 6, 1, 2, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 2, 9)) + 
-  ab(mat, 6, 1, 2, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 2, 8)) + 
-  ab(mat, 5, 1, 2, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 2, 9)) + 
-  ab(mat, 5, 1, 2, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 2, 6)) + 
-  ab(mat, 7, 1, 2, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 2, 5)) + 
-  ab(mat, 7, 1, 2, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 2, 7)) + 
-  ab(mat, 6, 1, 2, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 2, 5)) + 
-  ab(mat, 6, 1, 2, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 2, 7)) + 
-  ab(mat, 5, 1, 2, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 2, 6)) + 
-  ab(mat, 5, 1, 2, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 1, 3, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 1, 3, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 1, 3, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 1, 3, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 1, 3, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 1, 3, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 1, 3, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 1, 3, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 1, 3, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 1, 3, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 1, 3, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 1, 3, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 1, 3, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 1, 3, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 1, 3, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 1, 3, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 1, 3, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 1, 3, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 1, 3, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 1, 3, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 2, 5, 7)) + 
-  ab(mat, 9, 1, 5, 7)*ab(mat, 9, 2, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 2, 5, 8)) + 
-  ab(mat, 9, 1, 5, 8)*ab(mat, 9, 2, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 2, 5, 7)) + 
-  ab(mat, 8, 1, 5, 7)*ab(mat, 8, 2, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 2, 5, 9)) + 
-  ab(mat, 8, 1, 5, 9)*ab(mat, 8, 2, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 2, 5, 8)) + 
-  ab(mat, 7, 1, 5, 8)*ab(mat, 7, 2, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 2, 5, 9)) + 
-  ab(mat, 7, 1, 5, 9)*ab(mat, 7, 2, 6, 8), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 3, 5, 7)) + 
-  ab(mat, 9, 1, 5, 7)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 3, 5, 8)) + 
-  ab(mat, 9, 1, 5, 8)*ab(mat, 9, 3, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 3, 5, 7)) + 
-  ab(mat, 8, 1, 5, 7)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 3, 5, 9)) + 
-  ab(mat, 8, 1, 5, 9)*ab(mat, 8, 3, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 3, 5, 8)) + 
-  ab(mat, 7, 1, 5, 8)*ab(mat, 7, 3, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 3, 5, 9)) + 
-  ab(mat, 7, 1, 5, 9)*ab(mat, 7, 3, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 7, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 7, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 7, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 7, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 2, 1, 6, 9)*ab(mat, 2, 8, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 3, 1, 6, 9)*ab(mat, 3, 8, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 8, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 8, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 2, 1, 6, 8)*ab(mat, 2, 9, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 3, 1, 6, 8)*ab(mat, 3, 9, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 2, 1, 6, 7)*ab(mat, 2, 9, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 3, 1, 6, 7)*ab(mat, 3, 9, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 2, 5, 6)) + 
-  ab(mat, 9, 1, 5, 6)*ab(mat, 9, 2, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 2, 5, 6)) + 
-  ab(mat, 8, 1, 5, 6)*ab(mat, 8, 2, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 2, 5, 8)) + 
-  ab(mat, 6, 1, 5, 8)*ab(mat, 6, 2, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 2, 5, 9)) + 
-  ab(mat, 6, 1, 5, 9)*ab(mat, 6, 2, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 3, 5, 6)) + 
-  ab(mat, 9, 1, 5, 6)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 3, 5, 6)) + 
-  ab(mat, 8, 1, 5, 6)*ab(mat, 8, 3, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 3, 5, 8)) + 
-  ab(mat, 6, 1, 5, 8)*ab(mat, 6, 3, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 3, 5, 9)) + 
-  ab(mat, 6, 1, 5, 9)*ab(mat, 6, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 6, 5, 8)) + 
-  ab(mat, 2, 1, 5, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 6, 5, 8)) + 
-  ab(mat, 3, 1, 5, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 6, 5, 9)) + 
-  ab(mat, 2, 1, 5, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 6, 5, 9)) + 
-  ab(mat, 3, 1, 5, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 8, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 8, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 9, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 9, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 2, 5, 6)) + 
-  ab(mat, 7, 1, 5, 6)*ab(mat, 7, 2, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 2, 5, 7)) + 
-  ab(mat, 6, 1, 5, 7)*ab(mat, 6, 2, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 3, 5, 6)) + 
-  ab(mat, 7, 1, 5, 6)*ab(mat, 7, 3, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 3, 5, 7)) + 
-  ab(mat, 6, 1, 5, 7)*ab(mat, 6, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 6, 5, 7)) + 
-  ab(mat, 2, 1, 5, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 6, 5, 7)) + 
-  ab(mat, 3, 1, 5, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 7, 5, 6)) + 
-  ab(mat, 2, 1, 5, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 7, 5, 6)) + 
-  ab(mat, 3, 1, 5, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 2, 6, 8)) + 
-  ab(mat, 5, 1, 6, 8)*ab(mat, 5, 2, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 2, 6, 9)) + 
-  ab(mat, 5, 1, 6, 9)*ab(mat, 5, 2, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 3, 6, 8)) + 
-  ab(mat, 5, 1, 6, 8)*ab(mat, 5, 3, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 3, 6, 9)) + 
-  ab(mat, 5, 1, 6, 9)*ab(mat, 5, 3, 7, 8), -(ab(mat, 2, 1, 7, 9)*ab(mat, 2, 5, 6, 8)) + 
-  ab(mat, 2, 1, 6, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 3, 1, 7, 9)*ab(mat, 3, 5, 6, 8)) + 
-  ab(mat, 3, 1, 6, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 2, 1, 7, 8)*ab(mat, 2, 5, 6, 9)) + 
-  ab(mat, 2, 1, 6, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 3, 1, 7, 8)*ab(mat, 3, 5, 6, 9)) + 
-  ab(mat, 3, 1, 6, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 2, 6, 7)) + 
-  ab(mat, 5, 1, 6, 7)*ab(mat, 5, 2, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 3, 6, 7)) + 
-  ab(mat, 5, 1, 6, 7)*ab(mat, 5, 3, 8, 9), -(ab(mat, 2, 1, 8, 9)*ab(mat, 2, 5, 6, 7)) + 
-  ab(mat, 2, 1, 6, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 3, 1, 8, 9)*ab(mat, 3, 5, 6, 7)) + 
-  ab(mat, 3, 1, 6, 7)*ab(mat, 3, 5, 8, 9), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 6, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 6, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 7, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 7, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 8, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 8, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 6, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 6, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 7, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 7, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 9, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 9, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 6, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 6, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 8, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 8, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 9, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 9, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 7, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 7, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 8, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 8, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 9, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 9, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 5, 3, 7)) + 
-  ab(mat, 9, 2, 3, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 5, 3, 8)) + 
-  ab(mat, 9, 2, 3, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 7, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 8, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 5, 3, 7)) + 
-  ab(mat, 8, 2, 3, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 5, 3, 9)) + 
-  ab(mat, 8, 2, 3, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 7, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 9, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 5, 3, 8)) + 
-  ab(mat, 7, 2, 3, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 5, 3, 9)) + 
-  ab(mat, 7, 2, 3, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 8, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 9, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 7, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 7, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 8, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 8, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 9, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 9, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 5, 3, 6)) + 
-  ab(mat, 9, 2, 3, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 6, 3, 5)) + 
-  ab(mat, 9, 2, 3, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 5, 3, 6)) + 
-  ab(mat, 8, 2, 3, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 6, 3, 5)) + 
-  ab(mat, 8, 2, 3, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 5, 3, 8)) + 
-  ab(mat, 6, 2, 3, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 5, 3, 9)) + 
-  ab(mat, 6, 2, 3, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 8, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 9, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 6, 3, 8)) + 
-  ab(mat, 5, 2, 3, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 6, 3, 9)) + 
-  ab(mat, 5, 2, 3, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 8, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 9, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 5, 3, 6)) + 
-  ab(mat, 7, 2, 3, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 6, 3, 5)) + 
-  ab(mat, 7, 2, 3, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 5, 3, 7)) + 
-  ab(mat, 6, 2, 3, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 7, 3, 5)) + 
-  ab(mat, 6, 2, 3, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 6, 3, 7)) + 
-  ab(mat, 5, 2, 3, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 7, 3, 6)) + 
-  ab(mat, 5, 2, 3, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 3, 5, 7)) + 
-  ab(mat, 9, 2, 5, 7)*ab(mat, 9, 3, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 3, 5, 8)) + 
-  ab(mat, 9, 2, 5, 8)*ab(mat, 9, 3, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 3, 5, 7)) + 
-  ab(mat, 8, 2, 5, 7)*ab(mat, 8, 3, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 3, 5, 9)) + 
-  ab(mat, 8, 2, 5, 9)*ab(mat, 8, 3, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 3, 5, 8)) + 
-  ab(mat, 7, 2, 5, 8)*ab(mat, 7, 3, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 3, 5, 9)) + 
-  ab(mat, 7, 2, 5, 9)*ab(mat, 7, 3, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 7, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 7, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 7, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 7, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 1, 2, 6, 9)*ab(mat, 1, 8, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 3, 2, 6, 9)*ab(mat, 3, 8, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 8, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 8, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 1, 2, 6, 8)*ab(mat, 1, 9, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 3, 2, 6, 8)*ab(mat, 3, 9, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 1, 2, 6, 7)*ab(mat, 1, 9, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 3, 2, 6, 7)*ab(mat, 3, 9, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 3, 5, 6)) + 
-  ab(mat, 9, 2, 5, 6)*ab(mat, 9, 3, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 3, 5, 6)) + 
-  ab(mat, 8, 2, 5, 6)*ab(mat, 8, 3, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 3, 5, 8)) + 
-  ab(mat, 6, 2, 5, 8)*ab(mat, 6, 3, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 3, 5, 9)) + 
-  ab(mat, 6, 2, 5, 9)*ab(mat, 6, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 6, 5, 8)) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 6, 5, 8)) + 
-  ab(mat, 3, 2, 5, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 6, 5, 9)) + 
-  ab(mat, 1, 2, 5, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 6, 5, 9)) + 
-  ab(mat, 3, 2, 5, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 8, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 8, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 9, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 9, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 3, 5, 6)) + 
-  ab(mat, 7, 2, 5, 6)*ab(mat, 7, 3, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 3, 5, 7)) + 
-  ab(mat, 6, 2, 5, 7)*ab(mat, 6, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 6, 5, 7)) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 6, 5, 7)) + 
-  ab(mat, 3, 2, 5, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 7, 5, 6)) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 7, 5, 6)) + 
-  ab(mat, 3, 2, 5, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 3, 6, 8)) + 
-  ab(mat, 5, 2, 6, 8)*ab(mat, 5, 3, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 3, 6, 9)) + 
-  ab(mat, 5, 2, 6, 9)*ab(mat, 5, 3, 7, 8), -(ab(mat, 1, 2, 7, 9)*ab(mat, 1, 5, 6, 8)) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 3, 2, 7, 9)*ab(mat, 3, 5, 6, 8)) + 
-  ab(mat, 3, 2, 6, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 1, 2, 7, 8)*ab(mat, 1, 5, 6, 9)) + 
-  ab(mat, 1, 2, 6, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 3, 2, 7, 8)*ab(mat, 3, 5, 6, 9)) + 
-  ab(mat, 3, 2, 6, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 3, 6, 7)) + 
-  ab(mat, 5, 2, 6, 7)*ab(mat, 5, 3, 8, 9), -(ab(mat, 1, 2, 8, 9)*ab(mat, 1, 5, 6, 7)) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 3, 2, 8, 9)*ab(mat, 3, 5, 6, 7)) + 
-  ab(mat, 3, 2, 6, 7)*ab(mat, 3, 5, 8, 9), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 7, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 7, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 7, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 7, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 1, 3, 6, 9)*ab(mat, 1, 8, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 2, 3, 6, 9)*ab(mat, 2, 8, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 8, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 8, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 1, 3, 6, 8)*ab(mat, 1, 9, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 2, 3, 6, 8)*ab(mat, 2, 9, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 1, 3, 6, 7)*ab(mat, 1, 9, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 2, 3, 6, 7)*ab(mat, 2, 9, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 6, 5, 8)) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 6, 5, 8)) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 6, 5, 9)) + 
-  ab(mat, 1, 3, 5, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 6, 5, 9)) + 
-  ab(mat, 2, 3, 5, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 8, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 8, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 9, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 9, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 6, 5, 7)) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 6, 5, 7)) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 7, 5, 6)) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 7, 5, 6)) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 1, 3, 7, 9)*ab(mat, 1, 5, 6, 8)) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 2, 3, 7, 9)*ab(mat, 2, 5, 6, 8)) + 
-  ab(mat, 2, 3, 6, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 1, 3, 7, 8)*ab(mat, 1, 5, 6, 9)) + 
-  ab(mat, 1, 3, 6, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 2, 3, 7, 8)*ab(mat, 2, 5, 6, 9)) + 
-  ab(mat, 2, 3, 6, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 1, 3, 8, 9)*ab(mat, 1, 5, 6, 7)) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 2, 3, 8, 9)*ab(mat, 2, 5, 6, 7)) + 
-  ab(mat, 2, 3, 6, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 6, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 6, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 1, 5, 8)*ab(mat, 9, 7, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 7, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 1, 5, 7)*ab(mat, 9, 8, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 1, 5, 6)*ab(mat, 9, 8, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 6, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 6, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 1, 5, 9)*ab(mat, 8, 7, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 7, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 1, 5, 7)*ab(mat, 8, 9, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 1, 5, 6)*ab(mat, 8, 9, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 6, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 6, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 1, 5, 9)*ab(mat, 7, 8, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 8, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 1, 5, 8)*ab(mat, 7, 9, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 1, 5, 6)*ab(mat, 7, 9, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 7, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 7, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 1, 5, 9)*ab(mat, 6, 8, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 8, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 1, 5, 8)*ab(mat, 6, 9, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 1, 5, 7)*ab(mat, 6, 9, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 5, 4, 7)) + 
-  ab(mat, 9, 1, 4, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 5, 4, 8)) + 
-  ab(mat, 9, 1, 4, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 7, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 8, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 5, 4, 7)) + 
-  ab(mat, 8, 1, 4, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 5, 4, 9)) + 
-  ab(mat, 8, 1, 4, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 7, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 9, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 5, 4, 8)) + 
-  ab(mat, 7, 1, 4, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 5, 4, 9)) + 
-  ab(mat, 7, 1, 4, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 8, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 9, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 7, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 7, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 1, 6, 9)*ab(mat, 5, 8, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 8, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 1, 6, 8)*ab(mat, 5, 9, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 1, 6, 7)*ab(mat, 5, 9, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 5, 4, 6)) + 
-  ab(mat, 9, 1, 4, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 6, 4, 5)) + 
-  ab(mat, 9, 1, 4, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 5, 4, 6)) + 
-  ab(mat, 8, 1, 4, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 6, 4, 5)) + 
-  ab(mat, 8, 1, 4, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 5, 4, 8)) + 
-  ab(mat, 6, 1, 4, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 5, 4, 9)) + 
-  ab(mat, 6, 1, 4, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 8, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 9, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 6, 4, 8)) + 
-  ab(mat, 5, 1, 4, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 6, 4, 9)) + 
-  ab(mat, 5, 1, 4, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 8, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 9, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 5, 4, 6)) + 
-  ab(mat, 7, 1, 4, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 6, 4, 5)) + 
-  ab(mat, 7, 1, 4, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 5, 4, 7)) + 
-  ab(mat, 6, 1, 4, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 7, 4, 5)) + 
-  ab(mat, 6, 1, 4, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 6, 4, 7)) + 
-  ab(mat, 5, 1, 4, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 7, 4, 6)) + 
-  ab(mat, 5, 1, 4, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 1, 6, 8)*ab(mat, 9, 4, 5, 7)) + 
-  ab(mat, 9, 1, 5, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 1, 6, 7)*ab(mat, 9, 4, 5, 8)) + 
-  ab(mat, 9, 1, 5, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 8, 1, 6, 9)*ab(mat, 8, 4, 5, 7)) + 
-  ab(mat, 8, 1, 5, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 1, 6, 7)*ab(mat, 8, 4, 5, 9)) + 
-  ab(mat, 8, 1, 5, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 7, 1, 6, 9)*ab(mat, 7, 4, 5, 8)) + 
-  ab(mat, 7, 1, 5, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 1, 6, 8)*ab(mat, 7, 4, 5, 9)) + 
-  ab(mat, 7, 1, 5, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 7, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 7, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 4, 1, 6, 9)*ab(mat, 4, 8, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 8, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 4, 1, 6, 8)*ab(mat, 4, 9, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 4, 1, 6, 7)*ab(mat, 4, 9, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 1, 7, 8)*ab(mat, 9, 4, 5, 6)) + 
-  ab(mat, 9, 1, 5, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 8, 1, 7, 9)*ab(mat, 8, 4, 5, 6)) + 
-  ab(mat, 8, 1, 5, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 6, 1, 7, 9)*ab(mat, 6, 4, 5, 8)) + 
-  ab(mat, 6, 1, 5, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 1, 7, 8)*ab(mat, 6, 4, 5, 9)) + 
-  ab(mat, 6, 1, 5, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 6, 5, 8)) + 
-  ab(mat, 4, 1, 5, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 6, 5, 9)) + 
-  ab(mat, 4, 1, 5, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 8, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 9, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 1, 8, 9)*ab(mat, 7, 4, 5, 6)) + 
-  ab(mat, 7, 1, 5, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 6, 1, 8, 9)*ab(mat, 6, 4, 5, 7)) + 
-  ab(mat, 6, 1, 5, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 6, 5, 7)) + 
-  ab(mat, 4, 1, 5, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 7, 5, 6)) + 
-  ab(mat, 4, 1, 5, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 5, 1, 7, 9)*ab(mat, 5, 4, 6, 8)) + 
-  ab(mat, 5, 1, 6, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 5, 1, 7, 8)*ab(mat, 5, 4, 6, 9)) + 
-  ab(mat, 5, 1, 6, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 4, 1, 7, 9)*ab(mat, 4, 5, 6, 8)) + 
-  ab(mat, 4, 1, 6, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 4, 1, 7, 8)*ab(mat, 4, 5, 6, 9)) + 
-  ab(mat, 4, 1, 6, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 5, 1, 8, 9)*ab(mat, 5, 4, 6, 7)) + 
-  ab(mat, 5, 1, 6, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 4, 1, 8, 9)*ab(mat, 4, 5, 6, 7)) + 
-  ab(mat, 4, 1, 6, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 6, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 6, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 2, 5, 8)*ab(mat, 9, 7, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 7, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 2, 5, 7)*ab(mat, 9, 8, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 2, 5, 6)*ab(mat, 9, 8, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 6, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 6, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 2, 5, 9)*ab(mat, 8, 7, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 7, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 2, 5, 7)*ab(mat, 8, 9, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 2, 5, 6)*ab(mat, 8, 9, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 6, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 6, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 2, 5, 9)*ab(mat, 7, 8, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 8, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 2, 5, 8)*ab(mat, 7, 9, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 2, 5, 6)*ab(mat, 7, 9, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 7, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 7, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 2, 5, 9)*ab(mat, 6, 8, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 8, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 2, 5, 8)*ab(mat, 6, 9, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 2, 5, 7)*ab(mat, 6, 9, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 5, 4, 7)) + 
-  ab(mat, 9, 2, 4, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 5, 4, 8)) + 
-  ab(mat, 9, 2, 4, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 7, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 8, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 5, 4, 7)) + 
-  ab(mat, 8, 2, 4, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 5, 4, 9)) + 
-  ab(mat, 8, 2, 4, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 7, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 9, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 5, 4, 8)) + 
-  ab(mat, 7, 2, 4, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 5, 4, 9)) + 
-  ab(mat, 7, 2, 4, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 8, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 9, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 7, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 7, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 2, 6, 9)*ab(mat, 5, 8, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 8, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 2, 6, 8)*ab(mat, 5, 9, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 2, 6, 7)*ab(mat, 5, 9, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 5, 4, 6)) + 
-  ab(mat, 9, 2, 4, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 6, 4, 5)) + 
-  ab(mat, 9, 2, 4, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 5, 4, 6)) + 
-  ab(mat, 8, 2, 4, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 6, 4, 5)) + 
-  ab(mat, 8, 2, 4, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 5, 4, 8)) + 
-  ab(mat, 6, 2, 4, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 5, 4, 9)) + 
-  ab(mat, 6, 2, 4, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 8, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 9, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 6, 4, 8)) + 
-  ab(mat, 5, 2, 4, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 6, 4, 9)) + 
-  ab(mat, 5, 2, 4, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 8, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 9, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 5, 4, 6)) + 
-  ab(mat, 7, 2, 4, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 6, 4, 5)) + 
-  ab(mat, 7, 2, 4, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 5, 4, 7)) + 
-  ab(mat, 6, 2, 4, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 7, 4, 5)) + 
-  ab(mat, 6, 2, 4, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 6, 4, 7)) + 
-  ab(mat, 5, 2, 4, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 7, 4, 6)) + 
-  ab(mat, 5, 2, 4, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 2, 6, 8)*ab(mat, 9, 4, 5, 7)) + 
-  ab(mat, 9, 2, 5, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 2, 6, 7)*ab(mat, 9, 4, 5, 8)) + 
-  ab(mat, 9, 2, 5, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 8, 2, 6, 9)*ab(mat, 8, 4, 5, 7)) + 
-  ab(mat, 8, 2, 5, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 2, 6, 7)*ab(mat, 8, 4, 5, 9)) + 
-  ab(mat, 8, 2, 5, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 7, 2, 6, 9)*ab(mat, 7, 4, 5, 8)) + 
-  ab(mat, 7, 2, 5, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 2, 6, 8)*ab(mat, 7, 4, 5, 9)) + 
-  ab(mat, 7, 2, 5, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 7, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 7, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 4, 2, 6, 9)*ab(mat, 4, 8, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 8, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 4, 2, 6, 8)*ab(mat, 4, 9, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 4, 2, 6, 7)*ab(mat, 4, 9, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 2, 7, 8)*ab(mat, 9, 4, 5, 6)) + 
-  ab(mat, 9, 2, 5, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 8, 2, 7, 9)*ab(mat, 8, 4, 5, 6)) + 
-  ab(mat, 8, 2, 5, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 6, 2, 7, 9)*ab(mat, 6, 4, 5, 8)) + 
-  ab(mat, 6, 2, 5, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 2, 7, 8)*ab(mat, 6, 4, 5, 9)) + 
-  ab(mat, 6, 2, 5, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 6, 5, 8)) + 
-  ab(mat, 4, 2, 5, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 6, 5, 9)) + 
-  ab(mat, 4, 2, 5, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 8, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 9, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 2, 8, 9)*ab(mat, 7, 4, 5, 6)) + 
-  ab(mat, 7, 2, 5, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 6, 2, 8, 9)*ab(mat, 6, 4, 5, 7)) + 
-  ab(mat, 6, 2, 5, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 6, 5, 7)) + 
-  ab(mat, 4, 2, 5, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 7, 5, 6)) + 
-  ab(mat, 4, 2, 5, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 5, 2, 7, 9)*ab(mat, 5, 4, 6, 8)) + 
-  ab(mat, 5, 2, 6, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 5, 2, 7, 8)*ab(mat, 5, 4, 6, 9)) + 
-  ab(mat, 5, 2, 6, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 4, 2, 7, 9)*ab(mat, 4, 5, 6, 8)) + 
-  ab(mat, 4, 2, 6, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 4, 2, 7, 8)*ab(mat, 4, 5, 6, 9)) + 
-  ab(mat, 4, 2, 6, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 5, 2, 8, 9)*ab(mat, 5, 4, 6, 7)) + 
-  ab(mat, 5, 2, 6, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 4, 2, 8, 9)*ab(mat, 4, 5, 6, 7)) + 
-  ab(mat, 4, 2, 6, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 1, 4, 6, 9)*ab(mat, 1, 7, 5, 8)) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 1, 7, 6, 9), -(ab(mat, 2, 4, 6, 9)*ab(mat, 2, 7, 5, 8)) + 
-  ab(mat, 2, 4, 5, 8)*ab(mat, 2, 7, 6, 9), -(ab(mat, 1, 4, 6, 8)*ab(mat, 1, 7, 5, 9)) + 
-  ab(mat, 1, 4, 5, 9)*ab(mat, 1, 7, 6, 8), -(ab(mat, 2, 4, 6, 8)*ab(mat, 2, 7, 5, 9)) + 
-  ab(mat, 2, 4, 5, 9)*ab(mat, 2, 7, 6, 8), -(ab(mat, 1, 4, 6, 9)*ab(mat, 1, 8, 5, 7)) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 1, 8, 6, 9), -(ab(mat, 2, 4, 6, 9)*ab(mat, 2, 8, 5, 7)) + 
-  ab(mat, 2, 4, 5, 7)*ab(mat, 2, 8, 6, 9), -(ab(mat, 1, 4, 6, 7)*ab(mat, 1, 8, 5, 9)) + 
-  ab(mat, 1, 4, 5, 9)*ab(mat, 1, 8, 6, 7), -(ab(mat, 2, 4, 6, 7)*ab(mat, 2, 8, 5, 9)) + 
-  ab(mat, 2, 4, 5, 9)*ab(mat, 2, 8, 6, 7), -(ab(mat, 1, 4, 6, 8)*ab(mat, 1, 9, 5, 7)) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 1, 9, 6, 8), -(ab(mat, 2, 4, 6, 8)*ab(mat, 2, 9, 5, 7)) + 
-  ab(mat, 2, 4, 5, 7)*ab(mat, 2, 9, 6, 8), -(ab(mat, 1, 4, 6, 7)*ab(mat, 1, 9, 5, 8)) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 1, 9, 6, 7), -(ab(mat, 2, 4, 6, 7)*ab(mat, 2, 9, 5, 8)) + 
-  ab(mat, 2, 4, 5, 8)*ab(mat, 2, 9, 6, 7), -(ab(mat, 1, 4, 7, 9)*ab(mat, 1, 6, 5, 8)) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 1, 6, 7, 9), -(ab(mat, 2, 4, 7, 9)*ab(mat, 2, 6, 5, 8)) + 
-  ab(mat, 2, 4, 5, 8)*ab(mat, 2, 6, 7, 9), -(ab(mat, 1, 4, 7, 8)*ab(mat, 1, 6, 5, 9)) + 
-  ab(mat, 1, 4, 5, 9)*ab(mat, 1, 6, 7, 8), -(ab(mat, 2, 4, 7, 8)*ab(mat, 2, 6, 5, 9)) + 
-  ab(mat, 2, 4, 5, 9)*ab(mat, 2, 6, 7, 8), -(ab(mat, 1, 4, 7, 9)*ab(mat, 1, 8, 5, 6)) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 1, 8, 7, 9), -(ab(mat, 2, 4, 7, 9)*ab(mat, 2, 8, 5, 6)) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 2, 8, 7, 9), -(ab(mat, 1, 4, 7, 8)*ab(mat, 1, 9, 5, 6)) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 1, 9, 7, 8), -(ab(mat, 2, 4, 7, 8)*ab(mat, 2, 9, 5, 6)) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 2, 9, 7, 8), -(ab(mat, 1, 4, 8, 9)*ab(mat, 1, 6, 5, 7)) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 1, 6, 8, 9), -(ab(mat, 2, 4, 8, 9)*ab(mat, 2, 6, 5, 7)) + 
-  ab(mat, 2, 4, 5, 7)*ab(mat, 2, 6, 8, 9), -(ab(mat, 1, 4, 8, 9)*ab(mat, 1, 7, 5, 6)) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 1, 7, 8, 9), -(ab(mat, 2, 4, 8, 9)*ab(mat, 2, 7, 5, 6)) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 2, 7, 8, 9), -(ab(mat, 1, 4, 7, 9)*ab(mat, 1, 5, 6, 8)) + 
-  ab(mat, 1, 4, 6, 8)*ab(mat, 1, 5, 7, 9), -(ab(mat, 2, 4, 7, 9)*ab(mat, 2, 5, 6, 8)) + 
-  ab(mat, 2, 4, 6, 8)*ab(mat, 2, 5, 7, 9), -(ab(mat, 1, 4, 7, 8)*ab(mat, 1, 5, 6, 9)) + 
-  ab(mat, 1, 4, 6, 9)*ab(mat, 1, 5, 7, 8), -(ab(mat, 2, 4, 7, 8)*ab(mat, 2, 5, 6, 9)) + 
-  ab(mat, 2, 4, 6, 9)*ab(mat, 2, 5, 7, 8), -(ab(mat, 1, 4, 8, 9)*ab(mat, 1, 5, 6, 7)) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 1, 5, 8, 9), -(ab(mat, 2, 4, 8, 9)*ab(mat, 2, 5, 6, 7)) + 
-  ab(mat, 2, 4, 6, 7)*ab(mat, 2, 5, 8, 9), -(ab(mat, 9, 3, 5, 8)*ab(mat, 9, 6, 4, 7)) + 
-  ab(mat, 9, 3, 4, 7)*ab(mat, 9, 6, 5, 8), -(ab(mat, 9, 3, 5, 7)*ab(mat, 9, 6, 4, 8)) + 
-  ab(mat, 9, 3, 4, 8)*ab(mat, 9, 6, 5, 7), -(ab(mat, 9, 3, 5, 8)*ab(mat, 9, 7, 4, 6)) + 
-  ab(mat, 9, 3, 4, 6)*ab(mat, 9, 7, 5, 8), -(ab(mat, 9, 3, 5, 6)*ab(mat, 9, 7, 4, 8)) + 
-  ab(mat, 9, 3, 4, 8)*ab(mat, 9, 7, 5, 6), -(ab(mat, 9, 3, 5, 7)*ab(mat, 9, 8, 4, 6)) + 
-  ab(mat, 9, 3, 4, 6)*ab(mat, 9, 8, 5, 7), -(ab(mat, 9, 3, 5, 6)*ab(mat, 9, 8, 4, 7)) + 
-  ab(mat, 9, 3, 4, 7)*ab(mat, 9, 8, 5, 6), -(ab(mat, 8, 3, 5, 9)*ab(mat, 8, 6, 4, 7)) + 
-  ab(mat, 8, 3, 4, 7)*ab(mat, 8, 6, 5, 9), -(ab(mat, 8, 3, 5, 7)*ab(mat, 8, 6, 4, 9)) + 
-  ab(mat, 8, 3, 4, 9)*ab(mat, 8, 6, 5, 7), -(ab(mat, 8, 3, 5, 9)*ab(mat, 8, 7, 4, 6)) + 
-  ab(mat, 8, 3, 4, 6)*ab(mat, 8, 7, 5, 9), -(ab(mat, 8, 3, 5, 6)*ab(mat, 8, 7, 4, 9)) + 
-  ab(mat, 8, 3, 4, 9)*ab(mat, 8, 7, 5, 6), -(ab(mat, 8, 3, 5, 7)*ab(mat, 8, 9, 4, 6)) + 
-  ab(mat, 8, 3, 4, 6)*ab(mat, 8, 9, 5, 7), -(ab(mat, 8, 3, 5, 6)*ab(mat, 8, 9, 4, 7)) + 
-  ab(mat, 8, 3, 4, 7)*ab(mat, 8, 9, 5, 6), -(ab(mat, 7, 3, 5, 9)*ab(mat, 7, 6, 4, 8)) + 
-  ab(mat, 7, 3, 4, 8)*ab(mat, 7, 6, 5, 9), -(ab(mat, 7, 3, 5, 8)*ab(mat, 7, 6, 4, 9)) + 
-  ab(mat, 7, 3, 4, 9)*ab(mat, 7, 6, 5, 8), -(ab(mat, 7, 3, 5, 9)*ab(mat, 7, 8, 4, 6)) + 
-  ab(mat, 7, 3, 4, 6)*ab(mat, 7, 8, 5, 9), -(ab(mat, 7, 3, 5, 6)*ab(mat, 7, 8, 4, 9)) + 
-  ab(mat, 7, 3, 4, 9)*ab(mat, 7, 8, 5, 6), -(ab(mat, 7, 3, 5, 8)*ab(mat, 7, 9, 4, 6)) + 
-  ab(mat, 7, 3, 4, 6)*ab(mat, 7, 9, 5, 8), -(ab(mat, 7, 3, 5, 6)*ab(mat, 7, 9, 4, 8)) + 
-  ab(mat, 7, 3, 4, 8)*ab(mat, 7, 9, 5, 6), -(ab(mat, 6, 3, 5, 9)*ab(mat, 6, 7, 4, 8)) + 
-  ab(mat, 6, 3, 4, 8)*ab(mat, 6, 7, 5, 9), -(ab(mat, 6, 3, 5, 8)*ab(mat, 6, 7, 4, 9)) + 
-  ab(mat, 6, 3, 4, 9)*ab(mat, 6, 7, 5, 8), -(ab(mat, 6, 3, 5, 9)*ab(mat, 6, 8, 4, 7)) + 
-  ab(mat, 6, 3, 4, 7)*ab(mat, 6, 8, 5, 9), -(ab(mat, 6, 3, 5, 7)*ab(mat, 6, 8, 4, 9)) + 
-  ab(mat, 6, 3, 4, 9)*ab(mat, 6, 8, 5, 7), -(ab(mat, 6, 3, 5, 8)*ab(mat, 6, 9, 4, 7)) + 
-  ab(mat, 6, 3, 4, 7)*ab(mat, 6, 9, 5, 8), -(ab(mat, 6, 3, 5, 7)*ab(mat, 6, 9, 4, 8)) + 
-  ab(mat, 6, 3, 4, 8)*ab(mat, 6, 9, 5, 7), -(ab(mat, 9, 3, 6, 8)*ab(mat, 9, 5, 4, 7)) + 
-  ab(mat, 9, 3, 4, 7)*ab(mat, 9, 5, 6, 8), -(ab(mat, 9, 3, 6, 7)*ab(mat, 9, 5, 4, 8)) + 
-  ab(mat, 9, 3, 4, 8)*ab(mat, 9, 5, 6, 7), -(ab(mat, 9, 3, 6, 8)*ab(mat, 9, 7, 4, 5)) + 
-  ab(mat, 9, 3, 4, 5)*ab(mat, 9, 7, 6, 8), -(ab(mat, 9, 3, 6, 7)*ab(mat, 9, 8, 4, 5)) + 
-  ab(mat, 9, 3, 4, 5)*ab(mat, 9, 8, 6, 7), -(ab(mat, 8, 3, 6, 9)*ab(mat, 8, 5, 4, 7)) + 
-  ab(mat, 8, 3, 4, 7)*ab(mat, 8, 5, 6, 9), -(ab(mat, 8, 3, 6, 7)*ab(mat, 8, 5, 4, 9)) + 
-  ab(mat, 8, 3, 4, 9)*ab(mat, 8, 5, 6, 7), -(ab(mat, 8, 3, 6, 9)*ab(mat, 8, 7, 4, 5)) + 
-  ab(mat, 8, 3, 4, 5)*ab(mat, 8, 7, 6, 9), -(ab(mat, 8, 3, 6, 7)*ab(mat, 8, 9, 4, 5)) + 
-  ab(mat, 8, 3, 4, 5)*ab(mat, 8, 9, 6, 7), -(ab(mat, 7, 3, 6, 9)*ab(mat, 7, 5, 4, 8)) + 
-  ab(mat, 7, 3, 4, 8)*ab(mat, 7, 5, 6, 9), -(ab(mat, 7, 3, 6, 8)*ab(mat, 7, 5, 4, 9)) + 
-  ab(mat, 7, 3, 4, 9)*ab(mat, 7, 5, 6, 8), -(ab(mat, 7, 3, 6, 9)*ab(mat, 7, 8, 4, 5)) + 
-  ab(mat, 7, 3, 4, 5)*ab(mat, 7, 8, 6, 9), -(ab(mat, 7, 3, 6, 8)*ab(mat, 7, 9, 4, 5)) + 
-  ab(mat, 7, 3, 4, 5)*ab(mat, 7, 9, 6, 8), -(ab(mat, 5, 3, 6, 9)*ab(mat, 5, 7, 4, 8)) + 
-  ab(mat, 5, 3, 4, 8)*ab(mat, 5, 7, 6, 9), -(ab(mat, 5, 3, 6, 8)*ab(mat, 5, 7, 4, 9)) + 
-  ab(mat, 5, 3, 4, 9)*ab(mat, 5, 7, 6, 8), -(ab(mat, 5, 3, 6, 9)*ab(mat, 5, 8, 4, 7)) + 
-  ab(mat, 5, 3, 4, 7)*ab(mat, 5, 8, 6, 9), -(ab(mat, 5, 3, 6, 7)*ab(mat, 5, 8, 4, 9)) + 
-  ab(mat, 5, 3, 4, 9)*ab(mat, 5, 8, 6, 7), -(ab(mat, 5, 3, 6, 8)*ab(mat, 5, 9, 4, 7)) + 
-  ab(mat, 5, 3, 4, 7)*ab(mat, 5, 9, 6, 8), -(ab(mat, 5, 3, 6, 7)*ab(mat, 5, 9, 4, 8)) + 
-  ab(mat, 5, 3, 4, 8)*ab(mat, 5, 9, 6, 7), -(ab(mat, 9, 3, 7, 8)*ab(mat, 9, 5, 4, 6)) + 
-  ab(mat, 9, 3, 4, 6)*ab(mat, 9, 5, 7, 8), -(ab(mat, 9, 3, 7, 8)*ab(mat, 9, 6, 4, 5)) + 
-  ab(mat, 9, 3, 4, 5)*ab(mat, 9, 6, 7, 8), -(ab(mat, 8, 3, 7, 9)*ab(mat, 8, 5, 4, 6)) + 
-  ab(mat, 8, 3, 4, 6)*ab(mat, 8, 5, 7, 9), -(ab(mat, 8, 3, 7, 9)*ab(mat, 8, 6, 4, 5)) + 
-  ab(mat, 8, 3, 4, 5)*ab(mat, 8, 6, 7, 9), -(ab(mat, 6, 3, 7, 9)*ab(mat, 6, 5, 4, 8)) + 
-  ab(mat, 6, 3, 4, 8)*ab(mat, 6, 5, 7, 9), -(ab(mat, 6, 3, 7, 8)*ab(mat, 6, 5, 4, 9)) + 
-  ab(mat, 6, 3, 4, 9)*ab(mat, 6, 5, 7, 8), -(ab(mat, 6, 3, 7, 9)*ab(mat, 6, 8, 4, 5)) + 
-  ab(mat, 6, 3, 4, 5)*ab(mat, 6, 8, 7, 9), -(ab(mat, 6, 3, 7, 8)*ab(mat, 6, 9, 4, 5)) + 
-  ab(mat, 6, 3, 4, 5)*ab(mat, 6, 9, 7, 8), -(ab(mat, 5, 3, 7, 9)*ab(mat, 5, 6, 4, 8)) + 
-  ab(mat, 5, 3, 4, 8)*ab(mat, 5, 6, 7, 9), -(ab(mat, 5, 3, 7, 8)*ab(mat, 5, 6, 4, 9)) + 
-  ab(mat, 5, 3, 4, 9)*ab(mat, 5, 6, 7, 8), -(ab(mat, 5, 3, 7, 9)*ab(mat, 5, 8, 4, 6)) + 
-  ab(mat, 5, 3, 4, 6)*ab(mat, 5, 8, 7, 9), -(ab(mat, 5, 3, 7, 8)*ab(mat, 5, 9, 4, 6)) + 
-  ab(mat, 5, 3, 4, 6)*ab(mat, 5, 9, 7, 8), -(ab(mat, 7, 3, 8, 9)*ab(mat, 7, 5, 4, 6)) + 
-  ab(mat, 7, 3, 4, 6)*ab(mat, 7, 5, 8, 9), -(ab(mat, 7, 3, 8, 9)*ab(mat, 7, 6, 4, 5)) + 
-  ab(mat, 7, 3, 4, 5)*ab(mat, 7, 6, 8, 9), -(ab(mat, 6, 3, 8, 9)*ab(mat, 6, 5, 4, 7)) + 
-  ab(mat, 6, 3, 4, 7)*ab(mat, 6, 5, 8, 9), -(ab(mat, 6, 3, 8, 9)*ab(mat, 6, 7, 4, 5)) + 
-  ab(mat, 6, 3, 4, 5)*ab(mat, 6, 7, 8, 9), -(ab(mat, 5, 3, 8, 9)*ab(mat, 5, 6, 4, 7)) + 
-  ab(mat, 5, 3, 4, 7)*ab(mat, 5, 6, 8, 9), -(ab(mat, 5, 3, 8, 9)*ab(mat, 5, 7, 4, 6)) + 
-  ab(mat, 5, 3, 4, 6)*ab(mat, 5, 7, 8, 9), -(ab(mat, 9, 3, 6, 8)*ab(mat, 9, 4, 5, 7)) + 
-  ab(mat, 9, 3, 5, 7)*ab(mat, 9, 4, 6, 8), -(ab(mat, 9, 3, 6, 7)*ab(mat, 9, 4, 5, 8)) + 
-  ab(mat, 9, 3, 5, 8)*ab(mat, 9, 4, 6, 7), -(ab(mat, 8, 3, 6, 9)*ab(mat, 8, 4, 5, 7)) + 
-  ab(mat, 8, 3, 5, 7)*ab(mat, 8, 4, 6, 9), -(ab(mat, 8, 3, 6, 7)*ab(mat, 8, 4, 5, 9)) + 
-  ab(mat, 8, 3, 5, 9)*ab(mat, 8, 4, 6, 7), -(ab(mat, 7, 3, 6, 9)*ab(mat, 7, 4, 5, 8)) + 
-  ab(mat, 7, 3, 5, 8)*ab(mat, 7, 4, 6, 9), -(ab(mat, 7, 3, 6, 8)*ab(mat, 7, 4, 5, 9)) + 
-  ab(mat, 7, 3, 5, 9)*ab(mat, 7, 4, 6, 8), -(ab(mat, 4, 3, 6, 9)*ab(mat, 4, 7, 5, 8)) + 
-  ab(mat, 4, 3, 5, 8)*ab(mat, 4, 7, 6, 9), -(ab(mat, 4, 3, 6, 8)*ab(mat, 4, 7, 5, 9)) + 
-  ab(mat, 4, 3, 5, 9)*ab(mat, 4, 7, 6, 8), -(ab(mat, 4, 3, 6, 9)*ab(mat, 4, 8, 5, 7)) + 
-  ab(mat, 4, 3, 5, 7)*ab(mat, 4, 8, 6, 9), -(ab(mat, 4, 3, 6, 7)*ab(mat, 4, 8, 5, 9)) + 
-  ab(mat, 4, 3, 5, 9)*ab(mat, 4, 8, 6, 7), -(ab(mat, 4, 3, 6, 8)*ab(mat, 4, 9, 5, 7)) + 
-  ab(mat, 4, 3, 5, 7)*ab(mat, 4, 9, 6, 8), -(ab(mat, 4, 3, 6, 7)*ab(mat, 4, 9, 5, 8)) + 
-  ab(mat, 4, 3, 5, 8)*ab(mat, 4, 9, 6, 7), -(ab(mat, 9, 3, 7, 8)*ab(mat, 9, 4, 5, 6)) + 
-  ab(mat, 9, 3, 5, 6)*ab(mat, 9, 4, 7, 8), -(ab(mat, 8, 3, 7, 9)*ab(mat, 8, 4, 5, 6)) + 
-  ab(mat, 8, 3, 5, 6)*ab(mat, 8, 4, 7, 9), -(ab(mat, 6, 3, 7, 9)*ab(mat, 6, 4, 5, 8)) + 
-  ab(mat, 6, 3, 5, 8)*ab(mat, 6, 4, 7, 9), -(ab(mat, 6, 3, 7, 8)*ab(mat, 6, 4, 5, 9)) + 
-  ab(mat, 6, 3, 5, 9)*ab(mat, 6, 4, 7, 8), -(ab(mat, 4, 3, 7, 9)*ab(mat, 4, 6, 5, 8)) + 
-  ab(mat, 4, 3, 5, 8)*ab(mat, 4, 6, 7, 9), -(ab(mat, 4, 3, 7, 8)*ab(mat, 4, 6, 5, 9)) + 
-  ab(mat, 4, 3, 5, 9)*ab(mat, 4, 6, 7, 8), -(ab(mat, 4, 3, 7, 9)*ab(mat, 4, 8, 5, 6)) + 
-  ab(mat, 4, 3, 5, 6)*ab(mat, 4, 8, 7, 9), -(ab(mat, 4, 3, 7, 8)*ab(mat, 4, 9, 5, 6)) + 
-  ab(mat, 4, 3, 5, 6)*ab(mat, 4, 9, 7, 8), -(ab(mat, 7, 3, 8, 9)*ab(mat, 7, 4, 5, 6)) + 
-  ab(mat, 7, 3, 5, 6)*ab(mat, 7, 4, 8, 9), -(ab(mat, 6, 3, 8, 9)*ab(mat, 6, 4, 5, 7)) + 
-  ab(mat, 6, 3, 5, 7)*ab(mat, 6, 4, 8, 9), -(ab(mat, 4, 3, 8, 9)*ab(mat, 4, 6, 5, 7)) + 
-  ab(mat, 4, 3, 5, 7)*ab(mat, 4, 6, 8, 9), -(ab(mat, 4, 3, 8, 9)*ab(mat, 4, 7, 5, 6)) + 
-  ab(mat, 4, 3, 5, 6)*ab(mat, 4, 7, 8, 9), -(ab(mat, 5, 3, 7, 9)*ab(mat, 5, 4, 6, 8)) + 
-  ab(mat, 5, 3, 6, 8)*ab(mat, 5, 4, 7, 9), -(ab(mat, 5, 3, 7, 8)*ab(mat, 5, 4, 6, 9)) + 
-  ab(mat, 5, 3, 6, 9)*ab(mat, 5, 4, 7, 8), -(ab(mat, 4, 3, 7, 9)*ab(mat, 4, 5, 6, 8)) + 
-  ab(mat, 4, 3, 6, 8)*ab(mat, 4, 5, 7, 9), -(ab(mat, 4, 3, 7, 8)*ab(mat, 4, 5, 6, 9)) + 
-  ab(mat, 4, 3, 6, 9)*ab(mat, 4, 5, 7, 8), -(ab(mat, 5, 3, 8, 9)*ab(mat, 5, 4, 6, 7)) + 
-  ab(mat, 5, 3, 6, 7)*ab(mat, 5, 4, 8, 9), -(ab(mat, 4, 3, 8, 9)*ab(mat, 4, 5, 6, 7)) + 
-  ab(mat, 4, 3, 6, 7)*ab(mat, 4, 5, 8, 9), -(ab(mat, 3, 4, 6, 9)*ab(mat, 3, 7, 5, 8)) + 
-  ab(mat, 3, 4, 5, 8)*ab(mat, 3, 7, 6, 9), -(ab(mat, 3, 4, 6, 8)*ab(mat, 3, 7, 5, 9)) + 
-  ab(mat, 3, 4, 5, 9)*ab(mat, 3, 7, 6, 8), -(ab(mat, 3, 4, 6, 9)*ab(mat, 3, 8, 5, 7)) + 
-  ab(mat, 3, 4, 5, 7)*ab(mat, 3, 8, 6, 9), -(ab(mat, 3, 4, 6, 7)*ab(mat, 3, 8, 5, 9)) + 
-  ab(mat, 3, 4, 5, 9)*ab(mat, 3, 8, 6, 7), -(ab(mat, 3, 4, 6, 8)*ab(mat, 3, 9, 5, 7)) + 
-  ab(mat, 3, 4, 5, 7)*ab(mat, 3, 9, 6, 8), -(ab(mat, 3, 4, 6, 7)*ab(mat, 3, 9, 5, 8)) + 
-  ab(mat, 3, 4, 5, 8)*ab(mat, 3, 9, 6, 7), -(ab(mat, 3, 4, 7, 9)*ab(mat, 3, 6, 5, 8)) + 
-  ab(mat, 3, 4, 5, 8)*ab(mat, 3, 6, 7, 9), -(ab(mat, 3, 4, 7, 8)*ab(mat, 3, 6, 5, 9)) + 
-  ab(mat, 3, 4, 5, 9)*ab(mat, 3, 6, 7, 8), -(ab(mat, 3, 4, 7, 9)*ab(mat, 3, 8, 5, 6)) + 
-  ab(mat, 3, 4, 5, 6)*ab(mat, 3, 8, 7, 9), -(ab(mat, 3, 4, 7, 8)*ab(mat, 3, 9, 5, 6)) + 
-  ab(mat, 3, 4, 5, 6)*ab(mat, 3, 9, 7, 8), -(ab(mat, 3, 4, 8, 9)*ab(mat, 3, 6, 5, 7)) + 
-  ab(mat, 3, 4, 5, 7)*ab(mat, 3, 6, 8, 9), -(ab(mat, 3, 4, 8, 9)*ab(mat, 3, 7, 5, 6)) + 
-  ab(mat, 3, 4, 5, 6)*ab(mat, 3, 7, 8, 9), -(ab(mat, 3, 4, 7, 9)*ab(mat, 3, 5, 6, 8)) + 
-  ab(mat, 3, 4, 6, 8)*ab(mat, 3, 5, 7, 9), -(ab(mat, 3, 4, 7, 8)*ab(mat, 3, 5, 6, 9)) + 
-  ab(mat, 3, 4, 6, 9)*ab(mat, 3, 5, 7, 8), -(ab(mat, 3, 4, 8, 9)*ab(mat, 3, 5, 6, 7)) + 
-  ab(mat, 3, 4, 6, 7)*ab(mat, 3, 5, 8, 9), ab(mat, 1, 2, 3, 4)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 7, 8, 4), ab(mat, 1, 2, 3, 6)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 2, 3, 7)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 2, 3, 6)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 2, 4, 3)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 2, 4, 6)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 2, 4, 7)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 2, 4, 6)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 2, 5, 3)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 2, 5, 6)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 2, 5, 7)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 2, 5, 6)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 2, 6, 3)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 7, 8, 3), ab(mat, 1, 2, 6, 5)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 2, 6, 7)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 2, 6, 5)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 2, 7, 3)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 6, 8, 3), ab(mat, 1, 2, 7, 5)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 2, 7, 6)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 2, 7, 5)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 2, 8, 3)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 6, 7, 3), ab(mat, 1, 2, 8, 5)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 2, 8, 6)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 2, 8, 5)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 7, 3, 4, 5), ab(mat, 1, 3, 4, 2)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 3, 4, 6)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 3, 4, 7)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 3, 4, 6)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 3, 5, 2)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 3, 5, 6)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 3, 5, 7)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 3, 5, 6)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 3, 6, 2)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 3, 6, 5)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 3, 6, 7)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 3, 6, 5)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 3, 7, 2)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 3, 7, 5)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 3, 7, 6)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 3, 7, 5)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 3, 8, 2)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 3, 8, 5)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 3, 8, 6)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 3, 8, 5)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 7, 2, 4, 5), ab(mat, 1, 4, 5, 2)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 4, 5, 6)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 4, 5, 7)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 4, 5, 6)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 4, 6, 2)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 4, 6, 5)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 4, 6, 7)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 4, 6, 5)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 4, 7, 2)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 4, 7, 5)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 4, 7, 6)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 4, 7, 5)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 4, 8, 2)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 4, 8, 5)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 4, 8, 6)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 4, 8, 5)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 7, 2, 3, 5), ab(mat, 1, 5, 6, 2)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 7, 8, 2), ab(mat, 1, 5, 6, 4)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 4, 3, 7, 8), ab(mat, 1, 5, 6, 7)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 5, 6, 4)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 2, 7, 8), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 5, 7, 2)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 6, 8, 2), ab(mat, 1, 5, 7, 4)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 4, 3, 6, 8), ab(mat, 1, 5, 7, 6)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 5, 7, 4)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 2, 6, 8), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 5, 8, 2)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 6, 7, 2), ab(mat, 1, 5, 8, 4)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 4, 3, 6, 7), ab(mat, 1, 5, 8, 6)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 5, 8, 4)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 2, 6, 7), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 7, 2, 3, 4), ab(mat, 1, 6, 7, 2)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 5, 8, 2), ab(mat, 1, 6, 7, 4)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 4, 3, 5, 8), ab(mat, 1, 6, 7, 5)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 5, 3, 4, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 6, 7, 4)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 2, 5, 8), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 5, 2, 4, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 2, 3, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 6, 8, 2)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 5, 7, 2), ab(mat, 1, 6, 8, 4)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 4, 3, 5, 7), ab(mat, 1, 6, 8, 5)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 5, 3, 4, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 7, 3, 4, 5), ab(mat, 1, 6, 8, 4)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 2, 5, 7), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 5, 2, 4, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 7, 2, 4, 5), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 2, 3, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 7, 2, 3, 5), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 7, 2, 3, 4), ab(mat, 1, 7, 8, 2)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 5, 6, 2), ab(mat, 1, 7, 8, 4)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 4, 3, 5, 6), ab(mat, 1, 7, 8, 5)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 5, 3, 4, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 6, 3, 4, 5), ab(mat, 1, 7, 8, 4)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 2, 5, 6), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 5, 2, 4, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 6, 2, 4, 5), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 2, 3, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 6, 2, 3, 5), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 6, 2, 3, 4), ab(mat, 2, 3, 4, 1)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 3, 4, 6)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 6, 5, 7, 8), ab(mat, 2, 3, 4, 7)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 7, 5, 6, 8), ab(mat, 2, 3, 4, 8)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 8, 5, 6, 7), ab(mat, 2, 3, 5, 1)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 3, 5, 6)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 6, 4, 7, 8), ab(mat, 2, 3, 5, 7)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 7, 4, 6, 8), ab(mat, 2, 3, 5, 8)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 8, 4, 6, 7), ab(mat, 2, 3, 6, 1)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 3, 6, 5)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 5, 4, 7, 8), ab(mat, 2, 3, 6, 7)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 7, 4, 5, 8), ab(mat, 2, 3, 6, 8)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 8, 4, 5, 7), ab(mat, 2, 3, 7, 1)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 3, 7, 5)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 5, 4, 6, 8), ab(mat, 2, 3, 7, 6)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 6, 4, 5, 8), ab(mat, 2, 3, 7, 8)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 8, 4, 5, 6), ab(mat, 2, 3, 8, 1)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 3, 8, 5)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 5, 4, 6, 7), ab(mat, 2, 3, 8, 6)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 6, 4, 5, 7), ab(mat, 2, 3, 8, 7)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 7, 4, 5, 6), ab(mat, 2, 4, 5, 1)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 6, 3, 7, 8), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 7, 3, 6, 8), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 8, 3, 6, 7), ab(mat, 2, 4, 6, 1)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 4, 6, 5)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 5, 3, 7, 8), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 7, 3, 5, 8), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 8, 3, 5, 7), ab(mat, 2, 4, 7, 1)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 4, 7, 5)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 5, 3, 6, 8), ab(mat, 2, 4, 7, 6)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 6, 3, 5, 8), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 8, 3, 5, 6), ab(mat, 2, 4, 8, 1)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 4, 8, 5)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 5, 3, 6, 7), ab(mat, 2, 4, 8, 6)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 6, 3, 5, 7), ab(mat, 2, 4, 8, 7)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 7, 3, 5, 6), ab(mat, 2, 5, 6, 1)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 5, 6, 4)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 4, 3, 7, 8), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 7, 3, 4, 8), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 8, 3, 4, 7), ab(mat, 2, 5, 7, 1)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 5, 7, 4)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 4, 3, 6, 8), ab(mat, 2, 5, 7, 6)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 6, 3, 4, 8), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 8, 3, 4, 6), ab(mat, 2, 5, 8, 1)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 4, 6, 7, 1), ab(mat, 2, 5, 8, 4)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 4, 3, 6, 7), ab(mat, 2, 5, 8, 6)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 6, 3, 4, 7), ab(mat, 2, 5, 8, 7)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 7, 3, 4, 6), ab(mat, 2, 6, 7, 1)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 6, 7, 4)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 4, 3, 5, 8), ab(mat, 2, 6, 7, 5)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 5, 3, 4, 8), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 8, 3, 4, 5), ab(mat, 2, 6, 8, 1)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 4, 5, 7, 1), ab(mat, 2, 6, 8, 4)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 4, 3, 5, 7), ab(mat, 2, 6, 8, 5)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 5, 3, 4, 7), ab(mat, 2, 6, 8, 7)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 7, 3, 4, 5), ab(mat, 2, 7, 8, 1)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 4, 5, 6, 1), ab(mat, 2, 7, 8, 4)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 4, 3, 5, 6), ab(mat, 2, 7, 8, 5)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 5, 3, 4, 6), ab(mat, 2, 7, 8, 6)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 6, 3, 4, 5), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 4, 6, 7, 1), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 4, 5, 7, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 4, 5, 6, 1), ab(mat, 1, 2, 3, 4)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 7, 9, 4), ab(mat, 1, 2, 3, 6)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 2, 3, 7)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 3, 6)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 4, 3)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 2, 4, 6)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 2, 4, 7)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 4, 6)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 5, 3)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 2, 5, 6)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 2, 5, 7)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 5, 6)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 6, 3)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 7, 9, 3), ab(mat, 1, 2, 6, 5)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 2, 6, 7)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 6, 5)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 7, 3)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 6, 9, 3), ab(mat, 1, 2, 7, 5)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 2, 7, 6)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 7, 5)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 9, 3)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 6, 7, 3), ab(mat, 1, 2, 9, 5)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 2, 9, 6)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 2, 9, 5)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 7, 3, 4, 5), ab(mat, 1, 3, 4, 2)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 3, 4, 6)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 3, 4, 7)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 3, 4, 6)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 5, 2)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 3, 5, 6)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 3, 5, 7)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 3, 5, 6)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 6, 2)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 3, 6, 5)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 3, 6, 7)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 3, 6, 5)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 7, 2)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 3, 7, 5)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 3, 7, 6)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 3, 7, 5)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 9, 2)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 3, 9, 5)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 3, 9, 6)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 3, 9, 5)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 7, 2, 4, 5), ab(mat, 1, 4, 5, 2)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 4, 5, 6)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 4, 5, 7)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 4, 5, 6)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 6, 2)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 4, 6, 5)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 4, 6, 7)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 4, 6, 5)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 7, 2)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 4, 7, 5)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 4, 7, 6)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 4, 7, 5)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 9, 2)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 4, 9, 5)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 4, 9, 6)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 4, 9, 5)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 7, 2, 3, 5), ab(mat, 1, 5, 6, 2)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 7, 9, 2), ab(mat, 1, 5, 6, 4)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 4, 3, 7, 9), ab(mat, 1, 5, 6, 7)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 5, 6, 4)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 2, 7, 9), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 7, 2)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 6, 9, 2), ab(mat, 1, 5, 7, 4)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 4, 3, 6, 9), ab(mat, 1, 5, 7, 6)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 5, 7, 4)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 2, 6, 9), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 9, 2)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 6, 7, 2), ab(mat, 1, 5, 9, 4)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 4, 3, 6, 7), ab(mat, 1, 5, 9, 6)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 5, 9, 4)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 2, 6, 7), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 7, 2, 3, 4), ab(mat, 1, 6, 7, 2)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 5, 9, 2), ab(mat, 1, 6, 7, 4)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 4, 3, 5, 9), ab(mat, 1, 6, 7, 5)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 5, 3, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 6, 7, 4)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 2, 5, 9), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 5, 2, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 2, 3, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 6, 9, 2)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 5, 7, 2), ab(mat, 1, 6, 9, 4)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 4, 3, 5, 7), ab(mat, 1, 6, 9, 5)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 5, 3, 4, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 7, 3, 4, 5), ab(mat, 1, 6, 9, 4)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 2, 5, 7), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 5, 2, 4, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 7, 2, 4, 5), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 2, 3, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 7, 2, 3, 5), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 7, 2, 3, 4), ab(mat, 1, 7, 9, 2)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 5, 6, 2), ab(mat, 1, 7, 9, 4)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 4, 3, 5, 6), ab(mat, 1, 7, 9, 5)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 5, 3, 4, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 6, 3, 4, 5), ab(mat, 1, 7, 9, 4)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 2, 5, 6), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 5, 2, 4, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 6, 2, 4, 5), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 2, 3, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 6, 2, 3, 5), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 6, 2, 3, 4), ab(mat, 2, 3, 4, 1)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 3, 4, 6)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 6, 5, 7, 9), ab(mat, 2, 3, 4, 7)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 7, 5, 6, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 3, 5, 1)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 3, 5, 6)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 6, 4, 7, 9), ab(mat, 2, 3, 5, 7)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 7, 4, 6, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 3, 6, 1)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 3, 6, 5)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 5, 4, 7, 9), ab(mat, 2, 3, 6, 7)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 7, 4, 5, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 3, 7, 1)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 3, 7, 5)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 5, 4, 6, 9), ab(mat, 2, 3, 7, 6)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 6, 4, 5, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 3, 9, 1)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 3, 9, 5)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 5, 4, 6, 7), ab(mat, 2, 3, 9, 6)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 6, 4, 5, 7), ab(mat, 2, 3, 9, 7)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 7, 4, 5, 6), ab(mat, 2, 4, 5, 1)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 6, 3, 7, 9), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 7, 3, 6, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 4, 6, 1)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 4, 6, 5)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 5, 3, 7, 9), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 7, 3, 5, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 4, 7, 1)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 4, 7, 5)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 5, 3, 6, 9), ab(mat, 2, 4, 7, 6)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 6, 3, 5, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 4, 9, 1)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 4, 9, 5)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 5, 3, 6, 7), ab(mat, 2, 4, 9, 6)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 6, 3, 5, 7), ab(mat, 2, 4, 9, 7)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 7, 3, 5, 6), ab(mat, 2, 5, 6, 1)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 5, 6, 4)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 4, 3, 7, 9), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 7, 3, 4, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 5, 7, 1)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 5, 7, 4)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 4, 3, 6, 9), ab(mat, 2, 5, 7, 6)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 6, 3, 4, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 5, 9, 1)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 4, 6, 7, 1), ab(mat, 2, 5, 9, 4)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 4, 3, 6, 7), ab(mat, 2, 5, 9, 6)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 6, 3, 4, 7), ab(mat, 2, 5, 9, 7)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 7, 3, 4, 6), ab(mat, 2, 6, 7, 1)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 6, 7, 4)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 4, 3, 5, 9), ab(mat, 2, 6, 7, 5)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 5, 3, 4, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 6, 9, 1)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 4, 5, 7, 1), ab(mat, 2, 6, 9, 4)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 4, 3, 5, 7), ab(mat, 2, 6, 9, 5)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 5, 3, 4, 7), ab(mat, 2, 6, 9, 7)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 7, 3, 4, 5), ab(mat, 2, 7, 9, 1)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 4, 5, 6, 1), ab(mat, 2, 7, 9, 4)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 4, 3, 5, 6), ab(mat, 2, 7, 9, 5)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 5, 3, 4, 6), ab(mat, 2, 7, 9, 6)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 6, 3, 4, 5), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 4, 6, 7, 1), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 4, 5, 7, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 4, 5, 6, 1), ab(mat, 1, 2, 3, 4)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 8, 9, 4), ab(mat, 1, 2, 3, 6)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 3, 6)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 4, 3)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 2, 4, 6)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 4, 6)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 5, 3)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 2, 5, 6)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 5, 6)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 6, 3)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 8, 9, 3), ab(mat, 1, 2, 6, 5)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 6, 5)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 8, 3)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 6, 9, 3), ab(mat, 1, 2, 8, 5)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 2, 8, 6)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 8, 5)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 9, 3)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 6, 8, 3), ab(mat, 1, 2, 9, 5)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 2, 9, 6)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 2, 9, 5)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 3, 4, 2)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 3, 4, 6)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 3, 4, 6)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 6, 8) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 5, 2)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 3, 5, 6)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 3, 5, 6)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 6, 8) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 6, 2)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 3, 6, 5)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 3, 6, 5)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 5, 8) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 8, 2)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 3, 8, 5)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 3, 8, 6)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 3, 8, 5)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 9, 2)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 3, 9, 5)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 3, 9, 6)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 3, 9, 5)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 4, 5, 2)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 4, 5, 6)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 4, 5, 6)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 6, 8) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 6, 2)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 4, 6, 5)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 4, 6, 5)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 5, 8) + 
-  ab(mat, 1, 4, 6, 8)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 8, 2)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 4, 8, 5)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 4, 8, 6)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 4, 8, 5)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 9, 2)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 4, 9, 5)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 4, 9, 6)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 4, 9, 5)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 5, 6, 2)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 8, 9, 2), ab(mat, 1, 5, 6, 4)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 4, 3, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 5, 6, 4)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 4, 2, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 4, 8) + 
-  ab(mat, 1, 5, 6, 8)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 8, 2)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 6, 9, 2), ab(mat, 1, 5, 8, 4)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 4, 3, 6, 9), ab(mat, 1, 5, 8, 6)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 5, 8, 4)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 2, 6, 9), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 9, 2)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 6, 8, 2), ab(mat, 1, 5, 9, 4)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 4, 3, 6, 8), ab(mat, 1, 5, 9, 6)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 5, 9, 4)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 2, 6, 8), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 6, 8, 2)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 5, 9, 2), ab(mat, 1, 6, 8, 4)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 4, 3, 5, 9), ab(mat, 1, 6, 8, 5)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 5, 3, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 6, 8, 4)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 2, 5, 9), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 5, 2, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 2, 3, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 6, 9, 2)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 5, 8, 2), ab(mat, 1, 6, 9, 4)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 4, 3, 5, 8), ab(mat, 1, 6, 9, 5)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 5, 3, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 6, 9, 4)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 2, 5, 8), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 5, 2, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 2, 3, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 8, 9, 2)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 5, 6, 2), ab(mat, 1, 8, 9, 4)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 4, 3, 5, 6), ab(mat, 1, 8, 9, 5)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 5, 3, 4, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 6, 3, 4, 5), ab(mat, 1, 8, 9, 4)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 2, 5, 6), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 5, 2, 4, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 6, 2, 4, 5), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 2, 3, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 6, 2, 3, 5), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 6, 2, 3, 4), ab(mat, 2, 3, 4, 1)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 3, 4, 6)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 6, 5, 8, 9), ab(mat, 2, 3, 4, 8)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 3, 5, 1)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 3, 5, 6)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 6, 4, 8, 9), ab(mat, 2, 3, 5, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 3, 6, 1)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 3, 6, 5)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 5, 4, 8, 9), ab(mat, 2, 3, 6, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 3, 8, 1)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 3, 8, 5)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 5, 4, 6, 9), ab(mat, 2, 3, 8, 6)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 6, 4, 5, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 3, 9, 1)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 3, 9, 5)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 5, 4, 6, 8), ab(mat, 2, 3, 9, 6)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 6, 4, 5, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 8, 4, 5, 6), ab(mat, 2, 4, 5, 1)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 6, 3, 8, 9), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 4, 6, 1)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 4, 6, 5)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 5, 3, 8, 9), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 4, 8, 1)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 4, 8, 5)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 5, 3, 6, 9), ab(mat, 2, 4, 8, 6)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 6, 3, 5, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 4, 9, 1)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 4, 9, 5)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 5, 3, 6, 8), ab(mat, 2, 4, 9, 6)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 6, 3, 5, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 8, 3, 5, 6), ab(mat, 2, 5, 6, 1)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 5, 6, 4)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 4, 3, 8, 9), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 5, 8, 1)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 5, 8, 4)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 4, 3, 6, 9), ab(mat, 2, 5, 8, 6)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 6, 3, 4, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 5, 9, 1)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 5, 9, 4)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 4, 3, 6, 8), ab(mat, 2, 5, 9, 6)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 6, 3, 4, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 8, 3, 4, 6), ab(mat, 2, 6, 8, 1)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 6, 8, 4)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 4, 3, 5, 9), ab(mat, 2, 6, 8, 5)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 5, 3, 4, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 6, 9, 1)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 6, 9, 4)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 4, 3, 5, 8), ab(mat, 2, 6, 9, 5)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 5, 3, 4, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 8, 3, 4, 5), ab(mat, 2, 8, 9, 1)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 4, 5, 6, 1), ab(mat, 2, 8, 9, 4)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 4, 3, 5, 6), ab(mat, 2, 8, 9, 5)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 5, 3, 4, 6), ab(mat, 2, 8, 9, 6)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 6, 3, 4, 5), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 4, 5, 6)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 4, 5, 6, 1), ab(mat, 1, 2, 3, 4)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 2, 3, 7)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 5, 9, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 8, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 4, 3)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 4, 7)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 5, 9, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 8, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 5, 3)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 5, 7)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 4, 9, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 8, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 7, 3)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 8, 9, 3), ab(mat, 1, 2, 7, 5)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 7, 5)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 2, 7, 8)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 8, 3)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 7, 9, 3), ab(mat, 1, 2, 8, 5)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 8, 5)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 2, 8, 7)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 2, 9, 3)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 7, 8, 3), ab(mat, 1, 2, 9, 5)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 2, 9, 5)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 2, 9, 7)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 3, 4, 2)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 4, 7)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 5, 9, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 8, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 5, 7, 8) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 5, 2)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 5, 7)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 4, 9, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 8, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 4, 7, 8) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 7, 2)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 3, 7, 5)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 3, 7, 5)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 5, 8) + 
-  ab(mat, 1, 3, 7, 8)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 8, 2)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 3, 8, 5)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 3, 8, 5)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 3, 8, 7)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 3, 9, 2)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 3, 9, 5)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 3, 9, 5)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 3, 9, 7)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 4, 5, 2)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 4, 5, 7)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 3, 9, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 8, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 3, 7, 8) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 7, 2)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 4, 7, 5)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 4, 7, 5)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 5, 8) + 
-  ab(mat, 1, 4, 7, 8)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 8, 2)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 4, 8, 5)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 4, 8, 5)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 4, 8, 7)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 4, 9, 2)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 4, 9, 5)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 4, 9, 5)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 4, 9, 7)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 5, 7, 2)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 8, 9, 2), ab(mat, 1, 5, 7, 4)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 4, 3, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 5, 7, 4)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 4, 2, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 4, 8) + 
-  ab(mat, 1, 5, 7, 8)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 8, 2)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 7, 9, 2), ab(mat, 1, 5, 8, 4)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 4, 3, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 5, 8, 4)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 4, 2, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 5, 8, 7)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 5, 9, 2)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 7, 8, 2), ab(mat, 1, 5, 9, 4)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 4, 3, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 5, 9, 4)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 4, 2, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 5, 9, 7)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 7, 8, 2)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 5, 9, 2), ab(mat, 1, 7, 8, 4)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 4, 3, 5, 9), ab(mat, 1, 7, 8, 5)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 5, 3, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 7, 8, 4)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 2, 5, 9), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 5, 2, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 2, 3, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 7, 9, 2)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 5, 8, 2), ab(mat, 1, 7, 9, 4)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 4, 3, 5, 8), ab(mat, 1, 7, 9, 5)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 5, 3, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 7, 9, 4)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 2, 5, 8), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 5, 2, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 2, 3, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 8, 9, 2)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 5, 7, 2), ab(mat, 1, 8, 9, 4)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 4, 3, 5, 7), ab(mat, 1, 8, 9, 5)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 5, 3, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 4, 5, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 7, 3, 4, 5), ab(mat, 1, 8, 9, 4)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 2, 5, 7), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 5, 2, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 4, 5, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 7, 2, 4, 5), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 2, 3, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 5, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 7, 2, 3, 5), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 4, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 7, 2, 3, 4), ab(mat, 2, 3, 4, 1)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 4, 7)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 3, 4, 8)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 3, 5, 1)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 5, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 3, 5, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 3, 7, 1)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 3, 7, 5)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 5, 4, 8, 9), ab(mat, 2, 3, 7, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 3, 8, 1)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 3, 8, 5)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 5, 4, 7, 9), ab(mat, 2, 3, 8, 7)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 7, 4, 5, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 3, 9, 1)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 3, 9, 5)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 5, 4, 7, 8), ab(mat, 2, 3, 9, 7)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 7, 4, 5, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 8, 4, 5, 7), ab(mat, 2, 4, 5, 1)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 4, 7, 1)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 4, 7, 5)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 5, 3, 8, 9), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 4, 8, 1)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 4, 8, 5)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 5, 3, 7, 9), ab(mat, 2, 4, 8, 7)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 7, 3, 5, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 4, 9, 1)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 4, 9, 5)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 5, 3, 7, 8), ab(mat, 2, 4, 9, 7)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 7, 3, 5, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 8, 3, 5, 7), ab(mat, 2, 5, 7, 1)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 5, 7, 4)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 4, 3, 8, 9), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 5, 8, 1)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 5, 8, 4)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 4, 3, 7, 9), ab(mat, 2, 5, 8, 7)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 7, 3, 4, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 5, 9, 1)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 5, 9, 4)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 4, 3, 7, 8), ab(mat, 2, 5, 9, 7)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 7, 3, 4, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 8, 3, 4, 7), ab(mat, 2, 7, 8, 1)*ab(mat, 3, 4, 5, 9) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 7, 8, 4)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 4, 3, 5, 9), ab(mat, 2, 7, 8, 5)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 5, 3, 4, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 7, 9, 1)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 7, 9, 4)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 4, 3, 5, 8), ab(mat, 2, 7, 9, 5)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 5, 3, 4, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 8, 3, 4, 5), ab(mat, 2, 8, 9, 1)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 4, 5, 7, 1), ab(mat, 2, 8, 9, 4)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 4, 3, 5, 7), ab(mat, 2, 8, 9, 5)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 5, 3, 4, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 7, 3, 4, 5), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 5, 1) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 4, 5, 9, 1), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 4, 5, 8, 1), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 4, 5, 7, 1), ab(mat, 1, 2, 3, 4)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 2, 3, 7)*ab(mat, 6, 8, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 6, 7, 9, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 6, 7, 8, 4) + 
-  ab(mat, 1, 2, 3, 4)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 3, 7)*ab(mat, 4, 8, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 7, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 7, 8, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 4, 6, 9, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 6, 8, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 3, 9)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 4, 3)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 4, 7)*ab(mat, 6, 8, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 6, 7, 9, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 6, 7, 8, 3) + 
-  ab(mat, 1, 2, 4, 3)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 4, 7)*ab(mat, 3, 8, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 7, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 7, 8, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 3, 6, 9, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 6, 8, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 4, 9)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 6, 3)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 6, 7)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 4, 9, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 8, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 7, 3)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 2, 7, 6)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 2, 7, 8)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 8, 3)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 2, 8, 6)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 2, 8, 7)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 2, 9, 3)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 2, 9, 6)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 2, 9, 7)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 3, 4, 2)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 4, 7)*ab(mat, 6, 8, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 6, 7, 9, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 6, 7, 8, 2) + 
-  ab(mat, 1, 3, 4, 2)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 3, 4, 7)*ab(mat, 2, 8, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 7, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 7, 8, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 2, 6, 9, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 6, 8, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 4, 9)*ab(mat, 2, 6, 7, 8) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 6, 2)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 6, 7)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 4, 9, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 8, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 4, 7, 8) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 7, 2)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 3, 7, 6)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 4, 6, 8) + 
-  ab(mat, 1, 3, 7, 8)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 8, 2)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 3, 8, 6)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 3, 8, 7)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 3, 9, 2)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 3, 9, 6)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 3, 9, 7)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 4, 6, 2)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 4, 6, 7)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 3, 9, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 8, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 3, 7, 8) + 
-  ab(mat, 1, 4, 6, 8)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 7, 2)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 4, 7, 6)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 3, 6, 8) + 
-  ab(mat, 1, 4, 7, 8)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 8, 2)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 4, 8, 6)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 4, 8, 7)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 4, 9, 2)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 4, 9, 6)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 4, 9, 7)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 6, 7, 2)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 8, 9, 2), ab(mat, 1, 6, 7, 4)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 4, 3, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 6, 7, 4)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 4, 2, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 4, 8) + 
-  ab(mat, 1, 6, 7, 8)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 6, 8, 2)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 7, 9, 2), ab(mat, 1, 6, 8, 4)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 4, 3, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 6, 8, 4)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 4, 2, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 6, 8, 7)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 6, 9, 2)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 7, 8, 2), ab(mat, 1, 6, 9, 4)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 4, 3, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 6, 9, 4)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 4, 2, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 4, 7) + 
-  ab(mat, 1, 6, 9, 7)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 7, 8, 2)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 6, 9, 2), ab(mat, 1, 7, 8, 4)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 4, 3, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 3, 4, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 7, 8, 4)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 4, 2, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 4, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 3, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 7, 8, 6)*ab(mat, 9, 2, 3, 4), ab(mat, 1, 7, 9, 2)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 6, 8, 2), ab(mat, 1, 7, 9, 4)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 4, 3, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 3, 4, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 7, 9, 4)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 4, 2, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 4, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 3, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 7, 9, 6)*ab(mat, 8, 2, 3, 4), ab(mat, 1, 8, 9, 2)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 6, 7, 2), ab(mat, 1, 8, 9, 4)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 4, 3, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 3, 4, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 4, 6, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 8, 9, 4)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 4, 2, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 4, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 4, 6, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 3, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 6, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 4, 6) + 
-  ab(mat, 1, 8, 9, 6)*ab(mat, 7, 2, 3, 4), ab(mat, 2, 3, 4, 1)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 4, 7)*ab(mat, 6, 8, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 3, 4, 8)*ab(mat, 6, 7, 9, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 6, 7, 8, 1) + 
-  ab(mat, 2, 3, 4, 1)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 3, 6, 1)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 6, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 3, 6, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 3, 7, 1)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 3, 7, 6)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 6, 4, 8, 9), ab(mat, 2, 3, 7, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 3, 8, 1)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 3, 8, 6)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 6, 4, 7, 9), ab(mat, 2, 3, 8, 7)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 7, 4, 6, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 3, 9, 1)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 3, 9, 6)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 6, 4, 7, 8), ab(mat, 2, 3, 9, 7)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 7, 4, 6, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 8, 4, 6, 7), ab(mat, 2, 4, 6, 1)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 4, 7, 1)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 4, 7, 6)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 6, 3, 8, 9), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 4, 8, 1)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 4, 8, 6)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 6, 3, 7, 9), ab(mat, 2, 4, 8, 7)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 7, 3, 6, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 4, 9, 1)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 4, 9, 6)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 6, 3, 7, 8), ab(mat, 2, 4, 9, 7)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 7, 3, 6, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 8, 3, 6, 7), ab(mat, 2, 6, 7, 1)*ab(mat, 3, 4, 8, 9) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 6, 7, 4)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 4, 3, 8, 9), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 6, 8, 1)*ab(mat, 3, 4, 7, 9) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 6, 8, 4)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 4, 3, 7, 9), ab(mat, 2, 6, 8, 7)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 7, 3, 4, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 6, 9, 1)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 6, 9, 4)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 4, 3, 7, 8), ab(mat, 2, 6, 9, 7)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 7, 3, 4, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 8, 3, 4, 7), ab(mat, 2, 7, 8, 1)*ab(mat, 3, 4, 6, 9) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 7, 8, 4)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 4, 3, 6, 9), ab(mat, 2, 7, 8, 6)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 6, 3, 4, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 7, 9, 1)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 7, 9, 4)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 4, 3, 6, 8), ab(mat, 2, 7, 9, 6)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 6, 3, 4, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 8, 3, 4, 6), ab(mat, 2, 8, 9, 1)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 4, 6, 7, 1), ab(mat, 2, 8, 9, 4)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 4, 3, 6, 7), ab(mat, 2, 8, 9, 6)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 6, 3, 4, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 7, 3, 4, 6), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 6, 1) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 7, 1) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 8, 1) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 4, 9, 1) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 4, 8, 9, 1), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 4, 7, 9, 1), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 4, 7, 8, 1), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 4, 6, 9, 1), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 4, 6, 8, 1), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 4, 6, 7, 1), ab(mat, 1, 2, 3, 5)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 8, 9, 5), ab(mat, 1, 2, 3, 7)*ab(mat, 6, 8, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 6, 7, 9, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 6, 7, 8, 5) + 
-  ab(mat, 1, 2, 3, 5)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 3, 7)*ab(mat, 5, 8, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 3, 8)*ab(mat, 5, 7, 9, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 7, 8, 6) + 
-  ab(mat, 1, 2, 3, 6)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 3, 8)*ab(mat, 5, 6, 9, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 6, 8, 7) + 
-  ab(mat, 1, 2, 3, 7)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 3, 9)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 3, 8)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 5, 3)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 5, 7)*ab(mat, 6, 8, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 6, 7, 9, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 6, 7, 8, 3) + 
-  ab(mat, 1, 2, 5, 3)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 5, 7)*ab(mat, 3, 8, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 7, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 7, 8, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 3, 6, 9, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 6, 8, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 5, 9)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 6, 3)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 2, 6, 7)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 2, 6, 3)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 6, 7)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 3, 5, 9, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 5, 8, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 6, 9)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 7, 3)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 2, 7, 6)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 2, 7, 3)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 7, 6)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 2, 7, 9)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 2, 7, 8)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 8, 3)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 2, 8, 6)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 2, 8, 3)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 8, 6)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 2, 8, 9)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 2, 8, 7)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 2, 9, 3)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 2, 9, 6)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 2, 9, 3)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 2, 9, 6)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 2, 9, 8)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 2, 9, 7)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 3, 5, 2)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 5, 7)*ab(mat, 6, 8, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 6, 7, 9, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 6, 7, 8, 2) + 
-  ab(mat, 1, 3, 5, 2)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 3, 5, 7)*ab(mat, 2, 8, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 7, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 7, 8, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 2, 6, 9, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 6, 8, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 5, 9)*ab(mat, 2, 6, 7, 8) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 6, 2)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 3, 6, 7)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 3, 6, 2)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 3, 6, 7)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 2, 5, 9, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 5, 8, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 6, 9)*ab(mat, 2, 5, 7, 8) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 7, 2)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 3, 7, 6)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 3, 7, 2)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 3, 7, 6)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 3, 7, 9)*ab(mat, 2, 5, 6, 8) + 
-  ab(mat, 1, 3, 7, 8)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 8, 2)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 3, 8, 6)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 3, 8, 2)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 3, 8, 6)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 3, 8, 9)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 3, 8, 7)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 3, 9, 2)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 3, 9, 6)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 3, 9, 2)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 3, 9, 6)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 3, 9, 8)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 3, 9, 7)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 5, 6, 2)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 5, 6, 7)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 3, 9, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 8, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 3, 7, 8) + 
-  ab(mat, 1, 5, 6, 8)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 5, 7, 2)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 5, 7, 6)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 3, 6, 8) + 
-  ab(mat, 1, 5, 7, 8)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 5, 8, 2)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 5, 8, 6)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 3, 9, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 5, 8, 7)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 5, 9, 2)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 5, 9, 6)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 3, 8, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 7, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 3, 6, 7) + 
-  ab(mat, 1, 5, 9, 7)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 6, 7, 2)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 6, 7, 5)*ab(mat, 3, 8, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 8, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 8, 2, 3, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 9, 2, 3, 8), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 3, 5, 8) + 
-  ab(mat, 1, 6, 7, 8)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 6, 8, 2)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 6, 8, 5)*ab(mat, 3, 7, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 7, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 7, 2, 3, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 9, 2, 3, 7), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 6, 8, 7)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 6, 9, 2)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 6, 9, 5)*ab(mat, 3, 7, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 7, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 7, 2, 3, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 8, 2, 3, 7), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 3, 5, 7) + 
-  ab(mat, 1, 6, 9, 7)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 7, 8, 2)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 7, 8, 5)*ab(mat, 3, 6, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 3, 5, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 6, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 5, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 3, 9, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 6, 2, 3, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 9, 2, 3, 6), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 7, 8, 6)*ab(mat, 9, 2, 3, 5), ab(mat, 1, 7, 9, 2)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 7, 9, 5)*ab(mat, 3, 6, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 3, 5, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 6, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 5, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 3, 8, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 6, 2, 3, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 8, 2, 3, 6), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 7, 9, 6)*ab(mat, 8, 2, 3, 5), ab(mat, 1, 8, 9, 2)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 8, 9, 5)*ab(mat, 3, 6, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 3, 5, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 5, 6, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 6, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 5, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 5, 6, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 3, 7, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 6, 2, 3, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 6, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 7, 2, 3, 6), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 3, 5, 6) + 
-  ab(mat, 1, 8, 9, 6)*ab(mat, 7, 2, 3, 5), ab(mat, 2, 3, 5, 1)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 5, 7)*ab(mat, 6, 8, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 3, 5, 8)*ab(mat, 6, 7, 9, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 6, 7, 8, 1) + 
-  ab(mat, 2, 3, 5, 1)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 3, 6, 1)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 2, 3, 6, 5)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 3, 6, 7)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 3, 6, 8)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 3, 6, 1)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 3, 7, 1)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 2, 3, 7, 5)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 3, 7, 6)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 6, 5, 8, 9), ab(mat, 2, 3, 7, 8)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 3, 7, 1)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 3, 8, 1)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 2, 3, 8, 5)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 3, 8, 6)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 6, 5, 7, 9), ab(mat, 2, 3, 8, 7)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 7, 5, 6, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 3, 8, 1)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 3, 9, 1)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 3, 9, 5)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 3, 9, 6)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 6, 5, 7, 8), ab(mat, 2, 3, 9, 7)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 7, 5, 6, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 3, 9, 1)*ab(mat, 8, 5, 6, 7), ab(mat, 2, 5, 6, 1)*ab(mat, 3, 7, 8, 9) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 5, 7, 1)*ab(mat, 3, 6, 8, 9) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 5, 7, 6)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 6, 3, 8, 9), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 5, 8, 1)*ab(mat, 3, 6, 7, 9) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 5, 8, 6)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 6, 3, 7, 9), ab(mat, 2, 5, 8, 7)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 7, 3, 6, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 5, 9, 1)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 5, 9, 6)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 6, 3, 7, 8), ab(mat, 2, 5, 9, 7)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 7, 3, 6, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 8, 3, 6, 7), ab(mat, 2, 6, 7, 1)*ab(mat, 3, 5, 8, 9) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 6, 7, 5)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 5, 3, 8, 9), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 6, 8, 1)*ab(mat, 3, 5, 7, 9) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 6, 8, 5)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 5, 3, 7, 9), ab(mat, 2, 6, 8, 7)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 7, 3, 5, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 6, 9, 1)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 6, 9, 5)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 5, 3, 7, 8), ab(mat, 2, 6, 9, 7)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 7, 3, 5, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 8, 3, 5, 7), ab(mat, 2, 7, 8, 1)*ab(mat, 3, 5, 6, 9) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 7, 8, 5)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 5, 3, 6, 9), ab(mat, 2, 7, 8, 6)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 6, 3, 5, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 7, 9, 1)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 7, 9, 5)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 5, 3, 6, 8), ab(mat, 2, 7, 9, 6)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 6, 3, 5, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 8, 3, 5, 6), ab(mat, 2, 8, 9, 1)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 8, 9, 5)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 5, 3, 6, 7), ab(mat, 2, 8, 9, 6)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 6, 3, 5, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 7, 3, 5, 6), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 5, 6, 1) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 5, 7, 1) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 5, 8, 1) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 5, 9, 1) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 6, 7, 1) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 6, 8, 1) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 6, 9, 1) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 7, 8, 1) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 7, 9, 1) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 8, 9, 1) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 5, 6, 7, 1), ab(mat, 1, 2, 4, 5)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 8, 9, 5), ab(mat, 1, 2, 4, 7)*ab(mat, 6, 8, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 6, 7, 9, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 6, 7, 8, 5) + 
-  ab(mat, 1, 2, 4, 5)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 4, 7)*ab(mat, 5, 8, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 4, 8)*ab(mat, 5, 7, 9, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 7, 8, 6) + 
-  ab(mat, 1, 2, 4, 6)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 4, 8)*ab(mat, 5, 6, 9, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 6, 8, 7) + 
-  ab(mat, 1, 2, 4, 7)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 4, 9)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 4, 8)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 5, 4)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 2, 5, 7)*ab(mat, 6, 8, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 6, 7, 9, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 6, 7, 8, 4) + 
-  ab(mat, 1, 2, 5, 4)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 2, 5, 7)*ab(mat, 4, 8, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 5, 8)*ab(mat, 4, 7, 9, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 7, 8, 6) + 
-  ab(mat, 1, 2, 5, 6)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 5, 8)*ab(mat, 4, 6, 9, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 6, 8, 7) + 
-  ab(mat, 1, 2, 5, 7)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 5, 9)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 2, 5, 8)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 6, 4)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 2, 6, 7)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 2, 6, 4)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 2, 6, 7)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 2, 6, 8)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 2, 6, 5)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 2, 6, 8)*ab(mat, 4, 5, 9, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 5, 8, 7) + 
-  ab(mat, 1, 2, 6, 7)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 6, 9)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 2, 6, 8)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 7, 4)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 8, 9, 4), ab(mat, 1, 2, 7, 6)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 2, 7, 4)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 2, 7, 6)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 2, 7, 8)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 2, 7, 5)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 2, 7, 8)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 2, 7, 6)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 2, 7, 9)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 2, 7, 8)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 8, 4)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 7, 9, 4), ab(mat, 1, 2, 8, 6)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 2, 8, 4)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 2, 8, 6)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 2, 8, 7)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 2, 8, 5)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 2, 8, 7)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 2, 8, 6)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 2, 8, 9)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 8, 7)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 2, 9, 4)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 7, 8, 4), ab(mat, 1, 2, 9, 6)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 2, 9, 4)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 2, 9, 6)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 2, 9, 7)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 2, 9, 5)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 2, 9, 7)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 2, 9, 6)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 2, 9, 8)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 2, 9, 7)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 4, 5, 2)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 4, 5, 7)*ab(mat, 6, 8, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 6, 7, 9, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 6, 7, 8, 2) + 
-  ab(mat, 1, 4, 5, 2)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 4, 5, 7)*ab(mat, 2, 8, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 7, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 7, 8, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 2, 6, 9, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 6, 8, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 4, 5, 9)*ab(mat, 2, 6, 7, 8) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 4, 6, 2)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 4, 6, 7)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 4, 6, 2)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 4, 6, 7)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 2, 5, 9, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 5, 8, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 4, 6, 9)*ab(mat, 2, 5, 7, 8) + 
-  ab(mat, 1, 4, 6, 8)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 4, 7, 2)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 4, 7, 6)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 4, 7, 2)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 4, 7, 6)*ab(mat, 2, 8, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 4, 7, 9)*ab(mat, 2, 5, 6, 8) + 
-  ab(mat, 1, 4, 7, 8)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 4, 8, 2)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 4, 8, 6)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 4, 8, 2)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 4, 8, 6)*ab(mat, 2, 7, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 6, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 2, 5, 9, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 4, 8, 9)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 4, 8, 7)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 4, 9, 2)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 4, 9, 6)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 1, 4, 9, 2)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 4, 9, 6)*ab(mat, 2, 7, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 6, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 6, 7, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 2, 5, 8, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 5, 7, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 4, 9, 8)*ab(mat, 2, 5, 6, 7) + 
-  ab(mat, 1, 4, 9, 7)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 5, 6, 2)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 8, 9, 2), ab(mat, 1, 5, 6, 7)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 5, 6, 2)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 5, 6, 7)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 2, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 8, 2, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 9, 2, 7, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 2, 4, 9, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 4, 8, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 5, 6, 9)*ab(mat, 2, 4, 7, 8) + 
-  ab(mat, 1, 5, 6, 8)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 5, 7, 2)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 8, 9, 2), ab(mat, 1, 5, 7, 6)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 5, 7, 2)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 5, 7, 6)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 2, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 8, 2, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 9, 2, 6, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 5, 7, 9)*ab(mat, 2, 4, 6, 8) + 
-  ab(mat, 1, 5, 7, 8)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 5, 8, 2)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 7, 9, 2), ab(mat, 1, 5, 8, 6)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 5, 8, 2)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 5, 8, 6)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 2, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 7, 2, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 9, 2, 6, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 2, 4, 9, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 5, 8, 9)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 5, 8, 7)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 5, 9, 2)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 7, 8, 2), ab(mat, 1, 5, 9, 6)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 5, 9, 2)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 5, 9, 6)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 2, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 7, 2, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 8, 2, 6, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 2, 4, 8, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 4, 7, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 5, 9, 8)*ab(mat, 2, 4, 6, 7) + 
-  ab(mat, 1, 5, 9, 7)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 6, 7, 2)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 8, 9, 2), ab(mat, 1, 6, 7, 5)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 6, 7, 2)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 6, 7, 5)*ab(mat, 2, 8, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 2, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 8, 2, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 9, 2, 5, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 8, 2, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 9, 2, 4, 8), ab(mat, 1, 6, 7, 9)*ab(mat, 2, 4, 5, 8) + 
-  ab(mat, 1, 6, 7, 8)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 6, 8, 2)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 7, 9, 2), ab(mat, 1, 6, 8, 5)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 6, 8, 2)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 6, 8, 5)*ab(mat, 2, 7, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 2, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 7, 2, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 9, 2, 5, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 7, 2, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 9, 2, 4, 7), ab(mat, 1, 6, 8, 9)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 6, 8, 7)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 6, 9, 2)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 7, 8, 2), ab(mat, 1, 6, 9, 5)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 6, 9, 2)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 6, 9, 5)*ab(mat, 2, 7, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 2, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 7, 2, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 8, 2, 5, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 7, 2, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 8, 2, 4, 7), ab(mat, 1, 6, 9, 8)*ab(mat, 2, 4, 5, 7) + 
-  ab(mat, 1, 6, 9, 7)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 7, 8, 2)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 6, 9, 2), ab(mat, 1, 7, 8, 5)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 7, 8, 2)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 7, 8, 5)*ab(mat, 2, 6, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 2, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 5, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 6, 2, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 9, 2, 5, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 2, 4, 9, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 6, 2, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 9, 2, 4, 6), ab(mat, 1, 7, 8, 9)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 7, 8, 6)*ab(mat, 9, 2, 4, 5), ab(mat, 1, 7, 9, 2)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 6, 8, 2), ab(mat, 1, 7, 9, 5)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 7, 9, 2)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 7, 9, 5)*ab(mat, 2, 6, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 2, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 5, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 6, 2, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 8, 2, 5, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 2, 4, 8, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 6, 2, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 8, 2, 4, 6), ab(mat, 1, 7, 9, 8)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 7, 9, 6)*ab(mat, 8, 2, 4, 5), ab(mat, 1, 8, 9, 2)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 6, 7, 2), ab(mat, 1, 8, 9, 5)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 1, 8, 9, 2)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 8, 9, 5)*ab(mat, 2, 6, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 2, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 5, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 6, 2, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 5, 6, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 7, 2, 5, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 2, 4, 7, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 6, 2, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 4, 6, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 7, 2, 4, 6), ab(mat, 1, 8, 9, 7)*ab(mat, 2, 4, 5, 6) + 
-  ab(mat, 1, 8, 9, 6)*ab(mat, 7, 2, 4, 5), ab(mat, 2, 4, 5, 1)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 4, 5, 7)*ab(mat, 6, 8, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 4, 5, 8)*ab(mat, 6, 7, 9, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 6, 7, 8, 1) + 
-  ab(mat, 2, 4, 5, 1)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 4, 6, 1)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 2, 4, 6, 5)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 4, 6, 7)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 4, 6, 8)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 4, 6, 1)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 4, 7, 1)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 2, 4, 7, 5)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 4, 7, 6)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 6, 5, 8, 9), ab(mat, 2, 4, 7, 8)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 4, 7, 1)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 4, 8, 1)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 2, 4, 8, 5)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 4, 8, 6)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 6, 5, 7, 9), ab(mat, 2, 4, 8, 7)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 7, 5, 6, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 4, 8, 1)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 4, 9, 1)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 4, 9, 5)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 4, 9, 6)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 6, 5, 7, 8), ab(mat, 2, 4, 9, 7)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 7, 5, 6, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 2, 4, 9, 1)*ab(mat, 8, 5, 6, 7), ab(mat, 2, 5, 6, 1)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 2, 5, 6, 4)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 5, 6, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 5, 6, 1)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 5, 7, 1)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 2, 5, 7, 4)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 5, 7, 6)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 6, 4, 8, 9), ab(mat, 2, 5, 7, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 5, 7, 1)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 5, 8, 1)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 2, 5, 8, 4)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 5, 8, 6)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 6, 4, 7, 9), ab(mat, 2, 5, 8, 7)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 7, 4, 6, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 5, 8, 1)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 5, 9, 1)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 2, 5, 9, 4)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 5, 9, 6)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 6, 4, 7, 8), ab(mat, 2, 5, 9, 7)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 7, 4, 6, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 5, 9, 1)*ab(mat, 8, 4, 6, 7), ab(mat, 2, 6, 7, 1)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 2, 6, 7, 4)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 6, 7, 5)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 5, 4, 8, 9), ab(mat, 2, 6, 7, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 6, 7, 1)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 6, 8, 1)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 2, 6, 8, 4)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 6, 8, 5)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 5, 4, 7, 9), ab(mat, 2, 6, 8, 7)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 7, 4, 5, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 6, 8, 1)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 6, 9, 1)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 2, 6, 9, 4)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 6, 9, 5)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 5, 4, 7, 8), ab(mat, 2, 6, 9, 7)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 7, 4, 5, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 6, 9, 1)*ab(mat, 8, 4, 5, 7), ab(mat, 2, 7, 8, 1)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 2, 7, 8, 4)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 7, 8, 5)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 5, 4, 6, 9), ab(mat, 2, 7, 8, 6)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 6, 4, 5, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 7, 8, 1)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 7, 9, 1)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 2, 7, 9, 4)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 7, 9, 5)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 5, 4, 6, 8), ab(mat, 2, 7, 9, 6)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 6, 4, 5, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 7, 9, 1)*ab(mat, 8, 4, 5, 6), ab(mat, 2, 8, 9, 1)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 8, 9, 4)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 8, 9, 5)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 5, 4, 6, 7), ab(mat, 2, 8, 9, 6)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 6, 4, 5, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 2, 8, 9, 1)*ab(mat, 7, 4, 5, 6), ab(mat, 2, 7, 8, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 4, 5, 6, 2)*ab(mat, 7, 8, 9, 1), ab(mat, 2, 6, 8, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 4, 5, 7, 2)*ab(mat, 6, 8, 9, 1), ab(mat, 2, 6, 7, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 4, 5, 8, 2)*ab(mat, 6, 7, 9, 1), ab(mat, 2, 6, 7, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 4, 5, 9, 2)*ab(mat, 6, 7, 8, 1), ab(mat, 2, 5, 8, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 4, 6, 7, 2)*ab(mat, 5, 8, 9, 1), ab(mat, 2, 5, 7, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 4, 6, 8, 2)*ab(mat, 5, 7, 9, 1), ab(mat, 2, 5, 7, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 4, 6, 9, 2)*ab(mat, 5, 7, 8, 1), ab(mat, 2, 5, 6, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 4, 7, 8, 2)*ab(mat, 5, 6, 9, 1), ab(mat, 2, 5, 6, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 4, 7, 9, 2)*ab(mat, 5, 6, 8, 1), ab(mat, 2, 5, 6, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 4, 8, 9, 2)*ab(mat, 5, 6, 7, 1), ab(mat, 1, 3, 4, 5)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 8, 9, 5), ab(mat, 1, 3, 4, 7)*ab(mat, 6, 8, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 6, 7, 9, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 6, 7, 8, 5) + 
-  ab(mat, 1, 3, 4, 5)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 3, 4, 7)*ab(mat, 5, 8, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 3, 4, 8)*ab(mat, 5, 7, 9, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 7, 8, 6) + 
-  ab(mat, 1, 3, 4, 6)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 3, 4, 8)*ab(mat, 5, 6, 9, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 6, 8, 7) + 
-  ab(mat, 1, 3, 4, 7)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 3, 4, 9)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 3, 4, 8)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 3, 5, 4)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 3, 5, 7)*ab(mat, 6, 8, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 6, 7, 9, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 6, 7, 8, 4) + 
-  ab(mat, 1, 3, 5, 4)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 3, 5, 7)*ab(mat, 4, 8, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 3, 5, 8)*ab(mat, 4, 7, 9, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 7, 8, 6) + 
-  ab(mat, 1, 3, 5, 6)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 3, 5, 8)*ab(mat, 4, 6, 9, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 6, 8, 7) + 
-  ab(mat, 1, 3, 5, 7)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 3, 5, 9)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 3, 5, 8)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 3, 6, 4)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 8, 9, 4), ab(mat, 1, 3, 6, 7)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 3, 6, 4)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 3, 6, 7)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 3, 6, 8)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 3, 6, 5)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 3, 6, 8)*ab(mat, 4, 5, 9, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 5, 8, 7) + 
-  ab(mat, 1, 3, 6, 7)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 3, 6, 9)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 3, 6, 8)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 3, 7, 4)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 8, 9, 4), ab(mat, 1, 3, 7, 6)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 3, 7, 4)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 3, 7, 6)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 3, 7, 8)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 3, 7, 5)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 3, 7, 8)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 3, 7, 6)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 3, 7, 9)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 3, 7, 8)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 3, 8, 4)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 7, 9, 4), ab(mat, 1, 3, 8, 6)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 3, 8, 4)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 3, 8, 6)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 3, 8, 7)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 3, 8, 5)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 3, 8, 7)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 3, 8, 6)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 3, 8, 9)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 3, 8, 7)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 3, 9, 4)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 7, 8, 4), ab(mat, 1, 3, 9, 6)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 1, 3, 9, 4)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 3, 9, 6)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 3, 9, 7)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 1, 3, 9, 5)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 3, 9, 7)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 1, 3, 9, 6)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 3, 9, 8)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 3, 9, 7)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 4, 5, 3)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 4, 5, 7)*ab(mat, 6, 8, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 7, 6, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 6, 7, 9, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 8, 6, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 6, 7, 8, 3) + 
-  ab(mat, 1, 4, 5, 3)*ab(mat, 9, 6, 7, 8), ab(mat, 1, 4, 5, 7)*ab(mat, 3, 8, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 4, 5, 8)*ab(mat, 3, 7, 9, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 7, 8, 6) + 
-  ab(mat, 1, 4, 5, 6)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 4, 5, 8)*ab(mat, 3, 6, 9, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 6, 8, 7) + 
-  ab(mat, 1, 4, 5, 7)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 4, 5, 9)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 1, 4, 5, 8)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 4, 6, 3)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 4, 6, 7)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 7, 5, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 8, 5, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 4, 6, 3)*ab(mat, 9, 5, 7, 8), ab(mat, 1, 4, 6, 7)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 4, 6, 8)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 4, 6, 5)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 4, 6, 8)*ab(mat, 3, 5, 9, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 5, 8, 7) + 
-  ab(mat, 1, 4, 6, 7)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 4, 6, 9)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 1, 4, 6, 8)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 4, 7, 3)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 4, 7, 6)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 6, 5, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 8, 5, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 4, 7, 3)*ab(mat, 9, 5, 6, 8), ab(mat, 1, 4, 7, 6)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 4, 7, 8)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 4, 7, 5)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 4, 7, 8)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 4, 7, 6)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 4, 7, 9)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 1, 4, 7, 8)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 4, 8, 3)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 4, 8, 6)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 6, 5, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 7, 5, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 4, 8, 3)*ab(mat, 9, 5, 6, 7), ab(mat, 1, 4, 8, 6)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 4, 8, 7)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 4, 8, 5)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 4, 8, 7)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 4, 8, 6)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 4, 8, 9)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 4, 8, 7)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 4, 9, 3)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 4, 9, 6)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 6, 5, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 7, 5, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 1, 4, 9, 3)*ab(mat, 8, 5, 6, 7), ab(mat, 1, 4, 9, 6)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 4, 9, 7)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 1, 4, 9, 5)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 4, 9, 7)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 1, 4, 9, 6)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 4, 9, 8)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 1, 4, 9, 7)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 5, 6, 3)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 8, 9, 3), ab(mat, 1, 5, 6, 7)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 7, 4, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 8, 4, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 5, 6, 3)*ab(mat, 9, 4, 7, 8), ab(mat, 1, 5, 6, 7)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 7, 3, 8, 9), ab(mat, 1, 5, 6, 8)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 8, 3, 7, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 5, 6, 4)*ab(mat, 9, 3, 7, 8), ab(mat, 1, 5, 6, 8)*ab(mat, 3, 4, 9, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 4, 8, 7) + 
-  ab(mat, 1, 5, 6, 7)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 5, 6, 9)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 1, 5, 6, 8)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 5, 7, 3)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 8, 9, 3), ab(mat, 1, 5, 7, 6)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 6, 4, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 8, 4, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 5, 7, 3)*ab(mat, 9, 4, 6, 8), ab(mat, 1, 5, 7, 6)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 6, 3, 8, 9), ab(mat, 1, 5, 7, 8)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 8, 3, 6, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 5, 7, 4)*ab(mat, 9, 3, 6, 8), ab(mat, 1, 5, 7, 8)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 5, 7, 6)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 5, 7, 9)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 1, 5, 7, 8)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 5, 8, 3)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 7, 9, 3), ab(mat, 1, 5, 8, 6)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 6, 4, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 7, 4, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 5, 8, 3)*ab(mat, 9, 4, 6, 7), ab(mat, 1, 5, 8, 6)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 6, 3, 7, 9), ab(mat, 1, 5, 8, 7)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 7, 3, 6, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 5, 8, 4)*ab(mat, 9, 3, 6, 7), ab(mat, 1, 5, 8, 7)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 5, 8, 6)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 5, 8, 9)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 5, 8, 7)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 5, 9, 3)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 7, 8, 3), ab(mat, 1, 5, 9, 6)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 6, 4, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 7, 4, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 5, 9, 3)*ab(mat, 8, 4, 6, 7), ab(mat, 1, 5, 9, 6)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 6, 3, 7, 8), ab(mat, 1, 5, 9, 7)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 7, 3, 6, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 5, 9, 4)*ab(mat, 8, 3, 6, 7), ab(mat, 1, 5, 9, 7)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 1, 5, 9, 6)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 5, 9, 8)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 1, 5, 9, 7)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 6, 7, 3)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 8, 9, 3), ab(mat, 1, 6, 7, 5)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 5, 4, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 8, 4, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 6, 7, 3)*ab(mat, 9, 4, 5, 8), ab(mat, 1, 6, 7, 5)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 5, 3, 8, 9), ab(mat, 1, 6, 7, 8)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 8, 3, 5, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 6, 7, 4)*ab(mat, 9, 3, 5, 8), ab(mat, 1, 6, 7, 8)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 8, 3, 4, 9), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 6, 7, 5)*ab(mat, 9, 3, 4, 8), ab(mat, 1, 6, 7, 9)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 1, 6, 7, 8)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 6, 8, 3)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 7, 9, 3), ab(mat, 1, 6, 8, 5)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 5, 4, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 7, 4, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 6, 8, 3)*ab(mat, 9, 4, 5, 7), ab(mat, 1, 6, 8, 5)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 5, 3, 7, 9), ab(mat, 1, 6, 8, 7)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 7, 3, 5, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 6, 8, 4)*ab(mat, 9, 3, 5, 7), ab(mat, 1, 6, 8, 7)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 7, 3, 4, 9), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 6, 8, 5)*ab(mat, 9, 3, 4, 7), ab(mat, 1, 6, 8, 9)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 6, 8, 7)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 6, 9, 3)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 7, 8, 3), ab(mat, 1, 6, 9, 5)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 5, 4, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 7, 4, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 6, 9, 3)*ab(mat, 8, 4, 5, 7), ab(mat, 1, 6, 9, 5)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 5, 3, 7, 8), ab(mat, 1, 6, 9, 7)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 7, 3, 5, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 6, 9, 4)*ab(mat, 8, 3, 5, 7), ab(mat, 1, 6, 9, 7)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 7, 3, 4, 8), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 6, 9, 5)*ab(mat, 8, 3, 4, 7), ab(mat, 1, 6, 9, 8)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 1, 6, 9, 7)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 7, 8, 3)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 6, 9, 3), ab(mat, 1, 7, 8, 5)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 5, 4, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 6, 4, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 7, 8, 3)*ab(mat, 9, 4, 5, 6), ab(mat, 1, 7, 8, 5)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 5, 3, 6, 9), ab(mat, 1, 7, 8, 6)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 6, 3, 5, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 7, 8, 4)*ab(mat, 9, 3, 5, 6), ab(mat, 1, 7, 8, 6)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 6, 3, 4, 9), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 7, 8, 5)*ab(mat, 9, 3, 4, 6), ab(mat, 1, 7, 8, 9)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 7, 8, 6)*ab(mat, 9, 3, 4, 5), ab(mat, 1, 7, 9, 3)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 6, 8, 3), ab(mat, 1, 7, 9, 5)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 5, 4, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 6, 4, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 7, 9, 3)*ab(mat, 8, 4, 5, 6), ab(mat, 1, 7, 9, 5)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 5, 3, 6, 8), ab(mat, 1, 7, 9, 6)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 6, 3, 5, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 7, 9, 4)*ab(mat, 8, 3, 5, 6), ab(mat, 1, 7, 9, 6)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 6, 3, 4, 8), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 7, 9, 5)*ab(mat, 8, 3, 4, 6), ab(mat, 1, 7, 9, 8)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 7, 9, 6)*ab(mat, 8, 3, 4, 5), ab(mat, 1, 8, 9, 3)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 6, 7, 3), ab(mat, 1, 8, 9, 5)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 5, 4, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 6, 4, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 1, 8, 9, 3)*ab(mat, 7, 4, 5, 6), ab(mat, 1, 8, 9, 5)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 5, 3, 6, 7), ab(mat, 1, 8, 9, 6)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 6, 3, 5, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 1, 8, 9, 4)*ab(mat, 7, 3, 5, 6), ab(mat, 1, 8, 9, 6)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 6, 3, 4, 7), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 1, 8, 9, 5)*ab(mat, 7, 3, 4, 6), ab(mat, 1, 8, 9, 7)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 1, 8, 9, 6)*ab(mat, 7, 3, 4, 5), ab(mat, 3, 4, 5, 1)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 3, 4, 5, 6)*ab(mat, 7, 8, 9, 1), ab(mat, 3, 4, 5, 7)*ab(mat, 6, 8, 9, 1) + 
-  ab(mat, 3, 4, 5, 1)*ab(mat, 7, 6, 8, 9), ab(mat, 3, 4, 5, 8)*ab(mat, 6, 7, 9, 1) + 
-  ab(mat, 3, 4, 5, 1)*ab(mat, 8, 6, 7, 9), ab(mat, 3, 4, 5, 9)*ab(mat, 6, 7, 8, 1) + 
-  ab(mat, 3, 4, 5, 1)*ab(mat, 9, 6, 7, 8), ab(mat, 3, 4, 6, 1)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 3, 4, 6, 5)*ab(mat, 7, 8, 9, 1), ab(mat, 3, 4, 6, 7)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 3, 4, 6, 1)*ab(mat, 7, 5, 8, 9), ab(mat, 3, 4, 6, 8)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 3, 4, 6, 1)*ab(mat, 8, 5, 7, 9), ab(mat, 3, 4, 6, 9)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 3, 4, 6, 1)*ab(mat, 9, 5, 7, 8), ab(mat, 3, 4, 7, 1)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 3, 4, 7, 5)*ab(mat, 6, 8, 9, 1), ab(mat, 3, 4, 7, 6)*ab(mat, 5, 8, 9, 1) + 
-  ab(mat, 3, 4, 7, 1)*ab(mat, 6, 5, 8, 9), ab(mat, 3, 4, 7, 8)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 3, 4, 7, 1)*ab(mat, 8, 5, 6, 9), ab(mat, 3, 4, 7, 9)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 3, 4, 7, 1)*ab(mat, 9, 5, 6, 8), ab(mat, 3, 4, 8, 1)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 3, 4, 8, 5)*ab(mat, 6, 7, 9, 1), ab(mat, 3, 4, 8, 6)*ab(mat, 5, 7, 9, 1) + 
-  ab(mat, 3, 4, 8, 1)*ab(mat, 6, 5, 7, 9), ab(mat, 3, 4, 8, 7)*ab(mat, 5, 6, 9, 1) + 
-  ab(mat, 3, 4, 8, 1)*ab(mat, 7, 5, 6, 9), ab(mat, 3, 4, 8, 9)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 3, 4, 8, 1)*ab(mat, 9, 5, 6, 7), ab(mat, 3, 4, 9, 1)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 3, 4, 9, 5)*ab(mat, 6, 7, 8, 1), ab(mat, 3, 4, 9, 6)*ab(mat, 5, 7, 8, 1) + 
-  ab(mat, 3, 4, 9, 1)*ab(mat, 6, 5, 7, 8), ab(mat, 3, 4, 9, 7)*ab(mat, 5, 6, 8, 1) + 
-  ab(mat, 3, 4, 9, 1)*ab(mat, 7, 5, 6, 8), ab(mat, 3, 4, 9, 8)*ab(mat, 5, 6, 7, 1) + 
-  ab(mat, 3, 4, 9, 1)*ab(mat, 8, 5, 6, 7), ab(mat, 3, 5, 6, 1)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 3, 5, 6, 4)*ab(mat, 7, 8, 9, 1), ab(mat, 3, 5, 6, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 3, 5, 6, 1)*ab(mat, 7, 4, 8, 9), ab(mat, 3, 5, 6, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 3, 5, 6, 1)*ab(mat, 8, 4, 7, 9), ab(mat, 3, 5, 6, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 3, 5, 6, 1)*ab(mat, 9, 4, 7, 8), ab(mat, 3, 5, 7, 1)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 3, 5, 7, 4)*ab(mat, 6, 8, 9, 1), ab(mat, 3, 5, 7, 6)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 3, 5, 7, 1)*ab(mat, 6, 4, 8, 9), ab(mat, 3, 5, 7, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 3, 5, 7, 1)*ab(mat, 8, 4, 6, 9), ab(mat, 3, 5, 7, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 3, 5, 7, 1)*ab(mat, 9, 4, 6, 8), ab(mat, 3, 5, 8, 1)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 3, 5, 8, 4)*ab(mat, 6, 7, 9, 1), ab(mat, 3, 5, 8, 6)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 3, 5, 8, 1)*ab(mat, 6, 4, 7, 9), ab(mat, 3, 5, 8, 7)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 3, 5, 8, 1)*ab(mat, 7, 4, 6, 9), ab(mat, 3, 5, 8, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 3, 5, 8, 1)*ab(mat, 9, 4, 6, 7), ab(mat, 3, 5, 9, 1)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 3, 5, 9, 4)*ab(mat, 6, 7, 8, 1), ab(mat, 3, 5, 9, 6)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 3, 5, 9, 1)*ab(mat, 6, 4, 7, 8), ab(mat, 3, 5, 9, 7)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 3, 5, 9, 1)*ab(mat, 7, 4, 6, 8), ab(mat, 3, 5, 9, 8)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 3, 5, 9, 1)*ab(mat, 8, 4, 6, 7), ab(mat, 3, 6, 7, 1)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 3, 6, 7, 4)*ab(mat, 5, 8, 9, 1), ab(mat, 3, 6, 7, 5)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 3, 6, 7, 1)*ab(mat, 5, 4, 8, 9), ab(mat, 3, 6, 7, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 3, 6, 7, 1)*ab(mat, 8, 4, 5, 9), ab(mat, 3, 6, 7, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 3, 6, 7, 1)*ab(mat, 9, 4, 5, 8), ab(mat, 3, 6, 8, 1)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 3, 6, 8, 4)*ab(mat, 5, 7, 9, 1), ab(mat, 3, 6, 8, 5)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 3, 6, 8, 1)*ab(mat, 5, 4, 7, 9), ab(mat, 3, 6, 8, 7)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 3, 6, 8, 1)*ab(mat, 7, 4, 5, 9), ab(mat, 3, 6, 8, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 3, 6, 8, 1)*ab(mat, 9, 4, 5, 7), ab(mat, 3, 6, 9, 1)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 3, 6, 9, 4)*ab(mat, 5, 7, 8, 1), ab(mat, 3, 6, 9, 5)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 3, 6, 9, 1)*ab(mat, 5, 4, 7, 8), ab(mat, 3, 6, 9, 7)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 3, 6, 9, 1)*ab(mat, 7, 4, 5, 8), ab(mat, 3, 6, 9, 8)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 3, 6, 9, 1)*ab(mat, 8, 4, 5, 7), ab(mat, 3, 7, 8, 1)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 3, 7, 8, 4)*ab(mat, 5, 6, 9, 1), ab(mat, 3, 7, 8, 5)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 3, 7, 8, 1)*ab(mat, 5, 4, 6, 9), ab(mat, 3, 7, 8, 6)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 3, 7, 8, 1)*ab(mat, 6, 4, 5, 9), ab(mat, 3, 7, 8, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 3, 7, 8, 1)*ab(mat, 9, 4, 5, 6), ab(mat, 3, 7, 9, 1)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 3, 7, 9, 4)*ab(mat, 5, 6, 8, 1), ab(mat, 3, 7, 9, 5)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 3, 7, 9, 1)*ab(mat, 5, 4, 6, 8), ab(mat, 3, 7, 9, 6)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 3, 7, 9, 1)*ab(mat, 6, 4, 5, 8), ab(mat, 3, 7, 9, 8)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 3, 7, 9, 1)*ab(mat, 8, 4, 5, 6), ab(mat, 3, 8, 9, 1)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 3, 8, 9, 4)*ab(mat, 5, 6, 7, 1), ab(mat, 3, 8, 9, 5)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 3, 8, 9, 1)*ab(mat, 5, 4, 6, 7), ab(mat, 3, 8, 9, 6)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 3, 8, 9, 1)*ab(mat, 6, 4, 5, 7), ab(mat, 3, 8, 9, 7)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 3, 8, 9, 1)*ab(mat, 7, 4, 5, 6), ab(mat, 3, 7, 8, 9)*ab(mat, 4, 5, 6, 1) + 
-  ab(mat, 4, 5, 6, 3)*ab(mat, 7, 8, 9, 1), ab(mat, 3, 6, 8, 9)*ab(mat, 4, 5, 7, 1) + 
-  ab(mat, 4, 5, 7, 3)*ab(mat, 6, 8, 9, 1), ab(mat, 3, 6, 7, 9)*ab(mat, 4, 5, 8, 1) + 
-  ab(mat, 4, 5, 8, 3)*ab(mat, 6, 7, 9, 1), ab(mat, 3, 6, 7, 8)*ab(mat, 4, 5, 9, 1) + 
-  ab(mat, 4, 5, 9, 3)*ab(mat, 6, 7, 8, 1), ab(mat, 3, 5, 8, 9)*ab(mat, 4, 6, 7, 1) + 
-  ab(mat, 4, 6, 7, 3)*ab(mat, 5, 8, 9, 1), ab(mat, 3, 5, 7, 9)*ab(mat, 4, 6, 8, 1) + 
-  ab(mat, 4, 6, 8, 3)*ab(mat, 5, 7, 9, 1), ab(mat, 3, 5, 7, 8)*ab(mat, 4, 6, 9, 1) + 
-  ab(mat, 4, 6, 9, 3)*ab(mat, 5, 7, 8, 1), ab(mat, 3, 5, 6, 9)*ab(mat, 4, 7, 8, 1) + 
-  ab(mat, 4, 7, 8, 3)*ab(mat, 5, 6, 9, 1), ab(mat, 3, 5, 6, 8)*ab(mat, 4, 7, 9, 1) + 
-  ab(mat, 4, 7, 9, 3)*ab(mat, 5, 6, 8, 1), ab(mat, 3, 5, 6, 7)*ab(mat, 4, 8, 9, 1) + 
-  ab(mat, 4, 8, 9, 3)*ab(mat, 5, 6, 7, 1), ab(mat, 2, 3, 4, 5)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 7, 8, 9, 5), ab(mat, 2, 3, 4, 7)*ab(mat, 6, 8, 9, 5) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 3, 4, 8)*ab(mat, 6, 7, 9, 5) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 6, 7, 8, 5) + 
-  ab(mat, 2, 3, 4, 5)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 3, 4, 7)*ab(mat, 5, 8, 9, 6) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 3, 4, 8)*ab(mat, 5, 7, 9, 6) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 7, 8, 6) + 
-  ab(mat, 2, 3, 4, 6)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 3, 4, 8)*ab(mat, 5, 6, 9, 7) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 6, 8, 7) + 
-  ab(mat, 2, 3, 4, 7)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 3, 4, 9)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 3, 4, 8)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 3, 5, 4)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 7, 8, 9, 4), ab(mat, 2, 3, 5, 7)*ab(mat, 6, 8, 9, 4) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 3, 5, 8)*ab(mat, 6, 7, 9, 4) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 6, 7, 8, 4) + 
-  ab(mat, 2, 3, 5, 4)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 3, 5, 7)*ab(mat, 4, 8, 9, 6) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 3, 5, 8)*ab(mat, 4, 7, 9, 6) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 7, 8, 6) + 
-  ab(mat, 2, 3, 5, 6)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 3, 5, 8)*ab(mat, 4, 6, 9, 7) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 6, 8, 7) + 
-  ab(mat, 2, 3, 5, 7)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 3, 5, 9)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 2, 3, 5, 8)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 3, 6, 4)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 2, 3, 6, 5)*ab(mat, 7, 8, 9, 4), ab(mat, 2, 3, 6, 7)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 3, 6, 8)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 2, 3, 6, 4)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 3, 6, 7)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 2, 3, 6, 5)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 3, 6, 8)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 2, 3, 6, 5)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 2, 3, 6, 5)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 3, 6, 8)*ab(mat, 4, 5, 9, 7) + 
-  ab(mat, 2, 3, 6, 7)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 5, 8, 7) + 
-  ab(mat, 2, 3, 6, 7)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 3, 6, 9)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 2, 3, 6, 8)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 3, 7, 4)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 2, 3, 7, 5)*ab(mat, 6, 8, 9, 4), ab(mat, 2, 3, 7, 6)*ab(mat, 5, 8, 9, 4) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 6, 5, 8, 9), ab(mat, 2, 3, 7, 8)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 2, 3, 7, 4)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 3, 7, 6)*ab(mat, 4, 8, 9, 5) + 
-  ab(mat, 2, 3, 7, 5)*ab(mat, 6, 4, 8, 9), ab(mat, 2, 3, 7, 8)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 2, 3, 7, 5)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 2, 3, 7, 5)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 3, 7, 8)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 2, 3, 7, 6)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 2, 3, 7, 6)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 3, 7, 9)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 2, 3, 7, 8)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 3, 8, 4)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 2, 3, 8, 5)*ab(mat, 6, 7, 9, 4), ab(mat, 2, 3, 8, 6)*ab(mat, 5, 7, 9, 4) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 6, 5, 7, 9), ab(mat, 2, 3, 8, 7)*ab(mat, 5, 6, 9, 4) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 7, 5, 6, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 2, 3, 8, 4)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 3, 8, 6)*ab(mat, 4, 7, 9, 5) + 
-  ab(mat, 2, 3, 8, 5)*ab(mat, 6, 4, 7, 9), ab(mat, 2, 3, 8, 7)*ab(mat, 4, 6, 9, 5) + 
-  ab(mat, 2, 3, 8, 5)*ab(mat, 7, 4, 6, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 2, 3, 8, 5)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 3, 8, 7)*ab(mat, 4, 5, 9, 6) + 
-  ab(mat, 2, 3, 8, 6)*ab(mat, 7, 4, 5, 9), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 2, 3, 8, 6)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 3, 8, 9)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 3, 8, 7)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 3, 9, 4)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 3, 9, 5)*ab(mat, 6, 7, 8, 4), ab(mat, 2, 3, 9, 6)*ab(mat, 5, 7, 8, 4) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 6, 5, 7, 8), ab(mat, 2, 3, 9, 7)*ab(mat, 5, 6, 8, 4) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 7, 5, 6, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 5, 6, 7, 4) + 
-  ab(mat, 2, 3, 9, 4)*ab(mat, 8, 5, 6, 7), ab(mat, 2, 3, 9, 6)*ab(mat, 4, 7, 8, 5) + 
-  ab(mat, 2, 3, 9, 5)*ab(mat, 6, 4, 7, 8), ab(mat, 2, 3, 9, 7)*ab(mat, 4, 6, 8, 5) + 
-  ab(mat, 2, 3, 9, 5)*ab(mat, 7, 4, 6, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 6, 7, 5) + 
-  ab(mat, 2, 3, 9, 5)*ab(mat, 8, 4, 6, 7), ab(mat, 2, 3, 9, 7)*ab(mat, 4, 5, 8, 6) + 
-  ab(mat, 2, 3, 9, 6)*ab(mat, 7, 4, 5, 8), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 5, 7, 6) + 
-  ab(mat, 2, 3, 9, 6)*ab(mat, 8, 4, 5, 7), ab(mat, 2, 3, 9, 8)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 3, 9, 7)*ab(mat, 8, 4, 5, 6), ab(mat, 2, 4, 5, 3)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 7, 8, 9, 3), ab(mat, 2, 4, 5, 7)*ab(mat, 6, 8, 9, 3) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 7, 6, 8, 9), ab(mat, 2, 4, 5, 8)*ab(mat, 6, 7, 9, 3) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 8, 6, 7, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 6, 7, 8, 3) + 
-  ab(mat, 2, 4, 5, 3)*ab(mat, 9, 6, 7, 8), ab(mat, 2, 4, 5, 7)*ab(mat, 3, 8, 9, 6) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 7, 9, 6) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 7, 8, 6) + 
-  ab(mat, 2, 4, 5, 6)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 4, 5, 8)*ab(mat, 3, 6, 9, 7) + 
-  ab(mat, 2, 4, 5, 7)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 8, 7) + 
-  ab(mat, 2, 4, 5, 7)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 4, 5, 9)*ab(mat, 3, 6, 7, 8) + 
-  ab(mat, 2, 4, 5, 8)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 4, 6, 3)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 2, 4, 6, 5)*ab(mat, 7, 8, 9, 3), ab(mat, 2, 4, 6, 7)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 7, 5, 8, 9), ab(mat, 2, 4, 6, 8)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 8, 5, 7, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 2, 4, 6, 3)*ab(mat, 9, 5, 7, 8), ab(mat, 2, 4, 6, 7)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 2, 4, 6, 5)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 2, 4, 6, 5)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 2, 4, 6, 5)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 4, 6, 8)*ab(mat, 3, 5, 9, 7) + 
-  ab(mat, 2, 4, 6, 7)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 8, 7) + 
-  ab(mat, 2, 4, 6, 7)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 4, 6, 9)*ab(mat, 3, 5, 7, 8) + 
-  ab(mat, 2, 4, 6, 8)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 4, 7, 3)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 2, 4, 7, 5)*ab(mat, 6, 8, 9, 3), ab(mat, 2, 4, 7, 6)*ab(mat, 5, 8, 9, 3) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 6, 5, 8, 9), ab(mat, 2, 4, 7, 8)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 8, 5, 6, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 2, 4, 7, 3)*ab(mat, 9, 5, 6, 8), ab(mat, 2, 4, 7, 6)*ab(mat, 3, 8, 9, 5) + 
-  ab(mat, 2, 4, 7, 5)*ab(mat, 6, 3, 8, 9), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 2, 4, 7, 5)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 2, 4, 7, 5)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 4, 7, 8)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 2, 4, 7, 6)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 2, 4, 7, 6)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 4, 7, 9)*ab(mat, 3, 5, 6, 8) + 
-  ab(mat, 2, 4, 7, 8)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 4, 8, 3)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 2, 4, 8, 5)*ab(mat, 6, 7, 9, 3), ab(mat, 2, 4, 8, 6)*ab(mat, 5, 7, 9, 3) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 6, 5, 7, 9), ab(mat, 2, 4, 8, 7)*ab(mat, 5, 6, 9, 3) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 7, 5, 6, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 2, 4, 8, 3)*ab(mat, 9, 5, 6, 7), ab(mat, 2, 4, 8, 6)*ab(mat, 3, 7, 9, 5) + 
-  ab(mat, 2, 4, 8, 5)*ab(mat, 6, 3, 7, 9), ab(mat, 2, 4, 8, 7)*ab(mat, 3, 6, 9, 5) + 
-  ab(mat, 2, 4, 8, 5)*ab(mat, 7, 3, 6, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 2, 4, 8, 5)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 4, 8, 7)*ab(mat, 3, 5, 9, 6) + 
-  ab(mat, 2, 4, 8, 6)*ab(mat, 7, 3, 5, 9), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 2, 4, 8, 6)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 4, 8, 9)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 2, 4, 8, 7)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 4, 9, 3)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 2, 4, 9, 5)*ab(mat, 6, 7, 8, 3), ab(mat, 2, 4, 9, 6)*ab(mat, 5, 7, 8, 3) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 6, 5, 7, 8), ab(mat, 2, 4, 9, 7)*ab(mat, 5, 6, 8, 3) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 7, 5, 6, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 5, 6, 7, 3) + 
-  ab(mat, 2, 4, 9, 3)*ab(mat, 8, 5, 6, 7), ab(mat, 2, 4, 9, 6)*ab(mat, 3, 7, 8, 5) + 
-  ab(mat, 2, 4, 9, 5)*ab(mat, 6, 3, 7, 8), ab(mat, 2, 4, 9, 7)*ab(mat, 3, 6, 8, 5) + 
-  ab(mat, 2, 4, 9, 5)*ab(mat, 7, 3, 6, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 6, 7, 5) + 
-  ab(mat, 2, 4, 9, 5)*ab(mat, 8, 3, 6, 7), ab(mat, 2, 4, 9, 7)*ab(mat, 3, 5, 8, 6) + 
-  ab(mat, 2, 4, 9, 6)*ab(mat, 7, 3, 5, 8), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 5, 7, 6) + 
-  ab(mat, 2, 4, 9, 6)*ab(mat, 8, 3, 5, 7), ab(mat, 2, 4, 9, 8)*ab(mat, 3, 5, 6, 7) + 
-  ab(mat, 2, 4, 9, 7)*ab(mat, 8, 3, 5, 6), ab(mat, 2, 5, 6, 3)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 2, 5, 6, 4)*ab(mat, 7, 8, 9, 3), ab(mat, 2, 5, 6, 7)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 7, 4, 8, 9), ab(mat, 2, 5, 6, 8)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 8, 4, 7, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 2, 5, 6, 3)*ab(mat, 9, 4, 7, 8), ab(mat, 2, 5, 6, 7)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 2, 5, 6, 4)*ab(mat, 7, 3, 8, 9), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 2, 5, 6, 4)*ab(mat, 8, 3, 7, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 2, 5, 6, 4)*ab(mat, 9, 3, 7, 8), ab(mat, 2, 5, 6, 8)*ab(mat, 3, 4, 9, 7) + 
-  ab(mat, 2, 5, 6, 7)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 8, 7) + 
-  ab(mat, 2, 5, 6, 7)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 5, 6, 9)*ab(mat, 3, 4, 7, 8) + 
-  ab(mat, 2, 5, 6, 8)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 5, 7, 3)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 2, 5, 7, 4)*ab(mat, 6, 8, 9, 3), ab(mat, 2, 5, 7, 6)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 6, 4, 8, 9), ab(mat, 2, 5, 7, 8)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 8, 4, 6, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 2, 5, 7, 3)*ab(mat, 9, 4, 6, 8), ab(mat, 2, 5, 7, 6)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 2, 5, 7, 4)*ab(mat, 6, 3, 8, 9), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 2, 5, 7, 4)*ab(mat, 8, 3, 6, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 2, 5, 7, 4)*ab(mat, 9, 3, 6, 8), ab(mat, 2, 5, 7, 8)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 2, 5, 7, 6)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 2, 5, 7, 6)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 5, 7, 9)*ab(mat, 3, 4, 6, 8) + 
-  ab(mat, 2, 5, 7, 8)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 5, 8, 3)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 2, 5, 8, 4)*ab(mat, 6, 7, 9, 3), ab(mat, 2, 5, 8, 6)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 6, 4, 7, 9), ab(mat, 2, 5, 8, 7)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 7, 4, 6, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 2, 5, 8, 3)*ab(mat, 9, 4, 6, 7), ab(mat, 2, 5, 8, 6)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 2, 5, 8, 4)*ab(mat, 6, 3, 7, 9), ab(mat, 2, 5, 8, 7)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 2, 5, 8, 4)*ab(mat, 7, 3, 6, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 2, 5, 8, 4)*ab(mat, 9, 3, 6, 7), ab(mat, 2, 5, 8, 7)*ab(mat, 3, 4, 9, 6) + 
-  ab(mat, 2, 5, 8, 6)*ab(mat, 7, 3, 4, 9), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 2, 5, 8, 6)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 5, 8, 9)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 2, 5, 8, 7)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 5, 9, 3)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 2, 5, 9, 4)*ab(mat, 6, 7, 8, 3), ab(mat, 2, 5, 9, 6)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 6, 4, 7, 8), ab(mat, 2, 5, 9, 7)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 7, 4, 6, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 2, 5, 9, 3)*ab(mat, 8, 4, 6, 7), ab(mat, 2, 5, 9, 6)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 2, 5, 9, 4)*ab(mat, 6, 3, 7, 8), ab(mat, 2, 5, 9, 7)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 2, 5, 9, 4)*ab(mat, 7, 3, 6, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 2, 5, 9, 4)*ab(mat, 8, 3, 6, 7), ab(mat, 2, 5, 9, 7)*ab(mat, 3, 4, 8, 6) + 
-  ab(mat, 2, 5, 9, 6)*ab(mat, 7, 3, 4, 8), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 4, 7, 6) + 
-  ab(mat, 2, 5, 9, 6)*ab(mat, 8, 3, 4, 7), ab(mat, 2, 5, 9, 8)*ab(mat, 3, 4, 6, 7) + 
-  ab(mat, 2, 5, 9, 7)*ab(mat, 8, 3, 4, 6), ab(mat, 2, 6, 7, 3)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 2, 6, 7, 4)*ab(mat, 5, 8, 9, 3), ab(mat, 2, 6, 7, 5)*ab(mat, 4, 8, 9, 3) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 5, 4, 8, 9), ab(mat, 2, 6, 7, 8)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 8, 4, 5, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 2, 6, 7, 3)*ab(mat, 9, 4, 5, 8), ab(mat, 2, 6, 7, 5)*ab(mat, 3, 8, 9, 4) + 
-  ab(mat, 2, 6, 7, 4)*ab(mat, 5, 3, 8, 9), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 2, 6, 7, 4)*ab(mat, 8, 3, 5, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 2, 6, 7, 4)*ab(mat, 9, 3, 5, 8), ab(mat, 2, 6, 7, 8)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 2, 6, 7, 5)*ab(mat, 8, 3, 4, 9), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 2, 6, 7, 5)*ab(mat, 9, 3, 4, 8), ab(mat, 2, 6, 7, 9)*ab(mat, 3, 4, 5, 8) + 
-  ab(mat, 2, 6, 7, 8)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 6, 8, 3)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 2, 6, 8, 4)*ab(mat, 5, 7, 9, 3), ab(mat, 2, 6, 8, 5)*ab(mat, 4, 7, 9, 3) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 5, 4, 7, 9), ab(mat, 2, 6, 8, 7)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 7, 4, 5, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 2, 6, 8, 3)*ab(mat, 9, 4, 5, 7), ab(mat, 2, 6, 8, 5)*ab(mat, 3, 7, 9, 4) + 
-  ab(mat, 2, 6, 8, 4)*ab(mat, 5, 3, 7, 9), ab(mat, 2, 6, 8, 7)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 2, 6, 8, 4)*ab(mat, 7, 3, 5, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 2, 6, 8, 4)*ab(mat, 9, 3, 5, 7), ab(mat, 2, 6, 8, 7)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 2, 6, 8, 5)*ab(mat, 7, 3, 4, 9), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 2, 6, 8, 5)*ab(mat, 9, 3, 4, 7), ab(mat, 2, 6, 8, 9)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 2, 6, 8, 7)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 6, 9, 3)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 2, 6, 9, 4)*ab(mat, 5, 7, 8, 3), ab(mat, 2, 6, 9, 5)*ab(mat, 4, 7, 8, 3) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 5, 4, 7, 8), ab(mat, 2, 6, 9, 7)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 7, 4, 5, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 2, 6, 9, 3)*ab(mat, 8, 4, 5, 7), ab(mat, 2, 6, 9, 5)*ab(mat, 3, 7, 8, 4) + 
-  ab(mat, 2, 6, 9, 4)*ab(mat, 5, 3, 7, 8), ab(mat, 2, 6, 9, 7)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 2, 6, 9, 4)*ab(mat, 7, 3, 5, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 2, 6, 9, 4)*ab(mat, 8, 3, 5, 7), ab(mat, 2, 6, 9, 7)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 2, 6, 9, 5)*ab(mat, 7, 3, 4, 8), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 2, 6, 9, 5)*ab(mat, 8, 3, 4, 7), ab(mat, 2, 6, 9, 8)*ab(mat, 3, 4, 5, 7) + 
-  ab(mat, 2, 6, 9, 7)*ab(mat, 8, 3, 4, 5), ab(mat, 2, 7, 8, 3)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 2, 7, 8, 4)*ab(mat, 5, 6, 9, 3), ab(mat, 2, 7, 8, 5)*ab(mat, 4, 6, 9, 3) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 5, 4, 6, 9), ab(mat, 2, 7, 8, 6)*ab(mat, 4, 5, 9, 3) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 6, 4, 5, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 2, 7, 8, 3)*ab(mat, 9, 4, 5, 6), ab(mat, 2, 7, 8, 5)*ab(mat, 3, 6, 9, 4) + 
-  ab(mat, 2, 7, 8, 4)*ab(mat, 5, 3, 6, 9), ab(mat, 2, 7, 8, 6)*ab(mat, 3, 5, 9, 4) + 
-  ab(mat, 2, 7, 8, 4)*ab(mat, 6, 3, 5, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 2, 7, 8, 4)*ab(mat, 9, 3, 5, 6), ab(mat, 2, 7, 8, 6)*ab(mat, 3, 4, 9, 5) + 
-  ab(mat, 2, 7, 8, 5)*ab(mat, 6, 3, 4, 9), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 2, 7, 8, 5)*ab(mat, 9, 3, 4, 6), ab(mat, 2, 7, 8, 9)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 7, 8, 6)*ab(mat, 9, 3, 4, 5), ab(mat, 2, 7, 9, 3)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 2, 7, 9, 4)*ab(mat, 5, 6, 8, 3), ab(mat, 2, 7, 9, 5)*ab(mat, 4, 6, 8, 3) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 5, 4, 6, 8), ab(mat, 2, 7, 9, 6)*ab(mat, 4, 5, 8, 3) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 6, 4, 5, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 2, 7, 9, 3)*ab(mat, 8, 4, 5, 6), ab(mat, 2, 7, 9, 5)*ab(mat, 3, 6, 8, 4) + 
-  ab(mat, 2, 7, 9, 4)*ab(mat, 5, 3, 6, 8), ab(mat, 2, 7, 9, 6)*ab(mat, 3, 5, 8, 4) + 
-  ab(mat, 2, 7, 9, 4)*ab(mat, 6, 3, 5, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 2, 7, 9, 4)*ab(mat, 8, 3, 5, 6), ab(mat, 2, 7, 9, 6)*ab(mat, 3, 4, 8, 5) + 
-  ab(mat, 2, 7, 9, 5)*ab(mat, 6, 3, 4, 8), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 2, 7, 9, 5)*ab(mat, 8, 3, 4, 6), ab(mat, 2, 7, 9, 8)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 7, 9, 6)*ab(mat, 8, 3, 4, 5), ab(mat, 2, 8, 9, 3)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 2, 8, 9, 4)*ab(mat, 5, 6, 7, 3), ab(mat, 2, 8, 9, 5)*ab(mat, 4, 6, 7, 3) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 5, 4, 6, 7), ab(mat, 2, 8, 9, 6)*ab(mat, 4, 5, 7, 3) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 6, 4, 5, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 4, 5, 6, 3) + 
-  ab(mat, 2, 8, 9, 3)*ab(mat, 7, 4, 5, 6), ab(mat, 2, 8, 9, 5)*ab(mat, 3, 6, 7, 4) + 
-  ab(mat, 2, 8, 9, 4)*ab(mat, 5, 3, 6, 7), ab(mat, 2, 8, 9, 6)*ab(mat, 3, 5, 7, 4) + 
-  ab(mat, 2, 8, 9, 4)*ab(mat, 6, 3, 5, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 5, 6, 4) + 
-  ab(mat, 2, 8, 9, 4)*ab(mat, 7, 3, 5, 6), ab(mat, 2, 8, 9, 6)*ab(mat, 3, 4, 7, 5) + 
-  ab(mat, 2, 8, 9, 5)*ab(mat, 6, 3, 4, 7), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 4, 6, 5) + 
-  ab(mat, 2, 8, 9, 5)*ab(mat, 7, 3, 4, 6), ab(mat, 2, 8, 9, 7)*ab(mat, 3, 4, 5, 6) + 
-  ab(mat, 2, 8, 9, 6)*ab(mat, 7, 3, 4, 5), ab(mat, 3, 4, 5, 2)*ab(mat, 6, 7, 8, 9) + 
-  ab(mat, 3, 4, 5, 6)*ab(mat, 7, 8, 9, 2), ab(mat, 3, 4, 5, 7)*ab(mat, 6, 8, 9, 2) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 7, 6, 8, 9), ab(mat, 3, 4, 5, 8)*ab(mat, 6, 7, 9, 2) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 8, 6, 7, 9), ab(mat, 3, 4, 5, 9)*ab(mat, 6, 7, 8, 2) + 
-  ab(mat, 3, 4, 5, 2)*ab(mat, 9, 6, 7, 8), ab(mat, 3, 4, 6, 2)*ab(mat, 5, 7, 8, 9) + 
-  ab(mat, 3, 4, 6, 5)*ab(mat, 7, 8, 9, 2), ab(mat, 3, 4, 6, 7)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 7, 5, 8, 9), ab(mat, 3, 4, 6, 8)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 8, 5, 7, 9), ab(mat, 3, 4, 6, 9)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 3, 4, 6, 2)*ab(mat, 9, 5, 7, 8), ab(mat, 3, 4, 7, 2)*ab(mat, 5, 6, 8, 9) + 
-  ab(mat, 3, 4, 7, 5)*ab(mat, 6, 8, 9, 2), ab(mat, 3, 4, 7, 6)*ab(mat, 5, 8, 9, 2) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 6, 5, 8, 9), ab(mat, 3, 4, 7, 8)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 8, 5, 6, 9), ab(mat, 3, 4, 7, 9)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 3, 4, 7, 2)*ab(mat, 9, 5, 6, 8), ab(mat, 3, 4, 8, 2)*ab(mat, 5, 6, 7, 9) + 
-  ab(mat, 3, 4, 8, 5)*ab(mat, 6, 7, 9, 2), ab(mat, 3, 4, 8, 6)*ab(mat, 5, 7, 9, 2) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 6, 5, 7, 9), ab(mat, 3, 4, 8, 7)*ab(mat, 5, 6, 9, 2) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 7, 5, 6, 9), ab(mat, 3, 4, 8, 9)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 3, 4, 8, 2)*ab(mat, 9, 5, 6, 7), ab(mat, 3, 4, 9, 2)*ab(mat, 5, 6, 7, 8) + 
-  ab(mat, 3, 4, 9, 5)*ab(mat, 6, 7, 8, 2), ab(mat, 3, 4, 9, 6)*ab(mat, 5, 7, 8, 2) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 6, 5, 7, 8), ab(mat, 3, 4, 9, 7)*ab(mat, 5, 6, 8, 2) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 7, 5, 6, 8), ab(mat, 3, 4, 9, 8)*ab(mat, 5, 6, 7, 2) + 
-  ab(mat, 3, 4, 9, 2)*ab(mat, 8, 5, 6, 7), ab(mat, 3, 5, 6, 2)*ab(mat, 4, 7, 8, 9) + 
-  ab(mat, 3, 5, 6, 4)*ab(mat, 7, 8, 9, 2), ab(mat, 3, 5, 6, 7)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 7, 4, 8, 9), ab(mat, 3, 5, 6, 8)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 8, 4, 7, 9), ab(mat, 3, 5, 6, 9)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 3, 5, 6, 2)*ab(mat, 9, 4, 7, 8), ab(mat, 3, 5, 7, 2)*ab(mat, 4, 6, 8, 9) + 
-  ab(mat, 3, 5, 7, 4)*ab(mat, 6, 8, 9, 2), ab(mat, 3, 5, 7, 6)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 6, 4, 8, 9), ab(mat, 3, 5, 7, 8)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 8, 4, 6, 9), ab(mat, 3, 5, 7, 9)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 3, 5, 7, 2)*ab(mat, 9, 4, 6, 8), ab(mat, 3, 5, 8, 2)*ab(mat, 4, 6, 7, 9) + 
-  ab(mat, 3, 5, 8, 4)*ab(mat, 6, 7, 9, 2), ab(mat, 3, 5, 8, 6)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 6, 4, 7, 9), ab(mat, 3, 5, 8, 7)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 7, 4, 6, 9), ab(mat, 3, 5, 8, 9)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 3, 5, 8, 2)*ab(mat, 9, 4, 6, 7), ab(mat, 3, 5, 9, 2)*ab(mat, 4, 6, 7, 8) + 
-  ab(mat, 3, 5, 9, 4)*ab(mat, 6, 7, 8, 2), ab(mat, 3, 5, 9, 6)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 6, 4, 7, 8), ab(mat, 3, 5, 9, 7)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 7, 4, 6, 8), ab(mat, 3, 5, 9, 8)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 3, 5, 9, 2)*ab(mat, 8, 4, 6, 7), ab(mat, 3, 6, 7, 2)*ab(mat, 4, 5, 8, 9) + 
-  ab(mat, 3, 6, 7, 4)*ab(mat, 5, 8, 9, 2), ab(mat, 3, 6, 7, 5)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 5, 4, 8, 9), ab(mat, 3, 6, 7, 8)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 8, 4, 5, 9), ab(mat, 3, 6, 7, 9)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 3, 6, 7, 2)*ab(mat, 9, 4, 5, 8), ab(mat, 3, 6, 8, 2)*ab(mat, 4, 5, 7, 9) + 
-  ab(mat, 3, 6, 8, 4)*ab(mat, 5, 7, 9, 2), ab(mat, 3, 6, 8, 5)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 5, 4, 7, 9), ab(mat, 3, 6, 8, 7)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 7, 4, 5, 9), ab(mat, 3, 6, 8, 9)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 3, 6, 8, 2)*ab(mat, 9, 4, 5, 7), ab(mat, 3, 6, 9, 2)*ab(mat, 4, 5, 7, 8) + 
-  ab(mat, 3, 6, 9, 4)*ab(mat, 5, 7, 8, 2), ab(mat, 3, 6, 9, 5)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 5, 4, 7, 8), ab(mat, 3, 6, 9, 7)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 7, 4, 5, 8), ab(mat, 3, 6, 9, 8)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 3, 6, 9, 2)*ab(mat, 8, 4, 5, 7), ab(mat, 3, 7, 8, 2)*ab(mat, 4, 5, 6, 9) + 
-  ab(mat, 3, 7, 8, 4)*ab(mat, 5, 6, 9, 2), ab(mat, 3, 7, 8, 5)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 5, 4, 6, 9), ab(mat, 3, 7, 8, 6)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 6, 4, 5, 9), ab(mat, 3, 7, 8, 9)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 3, 7, 8, 2)*ab(mat, 9, 4, 5, 6), ab(mat, 3, 7, 9, 2)*ab(mat, 4, 5, 6, 8) + 
-  ab(mat, 3, 7, 9, 4)*ab(mat, 5, 6, 8, 2), ab(mat, 3, 7, 9, 5)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 5, 4, 6, 8), ab(mat, 3, 7, 9, 6)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 6, 4, 5, 8), ab(mat, 3, 7, 9, 8)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 3, 7, 9, 2)*ab(mat, 8, 4, 5, 6), ab(mat, 3, 8, 9, 2)*ab(mat, 4, 5, 6, 7) + 
-  ab(mat, 3, 8, 9, 4)*ab(mat, 5, 6, 7, 2), ab(mat, 3, 8, 9, 5)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 5, 4, 6, 7), ab(mat, 3, 8, 9, 6)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 6, 4, 5, 7), ab(mat, 3, 8, 9, 7)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 3, 8, 9, 2)*ab(mat, 7, 4, 5, 6), ab(mat, 3, 7, 8, 9)*ab(mat, 4, 5, 6, 2) + 
-  ab(mat, 4, 5, 6, 3)*ab(mat, 7, 8, 9, 2), ab(mat, 3, 6, 8, 9)*ab(mat, 4, 5, 7, 2) + 
-  ab(mat, 4, 5, 7, 3)*ab(mat, 6, 8, 9, 2), ab(mat, 3, 6, 7, 9)*ab(mat, 4, 5, 8, 2) + 
-  ab(mat, 4, 5, 8, 3)*ab(mat, 6, 7, 9, 2), ab(mat, 3, 6, 7, 8)*ab(mat, 4, 5, 9, 2) + 
-  ab(mat, 4, 5, 9, 3)*ab(mat, 6, 7, 8, 2), ab(mat, 3, 5, 8, 9)*ab(mat, 4, 6, 7, 2) + 
-  ab(mat, 4, 6, 7, 3)*ab(mat, 5, 8, 9, 2), ab(mat, 3, 5, 7, 9)*ab(mat, 4, 6, 8, 2) + 
-  ab(mat, 4, 6, 8, 3)*ab(mat, 5, 7, 9, 2), ab(mat, 3, 5, 7, 8)*ab(mat, 4, 6, 9, 2) + 
-  ab(mat, 4, 6, 9, 3)*ab(mat, 5, 7, 8, 2), ab(mat, 3, 5, 6, 9)*ab(mat, 4, 7, 8, 2) + 
-  ab(mat, 4, 7, 8, 3)*ab(mat, 5, 6, 9, 2), ab(mat, 3, 5, 6, 8)*ab(mat, 4, 7, 9, 2) + 
-  ab(mat, 4, 7, 9, 3)*ab(mat, 5, 6, 8, 2), ab(mat, 3, 5, 6, 7)*ab(mat, 4, 8, 9, 2) + 
-  ab(mat, 4, 8, 9, 3)*ab(mat, 5, 6, 7, 2)});
+int ab1234 = ab(mat, 1, 2, 3, 4);
+int ab1235 = ab(mat, 1, 2, 3, 5);
+int ab1236 = ab(mat, 1, 2, 3, 6);
+int ab1237 = ab(mat, 1, 2, 3, 7);
+int ab1238 = ab(mat, 1, 2, 3, 8);
+int ab1239 = ab(mat, 1, 2, 3, 9);
+int ab1245 = ab(mat, 1, 2, 4, 5);
+int ab1246 = ab(mat, 1, 2, 4, 6);
+int ab1247 = ab(mat, 1, 2, 4, 7);
+int ab1248 = ab(mat, 1, 2, 4, 8);
+int ab1249 = ab(mat, 1, 2, 4, 9);
+int ab1256 = ab(mat, 1, 2, 5, 6);
+int ab1257 = ab(mat, 1, 2, 5, 7);
+int ab1258 = ab(mat, 1, 2, 5, 8);
+int ab1259 = ab(mat, 1, 2, 5, 9);
+int ab1267 = ab(mat, 1, 2, 6, 7);
+int ab1268 = ab(mat, 1, 2, 6, 8);
+int ab1269 = ab(mat, 1, 2, 6, 9);
+int ab1278 = ab(mat, 1, 2, 7, 8);
+int ab1279 = ab(mat, 1, 2, 7, 9);
+int ab1289 = ab(mat, 1, 2, 8, 9);
+int ab1345 = ab(mat, 1, 3, 4, 5);
+int ab1346 = ab(mat, 1, 3, 4, 6);
+int ab1347 = ab(mat, 1, 3, 4, 7);
+int ab1348 = ab(mat, 1, 3, 4, 8);
+int ab1349 = ab(mat, 1, 3, 4, 9);
+int ab1356 = ab(mat, 1, 3, 5, 6);
+int ab1357 = ab(mat, 1, 3, 5, 7);
+int ab1358 = ab(mat, 1, 3, 5, 8);
+int ab1359 = ab(mat, 1, 3, 5, 9);
+int ab1367 = ab(mat, 1, 3, 6, 7);
+int ab1368 = ab(mat, 1, 3, 6, 8);
+int ab1369 = ab(mat, 1, 3, 6, 9);
+int ab1378 = ab(mat, 1, 3, 7, 8);
+int ab1379 = ab(mat, 1, 3, 7, 9);
+int ab1389 = ab(mat, 1, 3, 8, 9);
+int ab1456 = ab(mat, 1, 4, 5, 6);
+int ab1457 = ab(mat, 1, 4, 5, 7);
+int ab1458 = ab(mat, 1, 4, 5, 8);
+int ab1459 = ab(mat, 1, 4, 5, 9);
+int ab1467 = ab(mat, 1, 4, 6, 7);
+int ab1468 = ab(mat, 1, 4, 6, 8);
+int ab1469 = ab(mat, 1, 4, 6, 9);
+int ab1478 = ab(mat, 1, 4, 7, 8);
+int ab1479 = ab(mat, 1, 4, 7, 9);
+int ab1489 = ab(mat, 1, 4, 8, 9);
+int ab1567 = ab(mat, 1, 5, 6, 7);
+int ab1568 = ab(mat, 1, 5, 6, 8);
+int ab1569 = ab(mat, 1, 5, 6, 9);
+int ab1578 = ab(mat, 1, 5, 7, 8);
+int ab1579 = ab(mat, 1, 5, 7, 9);
+int ab1589 = ab(mat, 1, 5, 8, 9);
+int ab1678 = ab(mat, 1, 6, 7, 8);
+int ab1679 = ab(mat, 1, 6, 7, 9);
+int ab1689 = ab(mat, 1, 6, 8, 9);
+int ab1789 = ab(mat, 1, 7, 8, 9);
+int ab2345 = ab(mat, 2, 3, 4, 5);
+int ab2346 = ab(mat, 2, 3, 4, 6);
+int ab2347 = ab(mat, 2, 3, 4, 7);
+int ab2348 = ab(mat, 2, 3, 4, 8);
+int ab2349 = ab(mat, 2, 3, 4, 9);
+int ab2356 = ab(mat, 2, 3, 5, 6);
+int ab2357 = ab(mat, 2, 3, 5, 7);
+int ab2358 = ab(mat, 2, 3, 5, 8);
+int ab2359 = ab(mat, 2, 3, 5, 9);
+int ab2367 = ab(mat, 2, 3, 6, 7);
+int ab2368 = ab(mat, 2, 3, 6, 8);
+int ab2369 = ab(mat, 2, 3, 6, 9);
+int ab2378 = ab(mat, 2, 3, 7, 8);
+int ab2379 = ab(mat, 2, 3, 7, 9);
+int ab2389 = ab(mat, 2, 3, 8, 9);
+int ab2456 = ab(mat, 2, 4, 5, 6);
+int ab2457 = ab(mat, 2, 4, 5, 7);
+int ab2458 = ab(mat, 2, 4, 5, 8);
+int ab2459 = ab(mat, 2, 4, 5, 9);
+int ab2467 = ab(mat, 2, 4, 6, 7);
+int ab2468 = ab(mat, 2, 4, 6, 8);
+int ab2469 = ab(mat, 2, 4, 6, 9);
+int ab2478 = ab(mat, 2, 4, 7, 8);
+int ab2479 = ab(mat, 2, 4, 7, 9);
+int ab2489 = ab(mat, 2, 4, 8, 9);
+int ab2567 = ab(mat, 2, 5, 6, 7);
+int ab2568 = ab(mat, 2, 5, 6, 8);
+int ab2569 = ab(mat, 2, 5, 6, 9);
+int ab2578 = ab(mat, 2, 5, 7, 8);
+int ab2579 = ab(mat, 2, 5, 7, 9);
+int ab2589 = ab(mat, 2, 5, 8, 9);
+int ab2678 = ab(mat, 2, 6, 7, 8);
+int ab2679 = ab(mat, 2, 6, 7, 9);
+int ab2689 = ab(mat, 2, 6, 8, 9);
+int ab2789 = ab(mat, 2, 7, 8, 9);
+int ab3456 = ab(mat, 3, 4, 5, 6);
+int ab3457 = ab(mat, 3, 4, 5, 7);
+int ab3458 = ab(mat, 3, 4, 5, 8);
+int ab3459 = ab(mat, 3, 4, 5, 9);
+int ab3467 = ab(mat, 3, 4, 6, 7);
+int ab3468 = ab(mat, 3, 4, 6, 8);
+int ab3469 = ab(mat, 3, 4, 6, 9);
+int ab3478 = ab(mat, 3, 4, 7, 8);
+int ab3479 = ab(mat, 3, 4, 7, 9);
+int ab3489 = ab(mat, 3, 4, 8, 9);
+int ab3567 = ab(mat, 3, 5, 6, 7);
+int ab3568 = ab(mat, 3, 5, 6, 8);
+int ab3569 = ab(mat, 3, 5, 6, 9);
+int ab3578 = ab(mat, 3, 5, 7, 8);
+int ab3579 = ab(mat, 3, 5, 7, 9);
+int ab3589 = ab(mat, 3, 5, 8, 9);
+int ab3678 = ab(mat, 3, 6, 7, 8);
+int ab3679 = ab(mat, 3, 6, 7, 9);
+int ab3689 = ab(mat, 3, 6, 8, 9);
+int ab3789 = ab(mat, 3, 7, 8, 9);
+int ab4567 = ab(mat, 4, 5, 6, 7);
+int ab4568 = ab(mat, 4, 5, 6, 8);
+int ab4569 = ab(mat, 4, 5, 6, 9);
+int ab4578 = ab(mat, 4, 5, 7, 8);
+int ab4579 = ab(mat, 4, 5, 7, 9);
+int ab4589 = ab(mat, 4, 5, 8, 9);
+int ab4678 = ab(mat, 4, 6, 7, 8);
+int ab4679 = ab(mat, 4, 6, 7, 9);
+int ab4689 = ab(mat, 4, 6, 8, 9);
+int ab4789 = ab(mat, 4, 7, 8, 9);
+int ab5678 = ab(mat, 5, 6, 7, 8);
+int ab5679 = ab(mat, 5, 6, 7, 9);
+int ab5689 = ab(mat, 5, 6, 8, 9);
+int ab5789 = ab(mat, 5, 7, 8, 9);
+int ab6789 = ab(mat, 6, 7, 8, 9);
+ 
+wll::list<int> result({ }, {ab1234, ab1235, ab1236, ab1237, 
+ ab1238, ab1239, ab1245, ab1246, 
+ ab1247, ab1248, ab1249, ab1256, 
+ ab1257, ab1258, ab1259, ab1267, 
+ ab1268, ab1269, ab1278, ab1279, 
+ ab1289, ab1345, ab1346, ab1347, 
+ ab1348, ab1349, ab1356, ab1357, 
+ ab1358, ab1359, ab1367, ab1368, 
+ ab1369, ab1378, ab1379, ab1389, 
+ ab1456, ab1457, ab1458, ab1459, 
+ ab1467, ab1468, ab1469, ab1478, 
+ ab1479, ab1489, ab1567, ab1568, 
+ ab1569, ab1578, ab1579, ab1589, 
+ ab1678, ab1679, ab1689, ab1789, 
+ ab2345, ab2346, ab2347, ab2348, 
+ ab2349, ab2356, ab2357, ab2358, 
+ ab2359, ab2367, ab2368, ab2369, 
+ ab2378, ab2379, ab2389, ab2456, 
+ ab2457, ab2458, ab2459, ab2467, 
+ ab2468, ab2469, ab2478, ab2479, 
+ ab2489, ab2567, ab2568, ab2569, 
+ ab2578, ab2579, ab2589, ab2678, 
+ ab2679, ab2689, ab2789, ab3456, 
+ ab3457, ab3458, ab3459, ab3467, 
+ ab3468, ab3469, ab3478, ab3479, 
+ ab3489, ab3567, ab3568, ab3569, 
+ ab3578, ab3579, ab3589, ab3678, 
+ ab3679, ab3689, ab3789, ab4567, 
+ ab4568, ab4569, ab4578, ab4579, 
+ ab4589, ab4678, ab4679, ab4689, 
+ ab4789, ab5678, ab5679, ab5689, 
+ ab5789, ab6789, ab1367*ab2457 - 
+  ab1257*ab3467, ab1368*ab2458 - 
+  ab1258*ab3468, ab1357*ab2467 - 
+  ab1267*ab3457, ab1358*ab2468 - 
+  ab1268*ab3458, -(ab1367*ab2457) - 
+  ab1247*ab3567, -(ab1368*ab2458) - 
+  ab1248*ab3568, ab1347*ab2567 + 
+  ab1267*ab3457, ab1348*ab2568 + 
+  ab1268*ab3458, -(ab1357*ab2467) + 
+  ab1247*ab3567, -(ab1358*ab2468) + 
+  ab1248*ab3568, -(ab1347*ab2567) + 
+  ab1257*ab3467, -(ab1348*ab2568) + 
+  ab1258*ab3468, -(ab1367*ab2456) + 
+  ab1256*ab3467, ab1378*ab2458 - 
+  ab1258*ab3478, -(ab1356*ab2467) + 
+  ab1267*ab3456, ab1358*ab2478 - 
+  ab1278*ab3458, ab1367*ab2456 + 
+  ab1246*ab3567, -(ab1378*ab2458) - 
+  ab1248*ab3578, -(ab1346*ab2567) - 
+  ab1267*ab3456, ab1348*ab2578 + 
+  ab1278*ab3458, ab1356*ab2467 - 
+  ab1246*ab3567, -(ab1358*ab2478) + 
+  ab1248*ab3578, ab1346*ab2567 - 
+  ab1256*ab3467, -(ab1348*ab2578) + 
+  ab1258*ab3478, -(ab1368*ab2456) + 
+  ab1256*ab3468, -(ab1378*ab2457) + 
+  ab1257*ab3478, -(ab1356*ab2468) + 
+  ab1268*ab3456, -(ab1357*ab2478) + 
+  ab1278*ab3457, ab1368*ab2456 + 
+  ab1246*ab3568, ab1378*ab2457 + 
+  ab1247*ab3578, -(ab1346*ab2568) - 
+  ab1268*ab3456, -(ab1347*ab2578) - 
+  ab1278*ab3457, ab1356*ab2468 - 
+  ab1246*ab3568, ab1357*ab2478 - 
+  ab1247*ab3578, ab1346*ab2568 - 
+  ab1256*ab3468, ab1347*ab2578 - 
+  ab1257*ab3478, ab1357*ab2456 - 
+  ab1256*ab3457, ab1378*ab2468 - 
+  ab1268*ab3478, ab1356*ab2457 - 
+  ab1257*ab3456, ab1368*ab2478 - 
+  ab1278*ab3468, -(ab1357*ab2456) - 
+  ab1245*ab3567, -(ab1378*ab2468) - 
+  ab1248*ab3678, ab1345*ab2567 + 
+  ab1257*ab3456, ab1348*ab2678 + 
+  ab1278*ab3468, -(ab1356*ab2457) + 
+  ab1245*ab3567, -(ab1368*ab2478) + 
+  ab1248*ab3678, -(ab1345*ab2567) + 
+  ab1256*ab3457, -(ab1348*ab2678) + 
+  ab1268*ab3478, ab1358*ab2456 - 
+  ab1256*ab3458, -(ab1378*ab2467) + 
+  ab1267*ab3478, ab1356*ab2458 - 
+  ab1258*ab3456, -(ab1367*ab2478) + 
+  ab1278*ab3467, -(ab1358*ab2456) - 
+  ab1245*ab3568, ab1378*ab2467 + 
+  ab1247*ab3678, ab1345*ab2568 + 
+  ab1258*ab3456, -(ab1347*ab2678) - 
+  ab1278*ab3467, -(ab1356*ab2458) + 
+  ab1245*ab3568, ab1367*ab2478 - 
+  ab1247*ab3678, -(ab1345*ab2568) + 
+  ab1256*ab3458, ab1347*ab2678 - 
+  ab1267*ab3478, ab1358*ab2457 - 
+  ab1257*ab3458, ab1368*ab2467 - 
+  ab1267*ab3468, ab1357*ab2458 - 
+  ab1258*ab3457, ab1367*ab2468 - 
+  ab1268*ab3467, -(ab1358*ab2457) - 
+  ab1245*ab3578, -(ab1368*ab2467) - 
+  ab1246*ab3678, ab1345*ab2578 + 
+  ab1258*ab3457, ab1346*ab2678 + 
+  ab1268*ab3467, -(ab1357*ab2458) + 
+  ab1245*ab3578, -(ab1367*ab2468) + 
+  ab1246*ab3678, -(ab1345*ab2578) + 
+  ab1257*ab3458, -(ab1346*ab2678) + 
+  ab1267*ab3468, -(ab1347*ab2456) + 
+  ab1246*ab3457, ab1378*ab2568 - 
+  ab1268*ab3578, -(ab1346*ab2457) + 
+  ab1247*ab3456, ab1368*ab2578 - 
+  ab1278*ab3568, ab1347*ab2456 + 
+  ab1245*ab3467, -(ab1378*ab2568) - 
+  ab1258*ab3678, -(ab1345*ab2467) - 
+  ab1247*ab3456, ab1358*ab2678 + 
+  ab1278*ab3568, ab1346*ab2457 - 
+  ab1245*ab3467, -(ab1368*ab2578) + 
+  ab1258*ab3678, ab1345*ab2467 - 
+  ab1246*ab3457, -(ab1358*ab2678) + 
+  ab1268*ab3578, -(ab1348*ab2456) + 
+  ab1246*ab3458, -(ab1378*ab2567) + 
+  ab1267*ab3578, -(ab1346*ab2458) + 
+  ab1248*ab3456, -(ab1367*ab2578) + 
+  ab1278*ab3567, ab1348*ab2456 + 
+  ab1245*ab3468, ab1378*ab2567 + 
+  ab1257*ab3678, -(ab1345*ab2468) - 
+  ab1248*ab3456, -(ab1357*ab2678) - 
+  ab1278*ab3567, ab1346*ab2458 - 
+  ab1245*ab3468, ab1367*ab2578 - 
+  ab1257*ab3678, ab1345*ab2468 - 
+  ab1246*ab3458, ab1357*ab2678 - 
+  ab1267*ab3578, -(ab1348*ab2457) + 
+  ab1247*ab3458, ab1368*ab2567 - 
+  ab1267*ab3568, -(ab1347*ab2458) + 
+  ab1248*ab3457, ab1367*ab2568 - 
+  ab1268*ab3567, ab1348*ab2457 + 
+  ab1245*ab3478, -(ab1368*ab2567) - 
+  ab1256*ab3678, -(ab1345*ab2478) - 
+  ab1248*ab3457, ab1356*ab2678 + 
+  ab1268*ab3567, ab1347*ab2458 - 
+  ab1245*ab3478, -(ab1367*ab2568) + 
+  ab1256*ab3678, ab1345*ab2478 - 
+  ab1247*ab3458, -(ab1356*ab2678) + 
+  ab1267*ab3568, -(ab1348*ab2467) + 
+  ab1247*ab3468, -(ab1358*ab2567) + 
+  ab1257*ab3568, -(ab1347*ab2468) + 
+  ab1248*ab3467, -(ab1357*ab2568) + 
+  ab1258*ab3567, ab1348*ab2467 + 
+  ab1246*ab3478, ab1358*ab2567 + 
+  ab1256*ab3578, -(ab1346*ab2478) - 
+  ab1248*ab3467, -(ab1356*ab2578) - 
+  ab1258*ab3567, ab1347*ab2468 - 
+  ab1246*ab3478, ab1357*ab2568 - 
+  ab1256*ab3578, ab1346*ab2478 - 
+  ab1247*ab3468, ab1356*ab2578 - 
+  ab1257*ab3568, ab1467*ab2357 + 
+  ab1257*ab3467, ab1468*ab2358 + 
+  ab1258*ab3468, ab1457*ab2367 + 
+  ab1267*ab3457, ab1458*ab2368 + 
+  ab1268*ab3458, -(ab1467*ab2357) - 
+  ab1237*ab4567, -(ab1468*ab2358) - 
+  ab1238*ab4568, -(ab1457*ab2367) + 
+  ab1237*ab4567, -(ab1458*ab2368) + 
+  ab1238*ab4568, -(ab1467*ab2356) - 
+  ab1256*ab3467, ab1478*ab2358 + 
+  ab1258*ab3478, -(ab1456*ab2367) - 
+  ab1267*ab3456, ab1458*ab2378 + 
+  ab1278*ab3458, ab1467*ab2356 + 
+  ab1236*ab4567, -(ab1478*ab2358) - 
+  ab1238*ab4578, ab1456*ab2367 - 
+  ab1236*ab4567, -(ab1458*ab2378) + 
+  ab1238*ab4578, -(ab1468*ab2356) - 
+  ab1256*ab3468, -(ab1478*ab2357) - 
+  ab1257*ab3478, -(ab1456*ab2368) - 
+  ab1268*ab3456, -(ab1457*ab2378) - 
+  ab1278*ab3457, ab1468*ab2356 + 
+  ab1236*ab4568, ab1478*ab2357 + 
+  ab1237*ab4578, ab1456*ab2368 - 
+  ab1236*ab4568, ab1457*ab2378 - 
+  ab1237*ab4578, ab1457*ab2356 + 
+  ab1256*ab3457, ab1478*ab2368 + 
+  ab1268*ab3478, ab1456*ab2357 + 
+  ab1257*ab3456, ab1468*ab2378 + 
+  ab1278*ab3468, -(ab1457*ab2356) - 
+  ab1235*ab4567, -(ab1478*ab2368) - 
+  ab1238*ab4678, -(ab1456*ab2357) + 
+  ab1235*ab4567, -(ab1468*ab2378) + 
+  ab1238*ab4678, ab1458*ab2356 + 
+  ab1256*ab3458, -(ab1478*ab2367) - 
+  ab1267*ab3478, ab1456*ab2358 + 
+  ab1258*ab3456, -(ab1467*ab2378) - 
+  ab1278*ab3467, -(ab1458*ab2356) - 
+  ab1235*ab4568, ab1478*ab2367 + 
+  ab1237*ab4678, -(ab1456*ab2358) + 
+  ab1235*ab4568, ab1467*ab2378 - 
+  ab1237*ab4678, ab1458*ab2357 + 
+  ab1257*ab3458, ab1468*ab2367 + 
+  ab1267*ab3468, ab1457*ab2358 + 
+  ab1258*ab3457, ab1467*ab2368 + 
+  ab1268*ab3467, -(ab1458*ab2357) - 
+  ab1235*ab4578, -(ab1468*ab2367) - 
+  ab1236*ab4678, -(ab1457*ab2358) + 
+  ab1235*ab4578, -(ab1467*ab2368) + 
+  ab1236*ab4678, ab1347*ab2356 - 
+  ab1236*ab3457, ab1478*ab2568 - 
+  ab1268*ab4578, ab1346*ab2357 - 
+  ab1237*ab3456, ab1468*ab2578 - 
+  ab1278*ab4568, -(ab1347*ab2356) - 
+  ab1235*ab3467, -(ab1478*ab2568) - 
+  ab1258*ab4678, ab1345*ab2367 + 
+  ab1237*ab3456, ab1458*ab2678 + 
+  ab1278*ab4568, -(ab1346*ab2357) + 
+  ab1235*ab3467, -(ab1468*ab2578) + 
+  ab1258*ab4678, -(ab1345*ab2367) + 
+  ab1236*ab3457, -(ab1458*ab2678) + 
+  ab1268*ab4578, ab1348*ab2356 - 
+  ab1236*ab3458, -(ab1478*ab2567) + 
+  ab1267*ab4578, ab1346*ab2358 - 
+  ab1238*ab3456, -(ab1467*ab2578) + 
+  ab1278*ab4567, -(ab1348*ab2356) - 
+  ab1235*ab3468, ab1478*ab2567 + 
+  ab1257*ab4678, ab1345*ab2368 + 
+  ab1238*ab3456, -(ab1457*ab2678) - 
+  ab1278*ab4567, -(ab1346*ab2358) + 
+  ab1235*ab3468, ab1467*ab2578 - 
+  ab1257*ab4678, -(ab1345*ab2368) + 
+  ab1236*ab3458, ab1457*ab2678 - 
+  ab1267*ab4578, ab1348*ab2357 - 
+  ab1237*ab3458, ab1468*ab2567 - 
+  ab1267*ab4568, ab1347*ab2358 - 
+  ab1238*ab3457, ab1467*ab2568 - 
+  ab1268*ab4567, -(ab1348*ab2357) - 
+  ab1235*ab3478, -(ab1468*ab2567) - 
+  ab1256*ab4678, ab1345*ab2378 + 
+  ab1238*ab3457, ab1456*ab2678 + 
+  ab1268*ab4567, -(ab1347*ab2358) + 
+  ab1235*ab3478, -(ab1467*ab2568) + 
+  ab1256*ab4678, -(ab1345*ab2378) + 
+  ab1237*ab3458, -(ab1456*ab2678) + 
+  ab1267*ab4568, ab1348*ab2367 - 
+  ab1237*ab3468, -(ab1458*ab2567) + 
+  ab1257*ab4568, ab1347*ab2368 - 
+  ab1238*ab3467, -(ab1457*ab2568) + 
+  ab1258*ab4567, -(ab1348*ab2367) - 
+  ab1236*ab3478, ab1458*ab2567 + 
+  ab1256*ab4578, ab1346*ab2378 + 
+  ab1238*ab3467, -(ab1456*ab2578) - 
+  ab1258*ab4567, -(ab1347*ab2368) + 
+  ab1236*ab3478, ab1457*ab2568 - 
+  ab1256*ab4578, -(ab1346*ab2378) + 
+  ab1237*ab3468, ab1456*ab2578 - 
+  ab1257*ab4568, ab1567*ab2347 + 
+  ab1247*ab3567, ab1568*ab2348 + 
+  ab1248*ab3568, -(ab1567*ab2347) + 
+  ab1237*ab4567, -(ab1568*ab2348) + 
+  ab1238*ab4568, -(ab1567*ab2346) - 
+  ab1246*ab3567, ab1578*ab2348 + 
+  ab1248*ab3578, ab1567*ab2346 - 
+  ab1236*ab4567, -(ab1578*ab2348) + 
+  ab1238*ab4578, -(ab1568*ab2346) - 
+  ab1246*ab3568, -(ab1578*ab2347) - 
+  ab1247*ab3578, ab1568*ab2346 - 
+  ab1236*ab4568, ab1578*ab2347 - 
+  ab1237*ab4578, -(ab1457*ab2346) - 
+  ab1246*ab3457, ab1578*ab2368 + 
+  ab1268*ab3578, -(ab1456*ab2347) - 
+  ab1247*ab3456, ab1568*ab2378 + 
+  ab1278*ab3568, ab1457*ab2346 + 
+  ab1234*ab4567, -(ab1578*ab2368) - 
+  ab1238*ab5678, ab1456*ab2347 - 
+  ab1234*ab4567, -(ab1568*ab2378) + 
+  ab1238*ab5678, -(ab1458*ab2346) - 
+  ab1246*ab3458, -(ab1578*ab2367) - 
+  ab1267*ab3578, -(ab1456*ab2348) - 
+  ab1248*ab3456, -(ab1567*ab2378) - 
+  ab1278*ab3567, ab1458*ab2346 + 
+  ab1234*ab4568, ab1578*ab2367 + 
+  ab1237*ab5678, ab1456*ab2348 - 
+  ab1234*ab4568, ab1567*ab2378 - 
+  ab1237*ab5678, -(ab1458*ab2347) - 
+  ab1247*ab3458, ab1568*ab2367 + 
+  ab1267*ab3568, -(ab1457*ab2348) - 
+  ab1248*ab3457, ab1567*ab2368 + 
+  ab1268*ab3567, ab1458*ab2347 + 
+  ab1234*ab4578, -(ab1568*ab2367) - 
+  ab1236*ab5678, ab1457*ab2348 - 
+  ab1234*ab4578, -(ab1567*ab2368) + 
+  ab1236*ab5678, ab1357*ab2346 + 
+  ab1236*ab3457, ab1578*ab2468 + 
+  ab1268*ab4578, ab1356*ab2347 + 
+  ab1237*ab3456, ab1568*ab2478 + 
+  ab1278*ab4568, -(ab1357*ab2346) - 
+  ab1234*ab3567, -(ab1578*ab2468) - 
+  ab1248*ab5678, -(ab1356*ab2347) + 
+  ab1234*ab3567, -(ab1568*ab2478) + 
+  ab1248*ab5678, ab1358*ab2346 + 
+  ab1236*ab3458, -(ab1578*ab2467) - 
+  ab1267*ab4578, ab1356*ab2348 + 
+  ab1238*ab3456, -(ab1567*ab2478) - 
+  ab1278*ab4567, -(ab1358*ab2346) - 
+  ab1234*ab3568, ab1578*ab2467 + 
+  ab1247*ab5678, -(ab1356*ab2348) + 
+  ab1234*ab3568, ab1567*ab2478 - 
+  ab1247*ab5678, ab1358*ab2347 + 
+  ab1237*ab3458, ab1568*ab2467 + 
+  ab1267*ab4568, ab1357*ab2348 + 
+  ab1238*ab3457, ab1567*ab2468 + 
+  ab1268*ab4567, -(ab1358*ab2347) - 
+  ab1234*ab3578, -(ab1568*ab2467) - 
+  ab1246*ab5678, -(ab1357*ab2348) + 
+  ab1234*ab3578, -(ab1567*ab2468) + 
+  ab1246*ab5678, ab1358*ab2367 - 
+  ab1237*ab3568, ab1458*ab2467 - 
+  ab1247*ab4568, ab1357*ab2368 - 
+  ab1238*ab3567, ab1457*ab2468 - 
+  ab1248*ab4567, -(ab1358*ab2367) - 
+  ab1236*ab3578, -(ab1458*ab2467) - 
+  ab1246*ab4578, ab1356*ab2378 + 
+  ab1238*ab3567, ab1456*ab2478 + 
+  ab1248*ab4567, -(ab1357*ab2368) + 
+  ab1236*ab3578, -(ab1457*ab2468) + 
+  ab1246*ab4578, -(ab1356*ab2378) + 
+  ab1237*ab3568, -(ab1456*ab2478) + 
+  ab1247*ab4568, ab1567*ab2345 + 
+  ab1245*ab3567, ab1678*ab2348 + 
+  ab1248*ab3678, -(ab1567*ab2345) + 
+  ab1235*ab4567, -(ab1678*ab2348) + 
+  ab1238*ab4678, ab1568*ab2345 + 
+  ab1245*ab3568, -(ab1678*ab2347) - 
+  ab1247*ab3678, -(ab1568*ab2345) + 
+  ab1235*ab4568, ab1678*ab2347 - 
+  ab1237*ab4678, -(ab1467*ab2345) - 
+  ab1245*ab3467, ab1678*ab2358 + 
+  ab1258*ab3678, ab1467*ab2345 - 
+  ab1234*ab4567, -(ab1678*ab2358) + 
+  ab1238*ab5678, -(ab1468*ab2345) - 
+  ab1245*ab3468, -(ab1678*ab2357) - 
+  ab1257*ab3678, ab1468*ab2345 - 
+  ab1234*ab4568, ab1678*ab2357 - 
+  ab1237*ab5678, -(ab1468*ab2347) - 
+  ab1247*ab3468, -(ab1568*ab2357) - 
+  ab1257*ab3568, -(ab1467*ab2348) - 
+  ab1248*ab3467, -(ab1567*ab2358) - 
+  ab1258*ab3567, ab1468*ab2347 + 
+  ab1234*ab4678, ab1568*ab2357 + 
+  ab1235*ab5678, ab1467*ab2348 - 
+  ab1234*ab4678, ab1567*ab2358 - 
+  ab1235*ab5678, ab1367*ab2345 + 
+  ab1235*ab3467, ab1678*ab2458 + 
+  ab1258*ab4678, -(ab1367*ab2345) + 
+  ab1234*ab3567, -(ab1678*ab2458) + 
+  ab1248*ab5678, ab1368*ab2345 + 
+  ab1235*ab3468, -(ab1678*ab2457) - 
+  ab1257*ab4678, -(ab1368*ab2345) + 
+  ab1234*ab3568, ab1678*ab2457 - 
+  ab1247*ab5678, ab1368*ab2347 + 
+  ab1237*ab3468, -(ab1568*ab2457) - 
+  ab1257*ab4568, ab1367*ab2348 + 
+  ab1238*ab3467, -(ab1567*ab2458) - 
+  ab1258*ab4567, -(ab1368*ab2347) - 
+  ab1234*ab3678, ab1568*ab2457 + 
+  ab1245*ab5678, -(ab1367*ab2348) + 
+  ab1234*ab3678, ab1567*ab2458 - 
+  ab1245*ab5678, ab1368*ab2357 + 
+  ab1237*ab3568, ab1468*ab2457 + 
+  ab1247*ab4568, ab1367*ab2358 + 
+  ab1238*ab3567, ab1467*ab2458 + 
+  ab1248*ab4567, -(ab1368*ab2357) - 
+  ab1235*ab3678, -(ab1468*ab2457) - 
+  ab1245*ab4678, -(ab1367*ab2358) + 
+  ab1235*ab3678, -(ab1467*ab2458) + 
+  ab1245*ab4678, ab1578*ab2345 + 
+  ab1245*ab3578, ab1678*ab2346 + 
+  ab1246*ab3678, -(ab1578*ab2345) + 
+  ab1235*ab4578, -(ab1678*ab2346) + 
+  ab1236*ab4678, -(ab1478*ab2345) - 
+  ab1245*ab3478, ab1678*ab2356 + 
+  ab1256*ab3678, ab1478*ab2345 - 
+  ab1234*ab4578, -(ab1678*ab2356) + 
+  ab1236*ab5678, -(ab1478*ab2346) - 
+  ab1246*ab3478, -(ab1578*ab2356) - 
+  ab1256*ab3578, ab1478*ab2346 - 
+  ab1234*ab4678, ab1578*ab2356 - 
+  ab1235*ab5678, ab1378*ab2345 + 
+  ab1235*ab3478, ab1678*ab2456 + 
+  ab1256*ab4678, -(ab1378*ab2345) + 
+  ab1234*ab3578, -(ab1678*ab2456) + 
+  ab1246*ab5678, ab1378*ab2346 + 
+  ab1236*ab3478, -(ab1578*ab2456) - 
+  ab1256*ab4578, -(ab1378*ab2346) + 
+  ab1234*ab3678, ab1578*ab2456 - 
+  ab1245*ab5678, ab1378*ab2356 + 
+  ab1236*ab3578, ab1478*ab2456 + 
+  ab1246*ab4578, -(ab1378*ab2356) + 
+  ab1235*ab3678, -(ab1478*ab2456) + 
+  ab1245*ab4678, -(ab1467*ab2357) + 
+  ab1357*ab2467, -(ab1468*ab2358) + 
+  ab1358*ab2468, -(ab1457*ab2367) + 
+  ab1367*ab2457, -(ab1458*ab2368) + 
+  ab1368*ab2458, ab1467*ab2356 - 
+  ab1356*ab2467, -(ab1478*ab2358) + 
+  ab1358*ab2478, ab1456*ab2367 - 
+  ab1367*ab2456, -(ab1458*ab2378) + 
+  ab1378*ab2458, ab1468*ab2356 - 
+  ab1356*ab2468, ab1478*ab2357 - 
+  ab1357*ab2478, ab1456*ab2368 - 
+  ab1368*ab2456, ab1457*ab2378 - 
+  ab1378*ab2457, -(ab1457*ab2356) + 
+  ab1356*ab2457, -(ab1478*ab2368) + 
+  ab1368*ab2478, -(ab1456*ab2357) + 
+  ab1357*ab2456, -(ab1468*ab2378) + 
+  ab1378*ab2468, -(ab1458*ab2356) + 
+  ab1356*ab2458, ab1478*ab2367 - 
+  ab1367*ab2478, -(ab1456*ab2358) + 
+  ab1358*ab2456, ab1467*ab2378 - 
+  ab1378*ab2467, -(ab1458*ab2357) + 
+  ab1357*ab2458, -(ab1468*ab2367) + 
+  ab1367*ab2468, -(ab1457*ab2358) + 
+  ab1358*ab2457, -(ab1467*ab2368) + 
+  ab1368*ab2467, -(ab1247*ab2356) + 
+  ab1236*ab2457, ab1478*ab3568 - 
+  ab1368*ab4578, -(ab1246*ab2357) + 
+  ab1237*ab2456, ab1468*ab3578 - 
+  ab1378*ab4568, ab1247*ab2356 + 
+  ab1235*ab2467, -(ab1478*ab3568) - 
+  ab1358*ab4678, -(ab1245*ab2367) - 
+  ab1237*ab2456, ab1458*ab3678 + 
+  ab1378*ab4568, ab1246*ab2357 - 
+  ab1235*ab2467, -(ab1468*ab3578) + 
+  ab1358*ab4678, ab1245*ab2367 - 
+  ab1236*ab2457, -(ab1458*ab3678) + 
+  ab1368*ab4578, -(ab1248*ab2356) + 
+  ab1236*ab2458, -(ab1478*ab3567) + 
+  ab1367*ab4578, -(ab1246*ab2358) + 
+  ab1238*ab2456, -(ab1467*ab3578) + 
+  ab1378*ab4567, ab1248*ab2356 + 
+  ab1235*ab2468, ab1478*ab3567 + 
+  ab1357*ab4678, -(ab1245*ab2368) - 
+  ab1238*ab2456, -(ab1457*ab3678) - 
+  ab1378*ab4567, ab1246*ab2358 - 
+  ab1235*ab2468, ab1467*ab3578 - 
+  ab1357*ab4678, ab1245*ab2368 - 
+  ab1236*ab2458, ab1457*ab3678 - 
+  ab1367*ab4578, -(ab1248*ab2357) + 
+  ab1237*ab2458, ab1468*ab3567 - 
+  ab1367*ab4568, -(ab1247*ab2358) + 
+  ab1238*ab2457, ab1467*ab3568 - 
+  ab1368*ab4567, ab1248*ab2357 + 
+  ab1235*ab2478, -(ab1468*ab3567) - 
+  ab1356*ab4678, -(ab1245*ab2378) - 
+  ab1238*ab2457, ab1456*ab3678 + 
+  ab1368*ab4567, ab1247*ab2358 - 
+  ab1235*ab2478, -(ab1467*ab3568) + 
+  ab1356*ab4678, ab1245*ab2378 - 
+  ab1237*ab2458, -(ab1456*ab3678) + 
+  ab1367*ab4568, -(ab1248*ab2367) + 
+  ab1237*ab2468, -(ab1458*ab3567) + 
+  ab1357*ab4568, -(ab1247*ab2368) + 
+  ab1238*ab2467, -(ab1457*ab3568) + 
+  ab1358*ab4567, ab1248*ab2367 + 
+  ab1236*ab2478, ab1458*ab3567 + 
+  ab1356*ab4578, -(ab1246*ab2378) - 
+  ab1238*ab2467, -(ab1456*ab3578) - 
+  ab1358*ab4567, ab1247*ab2368 - 
+  ab1236*ab2478, ab1457*ab3568 - 
+  ab1356*ab4578, ab1246*ab2378 - 
+  ab1237*ab2468, ab1456*ab3578 - 
+  ab1357*ab4568, -(ab1567*ab2347) + 
+  ab1347*ab2567, -(ab1568*ab2348) + 
+  ab1348*ab2568, ab1567*ab2346 - 
+  ab1346*ab2567, -(ab1578*ab2348) + 
+  ab1348*ab2578, ab1568*ab2346 - 
+  ab1346*ab2568, ab1578*ab2347 - 
+  ab1347*ab2578, ab1457*ab2346 - 
+  ab1346*ab2457, -(ab1578*ab2368) + 
+  ab1368*ab2578, ab1456*ab2347 - 
+  ab1347*ab2456, -(ab1568*ab2378) + 
+  ab1378*ab2568, ab1458*ab2346 - 
+  ab1346*ab2458, ab1578*ab2367 - 
+  ab1367*ab2578, ab1456*ab2348 - 
+  ab1348*ab2456, ab1567*ab2378 - 
+  ab1378*ab2567, ab1458*ab2347 - 
+  ab1347*ab2458, -(ab1568*ab2367) + 
+  ab1367*ab2568, ab1457*ab2348 - 
+  ab1348*ab2457, -(ab1567*ab2368) + 
+  ab1368*ab2567, -(ab1257*ab2346) - 
+  ab1236*ab2457, ab1578*ab3468 + 
+  ab1368*ab4578, -(ab1256*ab2347) - 
+  ab1237*ab2456, ab1568*ab3478 + 
+  ab1378*ab4568, ab1257*ab2346 + 
+  ab1234*ab2567, -(ab1578*ab3468) - 
+  ab1348*ab5678, ab1256*ab2347 - 
+  ab1234*ab2567, -(ab1568*ab3478) + 
+  ab1348*ab5678, -(ab1258*ab2346) - 
+  ab1236*ab2458, -(ab1578*ab3467) - 
+  ab1367*ab4578, -(ab1256*ab2348) - 
+  ab1238*ab2456, -(ab1567*ab3478) - 
+  ab1378*ab4567, ab1258*ab2346 + 
+  ab1234*ab2568, ab1578*ab3467 + 
+  ab1347*ab5678, ab1256*ab2348 - 
+  ab1234*ab2568, ab1567*ab3478 - 
+  ab1347*ab5678, -(ab1258*ab2347) - 
+  ab1237*ab2458, ab1568*ab3467 + 
+  ab1367*ab4568, -(ab1257*ab2348) - 
+  ab1238*ab2457, ab1567*ab3468 + 
+  ab1368*ab4567, ab1258*ab2347 + 
+  ab1234*ab2578, -(ab1568*ab3467) - 
+  ab1346*ab5678, ab1257*ab2348 - 
+  ab1234*ab2578, -(ab1567*ab3468) + 
+  ab1346*ab5678, -(ab1258*ab2367) + 
+  ab1237*ab2568, ab1458*ab3467 - 
+  ab1347*ab4568, -(ab1257*ab2368) + 
+  ab1238*ab2567, ab1457*ab3468 - 
+  ab1348*ab4567, ab1258*ab2367 + 
+  ab1236*ab2578, -(ab1458*ab3467) - 
+  ab1346*ab4578, -(ab1256*ab2378) - 
+  ab1238*ab2567, ab1456*ab3478 + 
+  ab1348*ab4567, ab1257*ab2368 - 
+  ab1236*ab2578, -(ab1457*ab3468) + 
+  ab1346*ab4578, ab1256*ab2378 - 
+  ab1237*ab2568, -(ab1456*ab3478) + 
+  ab1347*ab4568, -(ab1567*ab2345) + 
+  ab1345*ab2567, -(ab1678*ab2348) + 
+  ab1348*ab2678, -(ab1568*ab2345) + 
+  ab1345*ab2568, ab1678*ab2347 - 
+  ab1347*ab2678, ab1467*ab2345 - 
+  ab1345*ab2467, -(ab1678*ab2358) + 
+  ab1358*ab2678, ab1468*ab2345 - 
+  ab1345*ab2468, ab1678*ab2357 - 
+  ab1357*ab2678, ab1468*ab2347 - 
+  ab1347*ab2468, ab1568*ab2357 - 
+  ab1357*ab2568, ab1467*ab2348 - 
+  ab1348*ab2467, ab1567*ab2358 - 
+  ab1358*ab2567, -(ab1267*ab2345) - 
+  ab1235*ab2467, ab1678*ab3458 + 
+  ab1358*ab4678, ab1267*ab2345 - 
+  ab1234*ab2567, -(ab1678*ab3458) + 
+  ab1348*ab5678, -(ab1268*ab2345) - 
+  ab1235*ab2468, -(ab1678*ab3457) - 
+  ab1357*ab4678, ab1268*ab2345 - 
+  ab1234*ab2568, ab1678*ab3457 - 
+  ab1347*ab5678, -(ab1268*ab2347) - 
+  ab1237*ab2468, -(ab1568*ab3457) - 
+  ab1357*ab4568, -(ab1267*ab2348) - 
+  ab1238*ab2467, -(ab1567*ab3458) - 
+  ab1358*ab4567, ab1268*ab2347 + 
+  ab1234*ab2678, ab1568*ab3457 + 
+  ab1345*ab5678, ab1267*ab2348 - 
+  ab1234*ab2678, ab1567*ab3458 - 
+  ab1345*ab5678, -(ab1268*ab2357) - 
+  ab1237*ab2568, ab1468*ab3457 + 
+  ab1347*ab4568, -(ab1267*ab2358) - 
+  ab1238*ab2567, ab1467*ab3458 + 
+  ab1348*ab4567, ab1268*ab2357 + 
+  ab1235*ab2678, -(ab1468*ab3457) - 
+  ab1345*ab4678, ab1267*ab2358 - 
+  ab1235*ab2678, -(ab1467*ab3458) + 
+  ab1345*ab4678, -(ab1578*ab2345) + 
+  ab1345*ab2578, -(ab1678*ab2346) + 
+  ab1346*ab2678, ab1478*ab2345 - 
+  ab1345*ab2478, -(ab1678*ab2356) + 
+  ab1356*ab2678, ab1478*ab2346 - 
+  ab1346*ab2478, ab1578*ab2356 - 
+  ab1356*ab2578, -(ab1278*ab2345) - 
+  ab1235*ab2478, ab1678*ab3456 + 
+  ab1356*ab4678, ab1278*ab2345 - 
+  ab1234*ab2578, -(ab1678*ab3456) + 
+  ab1346*ab5678, -(ab1278*ab2346) - 
+  ab1236*ab2478, -(ab1578*ab3456) - 
+  ab1356*ab4578, ab1278*ab2346 - 
+  ab1234*ab2678, ab1578*ab3456 - 
+  ab1345*ab5678, -(ab1278*ab2356) - 
+  ab1236*ab2578, ab1478*ab3456 + 
+  ab1346*ab4578, ab1278*ab2356 - 
+  ab1235*ab2678, -(ab1478*ab3456) + 
+  ab1345*ab4678, -(ab1357*ab2346) + 
+  ab1346*ab2357, -(ab1578*ab2468) + 
+  ab1468*ab2578, -(ab1356*ab2347) + 
+  ab1347*ab2356, -(ab1568*ab2478) + 
+  ab1478*ab2568, -(ab1358*ab2346) + 
+  ab1346*ab2358, ab1578*ab2467 - 
+  ab1467*ab2578, -(ab1356*ab2348) + 
+  ab1348*ab2356, ab1567*ab2478 - 
+  ab1478*ab2567, -(ab1358*ab2347) + 
+  ab1347*ab2358, -(ab1568*ab2467) + 
+  ab1467*ab2568, -(ab1357*ab2348) + 
+  ab1348*ab2357, -(ab1567*ab2468) + 
+  ab1468*ab2567, ab1257*ab2346 - 
+  ab1246*ab2357, -(ab1578*ab3468) + 
+  ab1468*ab3578, ab1256*ab2347 - 
+  ab1247*ab2356, -(ab1568*ab3478) + 
+  ab1478*ab3568, ab1258*ab2346 - 
+  ab1246*ab2358, ab1578*ab3467 - 
+  ab1467*ab3578, ab1256*ab2348 - 
+  ab1248*ab2356, ab1567*ab3478 - 
+  ab1478*ab3567, ab1258*ab2347 - 
+  ab1247*ab2358, -(ab1568*ab3467) + 
+  ab1467*ab3568, ab1257*ab2348 - 
+  ab1248*ab2357, -(ab1567*ab3468) + 
+  ab1468*ab3567, -(ab1258*ab2467) + 
+  ab1247*ab2568, -(ab1358*ab3467) + 
+  ab1347*ab3568, -(ab1257*ab2468) + 
+  ab1248*ab2567, -(ab1357*ab3468) + 
+  ab1348*ab3567, ab1258*ab2467 + 
+  ab1246*ab2578, ab1358*ab3467 + 
+  ab1346*ab3578, -(ab1256*ab2478) - 
+  ab1248*ab2567, -(ab1356*ab3478) - 
+  ab1348*ab3567, ab1257*ab2468 - 
+  ab1246*ab2578, ab1357*ab3468 - 
+  ab1346*ab3578, ab1256*ab2478 - 
+  ab1247*ab2568, ab1356*ab3478 - 
+  ab1347*ab3568, -(ab1367*ab2345) + 
+  ab1345*ab2367, -(ab1678*ab2458) + 
+  ab1458*ab2678, -(ab1368*ab2345) + 
+  ab1345*ab2368, ab1678*ab2457 - 
+  ab1457*ab2678, -(ab1368*ab2347) + 
+  ab1347*ab2368, ab1568*ab2457 - 
+  ab1457*ab2568, -(ab1367*ab2348) + 
+  ab1348*ab2367, ab1567*ab2458 - 
+  ab1458*ab2567, ab1267*ab2345 - 
+  ab1245*ab2367, -(ab1678*ab3458) + 
+  ab1458*ab3678, ab1268*ab2345 - 
+  ab1245*ab2368, ab1678*ab3457 - 
+  ab1457*ab3678, ab1268*ab2347 - 
+  ab1247*ab2368, ab1568*ab3457 - 
+  ab1457*ab3568, ab1267*ab2348 - 
+  ab1248*ab2367, ab1567*ab3458 - 
+  ab1458*ab3567, -(ab1268*ab2457) - 
+  ab1247*ab2568, -(ab1368*ab3457) - 
+  ab1347*ab3568, -(ab1267*ab2458) - 
+  ab1248*ab2567, -(ab1367*ab3458) - 
+  ab1348*ab3567, ab1268*ab2457 + 
+  ab1245*ab2678, ab1368*ab3457 + 
+  ab1345*ab3678, ab1267*ab2458 - 
+  ab1245*ab2678, ab1367*ab3458 - 
+  ab1345*ab3678, -(ab1378*ab2345) + 
+  ab1345*ab2378, -(ab1678*ab2456) + 
+  ab1456*ab2678, -(ab1378*ab2346) + 
+  ab1346*ab2378, ab1578*ab2456 - 
+  ab1456*ab2578, ab1278*ab2345 - 
+  ab1245*ab2378, -(ab1678*ab3456) + 
+  ab1456*ab3678, ab1278*ab2346 - 
+  ab1246*ab2378, ab1578*ab3456 - 
+  ab1456*ab3578, -(ab1278*ab2456) - 
+  ab1246*ab2578, -(ab1378*ab3456) - 
+  ab1346*ab3578, ab1278*ab2456 - 
+  ab1245*ab2678, ab1378*ab3456 - 
+  ab1345*ab3678, -(ab1368*ab2357) + 
+  ab1357*ab2368, -(ab1468*ab2457) + 
+  ab1457*ab2468, -(ab1367*ab2358) + 
+  ab1358*ab2367, -(ab1467*ab2458) + 
+  ab1458*ab2467, ab1268*ab2357 - 
+  ab1257*ab2368, -(ab1468*ab3457) + 
+  ab1457*ab3468, ab1267*ab2358 - 
+  ab1258*ab2367, -(ab1467*ab3458) + 
+  ab1458*ab3467, ab1268*ab2457 - 
+  ab1257*ab2468, ab1368*ab3457 - 
+  ab1357*ab3468, ab1267*ab2458 - 
+  ab1258*ab2467, ab1367*ab3458 - 
+  ab1358*ab3467, -(ab1378*ab2356) + 
+  ab1356*ab2378, -(ab1478*ab2456) + 
+  ab1456*ab2478, ab1278*ab2356 - 
+  ab1256*ab2378, -(ab1478*ab3456) + 
+  ab1456*ab3478, ab1278*ab2456 - 
+  ab1256*ab2478, ab1378*ab3456 - 
+  ab1356*ab3478, ab1247*ab1356 - 
+  ab1236*ab1457, ab2478*ab3568 - 
+  ab2368*ab4578, ab1246*ab1357 - 
+  ab1237*ab1456, ab2468*ab3578 - 
+  ab2378*ab4568, -(ab1247*ab1356) - 
+  ab1235*ab1467, -(ab2478*ab3568) - 
+  ab2358*ab4678, ab1245*ab1367 + 
+  ab1237*ab1456, ab2458*ab3678 + 
+  ab2378*ab4568, -(ab1246*ab1357) + 
+  ab1235*ab1467, -(ab2468*ab3578) + 
+  ab2358*ab4678, -(ab1245*ab1367) + 
+  ab1236*ab1457, -(ab2458*ab3678) + 
+  ab2368*ab4578, ab1248*ab1356 - 
+  ab1236*ab1458, -(ab2478*ab3567) + 
+  ab2367*ab4578, ab1246*ab1358 - 
+  ab1238*ab1456, -(ab2467*ab3578) + 
+  ab2378*ab4567, -(ab1248*ab1356) - 
+  ab1235*ab1468, ab2478*ab3567 + 
+  ab2357*ab4678, ab1245*ab1368 + 
+  ab1238*ab1456, -(ab2457*ab3678) - 
+  ab2378*ab4567, -(ab1246*ab1358) + 
+  ab1235*ab1468, ab2467*ab3578 - 
+  ab2357*ab4678, -(ab1245*ab1368) + 
+  ab1236*ab1458, ab2457*ab3678 - 
+  ab2367*ab4578, ab1248*ab1357 - 
+  ab1237*ab1458, ab2468*ab3567 - 
+  ab2367*ab4568, ab1247*ab1358 - 
+  ab1238*ab1457, ab2467*ab3568 - 
+  ab2368*ab4567, -(ab1248*ab1357) - 
+  ab1235*ab1478, -(ab2468*ab3567) - 
+  ab2356*ab4678, ab1245*ab1378 + 
+  ab1238*ab1457, ab2456*ab3678 + 
+  ab2368*ab4567, -(ab1247*ab1358) + 
+  ab1235*ab1478, -(ab2467*ab3568) + 
+  ab2356*ab4678, -(ab1245*ab1378) + 
+  ab1237*ab1458, -(ab2456*ab3678) + 
+  ab2367*ab4568, ab1248*ab1367 - 
+  ab1237*ab1468, -(ab2458*ab3567) + 
+  ab2357*ab4568, ab1247*ab1368 - 
+  ab1238*ab1467, -(ab2457*ab3568) + 
+  ab2358*ab4567, -(ab1248*ab1367) - 
+  ab1236*ab1478, ab2458*ab3567 + 
+  ab2356*ab4578, ab1246*ab1378 + 
+  ab1238*ab1467, -(ab2456*ab3578) - 
+  ab2358*ab4567, -(ab1247*ab1368) + 
+  ab1236*ab1478, ab2457*ab3568 - 
+  ab2356*ab4578, -(ab1246*ab1378) + 
+  ab1237*ab1468, ab2456*ab3578 - 
+  ab2357*ab4568, ab1257*ab1346 + 
+  ab1236*ab1457, ab2578*ab3468 + 
+  ab2368*ab4578, ab1256*ab1347 + 
+  ab1237*ab1456, ab2568*ab3478 + 
+  ab2378*ab4568, -(ab1257*ab1346) - 
+  ab1234*ab1567, -(ab2578*ab3468) - 
+  ab2348*ab5678, -(ab1256*ab1347) + 
+  ab1234*ab1567, -(ab2568*ab3478) + 
+  ab2348*ab5678, ab1258*ab1346 + 
+  ab1236*ab1458, -(ab2578*ab3467) - 
+  ab2367*ab4578, ab1256*ab1348 + 
+  ab1238*ab1456, -(ab2567*ab3478) - 
+  ab2378*ab4567, -(ab1258*ab1346) - 
+  ab1234*ab1568, ab2578*ab3467 + 
+  ab2347*ab5678, -(ab1256*ab1348) + 
+  ab1234*ab1568, ab2567*ab3478 - 
+  ab2347*ab5678, ab1258*ab1347 + 
+  ab1237*ab1458, ab2568*ab3467 + 
+  ab2367*ab4568, ab1257*ab1348 + 
+  ab1238*ab1457, ab2567*ab3468 + 
+  ab2368*ab4567, -(ab1258*ab1347) - 
+  ab1234*ab1578, -(ab2568*ab3467) - 
+  ab2346*ab5678, -(ab1257*ab1348) + 
+  ab1234*ab1578, -(ab2567*ab3468) + 
+  ab2346*ab5678, ab1258*ab1367 - 
+  ab1237*ab1568, ab2458*ab3467 - 
+  ab2347*ab4568, ab1257*ab1368 - 
+  ab1238*ab1567, ab2457*ab3468 - 
+  ab2348*ab4567, -(ab1258*ab1367) - 
+  ab1236*ab1578, -(ab2458*ab3467) - 
+  ab2346*ab4578, ab1256*ab1378 + 
+  ab1238*ab1567, ab2456*ab3478 + 
+  ab2348*ab4567, -(ab1257*ab1368) + 
+  ab1236*ab1578, -(ab2457*ab3468) + 
+  ab2346*ab4578, -(ab1256*ab1378) + 
+  ab1237*ab1568, -(ab2456*ab3478) + 
+  ab2347*ab4568, ab1267*ab1345 + 
+  ab1235*ab1467, ab2678*ab3458 + 
+  ab2358*ab4678, -(ab1267*ab1345) + 
+  ab1234*ab1567, -(ab2678*ab3458) + 
+  ab2348*ab5678, ab1268*ab1345 + 
+  ab1235*ab1468, -(ab2678*ab3457) - 
+  ab2357*ab4678, -(ab1268*ab1345) + 
+  ab1234*ab1568, ab2678*ab3457 - 
+  ab2347*ab5678, ab1268*ab1347 + 
+  ab1237*ab1468, -(ab2568*ab3457) - 
+  ab2357*ab4568, ab1267*ab1348 + 
+  ab1238*ab1467, -(ab2567*ab3458) - 
+  ab2358*ab4567, -(ab1268*ab1347) - 
+  ab1234*ab1678, ab2568*ab3457 + 
+  ab2345*ab5678, -(ab1267*ab1348) + 
+  ab1234*ab1678, ab2567*ab3458 - 
+  ab2345*ab5678, ab1268*ab1357 + 
+  ab1237*ab1568, ab2468*ab3457 + 
+  ab2347*ab4568, ab1267*ab1358 + 
+  ab1238*ab1567, ab2467*ab3458 + 
+  ab2348*ab4567, -(ab1268*ab1357) - 
+  ab1235*ab1678, -(ab2468*ab3457) - 
+  ab2345*ab4678, -(ab1267*ab1358) + 
+  ab1235*ab1678, -(ab2467*ab3458) + 
+  ab2345*ab4678, ab1278*ab1345 + 
+  ab1235*ab1478, ab2678*ab3456 + 
+  ab2356*ab4678, -(ab1278*ab1345) + 
+  ab1234*ab1578, -(ab2678*ab3456) + 
+  ab2346*ab5678, ab1278*ab1346 + 
+  ab1236*ab1478, -(ab2578*ab3456) - 
+  ab2356*ab4578, -(ab1278*ab1346) + 
+  ab1234*ab1678, ab2578*ab3456 - 
+  ab2345*ab5678, ab1278*ab1356 + 
+  ab1236*ab1578, ab2478*ab3456 + 
+  ab2346*ab4578, -(ab1278*ab1356) + 
+  ab1235*ab1678, -(ab2478*ab3456) + 
+  ab2345*ab4678, -(ab1257*ab1346) + 
+  ab1246*ab1357, -(ab2578*ab3468) + 
+  ab2468*ab3578, -(ab1256*ab1347) + 
+  ab1247*ab1356, -(ab2568*ab3478) + 
+  ab2478*ab3568, -(ab1258*ab1346) + 
+  ab1246*ab1358, ab2578*ab3467 - 
+  ab2467*ab3578, -(ab1256*ab1348) + 
+  ab1248*ab1356, ab2567*ab3478 - 
+  ab2478*ab3567, -(ab1258*ab1347) + 
+  ab1247*ab1358, -(ab2568*ab3467) + 
+  ab2467*ab3568, -(ab1257*ab1348) + 
+  ab1248*ab1357, -(ab2567*ab3468) + 
+  ab2468*ab3567, ab1258*ab1467 - 
+  ab1247*ab1568, -(ab2358*ab3467) + 
+  ab2347*ab3568, ab1257*ab1468 - 
+  ab1248*ab1567, -(ab2357*ab3468) + 
+  ab2348*ab3567, -(ab1258*ab1467) - 
+  ab1246*ab1578, ab2358*ab3467 + 
+  ab2346*ab3578, ab1256*ab1478 + 
+  ab1248*ab1567, -(ab2356*ab3478) - 
+  ab2348*ab3567, -(ab1257*ab1468) + 
+  ab1246*ab1578, ab2357*ab3468 - 
+  ab2346*ab3578, -(ab1256*ab1478) + 
+  ab1247*ab1568, ab2356*ab3478 - 
+  ab2347*ab3568, -(ab1267*ab1345) + 
+  ab1245*ab1367, -(ab2678*ab3458) + 
+  ab2458*ab3678, -(ab1268*ab1345) + 
+  ab1245*ab1368, ab2678*ab3457 - 
+  ab2457*ab3678, -(ab1268*ab1347) + 
+  ab1247*ab1368, ab2568*ab3457 - 
+  ab2457*ab3568, -(ab1267*ab1348) + 
+  ab1248*ab1367, ab2567*ab3458 - 
+  ab2458*ab3567, ab1268*ab1457 + 
+  ab1247*ab1568, -(ab2368*ab3457) - 
+  ab2347*ab3568, ab1267*ab1458 + 
+  ab1248*ab1567, -(ab2367*ab3458) - 
+  ab2348*ab3567, -(ab1268*ab1457) - 
+  ab1245*ab1678, ab2368*ab3457 + 
+  ab2345*ab3678, -(ab1267*ab1458) + 
+  ab1245*ab1678, ab2367*ab3458 - 
+  ab2345*ab3678, -(ab1278*ab1345) + 
+  ab1245*ab1378, -(ab2678*ab3456) + 
+  ab2456*ab3678, -(ab1278*ab1346) + 
+  ab1246*ab1378, ab2578*ab3456 - 
+  ab2456*ab3578, ab1278*ab1456 + 
+  ab1246*ab1578, -(ab2378*ab3456) - 
+  ab2346*ab3578, -(ab1278*ab1456) + 
+  ab1245*ab1678, ab2378*ab3456 - 
+  ab2345*ab3678, -(ab1268*ab1357) + 
+  ab1257*ab1368, -(ab2468*ab3457) + 
+  ab2457*ab3468, -(ab1267*ab1358) + 
+  ab1258*ab1367, -(ab2467*ab3458) + 
+  ab2458*ab3467, -(ab1268*ab1457) + 
+  ab1257*ab1468, ab2368*ab3457 - 
+  ab2357*ab3468, -(ab1267*ab1458) + 
+  ab1258*ab1467, ab2367*ab3458 - 
+  ab2358*ab3467, -(ab1278*ab1356) + 
+  ab1256*ab1378, -(ab2478*ab3456) + 
+  ab2456*ab3478, -(ab1278*ab1456) + 
+  ab1256*ab1478, ab2378*ab3456 - 
+  ab2356*ab3478, ab1358*ab1467 - 
+  ab1347*ab1568, ab2358*ab2467 - 
+  ab2347*ab2568, ab1357*ab1468 - 
+  ab1348*ab1567, ab2357*ab2468 - 
+  ab2348*ab2567, -(ab1358*ab1467) - 
+  ab1346*ab1578, -(ab2358*ab2467) - 
+  ab2346*ab2578, ab1356*ab1478 + 
+  ab1348*ab1567, ab2356*ab2478 + 
+  ab2348*ab2567, -(ab1357*ab1468) + 
+  ab1346*ab1578, -(ab2357*ab2468) + 
+  ab2346*ab2578, -(ab1356*ab1478) + 
+  ab1347*ab1568, -(ab2356*ab2478) + 
+  ab2347*ab2568, ab1368*ab1457 + 
+  ab1347*ab1568, ab2368*ab2457 + 
+  ab2347*ab2568, ab1367*ab1458 + 
+  ab1348*ab1567, ab2367*ab2458 + 
+  ab2348*ab2567, -(ab1368*ab1457) - 
+  ab1345*ab1678, -(ab2368*ab2457) - 
+  ab2345*ab2678, -(ab1367*ab1458) + 
+  ab1345*ab1678, -(ab2367*ab2458) + 
+  ab2345*ab2678, ab1378*ab1456 + 
+  ab1346*ab1578, ab2378*ab2456 + 
+  ab2346*ab2578, -(ab1378*ab1456) + 
+  ab1345*ab1678, -(ab2378*ab2456) + 
+  ab2345*ab2678, -(ab1368*ab1457) + 
+  ab1357*ab1468, -(ab2368*ab2457) + 
+  ab2357*ab2468, -(ab1367*ab1458) + 
+  ab1358*ab1467, -(ab2367*ab2458) + 
+  ab2358*ab2467, -(ab1378*ab1456) + 
+  ab1356*ab1478, -(ab2378*ab2456) + 
+  ab2356*ab2478, ab1369*ab2459 - 
+  ab1259*ab3469, ab1359*ab2469 - 
+  ab1269*ab3459, -(ab1369*ab2459) - 
+  ab1249*ab3569, ab1349*ab2569 + 
+  ab1269*ab3459, -(ab1359*ab2469) + 
+  ab1249*ab3569, -(ab1349*ab2569) + 
+  ab1259*ab3469, ab1379*ab2459 - 
+  ab1259*ab3479, ab1359*ab2479 - 
+  ab1279*ab3459, -(ab1379*ab2459) - 
+  ab1249*ab3579, ab1349*ab2579 + 
+  ab1279*ab3459, -(ab1359*ab2479) + 
+  ab1249*ab3579, -(ab1349*ab2579) + 
+  ab1259*ab3479, -(ab1369*ab2456) + 
+  ab1256*ab3469, -(ab1379*ab2457) + 
+  ab1257*ab3479, -(ab1356*ab2469) + 
+  ab1269*ab3456, -(ab1357*ab2479) + 
+  ab1279*ab3457, ab1369*ab2456 + 
+  ab1246*ab3569, ab1379*ab2457 + 
+  ab1247*ab3579, -(ab1346*ab2569) - 
+  ab1269*ab3456, -(ab1347*ab2579) - 
+  ab1279*ab3457, ab1356*ab2469 - 
+  ab1246*ab3569, ab1357*ab2479 - 
+  ab1247*ab3579, ab1346*ab2569 - 
+  ab1256*ab3469, ab1347*ab2579 - 
+  ab1257*ab3479, ab1379*ab2469 - 
+  ab1269*ab3479, ab1369*ab2479 - 
+  ab1279*ab3469, -(ab1379*ab2469) - 
+  ab1249*ab3679, ab1349*ab2679 + 
+  ab1279*ab3469, -(ab1369*ab2479) + 
+  ab1249*ab3679, -(ab1349*ab2679) + 
+  ab1269*ab3479, ab1359*ab2456 - 
+  ab1256*ab3459, -(ab1379*ab2467) + 
+  ab1267*ab3479, ab1356*ab2459 - 
+  ab1259*ab3456, -(ab1367*ab2479) + 
+  ab1279*ab3467, -(ab1359*ab2456) - 
+  ab1245*ab3569, ab1379*ab2467 + 
+  ab1247*ab3679, ab1345*ab2569 + 
+  ab1259*ab3456, -(ab1347*ab2679) - 
+  ab1279*ab3467, -(ab1356*ab2459) + 
+  ab1245*ab3569, ab1367*ab2479 - 
+  ab1247*ab3679, -(ab1345*ab2569) + 
+  ab1256*ab3459, ab1347*ab2679 - 
+  ab1267*ab3479, ab1359*ab2457 - 
+  ab1257*ab3459, ab1369*ab2467 - 
+  ab1267*ab3469, ab1357*ab2459 - 
+  ab1259*ab3457, ab1367*ab2469 - 
+  ab1269*ab3467, -(ab1359*ab2457) - 
+  ab1245*ab3579, -(ab1369*ab2467) - 
+  ab1246*ab3679, ab1345*ab2579 + 
+  ab1259*ab3457, ab1346*ab2679 + 
+  ab1269*ab3467, -(ab1357*ab2459) + 
+  ab1245*ab3579, -(ab1367*ab2469) + 
+  ab1246*ab3679, -(ab1345*ab2579) + 
+  ab1257*ab3459, -(ab1346*ab2679) + 
+  ab1267*ab3469, ab1379*ab2569 - 
+  ab1269*ab3579, ab1369*ab2579 - 
+  ab1279*ab3569, -(ab1379*ab2569) - 
+  ab1259*ab3679, ab1359*ab2679 + 
+  ab1279*ab3569, -(ab1369*ab2579) + 
+  ab1259*ab3679, -(ab1359*ab2679) + 
+  ab1269*ab3579, -(ab1349*ab2456) + 
+  ab1246*ab3459, -(ab1379*ab2567) + 
+  ab1267*ab3579, -(ab1346*ab2459) + 
+  ab1249*ab3456, -(ab1367*ab2579) + 
+  ab1279*ab3567, ab1349*ab2456 + 
+  ab1245*ab3469, ab1379*ab2567 + 
+  ab1257*ab3679, -(ab1345*ab2469) - 
+  ab1249*ab3456, -(ab1357*ab2679) - 
+  ab1279*ab3567, ab1346*ab2459 - 
+  ab1245*ab3469, ab1367*ab2579 - 
+  ab1257*ab3679, ab1345*ab2469 - 
+  ab1246*ab3459, ab1357*ab2679 - 
+  ab1267*ab3579, -(ab1349*ab2457) + 
+  ab1247*ab3459, ab1369*ab2567 - 
+  ab1267*ab3569, -(ab1347*ab2459) + 
+  ab1249*ab3457, ab1367*ab2569 - 
+  ab1269*ab3567, ab1349*ab2457 + 
+  ab1245*ab3479, -(ab1369*ab2567) - 
+  ab1256*ab3679, -(ab1345*ab2479) - 
+  ab1249*ab3457, ab1356*ab2679 + 
+  ab1269*ab3567, ab1347*ab2459 - 
+  ab1245*ab3479, -(ab1367*ab2569) + 
+  ab1256*ab3679, ab1345*ab2479 - 
+  ab1247*ab3459, -(ab1356*ab2679) + 
+  ab1267*ab3569, -(ab1349*ab2467) + 
+  ab1247*ab3469, -(ab1359*ab2567) + 
+  ab1257*ab3569, -(ab1347*ab2469) + 
+  ab1249*ab3467, -(ab1357*ab2569) + 
+  ab1259*ab3567, ab1349*ab2467 + 
+  ab1246*ab3479, ab1359*ab2567 + 
+  ab1256*ab3579, -(ab1346*ab2479) - 
+  ab1249*ab3467, -(ab1356*ab2579) - 
+  ab1259*ab3567, ab1347*ab2469 - 
+  ab1246*ab3479, ab1357*ab2569 - 
+  ab1256*ab3579, ab1346*ab2479 - 
+  ab1247*ab3469, ab1356*ab2579 - 
+  ab1257*ab3569, ab1469*ab2359 + 
+  ab1259*ab3469, ab1459*ab2369 + 
+  ab1269*ab3459, -(ab1469*ab2359) - 
+  ab1239*ab4569, -(ab1459*ab2369) + 
+  ab1239*ab4569, ab1479*ab2359 + 
+  ab1259*ab3479, ab1459*ab2379 + 
+  ab1279*ab3459, -(ab1479*ab2359) - 
+  ab1239*ab4579, -(ab1459*ab2379) + 
+  ab1239*ab4579, -(ab1469*ab2356) - 
+  ab1256*ab3469, -(ab1479*ab2357) - 
+  ab1257*ab3479, -(ab1456*ab2369) - 
+  ab1269*ab3456, -(ab1457*ab2379) - 
+  ab1279*ab3457, ab1469*ab2356 + 
+  ab1236*ab4569, ab1479*ab2357 + 
+  ab1237*ab4579, ab1456*ab2369 - 
+  ab1236*ab4569, ab1457*ab2379 - 
+  ab1237*ab4579, ab1479*ab2369 + 
+  ab1269*ab3479, ab1469*ab2379 + 
+  ab1279*ab3469, -(ab1479*ab2369) - 
+  ab1239*ab4679, -(ab1469*ab2379) + 
+  ab1239*ab4679, ab1459*ab2356 + 
+  ab1256*ab3459, -(ab1479*ab2367) - 
+  ab1267*ab3479, ab1456*ab2359 + 
+  ab1259*ab3456, -(ab1467*ab2379) - 
+  ab1279*ab3467, -(ab1459*ab2356) - 
+  ab1235*ab4569, ab1479*ab2367 + 
+  ab1237*ab4679, -(ab1456*ab2359) + 
+  ab1235*ab4569, ab1467*ab2379 - 
+  ab1237*ab4679, ab1459*ab2357 + 
+  ab1257*ab3459, ab1469*ab2367 + 
+  ab1267*ab3469, ab1457*ab2359 + 
+  ab1259*ab3457, ab1467*ab2369 + 
+  ab1269*ab3467, -(ab1459*ab2357) - 
+  ab1235*ab4579, -(ab1469*ab2367) - 
+  ab1236*ab4679, -(ab1457*ab2359) + 
+  ab1235*ab4579, -(ab1467*ab2369) + 
+  ab1236*ab4679, ab1479*ab2569 - 
+  ab1269*ab4579, ab1469*ab2579 - 
+  ab1279*ab4569, -(ab1479*ab2569) - 
+  ab1259*ab4679, ab1459*ab2679 + 
+  ab1279*ab4569, -(ab1469*ab2579) + 
+  ab1259*ab4679, -(ab1459*ab2679) + 
+  ab1269*ab4579, ab1349*ab2356 - 
+  ab1236*ab3459, -(ab1479*ab2567) + 
+  ab1267*ab4579, ab1346*ab2359 - 
+  ab1239*ab3456, -(ab1467*ab2579) + 
+  ab1279*ab4567, -(ab1349*ab2356) - 
+  ab1235*ab3469, ab1479*ab2567 + 
+  ab1257*ab4679, ab1345*ab2369 + 
+  ab1239*ab3456, -(ab1457*ab2679) - 
+  ab1279*ab4567, -(ab1346*ab2359) + 
+  ab1235*ab3469, ab1467*ab2579 - 
+  ab1257*ab4679, -(ab1345*ab2369) + 
+  ab1236*ab3459, ab1457*ab2679 - 
+  ab1267*ab4579, ab1349*ab2357 - 
+  ab1237*ab3459, ab1469*ab2567 - 
+  ab1267*ab4569, ab1347*ab2359 - 
+  ab1239*ab3457, ab1467*ab2569 - 
+  ab1269*ab4567, -(ab1349*ab2357) - 
+  ab1235*ab3479, -(ab1469*ab2567) - 
+  ab1256*ab4679, ab1345*ab2379 + 
+  ab1239*ab3457, ab1456*ab2679 + 
+  ab1269*ab4567, -(ab1347*ab2359) + 
+  ab1235*ab3479, -(ab1467*ab2569) + 
+  ab1256*ab4679, -(ab1345*ab2379) + 
+  ab1237*ab3459, -(ab1456*ab2679) + 
+  ab1267*ab4569, ab1349*ab2367 - 
+  ab1237*ab3469, -(ab1459*ab2567) + 
+  ab1257*ab4569, ab1347*ab2369 - 
+  ab1239*ab3467, -(ab1457*ab2569) + 
+  ab1259*ab4567, -(ab1349*ab2367) - 
+  ab1236*ab3479, ab1459*ab2567 + 
+  ab1256*ab4579, ab1346*ab2379 + 
+  ab1239*ab3467, -(ab1456*ab2579) - 
+  ab1259*ab4567, -(ab1347*ab2369) + 
+  ab1236*ab3479, ab1457*ab2569 - 
+  ab1256*ab4579, -(ab1346*ab2379) + 
+  ab1237*ab3469, ab1456*ab2579 - 
+  ab1257*ab4569, ab1569*ab2349 + 
+  ab1249*ab3569, -(ab1569*ab2349) + 
+  ab1239*ab4569, ab1579*ab2349 + 
+  ab1249*ab3579, -(ab1579*ab2349) + 
+  ab1239*ab4579, -(ab1569*ab2346) - 
+  ab1246*ab3569, -(ab1579*ab2347) - 
+  ab1247*ab3579, ab1569*ab2346 - 
+  ab1236*ab4569, ab1579*ab2347 - 
+  ab1237*ab4579, ab1579*ab2369 + 
+  ab1269*ab3579, ab1569*ab2379 + 
+  ab1279*ab3569, -(ab1579*ab2369) - 
+  ab1239*ab5679, -(ab1569*ab2379) + 
+  ab1239*ab5679, -(ab1459*ab2346) - 
+  ab1246*ab3459, -(ab1579*ab2367) - 
+  ab1267*ab3579, -(ab1456*ab2349) - 
+  ab1249*ab3456, -(ab1567*ab2379) - 
+  ab1279*ab3567, ab1459*ab2346 + 
+  ab1234*ab4569, ab1579*ab2367 + 
+  ab1237*ab5679, ab1456*ab2349 - 
+  ab1234*ab4569, ab1567*ab2379 - 
+  ab1237*ab5679, -(ab1459*ab2347) - 
+  ab1247*ab3459, ab1569*ab2367 + 
+  ab1267*ab3569, -(ab1457*ab2349) - 
+  ab1249*ab3457, ab1567*ab2369 + 
+  ab1269*ab3567, ab1459*ab2347 + 
+  ab1234*ab4579, -(ab1569*ab2367) - 
+  ab1236*ab5679, ab1457*ab2349 - 
+  ab1234*ab4579, -(ab1567*ab2369) + 
+  ab1236*ab5679, ab1579*ab2469 + 
+  ab1269*ab4579, ab1569*ab2479 + 
+  ab1279*ab4569, -(ab1579*ab2469) - 
+  ab1249*ab5679, -(ab1569*ab2479) + 
+  ab1249*ab5679, ab1359*ab2346 + 
+  ab1236*ab3459, -(ab1579*ab2467) - 
+  ab1267*ab4579, ab1356*ab2349 + 
+  ab1239*ab3456, -(ab1567*ab2479) - 
+  ab1279*ab4567, -(ab1359*ab2346) - 
+  ab1234*ab3569, ab1579*ab2467 + 
+  ab1247*ab5679, -(ab1356*ab2349) + 
+  ab1234*ab3569, ab1567*ab2479 - 
+  ab1247*ab5679, ab1359*ab2347 + 
+  ab1237*ab3459, ab1569*ab2467 + 
+  ab1267*ab4569, ab1357*ab2349 + 
+  ab1239*ab3457, ab1567*ab2469 + 
+  ab1269*ab4567, -(ab1359*ab2347) - 
+  ab1234*ab3579, -(ab1569*ab2467) - 
+  ab1246*ab5679, -(ab1357*ab2349) + 
+  ab1234*ab3579, -(ab1567*ab2469) + 
+  ab1246*ab5679, ab1359*ab2367 - 
+  ab1237*ab3569, ab1459*ab2467 - 
+  ab1247*ab4569, ab1357*ab2369 - 
+  ab1239*ab3567, ab1457*ab2469 - 
+  ab1249*ab4567, -(ab1359*ab2367) - 
+  ab1236*ab3579, -(ab1459*ab2467) - 
+  ab1246*ab4579, ab1356*ab2379 + 
+  ab1239*ab3567, ab1456*ab2479 + 
+  ab1249*ab4567, -(ab1357*ab2369) + 
+  ab1236*ab3579, -(ab1457*ab2469) + 
+  ab1246*ab4579, -(ab1356*ab2379) + 
+  ab1237*ab3569, -(ab1456*ab2479) + 
+  ab1247*ab4569, ab1679*ab2349 + 
+  ab1249*ab3679, -(ab1679*ab2349) + 
+  ab1239*ab4679, ab1569*ab2345 + 
+  ab1245*ab3569, -(ab1679*ab2347) - 
+  ab1247*ab3679, -(ab1569*ab2345) + 
+  ab1235*ab4569, ab1679*ab2347 - 
+  ab1237*ab4679, ab1679*ab2359 + 
+  ab1259*ab3679, -(ab1679*ab2359) + 
+  ab1239*ab5679, -(ab1469*ab2345) - 
+  ab1245*ab3469, -(ab1679*ab2357) - 
+  ab1257*ab3679, ab1469*ab2345 - 
+  ab1234*ab4569, ab1679*ab2357 - 
+  ab1237*ab5679, -(ab1469*ab2347) - 
+  ab1247*ab3469, -(ab1569*ab2357) - 
+  ab1257*ab3569, -(ab1467*ab2349) - 
+  ab1249*ab3467, -(ab1567*ab2359) - 
+  ab1259*ab3567, ab1469*ab2347 + 
+  ab1234*ab4679, ab1569*ab2357 + 
+  ab1235*ab5679, ab1467*ab2349 - 
+  ab1234*ab4679, ab1567*ab2359 - 
+  ab1235*ab5679, ab1679*ab2459 + 
+  ab1259*ab4679, -(ab1679*ab2459) + 
+  ab1249*ab5679, ab1369*ab2345 + 
+  ab1235*ab3469, -(ab1679*ab2457) - 
+  ab1257*ab4679, -(ab1369*ab2345) + 
+  ab1234*ab3569, ab1679*ab2457 - 
+  ab1247*ab5679, ab1369*ab2347 + 
+  ab1237*ab3469, -(ab1569*ab2457) - 
+  ab1257*ab4569, ab1367*ab2349 + 
+  ab1239*ab3467, -(ab1567*ab2459) - 
+  ab1259*ab4567, -(ab1369*ab2347) - 
+  ab1234*ab3679, ab1569*ab2457 + 
+  ab1245*ab5679, -(ab1367*ab2349) + 
+  ab1234*ab3679, ab1567*ab2459 - 
+  ab1245*ab5679, ab1369*ab2357 + 
+  ab1237*ab3569, ab1469*ab2457 + 
+  ab1247*ab4569, ab1367*ab2359 + 
+  ab1239*ab3567, ab1467*ab2459 + 
+  ab1249*ab4567, -(ab1369*ab2357) - 
+  ab1235*ab3679, -(ab1469*ab2457) - 
+  ab1245*ab4679, -(ab1367*ab2359) + 
+  ab1235*ab3679, -(ab1467*ab2459) + 
+  ab1245*ab4679, ab1579*ab2345 + 
+  ab1245*ab3579, ab1679*ab2346 + 
+  ab1246*ab3679, -(ab1579*ab2345) + 
+  ab1235*ab4579, -(ab1679*ab2346) + 
+  ab1236*ab4679, -(ab1479*ab2345) - 
+  ab1245*ab3479, ab1679*ab2356 + 
+  ab1256*ab3679, ab1479*ab2345 - 
+  ab1234*ab4579, -(ab1679*ab2356) + 
+  ab1236*ab5679, -(ab1479*ab2346) - 
+  ab1246*ab3479, -(ab1579*ab2356) - 
+  ab1256*ab3579, ab1479*ab2346 - 
+  ab1234*ab4679, ab1579*ab2356 - 
+  ab1235*ab5679, ab1379*ab2345 + 
+  ab1235*ab3479, ab1679*ab2456 + 
+  ab1256*ab4679, -(ab1379*ab2345) + 
+  ab1234*ab3579, -(ab1679*ab2456) + 
+  ab1246*ab5679, ab1379*ab2346 + 
+  ab1236*ab3479, -(ab1579*ab2456) - 
+  ab1256*ab4579, -(ab1379*ab2346) + 
+  ab1234*ab3679, ab1579*ab2456 - 
+  ab1245*ab5679, ab1379*ab2356 + 
+  ab1236*ab3579, ab1479*ab2456 + 
+  ab1246*ab4579, -(ab1379*ab2356) + 
+  ab1235*ab3679, -(ab1479*ab2456) + 
+  ab1245*ab4679, -(ab1469*ab2359) + 
+  ab1359*ab2469, -(ab1459*ab2369) + 
+  ab1369*ab2459, -(ab1479*ab2359) + 
+  ab1359*ab2479, -(ab1459*ab2379) + 
+  ab1379*ab2459, ab1469*ab2356 - 
+  ab1356*ab2469, ab1479*ab2357 - 
+  ab1357*ab2479, ab1456*ab2369 - 
+  ab1369*ab2456, ab1457*ab2379 - 
+  ab1379*ab2457, -(ab1479*ab2369) + 
+  ab1369*ab2479, -(ab1469*ab2379) + 
+  ab1379*ab2469, -(ab1459*ab2356) + 
+  ab1356*ab2459, ab1479*ab2367 - 
+  ab1367*ab2479, -(ab1456*ab2359) + 
+  ab1359*ab2456, ab1467*ab2379 - 
+  ab1379*ab2467, -(ab1459*ab2357) + 
+  ab1357*ab2459, -(ab1469*ab2367) + 
+  ab1367*ab2469, -(ab1457*ab2359) + 
+  ab1359*ab2457, -(ab1467*ab2369) + 
+  ab1369*ab2467, ab1479*ab3569 - 
+  ab1369*ab4579, ab1469*ab3579 - 
+  ab1379*ab4569, -(ab1479*ab3569) - 
+  ab1359*ab4679, ab1459*ab3679 + 
+  ab1379*ab4569, -(ab1469*ab3579) + 
+  ab1359*ab4679, -(ab1459*ab3679) + 
+  ab1369*ab4579, -(ab1249*ab2356) + 
+  ab1236*ab2459, -(ab1479*ab3567) + 
+  ab1367*ab4579, -(ab1246*ab2359) + 
+  ab1239*ab2456, -(ab1467*ab3579) + 
+  ab1379*ab4567, ab1249*ab2356 + 
+  ab1235*ab2469, ab1479*ab3567 + 
+  ab1357*ab4679, -(ab1245*ab2369) - 
+  ab1239*ab2456, -(ab1457*ab3679) - 
+  ab1379*ab4567, ab1246*ab2359 - 
+  ab1235*ab2469, ab1467*ab3579 - 
+  ab1357*ab4679, ab1245*ab2369 - 
+  ab1236*ab2459, ab1457*ab3679 - 
+  ab1367*ab4579, -(ab1249*ab2357) + 
+  ab1237*ab2459, ab1469*ab3567 - 
+  ab1367*ab4569, -(ab1247*ab2359) + 
+  ab1239*ab2457, ab1467*ab3569 - 
+  ab1369*ab4567, ab1249*ab2357 + 
+  ab1235*ab2479, -(ab1469*ab3567) - 
+  ab1356*ab4679, -(ab1245*ab2379) - 
+  ab1239*ab2457, ab1456*ab3679 + 
+  ab1369*ab4567, ab1247*ab2359 - 
+  ab1235*ab2479, -(ab1467*ab3569) + 
+  ab1356*ab4679, ab1245*ab2379 - 
+  ab1237*ab2459, -(ab1456*ab3679) + 
+  ab1367*ab4569, -(ab1249*ab2367) + 
+  ab1237*ab2469, -(ab1459*ab3567) + 
+  ab1357*ab4569, -(ab1247*ab2369) + 
+  ab1239*ab2467, -(ab1457*ab3569) + 
+  ab1359*ab4567, ab1249*ab2367 + 
+  ab1236*ab2479, ab1459*ab3567 + 
+  ab1356*ab4579, -(ab1246*ab2379) - 
+  ab1239*ab2467, -(ab1456*ab3579) - 
+  ab1359*ab4567, ab1247*ab2369 - 
+  ab1236*ab2479, ab1457*ab3569 - 
+  ab1356*ab4579, ab1246*ab2379 - 
+  ab1237*ab2469, ab1456*ab3579 - 
+  ab1357*ab4569, -(ab1569*ab2349) + 
+  ab1349*ab2569, -(ab1579*ab2349) + 
+  ab1349*ab2579, ab1569*ab2346 - 
+  ab1346*ab2569, ab1579*ab2347 - 
+  ab1347*ab2579, -(ab1579*ab2369) + 
+  ab1369*ab2579, -(ab1569*ab2379) + 
+  ab1379*ab2569, ab1459*ab2346 - 
+  ab1346*ab2459, ab1579*ab2367 - 
+  ab1367*ab2579, ab1456*ab2349 - 
+  ab1349*ab2456, ab1567*ab2379 - 
+  ab1379*ab2567, ab1459*ab2347 - 
+  ab1347*ab2459, -(ab1569*ab2367) + 
+  ab1367*ab2569, ab1457*ab2349 - 
+  ab1349*ab2457, -(ab1567*ab2369) + 
+  ab1369*ab2567, ab1579*ab3469 + 
+  ab1369*ab4579, ab1569*ab3479 + 
+  ab1379*ab4569, -(ab1579*ab3469) - 
+  ab1349*ab5679, -(ab1569*ab3479) + 
+  ab1349*ab5679, -(ab1259*ab2346) - 
+  ab1236*ab2459, -(ab1579*ab3467) - 
+  ab1367*ab4579, -(ab1256*ab2349) - 
+  ab1239*ab2456, -(ab1567*ab3479) - 
+  ab1379*ab4567, ab1259*ab2346 + 
+  ab1234*ab2569, ab1579*ab3467 + 
+  ab1347*ab5679, ab1256*ab2349 - 
+  ab1234*ab2569, ab1567*ab3479 - 
+  ab1347*ab5679, -(ab1259*ab2347) - 
+  ab1237*ab2459, ab1569*ab3467 + 
+  ab1367*ab4569, -(ab1257*ab2349) - 
+  ab1239*ab2457, ab1567*ab3469 + 
+  ab1369*ab4567, ab1259*ab2347 + 
+  ab1234*ab2579, -(ab1569*ab3467) - 
+  ab1346*ab5679, ab1257*ab2349 - 
+  ab1234*ab2579, -(ab1567*ab3469) + 
+  ab1346*ab5679, -(ab1259*ab2367) + 
+  ab1237*ab2569, ab1459*ab3467 - 
+  ab1347*ab4569, -(ab1257*ab2369) + 
+  ab1239*ab2567, ab1457*ab3469 - 
+  ab1349*ab4567, ab1259*ab2367 + 
+  ab1236*ab2579, -(ab1459*ab3467) - 
+  ab1346*ab4579, -(ab1256*ab2379) - 
+  ab1239*ab2567, ab1456*ab3479 + 
+  ab1349*ab4567, ab1257*ab2369 - 
+  ab1236*ab2579, -(ab1457*ab3469) + 
+  ab1346*ab4579, ab1256*ab2379 - 
+  ab1237*ab2569, -(ab1456*ab3479) + 
+  ab1347*ab4569, -(ab1679*ab2349) + 
+  ab1349*ab2679, -(ab1569*ab2345) + 
+  ab1345*ab2569, ab1679*ab2347 - 
+  ab1347*ab2679, -(ab1679*ab2359) + 
+  ab1359*ab2679, ab1469*ab2345 - 
+  ab1345*ab2469, ab1679*ab2357 - 
+  ab1357*ab2679, ab1469*ab2347 - 
+  ab1347*ab2469, ab1569*ab2357 - 
+  ab1357*ab2569, ab1467*ab2349 - 
+  ab1349*ab2467, ab1567*ab2359 - 
+  ab1359*ab2567, ab1679*ab3459 + 
+  ab1359*ab4679, -(ab1679*ab3459) + 
+  ab1349*ab5679, -(ab1269*ab2345) - 
+  ab1235*ab2469, -(ab1679*ab3457) - 
+  ab1357*ab4679, ab1269*ab2345 - 
+  ab1234*ab2569, ab1679*ab3457 - 
+  ab1347*ab5679, -(ab1269*ab2347) - 
+  ab1237*ab2469, -(ab1569*ab3457) - 
+  ab1357*ab4569, -(ab1267*ab2349) - 
+  ab1239*ab2467, -(ab1567*ab3459) - 
+  ab1359*ab4567, ab1269*ab2347 + 
+  ab1234*ab2679, ab1569*ab3457 + 
+  ab1345*ab5679, ab1267*ab2349 - 
+  ab1234*ab2679, ab1567*ab3459 - 
+  ab1345*ab5679, -(ab1269*ab2357) - 
+  ab1237*ab2569, ab1469*ab3457 + 
+  ab1347*ab4569, -(ab1267*ab2359) - 
+  ab1239*ab2567, ab1467*ab3459 + 
+  ab1349*ab4567, ab1269*ab2357 + 
+  ab1235*ab2679, -(ab1469*ab3457) - 
+  ab1345*ab4679, ab1267*ab2359 - 
+  ab1235*ab2679, -(ab1467*ab3459) + 
+  ab1345*ab4679, -(ab1579*ab2345) + 
+  ab1345*ab2579, -(ab1679*ab2346) + 
+  ab1346*ab2679, ab1479*ab2345 - 
+  ab1345*ab2479, -(ab1679*ab2356) + 
+  ab1356*ab2679, ab1479*ab2346 - 
+  ab1346*ab2479, ab1579*ab2356 - 
+  ab1356*ab2579, -(ab1279*ab2345) - 
+  ab1235*ab2479, ab1679*ab3456 + 
+  ab1356*ab4679, ab1279*ab2345 - 
+  ab1234*ab2579, -(ab1679*ab3456) + 
+  ab1346*ab5679, -(ab1279*ab2346) - 
+  ab1236*ab2479, -(ab1579*ab3456) - 
+  ab1356*ab4579, ab1279*ab2346 - 
+  ab1234*ab2679, ab1579*ab3456 - 
+  ab1345*ab5679, -(ab1279*ab2356) - 
+  ab1236*ab2579, ab1479*ab3456 + 
+  ab1346*ab4579, ab1279*ab2356 - 
+  ab1235*ab2679, -(ab1479*ab3456) + 
+  ab1345*ab4679, -(ab1579*ab2469) + 
+  ab1469*ab2579, -(ab1569*ab2479) + 
+  ab1479*ab2569, -(ab1359*ab2346) + 
+  ab1346*ab2359, ab1579*ab2467 - 
+  ab1467*ab2579, -(ab1356*ab2349) + 
+  ab1349*ab2356, ab1567*ab2479 - 
+  ab1479*ab2567, -(ab1359*ab2347) + 
+  ab1347*ab2359, -(ab1569*ab2467) + 
+  ab1467*ab2569, -(ab1357*ab2349) + 
+  ab1349*ab2357, -(ab1567*ab2469) + 
+  ab1469*ab2567, -(ab1579*ab3469) + 
+  ab1469*ab3579, -(ab1569*ab3479) + 
+  ab1479*ab3569, ab1259*ab2346 - 
+  ab1246*ab2359, ab1579*ab3467 - 
+  ab1467*ab3579, ab1256*ab2349 - 
+  ab1249*ab2356, ab1567*ab3479 - 
+  ab1479*ab3567, ab1259*ab2347 - 
+  ab1247*ab2359, -(ab1569*ab3467) + 
+  ab1467*ab3569, ab1257*ab2349 - 
+  ab1249*ab2357, -(ab1567*ab3469) + 
+  ab1469*ab3567, -(ab1259*ab2467) + 
+  ab1247*ab2569, -(ab1359*ab3467) + 
+  ab1347*ab3569, -(ab1257*ab2469) + 
+  ab1249*ab2567, -(ab1357*ab3469) + 
+  ab1349*ab3567, ab1259*ab2467 + 
+  ab1246*ab2579, ab1359*ab3467 + 
+  ab1346*ab3579, -(ab1256*ab2479) - 
+  ab1249*ab2567, -(ab1356*ab3479) - 
+  ab1349*ab3567, ab1257*ab2469 - 
+  ab1246*ab2579, ab1357*ab3469 - 
+  ab1346*ab3579, ab1256*ab2479 - 
+  ab1247*ab2569, ab1356*ab3479 - 
+  ab1347*ab3569, -(ab1679*ab2459) + 
+  ab1459*ab2679, -(ab1369*ab2345) + 
+  ab1345*ab2369, ab1679*ab2457 - 
+  ab1457*ab2679, -(ab1369*ab2347) + 
+  ab1347*ab2369, ab1569*ab2457 - 
+  ab1457*ab2569, -(ab1367*ab2349) + 
+  ab1349*ab2367, ab1567*ab2459 - 
+  ab1459*ab2567, -(ab1679*ab3459) + 
+  ab1459*ab3679, ab1269*ab2345 - 
+  ab1245*ab2369, ab1679*ab3457 - 
+  ab1457*ab3679, ab1269*ab2347 - 
+  ab1247*ab2369, ab1569*ab3457 - 
+  ab1457*ab3569, ab1267*ab2349 - 
+  ab1249*ab2367, ab1567*ab3459 - 
+  ab1459*ab3567, -(ab1269*ab2457) - 
+  ab1247*ab2569, -(ab1369*ab3457) - 
+  ab1347*ab3569, -(ab1267*ab2459) - 
+  ab1249*ab2567, -(ab1367*ab3459) - 
+  ab1349*ab3567, ab1269*ab2457 + 
+  ab1245*ab2679, ab1369*ab3457 + 
+  ab1345*ab3679, ab1267*ab2459 - 
+  ab1245*ab2679, ab1367*ab3459 - 
+  ab1345*ab3679, -(ab1379*ab2345) + 
+  ab1345*ab2379, -(ab1679*ab2456) + 
+  ab1456*ab2679, -(ab1379*ab2346) + 
+  ab1346*ab2379, ab1579*ab2456 - 
+  ab1456*ab2579, ab1279*ab2345 - 
+  ab1245*ab2379, -(ab1679*ab3456) + 
+  ab1456*ab3679, ab1279*ab2346 - 
+  ab1246*ab2379, ab1579*ab3456 - 
+  ab1456*ab3579, -(ab1279*ab2456) - 
+  ab1246*ab2579, -(ab1379*ab3456) - 
+  ab1346*ab3579, ab1279*ab2456 - 
+  ab1245*ab2679, ab1379*ab3456 - 
+  ab1345*ab3679, -(ab1369*ab2357) + 
+  ab1357*ab2369, -(ab1469*ab2457) + 
+  ab1457*ab2469, -(ab1367*ab2359) + 
+  ab1359*ab2367, -(ab1467*ab2459) + 
+  ab1459*ab2467, ab1269*ab2357 - 
+  ab1257*ab2369, -(ab1469*ab3457) + 
+  ab1457*ab3469, ab1267*ab2359 - 
+  ab1259*ab2367, -(ab1467*ab3459) + 
+  ab1459*ab3467, ab1269*ab2457 - 
+  ab1257*ab2469, ab1369*ab3457 - 
+  ab1357*ab3469, ab1267*ab2459 - 
+  ab1259*ab2467, ab1367*ab3459 - 
+  ab1359*ab3467, -(ab1379*ab2356) + 
+  ab1356*ab2379, -(ab1479*ab2456) + 
+  ab1456*ab2479, ab1279*ab2356 - 
+  ab1256*ab2379, -(ab1479*ab3456) + 
+  ab1456*ab3479, ab1279*ab2456 - 
+  ab1256*ab2479, ab1379*ab3456 - 
+  ab1356*ab3479, ab2479*ab3569 - 
+  ab2369*ab4579, ab2469*ab3579 - 
+  ab2379*ab4569, -(ab2479*ab3569) - 
+  ab2359*ab4679, ab2459*ab3679 + 
+  ab2379*ab4569, -(ab2469*ab3579) + 
+  ab2359*ab4679, -(ab2459*ab3679) + 
+  ab2369*ab4579, ab1249*ab1356 - 
+  ab1236*ab1459, -(ab2479*ab3567) + 
+  ab2367*ab4579, ab1246*ab1359 - 
+  ab1239*ab1456, -(ab2467*ab3579) + 
+  ab2379*ab4567, -(ab1249*ab1356) - 
+  ab1235*ab1469, ab2479*ab3567 + 
+  ab2357*ab4679, ab1245*ab1369 + 
+  ab1239*ab1456, -(ab2457*ab3679) - 
+  ab2379*ab4567, -(ab1246*ab1359) + 
+  ab1235*ab1469, ab2467*ab3579 - 
+  ab2357*ab4679, -(ab1245*ab1369) + 
+  ab1236*ab1459, ab2457*ab3679 - 
+  ab2367*ab4579, ab1249*ab1357 - 
+  ab1237*ab1459, ab2469*ab3567 - 
+  ab2367*ab4569, ab1247*ab1359 - 
+  ab1239*ab1457, ab2467*ab3569 - 
+  ab2369*ab4567, -(ab1249*ab1357) - 
+  ab1235*ab1479, -(ab2469*ab3567) - 
+  ab2356*ab4679, ab1245*ab1379 + 
+  ab1239*ab1457, ab2456*ab3679 + 
+  ab2369*ab4567, -(ab1247*ab1359) + 
+  ab1235*ab1479, -(ab2467*ab3569) + 
+  ab2356*ab4679, -(ab1245*ab1379) + 
+  ab1237*ab1459, -(ab2456*ab3679) + 
+  ab2367*ab4569, ab1249*ab1367 - 
+  ab1237*ab1469, -(ab2459*ab3567) + 
+  ab2357*ab4569, ab1247*ab1369 - 
+  ab1239*ab1467, -(ab2457*ab3569) + 
+  ab2359*ab4567, -(ab1249*ab1367) - 
+  ab1236*ab1479, ab2459*ab3567 + 
+  ab2356*ab4579, ab1246*ab1379 + 
+  ab1239*ab1467, -(ab2456*ab3579) - 
+  ab2359*ab4567, -(ab1247*ab1369) + 
+  ab1236*ab1479, ab2457*ab3569 - 
+  ab2356*ab4579, -(ab1246*ab1379) + 
+  ab1237*ab1469, ab2456*ab3579 - 
+  ab2357*ab4569, ab2579*ab3469 + 
+  ab2369*ab4579, ab2569*ab3479 + 
+  ab2379*ab4569, -(ab2579*ab3469) - 
+  ab2349*ab5679, -(ab2569*ab3479) + 
+  ab2349*ab5679, ab1259*ab1346 + 
+  ab1236*ab1459, -(ab2579*ab3467) - 
+  ab2367*ab4579, ab1256*ab1349 + 
+  ab1239*ab1456, -(ab2567*ab3479) - 
+  ab2379*ab4567, -(ab1259*ab1346) - 
+  ab1234*ab1569, ab2579*ab3467 + 
+  ab2347*ab5679, -(ab1256*ab1349) + 
+  ab1234*ab1569, ab2567*ab3479 - 
+  ab2347*ab5679, ab1259*ab1347 + 
+  ab1237*ab1459, ab2569*ab3467 + 
+  ab2367*ab4569, ab1257*ab1349 + 
+  ab1239*ab1457, ab2567*ab3469 + 
+  ab2369*ab4567, -(ab1259*ab1347) - 
+  ab1234*ab1579, -(ab2569*ab3467) - 
+  ab2346*ab5679, -(ab1257*ab1349) + 
+  ab1234*ab1579, -(ab2567*ab3469) + 
+  ab2346*ab5679, ab1259*ab1367 - 
+  ab1237*ab1569, ab2459*ab3467 - 
+  ab2347*ab4569, ab1257*ab1369 - 
+  ab1239*ab1567, ab2457*ab3469 - 
+  ab2349*ab4567, -(ab1259*ab1367) - 
+  ab1236*ab1579, -(ab2459*ab3467) - 
+  ab2346*ab4579, ab1256*ab1379 + 
+  ab1239*ab1567, ab2456*ab3479 + 
+  ab2349*ab4567, -(ab1257*ab1369) + 
+  ab1236*ab1579, -(ab2457*ab3469) + 
+  ab2346*ab4579, -(ab1256*ab1379) + 
+  ab1237*ab1569, -(ab2456*ab3479) + 
+  ab2347*ab4569, ab2679*ab3459 + 
+  ab2359*ab4679, -(ab2679*ab3459) + 
+  ab2349*ab5679, ab1269*ab1345 + 
+  ab1235*ab1469, -(ab2679*ab3457) - 
+  ab2357*ab4679, -(ab1269*ab1345) + 
+  ab1234*ab1569, ab2679*ab3457 - 
+  ab2347*ab5679, ab1269*ab1347 + 
+  ab1237*ab1469, -(ab2569*ab3457) - 
+  ab2357*ab4569, ab1267*ab1349 + 
+  ab1239*ab1467, -(ab2567*ab3459) - 
+  ab2359*ab4567, -(ab1269*ab1347) - 
+  ab1234*ab1679, ab2569*ab3457 + 
+  ab2345*ab5679, -(ab1267*ab1349) + 
+  ab1234*ab1679, ab2567*ab3459 - 
+  ab2345*ab5679, ab1269*ab1357 + 
+  ab1237*ab1569, ab2469*ab3457 + 
+  ab2347*ab4569, ab1267*ab1359 + 
+  ab1239*ab1567, ab2467*ab3459 + 
+  ab2349*ab4567, -(ab1269*ab1357) - 
+  ab1235*ab1679, -(ab2469*ab3457) - 
+  ab2345*ab4679, -(ab1267*ab1359) + 
+  ab1235*ab1679, -(ab2467*ab3459) + 
+  ab2345*ab4679, ab1279*ab1345 + 
+  ab1235*ab1479, ab2679*ab3456 + 
+  ab2356*ab4679, -(ab1279*ab1345) + 
+  ab1234*ab1579, -(ab2679*ab3456) + 
+  ab2346*ab5679, ab1279*ab1346 + 
+  ab1236*ab1479, -(ab2579*ab3456) - 
+  ab2356*ab4579, -(ab1279*ab1346) + 
+  ab1234*ab1679, ab2579*ab3456 - 
+  ab2345*ab5679, ab1279*ab1356 + 
+  ab1236*ab1579, ab2479*ab3456 + 
+  ab2346*ab4579, -(ab1279*ab1356) + 
+  ab1235*ab1679, -(ab2479*ab3456) + 
+  ab2345*ab4679, -(ab2579*ab3469) + 
+  ab2469*ab3579, -(ab2569*ab3479) + 
+  ab2479*ab3569, -(ab1259*ab1346) + 
+  ab1246*ab1359, ab2579*ab3467 - 
+  ab2467*ab3579, -(ab1256*ab1349) + 
+  ab1249*ab1356, ab2567*ab3479 - 
+  ab2479*ab3567, -(ab1259*ab1347) + 
+  ab1247*ab1359, -(ab2569*ab3467) + 
+  ab2467*ab3569, -(ab1257*ab1349) + 
+  ab1249*ab1357, -(ab2567*ab3469) + 
+  ab2469*ab3567, ab1259*ab1467 - 
+  ab1247*ab1569, -(ab2359*ab3467) + 
+  ab2347*ab3569, ab1257*ab1469 - 
+  ab1249*ab1567, -(ab2357*ab3469) + 
+  ab2349*ab3567, -(ab1259*ab1467) - 
+  ab1246*ab1579, ab2359*ab3467 + 
+  ab2346*ab3579, ab1256*ab1479 + 
+  ab1249*ab1567, -(ab2356*ab3479) - 
+  ab2349*ab3567, -(ab1257*ab1469) + 
+  ab1246*ab1579, ab2357*ab3469 - 
+  ab2346*ab3579, -(ab1256*ab1479) + 
+  ab1247*ab1569, ab2356*ab3479 - 
+  ab2347*ab3569, -(ab2679*ab3459) + 
+  ab2459*ab3679, -(ab1269*ab1345) + 
+  ab1245*ab1369, ab2679*ab3457 - 
+  ab2457*ab3679, -(ab1269*ab1347) + 
+  ab1247*ab1369, ab2569*ab3457 - 
+  ab2457*ab3569, -(ab1267*ab1349) + 
+  ab1249*ab1367, ab2567*ab3459 - 
+  ab2459*ab3567, ab1269*ab1457 + 
+  ab1247*ab1569, -(ab2369*ab3457) - 
+  ab2347*ab3569, ab1267*ab1459 + 
+  ab1249*ab1567, -(ab2367*ab3459) - 
+  ab2349*ab3567, -(ab1269*ab1457) - 
+  ab1245*ab1679, ab2369*ab3457 + 
+  ab2345*ab3679, -(ab1267*ab1459) + 
+  ab1245*ab1679, ab2367*ab3459 - 
+  ab2345*ab3679, -(ab1279*ab1345) + 
+  ab1245*ab1379, -(ab2679*ab3456) + 
+  ab2456*ab3679, -(ab1279*ab1346) + 
+  ab1246*ab1379, ab2579*ab3456 - 
+  ab2456*ab3579, ab1279*ab1456 + 
+  ab1246*ab1579, -(ab2379*ab3456) - 
+  ab2346*ab3579, -(ab1279*ab1456) + 
+  ab1245*ab1679, ab2379*ab3456 - 
+  ab2345*ab3679, -(ab1269*ab1357) + 
+  ab1257*ab1369, -(ab2469*ab3457) + 
+  ab2457*ab3469, -(ab1267*ab1359) + 
+  ab1259*ab1367, -(ab2467*ab3459) + 
+  ab2459*ab3467, -(ab1269*ab1457) + 
+  ab1257*ab1469, ab2369*ab3457 - 
+  ab2357*ab3469, -(ab1267*ab1459) + 
+  ab1259*ab1467, ab2367*ab3459 - 
+  ab2359*ab3467, -(ab1279*ab1356) + 
+  ab1256*ab1379, -(ab2479*ab3456) + 
+  ab2456*ab3479, -(ab1279*ab1456) + 
+  ab1256*ab1479, ab2379*ab3456 - 
+  ab2356*ab3479, ab1359*ab1467 - 
+  ab1347*ab1569, ab2359*ab2467 - 
+  ab2347*ab2569, ab1357*ab1469 - 
+  ab1349*ab1567, ab2357*ab2469 - 
+  ab2349*ab2567, -(ab1359*ab1467) - 
+  ab1346*ab1579, -(ab2359*ab2467) - 
+  ab2346*ab2579, ab1356*ab1479 + 
+  ab1349*ab1567, ab2356*ab2479 + 
+  ab2349*ab2567, -(ab1357*ab1469) + 
+  ab1346*ab1579, -(ab2357*ab2469) + 
+  ab2346*ab2579, -(ab1356*ab1479) + 
+  ab1347*ab1569, -(ab2356*ab2479) + 
+  ab2347*ab2569, ab1369*ab1457 + 
+  ab1347*ab1569, ab2369*ab2457 + 
+  ab2347*ab2569, ab1367*ab1459 + 
+  ab1349*ab1567, ab2367*ab2459 + 
+  ab2349*ab2567, -(ab1369*ab1457) - 
+  ab1345*ab1679, -(ab2369*ab2457) - 
+  ab2345*ab2679, -(ab1367*ab1459) + 
+  ab1345*ab1679, -(ab2367*ab2459) + 
+  ab2345*ab2679, ab1379*ab1456 + 
+  ab1346*ab1579, ab2379*ab2456 + 
+  ab2346*ab2579, -(ab1379*ab1456) + 
+  ab1345*ab1679, -(ab2379*ab2456) + 
+  ab2345*ab2679, -(ab1369*ab1457) + 
+  ab1357*ab1469, -(ab2369*ab2457) + 
+  ab2357*ab2469, -(ab1367*ab1459) + 
+  ab1359*ab1467, -(ab2367*ab2459) + 
+  ab2359*ab2467, -(ab1379*ab1456) + 
+  ab1356*ab1479, -(ab2379*ab2456) + 
+  ab2356*ab2479, ab1389*ab2459 - 
+  ab1259*ab3489, ab1359*ab2489 - 
+  ab1289*ab3459, -(ab1389*ab2459) - 
+  ab1249*ab3589, ab1349*ab2589 + 
+  ab1289*ab3459, -(ab1359*ab2489) + 
+  ab1249*ab3589, -(ab1349*ab2589) + 
+  ab1259*ab3489, -(ab1389*ab2458) + 
+  ab1258*ab3489, -(ab1358*ab2489) + 
+  ab1289*ab3458, ab1389*ab2458 + 
+  ab1248*ab3589, -(ab1348*ab2589) - 
+  ab1289*ab3458, ab1358*ab2489 - 
+  ab1248*ab3589, ab1348*ab2589 - 
+  ab1258*ab3489, ab1389*ab2469 - 
+  ab1269*ab3489, ab1369*ab2489 - 
+  ab1289*ab3469, -(ab1389*ab2469) - 
+  ab1249*ab3689, ab1349*ab2689 + 
+  ab1289*ab3469, -(ab1369*ab2489) + 
+  ab1249*ab3689, -(ab1349*ab2689) + 
+  ab1269*ab3489, -(ab1389*ab2468) + 
+  ab1268*ab3489, -(ab1368*ab2489) + 
+  ab1289*ab3468, ab1389*ab2468 + 
+  ab1248*ab3689, -(ab1348*ab2689) - 
+  ab1289*ab3468, ab1368*ab2489 - 
+  ab1248*ab3689, ab1348*ab2689 - 
+  ab1268*ab3489, ab1359*ab2458 - 
+  ab1258*ab3459, ab1369*ab2468 - 
+  ab1268*ab3469, ab1358*ab2459 - 
+  ab1259*ab3458, ab1368*ab2469 - 
+  ab1269*ab3468, -(ab1359*ab2458) - 
+  ab1245*ab3589, -(ab1369*ab2468) - 
+  ab1246*ab3689, ab1345*ab2589 + 
+  ab1259*ab3458, ab1346*ab2689 + 
+  ab1269*ab3468, -(ab1358*ab2459) + 
+  ab1245*ab3589, -(ab1368*ab2469) + 
+  ab1246*ab3689, -(ab1345*ab2589) + 
+  ab1258*ab3459, -(ab1346*ab2689) + 
+  ab1268*ab3469, ab1389*ab2569 - 
+  ab1269*ab3589, ab1369*ab2589 - 
+  ab1289*ab3569, -(ab1389*ab2569) - 
+  ab1259*ab3689, ab1359*ab2689 + 
+  ab1289*ab3569, -(ab1369*ab2589) + 
+  ab1259*ab3689, -(ab1359*ab2689) + 
+  ab1269*ab3589, -(ab1389*ab2568) + 
+  ab1268*ab3589, -(ab1368*ab2589) + 
+  ab1289*ab3568, ab1389*ab2568 + 
+  ab1258*ab3689, -(ab1358*ab2689) - 
+  ab1289*ab3568, ab1368*ab2589 - 
+  ab1258*ab3689, ab1358*ab2689 - 
+  ab1268*ab3589, -(ab1349*ab2458) + 
+  ab1248*ab3459, ab1369*ab2568 - 
+  ab1268*ab3569, -(ab1348*ab2459) + 
+  ab1249*ab3458, ab1368*ab2569 - 
+  ab1269*ab3568, ab1349*ab2458 + 
+  ab1245*ab3489, -(ab1369*ab2568) - 
+  ab1256*ab3689, -(ab1345*ab2489) - 
+  ab1249*ab3458, ab1356*ab2689 + 
+  ab1269*ab3568, ab1348*ab2459 - 
+  ab1245*ab3489, -(ab1368*ab2569) + 
+  ab1256*ab3689, ab1345*ab2489 - 
+  ab1248*ab3459, -(ab1356*ab2689) + 
+  ab1268*ab3569, -(ab1349*ab2468) + 
+  ab1248*ab3469, -(ab1359*ab2568) + 
+  ab1258*ab3569, -(ab1348*ab2469) + 
+  ab1249*ab3468, -(ab1358*ab2569) + 
+  ab1259*ab3568, ab1349*ab2468 + 
+  ab1246*ab3489, ab1359*ab2568 + 
+  ab1256*ab3589, -(ab1346*ab2489) - 
+  ab1249*ab3468, -(ab1356*ab2589) - 
+  ab1259*ab3568, ab1348*ab2469 - 
+  ab1246*ab3489, ab1358*ab2569 - 
+  ab1256*ab3589, ab1346*ab2489 - 
+  ab1248*ab3469, ab1356*ab2589 - 
+  ab1258*ab3569, ab1489*ab2359 + 
+  ab1259*ab3489, ab1459*ab2389 + 
+  ab1289*ab3459, -(ab1489*ab2359) - 
+  ab1239*ab4589, -(ab1459*ab2389) + 
+  ab1239*ab4589, -(ab1489*ab2358) - 
+  ab1258*ab3489, -(ab1458*ab2389) - 
+  ab1289*ab3458, ab1489*ab2358 + 
+  ab1238*ab4589, ab1458*ab2389 - 
+  ab1238*ab4589, ab1489*ab2369 + 
+  ab1269*ab3489, ab1469*ab2389 + 
+  ab1289*ab3469, -(ab1489*ab2369) - 
+  ab1239*ab4689, -(ab1469*ab2389) + 
+  ab1239*ab4689, -(ab1489*ab2368) - 
+  ab1268*ab3489, -(ab1468*ab2389) - 
+  ab1289*ab3468, ab1489*ab2368 + 
+  ab1238*ab4689, ab1468*ab2389 - 
+  ab1238*ab4689, ab1459*ab2358 + 
+  ab1258*ab3459, ab1469*ab2368 + 
+  ab1268*ab3469, ab1458*ab2359 + 
+  ab1259*ab3458, ab1468*ab2369 + 
+  ab1269*ab3468, -(ab1459*ab2358) - 
+  ab1235*ab4589, -(ab1469*ab2368) - 
+  ab1236*ab4689, -(ab1458*ab2359) + 
+  ab1235*ab4589, -(ab1468*ab2369) + 
+  ab1236*ab4689, ab1489*ab2569 - 
+  ab1269*ab4589, ab1469*ab2589 - 
+  ab1289*ab4569, -(ab1489*ab2569) - 
+  ab1259*ab4689, ab1459*ab2689 + 
+  ab1289*ab4569, -(ab1469*ab2589) + 
+  ab1259*ab4689, -(ab1459*ab2689) + 
+  ab1269*ab4589, -(ab1489*ab2568) + 
+  ab1268*ab4589, -(ab1468*ab2589) + 
+  ab1289*ab4568, ab1489*ab2568 + 
+  ab1258*ab4689, -(ab1458*ab2689) - 
+  ab1289*ab4568, ab1468*ab2589 - 
+  ab1258*ab4689, ab1458*ab2689 - 
+  ab1268*ab4589, ab1349*ab2358 - 
+  ab1238*ab3459, ab1469*ab2568 - 
+  ab1268*ab4569, ab1348*ab2359 - 
+  ab1239*ab3458, ab1468*ab2569 - 
+  ab1269*ab4568, -(ab1349*ab2358) - 
+  ab1235*ab3489, -(ab1469*ab2568) - 
+  ab1256*ab4689, ab1345*ab2389 + 
+  ab1239*ab3458, ab1456*ab2689 + 
+  ab1269*ab4568, -(ab1348*ab2359) + 
+  ab1235*ab3489, -(ab1468*ab2569) + 
+  ab1256*ab4689, -(ab1345*ab2389) + 
+  ab1238*ab3459, -(ab1456*ab2689) + 
+  ab1268*ab4569, ab1349*ab2368 - 
+  ab1238*ab3469, -(ab1459*ab2568) + 
+  ab1258*ab4569, ab1348*ab2369 - 
+  ab1239*ab3468, -(ab1458*ab2569) + 
+  ab1259*ab4568, -(ab1349*ab2368) - 
+  ab1236*ab3489, ab1459*ab2568 + 
+  ab1256*ab4589, ab1346*ab2389 + 
+  ab1239*ab3468, -(ab1456*ab2589) - 
+  ab1259*ab4568, -(ab1348*ab2369) + 
+  ab1236*ab3489, ab1458*ab2569 - 
+  ab1256*ab4589, -(ab1346*ab2389) + 
+  ab1238*ab3469, ab1456*ab2589 - 
+  ab1258*ab4569, ab1589*ab2349 + 
+  ab1249*ab3589, -(ab1589*ab2349) + 
+  ab1239*ab4589, -(ab1589*ab2348) - 
+  ab1248*ab3589, ab1589*ab2348 - 
+  ab1238*ab4589, ab1589*ab2369 + 
+  ab1269*ab3589, ab1569*ab2389 + 
+  ab1289*ab3569, -(ab1589*ab2369) - 
+  ab1239*ab5689, -(ab1569*ab2389) + 
+  ab1239*ab5689, -(ab1589*ab2368) - 
+  ab1268*ab3589, -(ab1568*ab2389) - 
+  ab1289*ab3568, ab1589*ab2368 + 
+  ab1238*ab5689, ab1568*ab2389 - 
+  ab1238*ab5689, -(ab1459*ab2348) - 
+  ab1248*ab3459, ab1569*ab2368 + 
+  ab1268*ab3569, -(ab1458*ab2349) - 
+  ab1249*ab3458, ab1568*ab2369 + 
+  ab1269*ab3568, ab1459*ab2348 + 
+  ab1234*ab4589, -(ab1569*ab2368) - 
+  ab1236*ab5689, ab1458*ab2349 - 
+  ab1234*ab4589, -(ab1568*ab2369) + 
+  ab1236*ab5689, ab1589*ab2469 + 
+  ab1269*ab4589, ab1569*ab2489 + 
+  ab1289*ab4569, -(ab1589*ab2469) - 
+  ab1249*ab5689, -(ab1569*ab2489) + 
+  ab1249*ab5689, -(ab1589*ab2468) - 
+  ab1268*ab4589, -(ab1568*ab2489) - 
+  ab1289*ab4568, ab1589*ab2468 + 
+  ab1248*ab5689, ab1568*ab2489 - 
+  ab1248*ab5689, ab1359*ab2348 + 
+  ab1238*ab3459, ab1569*ab2468 + 
+  ab1268*ab4569, ab1358*ab2349 + 
+  ab1239*ab3458, ab1568*ab2469 + 
+  ab1269*ab4568, -(ab1359*ab2348) - 
+  ab1234*ab3589, -(ab1569*ab2468) - 
+  ab1246*ab5689, -(ab1358*ab2349) + 
+  ab1234*ab3589, -(ab1568*ab2469) + 
+  ab1246*ab5689, ab1359*ab2368 - 
+  ab1238*ab3569, ab1459*ab2468 - 
+  ab1248*ab4569, ab1358*ab2369 - 
+  ab1239*ab3568, ab1458*ab2469 - 
+  ab1249*ab4568, -(ab1359*ab2368) - 
+  ab1236*ab3589, -(ab1459*ab2468) - 
+  ab1246*ab4589, ab1356*ab2389 + 
+  ab1239*ab3568, ab1456*ab2489 + 
+  ab1249*ab4568, -(ab1358*ab2369) + 
+  ab1236*ab3589, -(ab1458*ab2469) + 
+  ab1246*ab4589, -(ab1356*ab2389) + 
+  ab1238*ab3569, -(ab1456*ab2489) + 
+  ab1248*ab4569, ab1689*ab2349 + 
+  ab1249*ab3689, -(ab1689*ab2349) + 
+  ab1239*ab4689, -(ab1689*ab2348) - 
+  ab1248*ab3689, ab1689*ab2348 - 
+  ab1238*ab4689, ab1689*ab2359 + 
+  ab1259*ab3689, -(ab1689*ab2359) + 
+  ab1239*ab5689, -(ab1689*ab2358) - 
+  ab1258*ab3689, ab1689*ab2358 - 
+  ab1238*ab5689, -(ab1469*ab2348) - 
+  ab1248*ab3469, -(ab1569*ab2358) - 
+  ab1258*ab3569, -(ab1468*ab2349) - 
+  ab1249*ab3468, -(ab1568*ab2359) - 
+  ab1259*ab3568, ab1469*ab2348 + 
+  ab1234*ab4689, ab1569*ab2358 + 
+  ab1235*ab5689, ab1468*ab2349 - 
+  ab1234*ab4689, ab1568*ab2359 - 
+  ab1235*ab5689, ab1689*ab2459 + 
+  ab1259*ab4689, -(ab1689*ab2459) + 
+  ab1249*ab5689, -(ab1689*ab2458) - 
+  ab1258*ab4689, ab1689*ab2458 - 
+  ab1248*ab5689, ab1369*ab2348 + 
+  ab1238*ab3469, -(ab1569*ab2458) - 
+  ab1258*ab4569, ab1368*ab2349 + 
+  ab1239*ab3468, -(ab1568*ab2459) - 
+  ab1259*ab4568, -(ab1369*ab2348) - 
+  ab1234*ab3689, ab1569*ab2458 + 
+  ab1245*ab5689, -(ab1368*ab2349) + 
+  ab1234*ab3689, ab1568*ab2459 - 
+  ab1245*ab5689, ab1369*ab2358 + 
+  ab1238*ab3569, ab1469*ab2458 + 
+  ab1248*ab4569, ab1368*ab2359 + 
+  ab1239*ab3568, ab1468*ab2459 + 
+  ab1249*ab4568, -(ab1369*ab2358) - 
+  ab1235*ab3689, -(ab1469*ab2458) - 
+  ab1245*ab4689, -(ab1368*ab2359) + 
+  ab1235*ab3689, -(ab1468*ab2459) + 
+  ab1245*ab4689, ab1589*ab2345 + 
+  ab1245*ab3589, ab1689*ab2346 + 
+  ab1246*ab3689, -(ab1589*ab2345) + 
+  ab1235*ab4589, -(ab1689*ab2346) + 
+  ab1236*ab4689, -(ab1489*ab2345) - 
+  ab1245*ab3489, ab1689*ab2356 + 
+  ab1256*ab3689, ab1489*ab2345 - 
+  ab1234*ab4589, -(ab1689*ab2356) + 
+  ab1236*ab5689, -(ab1489*ab2346) - 
+  ab1246*ab3489, -(ab1589*ab2356) - 
+  ab1256*ab3589, ab1489*ab2346 - 
+  ab1234*ab4689, ab1589*ab2356 - 
+  ab1235*ab5689, ab1389*ab2345 + 
+  ab1235*ab3489, ab1689*ab2456 + 
+  ab1256*ab4689, -(ab1389*ab2345) + 
+  ab1234*ab3589, -(ab1689*ab2456) + 
+  ab1246*ab5689, ab1389*ab2346 + 
+  ab1236*ab3489, -(ab1589*ab2456) - 
+  ab1256*ab4589, -(ab1389*ab2346) + 
+  ab1234*ab3689, ab1589*ab2456 - 
+  ab1245*ab5689, ab1389*ab2356 + 
+  ab1236*ab3589, ab1489*ab2456 + 
+  ab1246*ab4589, -(ab1389*ab2356) + 
+  ab1235*ab3689, -(ab1489*ab2456) + 
+  ab1245*ab4689, -(ab1489*ab2359) + 
+  ab1359*ab2489, -(ab1459*ab2389) + 
+  ab1389*ab2459, ab1489*ab2358 - 
+  ab1358*ab2489, ab1458*ab2389 - 
+  ab1389*ab2458, -(ab1489*ab2369) + 
+  ab1369*ab2489, -(ab1469*ab2389) + 
+  ab1389*ab2469, ab1489*ab2368 - 
+  ab1368*ab2489, ab1468*ab2389 - 
+  ab1389*ab2468, -(ab1459*ab2358) + 
+  ab1358*ab2459, -(ab1469*ab2368) + 
+  ab1368*ab2469, -(ab1458*ab2359) + 
+  ab1359*ab2458, -(ab1468*ab2369) + 
+  ab1369*ab2468, ab1489*ab3569 - 
+  ab1369*ab4589, ab1469*ab3589 - 
+  ab1389*ab4569, -(ab1489*ab3569) - 
+  ab1359*ab4689, ab1459*ab3689 + 
+  ab1389*ab4569, -(ab1469*ab3589) + 
+  ab1359*ab4689, -(ab1459*ab3689) + 
+  ab1369*ab4589, -(ab1489*ab3568) + 
+  ab1368*ab4589, -(ab1468*ab3589) + 
+  ab1389*ab4568, ab1489*ab3568 + 
+  ab1358*ab4689, -(ab1458*ab3689) - 
+  ab1389*ab4568, ab1468*ab3589 - 
+  ab1358*ab4689, ab1458*ab3689 - 
+  ab1368*ab4589, -(ab1249*ab2358) + 
+  ab1238*ab2459, ab1469*ab3568 - 
+  ab1368*ab4569, -(ab1248*ab2359) + 
+  ab1239*ab2458, ab1468*ab3569 - 
+  ab1369*ab4568, ab1249*ab2358 + 
+  ab1235*ab2489, -(ab1469*ab3568) - 
+  ab1356*ab4689, -(ab1245*ab2389) - 
+  ab1239*ab2458, ab1456*ab3689 + 
+  ab1369*ab4568, ab1248*ab2359 - 
+  ab1235*ab2489, -(ab1468*ab3569) + 
+  ab1356*ab4689, ab1245*ab2389 - 
+  ab1238*ab2459, -(ab1456*ab3689) + 
+  ab1368*ab4569, -(ab1249*ab2368) + 
+  ab1238*ab2469, -(ab1459*ab3568) + 
+  ab1358*ab4569, -(ab1248*ab2369) + 
+  ab1239*ab2468, -(ab1458*ab3569) + 
+  ab1359*ab4568, ab1249*ab2368 + 
+  ab1236*ab2489, ab1459*ab3568 + 
+  ab1356*ab4589, -(ab1246*ab2389) - 
+  ab1239*ab2468, -(ab1456*ab3589) - 
+  ab1359*ab4568, ab1248*ab2369 - 
+  ab1236*ab2489, ab1458*ab3569 - 
+  ab1356*ab4589, ab1246*ab2389 - 
+  ab1238*ab2469, ab1456*ab3589 - 
+  ab1358*ab4569, -(ab1589*ab2349) + 
+  ab1349*ab2589, ab1589*ab2348 - 
+  ab1348*ab2589, -(ab1589*ab2369) + 
+  ab1369*ab2589, -(ab1569*ab2389) + 
+  ab1389*ab2569, ab1589*ab2368 - 
+  ab1368*ab2589, ab1568*ab2389 - 
+  ab1389*ab2568, ab1459*ab2348 - 
+  ab1348*ab2459, -(ab1569*ab2368) + 
+  ab1368*ab2569, ab1458*ab2349 - 
+  ab1349*ab2458, -(ab1568*ab2369) + 
+  ab1369*ab2568, ab1589*ab3469 + 
+  ab1369*ab4589, ab1569*ab3489 + 
+  ab1389*ab4569, -(ab1589*ab3469) - 
+  ab1349*ab5689, -(ab1569*ab3489) + 
+  ab1349*ab5689, -(ab1589*ab3468) - 
+  ab1368*ab4589, -(ab1568*ab3489) - 
+  ab1389*ab4568, ab1589*ab3468 + 
+  ab1348*ab5689, ab1568*ab3489 - 
+  ab1348*ab5689, -(ab1259*ab2348) - 
+  ab1238*ab2459, ab1569*ab3468 + 
+  ab1368*ab4569, -(ab1258*ab2349) - 
+  ab1239*ab2458, ab1568*ab3469 + 
+  ab1369*ab4568, ab1259*ab2348 + 
+  ab1234*ab2589, -(ab1569*ab3468) - 
+  ab1346*ab5689, ab1258*ab2349 - 
+  ab1234*ab2589, -(ab1568*ab3469) + 
+  ab1346*ab5689, -(ab1259*ab2368) + 
+  ab1238*ab2569, ab1459*ab3468 - 
+  ab1348*ab4569, -(ab1258*ab2369) + 
+  ab1239*ab2568, ab1458*ab3469 - 
+  ab1349*ab4568, ab1259*ab2368 + 
+  ab1236*ab2589, -(ab1459*ab3468) - 
+  ab1346*ab4589, -(ab1256*ab2389) - 
+  ab1239*ab2568, ab1456*ab3489 + 
+  ab1349*ab4568, ab1258*ab2369 - 
+  ab1236*ab2589, -(ab1458*ab3469) + 
+  ab1346*ab4589, ab1256*ab2389 - 
+  ab1238*ab2569, -(ab1456*ab3489) + 
+  ab1348*ab4569, -(ab1689*ab2349) + 
+  ab1349*ab2689, ab1689*ab2348 - 
+  ab1348*ab2689, -(ab1689*ab2359) + 
+  ab1359*ab2689, ab1689*ab2358 - 
+  ab1358*ab2689, ab1469*ab2348 - 
+  ab1348*ab2469, ab1569*ab2358 - 
+  ab1358*ab2569, ab1468*ab2349 - 
+  ab1349*ab2468, ab1568*ab2359 - 
+  ab1359*ab2568, ab1689*ab3459 + 
+  ab1359*ab4689, -(ab1689*ab3459) + 
+  ab1349*ab5689, -(ab1689*ab3458) - 
+  ab1358*ab4689, ab1689*ab3458 - 
+  ab1348*ab5689, -(ab1269*ab2348) - 
+  ab1238*ab2469, -(ab1569*ab3458) - 
+  ab1358*ab4569, -(ab1268*ab2349) - 
+  ab1239*ab2468, -(ab1568*ab3459) - 
+  ab1359*ab4568, ab1269*ab2348 + 
+  ab1234*ab2689, ab1569*ab3458 + 
+  ab1345*ab5689, ab1268*ab2349 - 
+  ab1234*ab2689, ab1568*ab3459 - 
+  ab1345*ab5689, -(ab1269*ab2358) - 
+  ab1238*ab2569, ab1469*ab3458 + 
+  ab1348*ab4569, -(ab1268*ab2359) - 
+  ab1239*ab2568, ab1468*ab3459 + 
+  ab1349*ab4568, ab1269*ab2358 + 
+  ab1235*ab2689, -(ab1469*ab3458) - 
+  ab1345*ab4689, ab1268*ab2359 - 
+  ab1235*ab2689, -(ab1468*ab3459) + 
+  ab1345*ab4689, -(ab1589*ab2345) + 
+  ab1345*ab2589, -(ab1689*ab2346) + 
+  ab1346*ab2689, ab1489*ab2345 - 
+  ab1345*ab2489, -(ab1689*ab2356) + 
+  ab1356*ab2689, ab1489*ab2346 - 
+  ab1346*ab2489, ab1589*ab2356 - 
+  ab1356*ab2589, -(ab1289*ab2345) - 
+  ab1235*ab2489, ab1689*ab3456 + 
+  ab1356*ab4689, ab1289*ab2345 - 
+  ab1234*ab2589, -(ab1689*ab3456) + 
+  ab1346*ab5689, -(ab1289*ab2346) - 
+  ab1236*ab2489, -(ab1589*ab3456) - 
+  ab1356*ab4589, ab1289*ab2346 - 
+  ab1234*ab2689, ab1589*ab3456 - 
+  ab1345*ab5689, -(ab1289*ab2356) - 
+  ab1236*ab2589, ab1489*ab3456 + 
+  ab1346*ab4589, ab1289*ab2356 - 
+  ab1235*ab2689, -(ab1489*ab3456) + 
+  ab1345*ab4689, -(ab1589*ab2469) + 
+  ab1469*ab2589, -(ab1569*ab2489) + 
+  ab1489*ab2569, ab1589*ab2468 - 
+  ab1468*ab2589, ab1568*ab2489 - 
+  ab1489*ab2568, -(ab1359*ab2348) + 
+  ab1348*ab2359, -(ab1569*ab2468) + 
+  ab1468*ab2569, -(ab1358*ab2349) + 
+  ab1349*ab2358, -(ab1568*ab2469) + 
+  ab1469*ab2568, -(ab1589*ab3469) + 
+  ab1469*ab3589, -(ab1569*ab3489) + 
+  ab1489*ab3569, ab1589*ab3468 - 
+  ab1468*ab3589, ab1568*ab3489 - 
+  ab1489*ab3568, ab1259*ab2348 - 
+  ab1248*ab2359, -(ab1569*ab3468) + 
+  ab1468*ab3569, ab1258*ab2349 - 
+  ab1249*ab2358, -(ab1568*ab3469) + 
+  ab1469*ab3568, -(ab1259*ab2468) + 
+  ab1248*ab2569, -(ab1359*ab3468) + 
+  ab1348*ab3569, -(ab1258*ab2469) + 
+  ab1249*ab2568, -(ab1358*ab3469) + 
+  ab1349*ab3568, ab1259*ab2468 + 
+  ab1246*ab2589, ab1359*ab3468 + 
+  ab1346*ab3589, -(ab1256*ab2489) - 
+  ab1249*ab2568, -(ab1356*ab3489) - 
+  ab1349*ab3568, ab1258*ab2469 - 
+  ab1246*ab2589, ab1358*ab3469 - 
+  ab1346*ab3589, ab1256*ab2489 - 
+  ab1248*ab2569, ab1356*ab3489 - 
+  ab1348*ab3569, -(ab1689*ab2459) + 
+  ab1459*ab2689, ab1689*ab2458 - 
+  ab1458*ab2689, -(ab1369*ab2348) + 
+  ab1348*ab2369, ab1569*ab2458 - 
+  ab1458*ab2569, -(ab1368*ab2349) + 
+  ab1349*ab2368, ab1568*ab2459 - 
+  ab1459*ab2568, -(ab1689*ab3459) + 
+  ab1459*ab3689, ab1689*ab3458 - 
+  ab1458*ab3689, ab1269*ab2348 - 
+  ab1248*ab2369, ab1569*ab3458 - 
+  ab1458*ab3569, ab1268*ab2349 - 
+  ab1249*ab2368, ab1568*ab3459 - 
+  ab1459*ab3568, -(ab1269*ab2458) - 
+  ab1248*ab2569, -(ab1369*ab3458) - 
+  ab1348*ab3569, -(ab1268*ab2459) - 
+  ab1249*ab2568, -(ab1368*ab3459) - 
+  ab1349*ab3568, ab1269*ab2458 + 
+  ab1245*ab2689, ab1369*ab3458 + 
+  ab1345*ab3689, ab1268*ab2459 - 
+  ab1245*ab2689, ab1368*ab3459 - 
+  ab1345*ab3689, -(ab1389*ab2345) + 
+  ab1345*ab2389, -(ab1689*ab2456) + 
+  ab1456*ab2689, -(ab1389*ab2346) + 
+  ab1346*ab2389, ab1589*ab2456 - 
+  ab1456*ab2589, ab1289*ab2345 - 
+  ab1245*ab2389, -(ab1689*ab3456) + 
+  ab1456*ab3689, ab1289*ab2346 - 
+  ab1246*ab2389, ab1589*ab3456 - 
+  ab1456*ab3589, -(ab1289*ab2456) - 
+  ab1246*ab2589, -(ab1389*ab3456) - 
+  ab1346*ab3589, ab1289*ab2456 - 
+  ab1245*ab2689, ab1389*ab3456 - 
+  ab1345*ab3689, -(ab1369*ab2358) + 
+  ab1358*ab2369, -(ab1469*ab2458) + 
+  ab1458*ab2469, -(ab1368*ab2359) + 
+  ab1359*ab2368, -(ab1468*ab2459) + 
+  ab1459*ab2468, ab1269*ab2358 - 
+  ab1258*ab2369, -(ab1469*ab3458) + 
+  ab1458*ab3469, ab1268*ab2359 - 
+  ab1259*ab2368, -(ab1468*ab3459) + 
+  ab1459*ab3468, ab1269*ab2458 - 
+  ab1258*ab2469, ab1369*ab3458 - 
+  ab1358*ab3469, ab1268*ab2459 - 
+  ab1259*ab2468, ab1368*ab3459 - 
+  ab1359*ab3468, -(ab1389*ab2356) + 
+  ab1356*ab2389, -(ab1489*ab2456) + 
+  ab1456*ab2489, ab1289*ab2356 - 
+  ab1256*ab2389, -(ab1489*ab3456) + 
+  ab1456*ab3489, ab1289*ab2456 - 
+  ab1256*ab2489, ab1389*ab3456 - 
+  ab1356*ab3489, ab2489*ab3569 - 
+  ab2369*ab4589, ab2469*ab3589 - 
+  ab2389*ab4569, -(ab2489*ab3569) - 
+  ab2359*ab4689, ab2459*ab3689 + 
+  ab2389*ab4569, -(ab2469*ab3589) + 
+  ab2359*ab4689, -(ab2459*ab3689) + 
+  ab2369*ab4589, -(ab2489*ab3568) + 
+  ab2368*ab4589, -(ab2468*ab3589) + 
+  ab2389*ab4568, ab2489*ab3568 + 
+  ab2358*ab4689, -(ab2458*ab3689) - 
+  ab2389*ab4568, ab2468*ab3589 - 
+  ab2358*ab4689, ab2458*ab3689 - 
+  ab2368*ab4589, ab1249*ab1358 - 
+  ab1238*ab1459, ab2469*ab3568 - 
+  ab2368*ab4569, ab1248*ab1359 - 
+  ab1239*ab1458, ab2468*ab3569 - 
+  ab2369*ab4568, -(ab1249*ab1358) - 
+  ab1235*ab1489, -(ab2469*ab3568) - 
+  ab2356*ab4689, ab1245*ab1389 + 
+  ab1239*ab1458, ab2456*ab3689 + 
+  ab2369*ab4568, -(ab1248*ab1359) + 
+  ab1235*ab1489, -(ab2468*ab3569) + 
+  ab2356*ab4689, -(ab1245*ab1389) + 
+  ab1238*ab1459, -(ab2456*ab3689) + 
+  ab2368*ab4569, ab1249*ab1368 - 
+  ab1238*ab1469, -(ab2459*ab3568) + 
+  ab2358*ab4569, ab1248*ab1369 - 
+  ab1239*ab1468, -(ab2458*ab3569) + 
+  ab2359*ab4568, -(ab1249*ab1368) - 
+  ab1236*ab1489, ab2459*ab3568 + 
+  ab2356*ab4589, ab1246*ab1389 + 
+  ab1239*ab1468, -(ab2456*ab3589) - 
+  ab2359*ab4568, -(ab1248*ab1369) + 
+  ab1236*ab1489, ab2458*ab3569 - 
+  ab2356*ab4589, -(ab1246*ab1389) + 
+  ab1238*ab1469, ab2456*ab3589 - 
+  ab2358*ab4569, ab2589*ab3469 + 
+  ab2369*ab4589, ab2569*ab3489 + 
+  ab2389*ab4569, -(ab2589*ab3469) - 
+  ab2349*ab5689, -(ab2569*ab3489) + 
+  ab2349*ab5689, -(ab2589*ab3468) - 
+  ab2368*ab4589, -(ab2568*ab3489) - 
+  ab2389*ab4568, ab2589*ab3468 + 
+  ab2348*ab5689, ab2568*ab3489 - 
+  ab2348*ab5689, ab1259*ab1348 + 
+  ab1238*ab1459, ab2569*ab3468 + 
+  ab2368*ab4569, ab1258*ab1349 + 
+  ab1239*ab1458, ab2568*ab3469 + 
+  ab2369*ab4568, -(ab1259*ab1348) - 
+  ab1234*ab1589, -(ab2569*ab3468) - 
+  ab2346*ab5689, -(ab1258*ab1349) + 
+  ab1234*ab1589, -(ab2568*ab3469) + 
+  ab2346*ab5689, ab1259*ab1368 - 
+  ab1238*ab1569, ab2459*ab3468 - 
+  ab2348*ab4569, ab1258*ab1369 - 
+  ab1239*ab1568, ab2458*ab3469 - 
+  ab2349*ab4568, -(ab1259*ab1368) - 
+  ab1236*ab1589, -(ab2459*ab3468) - 
+  ab2346*ab4589, ab1256*ab1389 + 
+  ab1239*ab1568, ab2456*ab3489 + 
+  ab2349*ab4568, -(ab1258*ab1369) + 
+  ab1236*ab1589, -(ab2458*ab3469) + 
+  ab2346*ab4589, -(ab1256*ab1389) + 
+  ab1238*ab1569, -(ab2456*ab3489) + 
+  ab2348*ab4569, ab2689*ab3459 + 
+  ab2359*ab4689, -(ab2689*ab3459) + 
+  ab2349*ab5689, -(ab2689*ab3458) - 
+  ab2358*ab4689, ab2689*ab3458 - 
+  ab2348*ab5689, ab1269*ab1348 + 
+  ab1238*ab1469, -(ab2569*ab3458) - 
+  ab2358*ab4569, ab1268*ab1349 + 
+  ab1239*ab1468, -(ab2568*ab3459) - 
+  ab2359*ab4568, -(ab1269*ab1348) - 
+  ab1234*ab1689, ab2569*ab3458 + 
+  ab2345*ab5689, -(ab1268*ab1349) + 
+  ab1234*ab1689, ab2568*ab3459 - 
+  ab2345*ab5689, ab1269*ab1358 + 
+  ab1238*ab1569, ab2469*ab3458 + 
+  ab2348*ab4569, ab1268*ab1359 + 
+  ab1239*ab1568, ab2468*ab3459 + 
+  ab2349*ab4568, -(ab1269*ab1358) - 
+  ab1235*ab1689, -(ab2469*ab3458) - 
+  ab2345*ab4689, -(ab1268*ab1359) + 
+  ab1235*ab1689, -(ab2468*ab3459) + 
+  ab2345*ab4689, ab1289*ab1345 + 
+  ab1235*ab1489, ab2689*ab3456 + 
+  ab2356*ab4689, -(ab1289*ab1345) + 
+  ab1234*ab1589, -(ab2689*ab3456) + 
+  ab2346*ab5689, ab1289*ab1346 + 
+  ab1236*ab1489, -(ab2589*ab3456) - 
+  ab2356*ab4589, -(ab1289*ab1346) + 
+  ab1234*ab1689, ab2589*ab3456 - 
+  ab2345*ab5689, ab1289*ab1356 + 
+  ab1236*ab1589, ab2489*ab3456 + 
+  ab2346*ab4589, -(ab1289*ab1356) + 
+  ab1235*ab1689, -(ab2489*ab3456) + 
+  ab2345*ab4689, -(ab2589*ab3469) + 
+  ab2469*ab3589, -(ab2569*ab3489) + 
+  ab2489*ab3569, ab2589*ab3468 - 
+  ab2468*ab3589, ab2568*ab3489 - 
+  ab2489*ab3568, -(ab1259*ab1348) + 
+  ab1248*ab1359, -(ab2569*ab3468) + 
+  ab2468*ab3569, -(ab1258*ab1349) + 
+  ab1249*ab1358, -(ab2568*ab3469) + 
+  ab2469*ab3568, ab1259*ab1468 - 
+  ab1248*ab1569, -(ab2359*ab3468) + 
+  ab2348*ab3569, ab1258*ab1469 - 
+  ab1249*ab1568, -(ab2358*ab3469) + 
+  ab2349*ab3568, -(ab1259*ab1468) - 
+  ab1246*ab1589, ab2359*ab3468 + 
+  ab2346*ab3589, ab1256*ab1489 + 
+  ab1249*ab1568, -(ab2356*ab3489) - 
+  ab2349*ab3568, -(ab1258*ab1469) + 
+  ab1246*ab1589, ab2358*ab3469 - 
+  ab2346*ab3589, -(ab1256*ab1489) + 
+  ab1248*ab1569, ab2356*ab3489 - 
+  ab2348*ab3569, -(ab2689*ab3459) + 
+  ab2459*ab3689, ab2689*ab3458 - 
+  ab2458*ab3689, -(ab1269*ab1348) + 
+  ab1248*ab1369, ab2569*ab3458 - 
+  ab2458*ab3569, -(ab1268*ab1349) + 
+  ab1249*ab1368, ab2568*ab3459 - 
+  ab2459*ab3568, ab1269*ab1458 + 
+  ab1248*ab1569, -(ab2369*ab3458) - 
+  ab2348*ab3569, ab1268*ab1459 + 
+  ab1249*ab1568, -(ab2368*ab3459) - 
+  ab2349*ab3568, -(ab1269*ab1458) - 
+  ab1245*ab1689, ab2369*ab3458 + 
+  ab2345*ab3689, -(ab1268*ab1459) + 
+  ab1245*ab1689, ab2368*ab3459 - 
+  ab2345*ab3689, -(ab1289*ab1345) + 
+  ab1245*ab1389, -(ab2689*ab3456) + 
+  ab2456*ab3689, -(ab1289*ab1346) + 
+  ab1246*ab1389, ab2589*ab3456 - 
+  ab2456*ab3589, ab1289*ab1456 + 
+  ab1246*ab1589, -(ab2389*ab3456) - 
+  ab2346*ab3589, -(ab1289*ab1456) + 
+  ab1245*ab1689, ab2389*ab3456 - 
+  ab2345*ab3689, -(ab1269*ab1358) + 
+  ab1258*ab1369, -(ab2469*ab3458) + 
+  ab2458*ab3469, -(ab1268*ab1359) + 
+  ab1259*ab1368, -(ab2468*ab3459) + 
+  ab2459*ab3468, -(ab1269*ab1458) + 
+  ab1258*ab1469, ab2369*ab3458 - 
+  ab2358*ab3469, -(ab1268*ab1459) + 
+  ab1259*ab1468, ab2368*ab3459 - 
+  ab2359*ab3468, -(ab1289*ab1356) + 
+  ab1256*ab1389, -(ab2489*ab3456) + 
+  ab2456*ab3489, -(ab1289*ab1456) + 
+  ab1256*ab1489, ab2389*ab3456 - 
+  ab2356*ab3489, ab1359*ab1468 - 
+  ab1348*ab1569, ab2359*ab2468 - 
+  ab2348*ab2569, ab1358*ab1469 - 
+  ab1349*ab1568, ab2358*ab2469 - 
+  ab2349*ab2568, -(ab1359*ab1468) - 
+  ab1346*ab1589, -(ab2359*ab2468) - 
+  ab2346*ab2589, ab1356*ab1489 + 
+  ab1349*ab1568, ab2356*ab2489 + 
+  ab2349*ab2568, -(ab1358*ab1469) + 
+  ab1346*ab1589, -(ab2358*ab2469) + 
+  ab2346*ab2589, -(ab1356*ab1489) + 
+  ab1348*ab1569, -(ab2356*ab2489) + 
+  ab2348*ab2569, ab1369*ab1458 + 
+  ab1348*ab1569, ab2369*ab2458 + 
+  ab2348*ab2569, ab1368*ab1459 + 
+  ab1349*ab1568, ab2368*ab2459 + 
+  ab2349*ab2568, -(ab1369*ab1458) - 
+  ab1345*ab1689, -(ab2369*ab2458) - 
+  ab2345*ab2689, -(ab1368*ab1459) + 
+  ab1345*ab1689, -(ab2368*ab2459) + 
+  ab2345*ab2689, ab1389*ab1456 + 
+  ab1346*ab1589, ab2389*ab2456 + 
+  ab2346*ab2589, -(ab1389*ab1456) + 
+  ab1345*ab1689, -(ab2389*ab2456) + 
+  ab2345*ab2689, -(ab1369*ab1458) + 
+  ab1358*ab1469, -(ab2369*ab2458) + 
+  ab2358*ab2469, -(ab1368*ab1459) + 
+  ab1359*ab1468, -(ab2368*ab2459) + 
+  ab2359*ab2468, -(ab1389*ab1456) + 
+  ab1356*ab1489, -(ab2389*ab2456) + 
+  ab2356*ab2489, ab1389*ab2479 - 
+  ab1279*ab3489, ab1379*ab2489 - 
+  ab1289*ab3479, -(ab1389*ab2479) - 
+  ab1249*ab3789, ab1349*ab2789 + 
+  ab1289*ab3479, -(ab1379*ab2489) + 
+  ab1249*ab3789, -(ab1349*ab2789) + 
+  ab1279*ab3489, -(ab1389*ab2478) + 
+  ab1278*ab3489, -(ab1378*ab2489) + 
+  ab1289*ab3478, ab1389*ab2478 + 
+  ab1248*ab3789, -(ab1348*ab2789) - 
+  ab1289*ab3478, ab1378*ab2489 - 
+  ab1248*ab3789, ab1348*ab2789 - 
+  ab1278*ab3489, ab1379*ab2478 - 
+  ab1278*ab3479, ab1378*ab2479 - 
+  ab1279*ab3478, -(ab1379*ab2478) - 
+  ab1247*ab3789, ab1347*ab2789 + 
+  ab1279*ab3478, -(ab1378*ab2479) + 
+  ab1247*ab3789, -(ab1347*ab2789) + 
+  ab1278*ab3479, ab1389*ab2579 - 
+  ab1279*ab3589, ab1379*ab2589 - 
+  ab1289*ab3579, -(ab1389*ab2579) - 
+  ab1259*ab3789, ab1359*ab2789 + 
+  ab1289*ab3579, -(ab1379*ab2589) + 
+  ab1259*ab3789, -(ab1359*ab2789) + 
+  ab1279*ab3589, -(ab1389*ab2578) + 
+  ab1278*ab3589, -(ab1378*ab2589) + 
+  ab1289*ab3578, ab1389*ab2578 + 
+  ab1258*ab3789, -(ab1358*ab2789) - 
+  ab1289*ab3578, ab1378*ab2589 - 
+  ab1258*ab3789, ab1358*ab2789 - 
+  ab1278*ab3589, ab1379*ab2578 - 
+  ab1278*ab3579, ab1378*ab2579 - 
+  ab1279*ab3578, -(ab1379*ab2578) - 
+  ab1257*ab3789, ab1357*ab2789 + 
+  ab1279*ab3578, -(ab1378*ab2579) + 
+  ab1257*ab3789, -(ab1357*ab2789) + 
+  ab1278*ab3579, -(ab1349*ab2478) + 
+  ab1248*ab3479, -(ab1359*ab2578) + 
+  ab1258*ab3579, -(ab1348*ab2479) + 
+  ab1249*ab3478, -(ab1358*ab2579) + 
+  ab1259*ab3578, ab1349*ab2478 + 
+  ab1247*ab3489, ab1359*ab2578 + 
+  ab1257*ab3589, -(ab1347*ab2489) - 
+  ab1249*ab3478, -(ab1357*ab2589) - 
+  ab1259*ab3578, ab1348*ab2479 - 
+  ab1247*ab3489, ab1358*ab2579 - 
+  ab1257*ab3589, ab1347*ab2489 - 
+  ab1248*ab3479, ab1357*ab2589 - 
+  ab1258*ab3579, ab1489*ab2379 + 
+  ab1279*ab3489, ab1479*ab2389 + 
+  ab1289*ab3479, -(ab1489*ab2379) - 
+  ab1239*ab4789, -(ab1479*ab2389) + 
+  ab1239*ab4789, -(ab1489*ab2378) - 
+  ab1278*ab3489, -(ab1478*ab2389) - 
+  ab1289*ab3478, ab1489*ab2378 + 
+  ab1238*ab4789, ab1478*ab2389 - 
+  ab1238*ab4789, ab1479*ab2378 + 
+  ab1278*ab3479, ab1478*ab2379 + 
+  ab1279*ab3478, -(ab1479*ab2378) - 
+  ab1237*ab4789, -(ab1478*ab2379) + 
+  ab1237*ab4789, ab1489*ab2579 - 
+  ab1279*ab4589, ab1479*ab2589 - 
+  ab1289*ab4579, -(ab1489*ab2579) - 
+  ab1259*ab4789, ab1459*ab2789 + 
+  ab1289*ab4579, -(ab1479*ab2589) + 
+  ab1259*ab4789, -(ab1459*ab2789) + 
+  ab1279*ab4589, -(ab1489*ab2578) + 
+  ab1278*ab4589, -(ab1478*ab2589) + 
+  ab1289*ab4578, ab1489*ab2578 + 
+  ab1258*ab4789, -(ab1458*ab2789) - 
+  ab1289*ab4578, ab1478*ab2589 - 
+  ab1258*ab4789, ab1458*ab2789 - 
+  ab1278*ab4589, ab1479*ab2578 - 
+  ab1278*ab4579, ab1478*ab2579 - 
+  ab1279*ab4578, -(ab1479*ab2578) - 
+  ab1257*ab4789, ab1457*ab2789 + 
+  ab1279*ab4578, -(ab1478*ab2579) + 
+  ab1257*ab4789, -(ab1457*ab2789) + 
+  ab1278*ab4579, ab1349*ab2378 - 
+  ab1238*ab3479, -(ab1459*ab2578) + 
+  ab1258*ab4579, ab1348*ab2379 - 
+  ab1239*ab3478, -(ab1458*ab2579) + 
+  ab1259*ab4578, -(ab1349*ab2378) - 
+  ab1237*ab3489, ab1459*ab2578 + 
+  ab1257*ab4589, ab1347*ab2389 + 
+  ab1239*ab3478, -(ab1457*ab2589) - 
+  ab1259*ab4578, -(ab1348*ab2379) + 
+  ab1237*ab3489, ab1458*ab2579 - 
+  ab1257*ab4589, -(ab1347*ab2389) + 
+  ab1238*ab3479, ab1457*ab2589 - 
+  ab1258*ab4579, ab1589*ab2379 + 
+  ab1279*ab3589, ab1579*ab2389 + 
+  ab1289*ab3579, -(ab1589*ab2379) - 
+  ab1239*ab5789, -(ab1579*ab2389) + 
+  ab1239*ab5789, -(ab1589*ab2378) - 
+  ab1278*ab3589, -(ab1578*ab2389) - 
+  ab1289*ab3578, ab1589*ab2378 + 
+  ab1238*ab5789, ab1578*ab2389 - 
+  ab1238*ab5789, ab1579*ab2378 + 
+  ab1278*ab3579, ab1578*ab2379 + 
+  ab1279*ab3578, -(ab1579*ab2378) - 
+  ab1237*ab5789, -(ab1578*ab2379) + 
+  ab1237*ab5789, ab1589*ab2479 + 
+  ab1279*ab4589, ab1579*ab2489 + 
+  ab1289*ab4579, -(ab1589*ab2479) - 
+  ab1249*ab5789, -(ab1579*ab2489) + 
+  ab1249*ab5789, -(ab1589*ab2478) - 
+  ab1278*ab4589, -(ab1578*ab2489) - 
+  ab1289*ab4578, ab1589*ab2478 + 
+  ab1248*ab5789, ab1578*ab2489 - 
+  ab1248*ab5789, ab1579*ab2478 + 
+  ab1278*ab4579, ab1578*ab2479 + 
+  ab1279*ab4578, -(ab1579*ab2478) - 
+  ab1247*ab5789, -(ab1578*ab2479) + 
+  ab1247*ab5789, ab1359*ab2378 - 
+  ab1238*ab3579, ab1459*ab2478 - 
+  ab1248*ab4579, ab1358*ab2379 - 
+  ab1239*ab3578, ab1458*ab2479 - 
+  ab1249*ab4578, -(ab1359*ab2378) - 
+  ab1237*ab3589, -(ab1459*ab2478) - 
+  ab1247*ab4589, ab1357*ab2389 + 
+  ab1239*ab3578, ab1457*ab2489 + 
+  ab1249*ab4578, -(ab1358*ab2379) + 
+  ab1237*ab3589, -(ab1458*ab2479) + 
+  ab1247*ab4589, -(ab1357*ab2389) + 
+  ab1238*ab3579, -(ab1457*ab2489) + 
+  ab1248*ab4579, ab1789*ab2349 + 
+  ab1249*ab3789, -(ab1789*ab2349) + 
+  ab1239*ab4789, -(ab1789*ab2348) - 
+  ab1248*ab3789, ab1789*ab2348 - 
+  ab1238*ab4789, ab1789*ab2359 + 
+  ab1259*ab3789, -(ab1789*ab2359) + 
+  ab1239*ab5789, -(ab1789*ab2358) - 
+  ab1258*ab3789, ab1789*ab2358 - 
+  ab1238*ab5789, -(ab1479*ab2348) - 
+  ab1248*ab3479, -(ab1579*ab2358) - 
+  ab1258*ab3579, -(ab1478*ab2349) - 
+  ab1249*ab3478, -(ab1578*ab2359) - 
+  ab1259*ab3578, ab1479*ab2348 + 
+  ab1234*ab4789, ab1579*ab2358 + 
+  ab1235*ab5789, ab1478*ab2349 - 
+  ab1234*ab4789, ab1578*ab2359 - 
+  ab1235*ab5789, ab1789*ab2459 + 
+  ab1259*ab4789, -(ab1789*ab2459) + 
+  ab1249*ab5789, -(ab1789*ab2458) - 
+  ab1258*ab4789, ab1789*ab2458 - 
+  ab1248*ab5789, ab1379*ab2348 + 
+  ab1238*ab3479, -(ab1579*ab2458) - 
+  ab1258*ab4579, ab1378*ab2349 + 
+  ab1239*ab3478, -(ab1578*ab2459) - 
+  ab1259*ab4578, -(ab1379*ab2348) - 
+  ab1234*ab3789, ab1579*ab2458 + 
+  ab1245*ab5789, -(ab1378*ab2349) + 
+  ab1234*ab3789, ab1578*ab2459 - 
+  ab1245*ab5789, ab1379*ab2358 + 
+  ab1238*ab3579, ab1479*ab2458 + 
+  ab1248*ab4579, ab1378*ab2359 + 
+  ab1239*ab3578, ab1478*ab2459 + 
+  ab1249*ab4578, -(ab1379*ab2358) - 
+  ab1235*ab3789, -(ab1479*ab2458) - 
+  ab1245*ab4789, -(ab1378*ab2359) + 
+  ab1235*ab3789, -(ab1478*ab2459) + 
+  ab1245*ab4789, ab1789*ab2347 + 
+  ab1247*ab3789, -(ab1789*ab2347) + 
+  ab1237*ab4789, ab1789*ab2357 + 
+  ab1257*ab3789, -(ab1789*ab2357) + 
+  ab1237*ab5789, -(ab1489*ab2347) - 
+  ab1247*ab3489, -(ab1589*ab2357) - 
+  ab1257*ab3589, ab1489*ab2347 - 
+  ab1234*ab4789, ab1589*ab2357 - 
+  ab1235*ab5789, ab1789*ab2457 + 
+  ab1257*ab4789, -(ab1789*ab2457) + 
+  ab1247*ab5789, ab1389*ab2347 + 
+  ab1237*ab3489, -(ab1589*ab2457) - 
+  ab1257*ab4589, -(ab1389*ab2347) + 
+  ab1234*ab3789, ab1589*ab2457 - 
+  ab1245*ab5789, ab1389*ab2357 + 
+  ab1237*ab3589, ab1489*ab2457 + 
+  ab1247*ab4589, -(ab1389*ab2357) + 
+  ab1235*ab3789, -(ab1489*ab2457) + 
+  ab1245*ab4789, -(ab1489*ab2379) + 
+  ab1379*ab2489, -(ab1479*ab2389) + 
+  ab1389*ab2479, ab1489*ab2378 - 
+  ab1378*ab2489, ab1478*ab2389 - 
+  ab1389*ab2478, -(ab1479*ab2378) + 
+  ab1378*ab2479, -(ab1478*ab2379) + 
+  ab1379*ab2478, ab1489*ab3579 - 
+  ab1379*ab4589, ab1479*ab3589 - 
+  ab1389*ab4579, -(ab1489*ab3579) - 
+  ab1359*ab4789, ab1459*ab3789 + 
+  ab1389*ab4579, -(ab1479*ab3589) + 
+  ab1359*ab4789, -(ab1459*ab3789) + 
+  ab1379*ab4589, -(ab1489*ab3578) + 
+  ab1378*ab4589, -(ab1478*ab3589) + 
+  ab1389*ab4578, ab1489*ab3578 + 
+  ab1358*ab4789, -(ab1458*ab3789) - 
+  ab1389*ab4578, ab1478*ab3589 - 
+  ab1358*ab4789, ab1458*ab3789 - 
+  ab1378*ab4589, ab1479*ab3578 - 
+  ab1378*ab4579, ab1478*ab3579 - 
+  ab1379*ab4578, -(ab1479*ab3578) - 
+  ab1357*ab4789, ab1457*ab3789 + 
+  ab1379*ab4578, -(ab1478*ab3579) + 
+  ab1357*ab4789, -(ab1457*ab3789) + 
+  ab1378*ab4579, -(ab1249*ab2378) + 
+  ab1238*ab2479, -(ab1459*ab3578) + 
+  ab1358*ab4579, -(ab1248*ab2379) + 
+  ab1239*ab2478, -(ab1458*ab3579) + 
+  ab1359*ab4578, ab1249*ab2378 + 
+  ab1237*ab2489, ab1459*ab3578 + 
+  ab1357*ab4589, -(ab1247*ab2389) - 
+  ab1239*ab2478, -(ab1457*ab3589) - 
+  ab1359*ab4578, ab1248*ab2379 - 
+  ab1237*ab2489, ab1458*ab3579 - 
+  ab1357*ab4589, ab1247*ab2389 - 
+  ab1238*ab2479, ab1457*ab3589 - 
+  ab1358*ab4579, -(ab1589*ab2379) + 
+  ab1379*ab2589, -(ab1579*ab2389) + 
+  ab1389*ab2579, ab1589*ab2378 - 
+  ab1378*ab2589, ab1578*ab2389 - 
+  ab1389*ab2578, -(ab1579*ab2378) + 
+  ab1378*ab2579, -(ab1578*ab2379) + 
+  ab1379*ab2578, ab1589*ab3479 + 
+  ab1379*ab4589, ab1579*ab3489 + 
+  ab1389*ab4579, -(ab1589*ab3479) - 
+  ab1349*ab5789, -(ab1579*ab3489) + 
+  ab1349*ab5789, -(ab1589*ab3478) - 
+  ab1378*ab4589, -(ab1578*ab3489) - 
+  ab1389*ab4578, ab1589*ab3478 + 
+  ab1348*ab5789, ab1578*ab3489 - 
+  ab1348*ab5789, ab1579*ab3478 + 
+  ab1378*ab4579, ab1578*ab3479 + 
+  ab1379*ab4578, -(ab1579*ab3478) - 
+  ab1347*ab5789, -(ab1578*ab3479) + 
+  ab1347*ab5789, -(ab1259*ab2378) + 
+  ab1238*ab2579, ab1459*ab3478 - 
+  ab1348*ab4579, -(ab1258*ab2379) + 
+  ab1239*ab2578, ab1458*ab3479 - 
+  ab1349*ab4578, ab1259*ab2378 + 
+  ab1237*ab2589, -(ab1459*ab3478) - 
+  ab1347*ab4589, -(ab1257*ab2389) - 
+  ab1239*ab2578, ab1457*ab3489 + 
+  ab1349*ab4578, ab1258*ab2379 - 
+  ab1237*ab2589, -(ab1458*ab3479) + 
+  ab1347*ab4589, ab1257*ab2389 - 
+  ab1238*ab2579, -(ab1457*ab3489) + 
+  ab1348*ab4579, -(ab1789*ab2349) + 
+  ab1349*ab2789, ab1789*ab2348 - 
+  ab1348*ab2789, -(ab1789*ab2359) + 
+  ab1359*ab2789, ab1789*ab2358 - 
+  ab1358*ab2789, ab1479*ab2348 - 
+  ab1348*ab2479, ab1579*ab2358 - 
+  ab1358*ab2579, ab1478*ab2349 - 
+  ab1349*ab2478, ab1578*ab2359 - 
+  ab1359*ab2578, ab1789*ab3459 + 
+  ab1359*ab4789, -(ab1789*ab3459) + 
+  ab1349*ab5789, -(ab1789*ab3458) - 
+  ab1358*ab4789, ab1789*ab3458 - 
+  ab1348*ab5789, -(ab1279*ab2348) - 
+  ab1238*ab2479, -(ab1579*ab3458) - 
+  ab1358*ab4579, -(ab1278*ab2349) - 
+  ab1239*ab2478, -(ab1578*ab3459) - 
+  ab1359*ab4578, ab1279*ab2348 + 
+  ab1234*ab2789, ab1579*ab3458 + 
+  ab1345*ab5789, ab1278*ab2349 - 
+  ab1234*ab2789, ab1578*ab3459 - 
+  ab1345*ab5789, -(ab1279*ab2358) - 
+  ab1238*ab2579, ab1479*ab3458 + 
+  ab1348*ab4579, -(ab1278*ab2359) - 
+  ab1239*ab2578, ab1478*ab3459 + 
+  ab1349*ab4578, ab1279*ab2358 + 
+  ab1235*ab2789, -(ab1479*ab3458) - 
+  ab1345*ab4789, ab1278*ab2359 - 
+  ab1235*ab2789, -(ab1478*ab3459) + 
+  ab1345*ab4789, -(ab1789*ab2347) + 
+  ab1347*ab2789, -(ab1789*ab2357) + 
+  ab1357*ab2789, ab1489*ab2347 - 
+  ab1347*ab2489, ab1589*ab2357 - 
+  ab1357*ab2589, ab1789*ab3457 + 
+  ab1357*ab4789, -(ab1789*ab3457) + 
+  ab1347*ab5789, -(ab1289*ab2347) - 
+  ab1237*ab2489, -(ab1589*ab3457) - 
+  ab1357*ab4589, ab1289*ab2347 - 
+  ab1234*ab2789, ab1589*ab3457 - 
+  ab1345*ab5789, -(ab1289*ab2357) - 
+  ab1237*ab2589, ab1489*ab3457 + 
+  ab1347*ab4589, ab1289*ab2357 - 
+  ab1235*ab2789, -(ab1489*ab3457) + 
+  ab1345*ab4789, -(ab1589*ab2479) + 
+  ab1479*ab2589, -(ab1579*ab2489) + 
+  ab1489*ab2579, ab1589*ab2478 - 
+  ab1478*ab2589, ab1578*ab2489 - 
+  ab1489*ab2578, -(ab1579*ab2478) + 
+  ab1478*ab2579, -(ab1578*ab2479) + 
+  ab1479*ab2578, -(ab1589*ab3479) + 
+  ab1479*ab3589, -(ab1579*ab3489) + 
+  ab1489*ab3579, ab1589*ab3478 - 
+  ab1478*ab3589, ab1578*ab3489 - 
+  ab1489*ab3578, -(ab1579*ab3478) + 
+  ab1478*ab3579, -(ab1578*ab3479) + 
+  ab1479*ab3578, -(ab1259*ab2478) + 
+  ab1248*ab2579, -(ab1359*ab3478) + 
+  ab1348*ab3579, -(ab1258*ab2479) + 
+  ab1249*ab2578, -(ab1358*ab3479) + 
+  ab1349*ab3578, ab1259*ab2478 + 
+  ab1247*ab2589, ab1359*ab3478 + 
+  ab1347*ab3589, -(ab1257*ab2489) - 
+  ab1249*ab2578, -(ab1357*ab3489) - 
+  ab1349*ab3578, ab1258*ab2479 - 
+  ab1247*ab2589, ab1358*ab3479 - 
+  ab1347*ab3589, ab1257*ab2489 - 
+  ab1248*ab2579, ab1357*ab3489 - 
+  ab1348*ab3579, -(ab1789*ab2459) + 
+  ab1459*ab2789, ab1789*ab2458 - 
+  ab1458*ab2789, -(ab1379*ab2348) + 
+  ab1348*ab2379, ab1579*ab2458 - 
+  ab1458*ab2579, -(ab1378*ab2349) + 
+  ab1349*ab2378, ab1578*ab2459 - 
+  ab1459*ab2578, -(ab1789*ab3459) + 
+  ab1459*ab3789, ab1789*ab3458 - 
+  ab1458*ab3789, ab1279*ab2348 - 
+  ab1248*ab2379, ab1579*ab3458 - 
+  ab1458*ab3579, ab1278*ab2349 - 
+  ab1249*ab2378, ab1578*ab3459 - 
+  ab1459*ab3578, -(ab1279*ab2458) - 
+  ab1248*ab2579, -(ab1379*ab3458) - 
+  ab1348*ab3579, -(ab1278*ab2459) - 
+  ab1249*ab2578, -(ab1378*ab3459) - 
+  ab1349*ab3578, ab1279*ab2458 + 
+  ab1245*ab2789, ab1379*ab3458 + 
+  ab1345*ab3789, ab1278*ab2459 - 
+  ab1245*ab2789, ab1378*ab3459 - 
+  ab1345*ab3789, -(ab1789*ab2457) + 
+  ab1457*ab2789, -(ab1389*ab2347) + 
+  ab1347*ab2389, ab1589*ab2457 - 
+  ab1457*ab2589, -(ab1789*ab3457) + 
+  ab1457*ab3789, ab1289*ab2347 - 
+  ab1247*ab2389, ab1589*ab3457 - 
+  ab1457*ab3589, -(ab1289*ab2457) - 
+  ab1247*ab2589, -(ab1389*ab3457) - 
+  ab1347*ab3589, ab1289*ab2457 - 
+  ab1245*ab2789, ab1389*ab3457 - 
+  ab1345*ab3789, -(ab1379*ab2358) + 
+  ab1358*ab2379, -(ab1479*ab2458) + 
+  ab1458*ab2479, -(ab1378*ab2359) + 
+  ab1359*ab2378, -(ab1478*ab2459) + 
+  ab1459*ab2478, ab1279*ab2358 - 
+  ab1258*ab2379, -(ab1479*ab3458) + 
+  ab1458*ab3479, ab1278*ab2359 - 
+  ab1259*ab2378, -(ab1478*ab3459) + 
+  ab1459*ab3478, ab1279*ab2458 - 
+  ab1258*ab2479, ab1379*ab3458 - 
+  ab1358*ab3479, ab1278*ab2459 - 
+  ab1259*ab2478, ab1378*ab3459 - 
+  ab1359*ab3478, -(ab1389*ab2357) + 
+  ab1357*ab2389, -(ab1489*ab2457) + 
+  ab1457*ab2489, ab1289*ab2357 - 
+  ab1257*ab2389, -(ab1489*ab3457) + 
+  ab1457*ab3489, ab1289*ab2457 - 
+  ab1257*ab2489, ab1389*ab3457 - 
+  ab1357*ab3489, ab2489*ab3579 - 
+  ab2379*ab4589, ab2479*ab3589 - 
+  ab2389*ab4579, -(ab2489*ab3579) - 
+  ab2359*ab4789, ab2459*ab3789 + 
+  ab2389*ab4579, -(ab2479*ab3589) + 
+  ab2359*ab4789, -(ab2459*ab3789) + 
+  ab2379*ab4589, -(ab2489*ab3578) + 
+  ab2378*ab4589, -(ab2478*ab3589) + 
+  ab2389*ab4578, ab2489*ab3578 + 
+  ab2358*ab4789, -(ab2458*ab3789) - 
+  ab2389*ab4578, ab2478*ab3589 - 
+  ab2358*ab4789, ab2458*ab3789 - 
+  ab2378*ab4589, ab2479*ab3578 - 
+  ab2378*ab4579, ab2478*ab3579 - 
+  ab2379*ab4578, -(ab2479*ab3578) - 
+  ab2357*ab4789, ab2457*ab3789 + 
+  ab2379*ab4578, -(ab2478*ab3579) + 
+  ab2357*ab4789, -(ab2457*ab3789) + 
+  ab2378*ab4579, ab1249*ab1378 - 
+  ab1238*ab1479, -(ab2459*ab3578) + 
+  ab2358*ab4579, ab1248*ab1379 - 
+  ab1239*ab1478, -(ab2458*ab3579) + 
+  ab2359*ab4578, -(ab1249*ab1378) - 
+  ab1237*ab1489, ab2459*ab3578 + 
+  ab2357*ab4589, ab1247*ab1389 + 
+  ab1239*ab1478, -(ab2457*ab3589) - 
+  ab2359*ab4578, -(ab1248*ab1379) + 
+  ab1237*ab1489, ab2458*ab3579 - 
+  ab2357*ab4589, -(ab1247*ab1389) + 
+  ab1238*ab1479, ab2457*ab3589 - 
+  ab2358*ab4579, ab2589*ab3479 + 
+  ab2379*ab4589, ab2579*ab3489 + 
+  ab2389*ab4579, -(ab2589*ab3479) - 
+  ab2349*ab5789, -(ab2579*ab3489) + 
+  ab2349*ab5789, -(ab2589*ab3478) - 
+  ab2378*ab4589, -(ab2578*ab3489) - 
+  ab2389*ab4578, ab2589*ab3478 + 
+  ab2348*ab5789, ab2578*ab3489 - 
+  ab2348*ab5789, ab2579*ab3478 + 
+  ab2378*ab4579, ab2578*ab3479 + 
+  ab2379*ab4578, -(ab2579*ab3478) - 
+  ab2347*ab5789, -(ab2578*ab3479) + 
+  ab2347*ab5789, ab1259*ab1378 - 
+  ab1238*ab1579, ab2459*ab3478 - 
+  ab2348*ab4579, ab1258*ab1379 - 
+  ab1239*ab1578, ab2458*ab3479 - 
+  ab2349*ab4578, -(ab1259*ab1378) - 
+  ab1237*ab1589, -(ab2459*ab3478) - 
+  ab2347*ab4589, ab1257*ab1389 + 
+  ab1239*ab1578, ab2457*ab3489 + 
+  ab2349*ab4578, -(ab1258*ab1379) + 
+  ab1237*ab1589, -(ab2458*ab3479) + 
+  ab2347*ab4589, -(ab1257*ab1389) + 
+  ab1238*ab1579, -(ab2457*ab3489) + 
+  ab2348*ab4579, ab2789*ab3459 + 
+  ab2359*ab4789, -(ab2789*ab3459) + 
+  ab2349*ab5789, -(ab2789*ab3458) - 
+  ab2358*ab4789, ab2789*ab3458 - 
+  ab2348*ab5789, ab1279*ab1348 + 
+  ab1238*ab1479, -(ab2579*ab3458) - 
+  ab2358*ab4579, ab1278*ab1349 + 
+  ab1239*ab1478, -(ab2578*ab3459) - 
+  ab2359*ab4578, -(ab1279*ab1348) - 
+  ab1234*ab1789, ab2579*ab3458 + 
+  ab2345*ab5789, -(ab1278*ab1349) + 
+  ab1234*ab1789, ab2578*ab3459 - 
+  ab2345*ab5789, ab1279*ab1358 + 
+  ab1238*ab1579, ab2479*ab3458 + 
+  ab2348*ab4579, ab1278*ab1359 + 
+  ab1239*ab1578, ab2478*ab3459 + 
+  ab2349*ab4578, -(ab1279*ab1358) - 
+  ab1235*ab1789, -(ab2479*ab3458) - 
+  ab2345*ab4789, -(ab1278*ab1359) + 
+  ab1235*ab1789, -(ab2478*ab3459) + 
+  ab2345*ab4789, ab2789*ab3457 + 
+  ab2357*ab4789, -(ab2789*ab3457) + 
+  ab2347*ab5789, ab1289*ab1347 + 
+  ab1237*ab1489, -(ab2589*ab3457) - 
+  ab2357*ab4589, -(ab1289*ab1347) + 
+  ab1234*ab1789, ab2589*ab3457 - 
+  ab2345*ab5789, ab1289*ab1357 + 
+  ab1237*ab1589, ab2489*ab3457 + 
+  ab2347*ab4589, -(ab1289*ab1357) + 
+  ab1235*ab1789, -(ab2489*ab3457) + 
+  ab2345*ab4789, -(ab2589*ab3479) + 
+  ab2479*ab3589, -(ab2579*ab3489) + 
+  ab2489*ab3579, ab2589*ab3478 - 
+  ab2478*ab3589, ab2578*ab3489 - 
+  ab2489*ab3578, -(ab2579*ab3478) + 
+  ab2478*ab3579, -(ab2578*ab3479) + 
+  ab2479*ab3578, ab1259*ab1478 - 
+  ab1248*ab1579, -(ab2359*ab3478) + 
+  ab2348*ab3579, ab1258*ab1479 - 
+  ab1249*ab1578, -(ab2358*ab3479) + 
+  ab2349*ab3578, -(ab1259*ab1478) - 
+  ab1247*ab1589, ab2359*ab3478 + 
+  ab2347*ab3589, ab1257*ab1489 + 
+  ab1249*ab1578, -(ab2357*ab3489) - 
+  ab2349*ab3578, -(ab1258*ab1479) + 
+  ab1247*ab1589, ab2358*ab3479 - 
+  ab2347*ab3589, -(ab1257*ab1489) + 
+  ab1248*ab1579, ab2357*ab3489 - 
+  ab2348*ab3579, -(ab2789*ab3459) + 
+  ab2459*ab3789, ab2789*ab3458 - 
+  ab2458*ab3789, -(ab1279*ab1348) + 
+  ab1248*ab1379, ab2579*ab3458 - 
+  ab2458*ab3579, -(ab1278*ab1349) + 
+  ab1249*ab1378, ab2578*ab3459 - 
+  ab2459*ab3578, ab1279*ab1458 + 
+  ab1248*ab1579, -(ab2379*ab3458) - 
+  ab2348*ab3579, ab1278*ab1459 + 
+  ab1249*ab1578, -(ab2378*ab3459) - 
+  ab2349*ab3578, -(ab1279*ab1458) - 
+  ab1245*ab1789, ab2379*ab3458 + 
+  ab2345*ab3789, -(ab1278*ab1459) + 
+  ab1245*ab1789, ab2378*ab3459 - 
+  ab2345*ab3789, -(ab2789*ab3457) + 
+  ab2457*ab3789, -(ab1289*ab1347) + 
+  ab1247*ab1389, ab2589*ab3457 - 
+  ab2457*ab3589, ab1289*ab1457 + 
+  ab1247*ab1589, -(ab2389*ab3457) - 
+  ab2347*ab3589, -(ab1289*ab1457) + 
+  ab1245*ab1789, ab2389*ab3457 - 
+  ab2345*ab3789, -(ab1279*ab1358) + 
+  ab1258*ab1379, -(ab2479*ab3458) + 
+  ab2458*ab3479, -(ab1278*ab1359) + 
+  ab1259*ab1378, -(ab2478*ab3459) + 
+  ab2459*ab3478, -(ab1279*ab1458) + 
+  ab1258*ab1479, ab2379*ab3458 - 
+  ab2358*ab3479, -(ab1278*ab1459) + 
+  ab1259*ab1478, ab2378*ab3459 - 
+  ab2359*ab3478, -(ab1289*ab1357) + 
+  ab1257*ab1389, -(ab2489*ab3457) + 
+  ab2457*ab3489, -(ab1289*ab1457) + 
+  ab1257*ab1489, ab2389*ab3457 - 
+  ab2357*ab3489, ab1359*ab1478 - 
+  ab1348*ab1579, ab2359*ab2478 - 
+  ab2348*ab2579, ab1358*ab1479 - 
+  ab1349*ab1578, ab2358*ab2479 - 
+  ab2349*ab2578, -(ab1359*ab1478) - 
+  ab1347*ab1589, -(ab2359*ab2478) - 
+  ab2347*ab2589, ab1357*ab1489 + 
+  ab1349*ab1578, ab2357*ab2489 + 
+  ab2349*ab2578, -(ab1358*ab1479) + 
+  ab1347*ab1589, -(ab2358*ab2479) + 
+  ab2347*ab2589, -(ab1357*ab1489) + 
+  ab1348*ab1579, -(ab2357*ab2489) + 
+  ab2348*ab2579, ab1379*ab1458 + 
+  ab1348*ab1579, ab2379*ab2458 + 
+  ab2348*ab2579, ab1378*ab1459 + 
+  ab1349*ab1578, ab2378*ab2459 + 
+  ab2349*ab2578, -(ab1379*ab1458) - 
+  ab1345*ab1789, -(ab2379*ab2458) - 
+  ab2345*ab2789, -(ab1378*ab1459) + 
+  ab1345*ab1789, -(ab2378*ab2459) + 
+  ab2345*ab2789, ab1389*ab1457 + 
+  ab1347*ab1589, ab2389*ab2457 + 
+  ab2347*ab2589, -(ab1389*ab1457) + 
+  ab1345*ab1789, -(ab2389*ab2457) + 
+  ab2345*ab2789, -(ab1379*ab1458) + 
+  ab1358*ab1479, -(ab2379*ab2458) + 
+  ab2358*ab2479, -(ab1378*ab1459) + 
+  ab1359*ab1478, -(ab2378*ab2459) + 
+  ab2359*ab2478, -(ab1389*ab1457) + 
+  ab1357*ab1489, -(ab2389*ab2457) + 
+  ab2357*ab2489, ab1389*ab2679 - 
+  ab1279*ab3689, ab1379*ab2689 - 
+  ab1289*ab3679, -(ab1389*ab2679) - 
+  ab1269*ab3789, ab1369*ab2789 + 
+  ab1289*ab3679, -(ab1379*ab2689) + 
+  ab1269*ab3789, -(ab1369*ab2789) + 
+  ab1279*ab3689, -(ab1389*ab2678) + 
+  ab1278*ab3689, -(ab1378*ab2689) + 
+  ab1289*ab3678, ab1389*ab2678 + 
+  ab1268*ab3789, -(ab1368*ab2789) - 
+  ab1289*ab3678, ab1378*ab2689 - 
+  ab1268*ab3789, ab1368*ab2789 - 
+  ab1278*ab3689, ab1379*ab2678 - 
+  ab1278*ab3679, ab1378*ab2679 - 
+  ab1279*ab3678, -(ab1379*ab2678) - 
+  ab1267*ab3789, ab1367*ab2789 + 
+  ab1279*ab3678, -(ab1378*ab2679) + 
+  ab1267*ab3789, -(ab1367*ab2789) + 
+  ab1278*ab3679, -(ab1369*ab2678) + 
+  ab1268*ab3679, -(ab1368*ab2679) + 
+  ab1269*ab3678, ab1369*ab2678 + 
+  ab1267*ab3689, -(ab1367*ab2689) - 
+  ab1269*ab3678, ab1368*ab2679 - 
+  ab1267*ab3689, ab1367*ab2689 - 
+  ab1268*ab3679, ab1489*ab2679 - 
+  ab1279*ab4689, ab1479*ab2689 - 
+  ab1289*ab4679, -(ab1489*ab2679) - 
+  ab1269*ab4789, ab1469*ab2789 + 
+  ab1289*ab4679, -(ab1479*ab2689) + 
+  ab1269*ab4789, -(ab1469*ab2789) + 
+  ab1279*ab4689, -(ab1489*ab2678) + 
+  ab1278*ab4689, -(ab1478*ab2689) + 
+  ab1289*ab4678, ab1489*ab2678 + 
+  ab1268*ab4789, -(ab1468*ab2789) - 
+  ab1289*ab4678, ab1478*ab2689 - 
+  ab1268*ab4789, ab1468*ab2789 - 
+  ab1278*ab4689, ab1479*ab2678 - 
+  ab1278*ab4679, ab1478*ab2679 - 
+  ab1279*ab4678, -(ab1479*ab2678) - 
+  ab1267*ab4789, ab1467*ab2789 + 
+  ab1279*ab4678, -(ab1478*ab2679) + 
+  ab1267*ab4789, -(ab1467*ab2789) + 
+  ab1278*ab4679, -(ab1469*ab2678) + 
+  ab1268*ab4679, -(ab1468*ab2679) + 
+  ab1269*ab4678, ab1469*ab2678 + 
+  ab1267*ab4689, -(ab1467*ab2689) - 
+  ab1269*ab4678, ab1468*ab2679 - 
+  ab1267*ab4689, ab1467*ab2689 - 
+  ab1268*ab4679, ab1689*ab2379 + 
+  ab1279*ab3689, ab1679*ab2389 + 
+  ab1289*ab3679, -(ab1689*ab2379) - 
+  ab1239*ab6789, -(ab1679*ab2389) + 
+  ab1239*ab6789, -(ab1689*ab2378) - 
+  ab1278*ab3689, -(ab1678*ab2389) - 
+  ab1289*ab3678, ab1689*ab2378 + 
+  ab1238*ab6789, ab1678*ab2389 - 
+  ab1238*ab6789, ab1679*ab2378 + 
+  ab1278*ab3679, ab1678*ab2379 + 
+  ab1279*ab3678, -(ab1679*ab2378) - 
+  ab1237*ab6789, -(ab1678*ab2379) + 
+  ab1237*ab6789, ab1689*ab2479 + 
+  ab1279*ab4689, ab1679*ab2489 + 
+  ab1289*ab4679, -(ab1689*ab2479) - 
+  ab1249*ab6789, -(ab1679*ab2489) + 
+  ab1249*ab6789, -(ab1689*ab2478) - 
+  ab1278*ab4689, -(ab1678*ab2489) - 
+  ab1289*ab4678, ab1689*ab2478 + 
+  ab1248*ab6789, ab1678*ab2489 - 
+  ab1248*ab6789, ab1679*ab2478 + 
+  ab1278*ab4679, ab1678*ab2479 + 
+  ab1279*ab4678, -(ab1679*ab2478) - 
+  ab1247*ab6789, -(ab1678*ab2479) + 
+  ab1247*ab6789, ab1369*ab2378 - 
+  ab1238*ab3679, ab1469*ab2478 - 
+  ab1248*ab4679, ab1368*ab2379 - 
+  ab1239*ab3678, ab1468*ab2479 - 
+  ab1249*ab4678, -(ab1369*ab2378) - 
+  ab1237*ab3689, -(ab1469*ab2478) - 
+  ab1247*ab4689, ab1367*ab2389 + 
+  ab1239*ab3678, ab1467*ab2489 + 
+  ab1249*ab4678, -(ab1368*ab2379) + 
+  ab1237*ab3689, -(ab1468*ab2479) + 
+  ab1247*ab4689, -(ab1367*ab2389) + 
+  ab1238*ab3679, -(ab1467*ab2489) + 
+  ab1248*ab4679, ab1789*ab2369 + 
+  ab1269*ab3789, -(ab1789*ab2369) + 
+  ab1239*ab6789, -(ab1789*ab2368) - 
+  ab1268*ab3789, ab1789*ab2368 - 
+  ab1238*ab6789, -(ab1679*ab2368) - 
+  ab1268*ab3679, -(ab1678*ab2369) - 
+  ab1269*ab3678, ab1679*ab2368 + 
+  ab1236*ab6789, ab1678*ab2369 - 
+  ab1236*ab6789, ab1789*ab2469 + 
+  ab1269*ab4789, -(ab1789*ab2469) + 
+  ab1249*ab6789, -(ab1789*ab2468) - 
+  ab1268*ab4789, ab1789*ab2468 - 
+  ab1248*ab6789, -(ab1679*ab2468) - 
+  ab1268*ab4679, -(ab1678*ab2469) - 
+  ab1269*ab4678, ab1679*ab2468 + 
+  ab1246*ab6789, ab1678*ab2469 - 
+  ab1246*ab6789, ab1379*ab2368 + 
+  ab1238*ab3679, ab1479*ab2468 + 
+  ab1248*ab4679, ab1378*ab2369 + 
+  ab1239*ab3678, ab1478*ab2469 + 
+  ab1249*ab4678, -(ab1379*ab2368) - 
+  ab1236*ab3789, -(ab1479*ab2468) - 
+  ab1246*ab4789, -(ab1378*ab2369) + 
+  ab1236*ab3789, -(ab1478*ab2469) + 
+  ab1246*ab4789, ab1789*ab2367 + 
+  ab1267*ab3789, -(ab1789*ab2367) + 
+  ab1237*ab6789, -(ab1689*ab2367) - 
+  ab1267*ab3689, ab1689*ab2367 - 
+  ab1236*ab6789, ab1789*ab2467 + 
+  ab1267*ab4789, -(ab1789*ab2467) + 
+  ab1247*ab6789, -(ab1689*ab2467) - 
+  ab1267*ab4689, ab1689*ab2467 - 
+  ab1246*ab6789, ab1389*ab2367 + 
+  ab1237*ab3689, ab1489*ab2467 + 
+  ab1247*ab4689, -(ab1389*ab2367) + 
+  ab1236*ab3789, -(ab1489*ab2467) + 
+  ab1246*ab4789, ab1489*ab3679 - 
+  ab1379*ab4689, ab1479*ab3689 - 
+  ab1389*ab4679, -(ab1489*ab3679) - 
+  ab1369*ab4789, ab1469*ab3789 + 
+  ab1389*ab4679, -(ab1479*ab3689) + 
+  ab1369*ab4789, -(ab1469*ab3789) + 
+  ab1379*ab4689, -(ab1489*ab3678) + 
+  ab1378*ab4689, -(ab1478*ab3689) + 
+  ab1389*ab4678, ab1489*ab3678 + 
+  ab1368*ab4789, -(ab1468*ab3789) - 
+  ab1389*ab4678, ab1478*ab3689 - 
+  ab1368*ab4789, ab1468*ab3789 - 
+  ab1378*ab4689, ab1479*ab3678 - 
+  ab1378*ab4679, ab1478*ab3679 - 
+  ab1379*ab4678, -(ab1479*ab3678) - 
+  ab1367*ab4789, ab1467*ab3789 + 
+  ab1379*ab4678, -(ab1478*ab3679) + 
+  ab1367*ab4789, -(ab1467*ab3789) + 
+  ab1378*ab4679, -(ab1469*ab3678) + 
+  ab1368*ab4679, -(ab1468*ab3679) + 
+  ab1369*ab4678, ab1469*ab3678 + 
+  ab1367*ab4689, -(ab1467*ab3689) - 
+  ab1369*ab4678, ab1468*ab3679 - 
+  ab1367*ab4689, ab1467*ab3689 - 
+  ab1368*ab4679, -(ab1689*ab2379) + 
+  ab1379*ab2689, -(ab1679*ab2389) + 
+  ab1389*ab2679, ab1689*ab2378 - 
+  ab1378*ab2689, ab1678*ab2389 - 
+  ab1389*ab2678, -(ab1679*ab2378) + 
+  ab1378*ab2679, -(ab1678*ab2379) + 
+  ab1379*ab2678, ab1689*ab3479 + 
+  ab1379*ab4689, ab1679*ab3489 + 
+  ab1389*ab4679, -(ab1689*ab3479) - 
+  ab1349*ab6789, -(ab1679*ab3489) + 
+  ab1349*ab6789, -(ab1689*ab3478) - 
+  ab1378*ab4689, -(ab1678*ab3489) - 
+  ab1389*ab4678, ab1689*ab3478 + 
+  ab1348*ab6789, ab1678*ab3489 - 
+  ab1348*ab6789, ab1679*ab3478 + 
+  ab1378*ab4679, ab1678*ab3479 + 
+  ab1379*ab4678, -(ab1679*ab3478) - 
+  ab1347*ab6789, -(ab1678*ab3479) + 
+  ab1347*ab6789, -(ab1269*ab2378) + 
+  ab1238*ab2679, ab1469*ab3478 - 
+  ab1348*ab4679, -(ab1268*ab2379) + 
+  ab1239*ab2678, ab1468*ab3479 - 
+  ab1349*ab4678, ab1269*ab2378 + 
+  ab1237*ab2689, -(ab1469*ab3478) - 
+  ab1347*ab4689, -(ab1267*ab2389) - 
+  ab1239*ab2678, ab1467*ab3489 + 
+  ab1349*ab4678, ab1268*ab2379 - 
+  ab1237*ab2689, -(ab1468*ab3479) + 
+  ab1347*ab4689, ab1267*ab2389 - 
+  ab1238*ab2679, -(ab1467*ab3489) + 
+  ab1348*ab4679, -(ab1789*ab2369) + 
+  ab1369*ab2789, ab1789*ab2368 - 
+  ab1368*ab2789, ab1679*ab2368 - 
+  ab1368*ab2679, ab1678*ab2369 - 
+  ab1369*ab2678, ab1789*ab3469 + 
+  ab1369*ab4789, -(ab1789*ab3469) + 
+  ab1349*ab6789, -(ab1789*ab3468) - 
+  ab1368*ab4789, ab1789*ab3468 - 
+  ab1348*ab6789, -(ab1679*ab3468) - 
+  ab1368*ab4679, -(ab1678*ab3469) - 
+  ab1369*ab4678, ab1679*ab3468 + 
+  ab1346*ab6789, ab1678*ab3469 - 
+  ab1346*ab6789, -(ab1279*ab2368) - 
+  ab1238*ab2679, ab1479*ab3468 + 
+  ab1348*ab4679, -(ab1278*ab2369) - 
+  ab1239*ab2678, ab1478*ab3469 + 
+  ab1349*ab4678, ab1279*ab2368 + 
+  ab1236*ab2789, -(ab1479*ab3468) - 
+  ab1346*ab4789, ab1278*ab2369 - 
+  ab1236*ab2789, -(ab1478*ab3469) + 
+  ab1346*ab4789, -(ab1789*ab2367) + 
+  ab1367*ab2789, ab1689*ab2367 - 
+  ab1367*ab2689, ab1789*ab3467 + 
+  ab1367*ab4789, -(ab1789*ab3467) + 
+  ab1347*ab6789, -(ab1689*ab3467) - 
+  ab1367*ab4689, ab1689*ab3467 - 
+  ab1346*ab6789, -(ab1289*ab2367) - 
+  ab1237*ab2689, ab1489*ab3467 + 
+  ab1347*ab4689, ab1289*ab2367 - 
+  ab1236*ab2789, -(ab1489*ab3467) + 
+  ab1346*ab4789, -(ab1689*ab2479) + 
+  ab1479*ab2689, -(ab1679*ab2489) + 
+  ab1489*ab2679, ab1689*ab2478 - 
+  ab1478*ab2689, ab1678*ab2489 - 
+  ab1489*ab2678, -(ab1679*ab2478) + 
+  ab1478*ab2679, -(ab1678*ab2479) + 
+  ab1479*ab2678, -(ab1689*ab3479) + 
+  ab1479*ab3689, -(ab1679*ab3489) + 
+  ab1489*ab3679, ab1689*ab3478 - 
+  ab1478*ab3689, ab1678*ab3489 - 
+  ab1489*ab3678, -(ab1679*ab3478) + 
+  ab1478*ab3679, -(ab1678*ab3479) + 
+  ab1479*ab3678, -(ab1269*ab2478) + 
+  ab1248*ab2679, -(ab1369*ab3478) + 
+  ab1348*ab3679, -(ab1268*ab2479) + 
+  ab1249*ab2678, -(ab1368*ab3479) + 
+  ab1349*ab3678, ab1269*ab2478 + 
+  ab1247*ab2689, ab1369*ab3478 + 
+  ab1347*ab3689, -(ab1267*ab2489) - 
+  ab1249*ab2678, -(ab1367*ab3489) - 
+  ab1349*ab3678, ab1268*ab2479 - 
+  ab1247*ab2689, ab1368*ab3479 - 
+  ab1347*ab3689, ab1267*ab2489 - 
+  ab1248*ab2679, ab1367*ab3489 - 
+  ab1348*ab3679, -(ab1789*ab2469) + 
+  ab1469*ab2789, ab1789*ab2468 - 
+  ab1468*ab2789, ab1679*ab2468 - 
+  ab1468*ab2679, ab1678*ab2469 - 
+  ab1469*ab2678, -(ab1789*ab3469) + 
+  ab1469*ab3789, ab1789*ab3468 - 
+  ab1468*ab3789, ab1679*ab3468 - 
+  ab1468*ab3679, ab1678*ab3469 - 
+  ab1469*ab3678, -(ab1279*ab2468) - 
+  ab1248*ab2679, -(ab1379*ab3468) - 
+  ab1348*ab3679, -(ab1278*ab2469) - 
+  ab1249*ab2678, -(ab1378*ab3469) - 
+  ab1349*ab3678, ab1279*ab2468 + 
+  ab1246*ab2789, ab1379*ab3468 + 
+  ab1346*ab3789, ab1278*ab2469 - 
+  ab1246*ab2789, ab1378*ab3469 - 
+  ab1346*ab3789, -(ab1789*ab2467) + 
+  ab1467*ab2789, ab1689*ab2467 - 
+  ab1467*ab2689, -(ab1789*ab3467) + 
+  ab1467*ab3789, ab1689*ab3467 - 
+  ab1467*ab3689, -(ab1289*ab2467) - 
+  ab1247*ab2689, -(ab1389*ab3467) - 
+  ab1347*ab3689, ab1289*ab2467 - 
+  ab1246*ab2789, ab1389*ab3467 - 
+  ab1346*ab3789, -(ab1379*ab2368) + 
+  ab1368*ab2379, -(ab1479*ab2468) + 
+  ab1468*ab2479, -(ab1378*ab2369) + 
+  ab1369*ab2378, -(ab1478*ab2469) + 
+  ab1469*ab2478, ab1279*ab2368 - 
+  ab1268*ab2379, -(ab1479*ab3468) + 
+  ab1468*ab3479, ab1278*ab2369 - 
+  ab1269*ab2378, -(ab1478*ab3469) + 
+  ab1469*ab3478, ab1279*ab2468 - 
+  ab1268*ab2479, ab1379*ab3468 - 
+  ab1368*ab3479, ab1278*ab2469 - 
+  ab1269*ab2478, ab1378*ab3469 - 
+  ab1369*ab3478, -(ab1389*ab2367) + 
+  ab1367*ab2389, -(ab1489*ab2467) + 
+  ab1467*ab2489, ab1289*ab2367 - 
+  ab1267*ab2389, -(ab1489*ab3467) + 
+  ab1467*ab3489, ab1289*ab2467 - 
+  ab1267*ab2489, ab1389*ab3467 - 
+  ab1367*ab3489, ab2489*ab3679 - 
+  ab2379*ab4689, ab2479*ab3689 - 
+  ab2389*ab4679, -(ab2489*ab3679) - 
+  ab2369*ab4789, ab2469*ab3789 + 
+  ab2389*ab4679, -(ab2479*ab3689) + 
+  ab2369*ab4789, -(ab2469*ab3789) + 
+  ab2379*ab4689, -(ab2489*ab3678) + 
+  ab2378*ab4689, -(ab2478*ab3689) + 
+  ab2389*ab4678, ab2489*ab3678 + 
+  ab2368*ab4789, -(ab2468*ab3789) - 
+  ab2389*ab4678, ab2478*ab3689 - 
+  ab2368*ab4789, ab2468*ab3789 - 
+  ab2378*ab4689, ab2479*ab3678 - 
+  ab2378*ab4679, ab2478*ab3679 - 
+  ab2379*ab4678, -(ab2479*ab3678) - 
+  ab2367*ab4789, ab2467*ab3789 + 
+  ab2379*ab4678, -(ab2478*ab3679) + 
+  ab2367*ab4789, -(ab2467*ab3789) + 
+  ab2378*ab4679, -(ab2469*ab3678) + 
+  ab2368*ab4679, -(ab2468*ab3679) + 
+  ab2369*ab4678, ab2469*ab3678 + 
+  ab2367*ab4689, -(ab2467*ab3689) - 
+  ab2369*ab4678, ab2468*ab3679 - 
+  ab2367*ab4689, ab2467*ab3689 - 
+  ab2368*ab4679, ab2689*ab3479 + 
+  ab2379*ab4689, ab2679*ab3489 + 
+  ab2389*ab4679, -(ab2689*ab3479) - 
+  ab2349*ab6789, -(ab2679*ab3489) + 
+  ab2349*ab6789, -(ab2689*ab3478) - 
+  ab2378*ab4689, -(ab2678*ab3489) - 
+  ab2389*ab4678, ab2689*ab3478 + 
+  ab2348*ab6789, ab2678*ab3489 - 
+  ab2348*ab6789, ab2679*ab3478 + 
+  ab2378*ab4679, ab2678*ab3479 + 
+  ab2379*ab4678, -(ab2679*ab3478) - 
+  ab2347*ab6789, -(ab2678*ab3479) + 
+  ab2347*ab6789, ab1269*ab1378 - 
+  ab1238*ab1679, ab2469*ab3478 - 
+  ab2348*ab4679, ab1268*ab1379 - 
+  ab1239*ab1678, ab2468*ab3479 - 
+  ab2349*ab4678, -(ab1269*ab1378) - 
+  ab1237*ab1689, -(ab2469*ab3478) - 
+  ab2347*ab4689, ab1267*ab1389 + 
+  ab1239*ab1678, ab2467*ab3489 + 
+  ab2349*ab4678, -(ab1268*ab1379) + 
+  ab1237*ab1689, -(ab2468*ab3479) + 
+  ab2347*ab4689, -(ab1267*ab1389) + 
+  ab1238*ab1679, -(ab2467*ab3489) + 
+  ab2348*ab4679, ab2789*ab3469 + 
+  ab2369*ab4789, -(ab2789*ab3469) + 
+  ab2349*ab6789, -(ab2789*ab3468) - 
+  ab2368*ab4789, ab2789*ab3468 - 
+  ab2348*ab6789, -(ab2679*ab3468) - 
+  ab2368*ab4679, -(ab2678*ab3469) - 
+  ab2369*ab4678, ab2679*ab3468 + 
+  ab2346*ab6789, ab2678*ab3469 - 
+  ab2346*ab6789, ab1279*ab1368 + 
+  ab1238*ab1679, ab2479*ab3468 + 
+  ab2348*ab4679, ab1278*ab1369 + 
+  ab1239*ab1678, ab2478*ab3469 + 
+  ab2349*ab4678, -(ab1279*ab1368) - 
+  ab1236*ab1789, -(ab2479*ab3468) - 
+  ab2346*ab4789, -(ab1278*ab1369) + 
+  ab1236*ab1789, -(ab2478*ab3469) + 
+  ab2346*ab4789, ab2789*ab3467 + 
+  ab2367*ab4789, -(ab2789*ab3467) + 
+  ab2347*ab6789, -(ab2689*ab3467) - 
+  ab2367*ab4689, ab2689*ab3467 - 
+  ab2346*ab6789, ab1289*ab1367 + 
+  ab1237*ab1689, ab2489*ab3467 + 
+  ab2347*ab4689, -(ab1289*ab1367) + 
+  ab1236*ab1789, -(ab2489*ab3467) + 
+  ab2346*ab4789, -(ab2689*ab3479) + 
+  ab2479*ab3689, -(ab2679*ab3489) + 
+  ab2489*ab3679, ab2689*ab3478 - 
+  ab2478*ab3689, ab2678*ab3489 - 
+  ab2489*ab3678, -(ab2679*ab3478) + 
+  ab2478*ab3679, -(ab2678*ab3479) + 
+  ab2479*ab3678, ab1269*ab1478 - 
+  ab1248*ab1679, -(ab2369*ab3478) + 
+  ab2348*ab3679, ab1268*ab1479 - 
+  ab1249*ab1678, -(ab2368*ab3479) + 
+  ab2349*ab3678, -(ab1269*ab1478) - 
+  ab1247*ab1689, ab2369*ab3478 + 
+  ab2347*ab3689, ab1267*ab1489 + 
+  ab1249*ab1678, -(ab2367*ab3489) - 
+  ab2349*ab3678, -(ab1268*ab1479) + 
+  ab1247*ab1689, ab2368*ab3479 - 
+  ab2347*ab3689, -(ab1267*ab1489) + 
+  ab1248*ab1679, ab2367*ab3489 - 
+  ab2348*ab3679, -(ab2789*ab3469) + 
+  ab2469*ab3789, ab2789*ab3468 - 
+  ab2468*ab3789, ab2679*ab3468 - 
+  ab2468*ab3679, ab2678*ab3469 - 
+  ab2469*ab3678, ab1279*ab1468 + 
+  ab1248*ab1679, -(ab2379*ab3468) - 
+  ab2348*ab3679, ab1278*ab1469 + 
+  ab1249*ab1678, -(ab2378*ab3469) - 
+  ab2349*ab3678, -(ab1279*ab1468) - 
+  ab1246*ab1789, ab2379*ab3468 + 
+  ab2346*ab3789, -(ab1278*ab1469) + 
+  ab1246*ab1789, ab2378*ab3469 - 
+  ab2346*ab3789, -(ab2789*ab3467) + 
+  ab2467*ab3789, ab2689*ab3467 - 
+  ab2467*ab3689, ab1289*ab1467 + 
+  ab1247*ab1689, -(ab2389*ab3467) - 
+  ab2347*ab3689, -(ab1289*ab1467) + 
+  ab1246*ab1789, ab2389*ab3467 - 
+  ab2346*ab3789, -(ab1279*ab1368) + 
+  ab1268*ab1379, -(ab2479*ab3468) + 
+  ab2468*ab3479, -(ab1278*ab1369) + 
+  ab1269*ab1378, -(ab2478*ab3469) + 
+  ab2469*ab3478, -(ab1279*ab1468) + 
+  ab1268*ab1479, ab2379*ab3468 - 
+  ab2368*ab3479, -(ab1278*ab1469) + 
+  ab1269*ab1478, ab2378*ab3469 - 
+  ab2369*ab3478, -(ab1289*ab1367) + 
+  ab1267*ab1389, -(ab2489*ab3467) + 
+  ab2467*ab3489, -(ab1289*ab1467) + 
+  ab1267*ab1489, ab2389*ab3467 - 
+  ab2367*ab3489, ab1369*ab1478 - 
+  ab1348*ab1679, ab2369*ab2478 - 
+  ab2348*ab2679, ab1368*ab1479 - 
+  ab1349*ab1678, ab2368*ab2479 - 
+  ab2349*ab2678, -(ab1369*ab1478) - 
+  ab1347*ab1689, -(ab2369*ab2478) - 
+  ab2347*ab2689, ab1367*ab1489 + 
+  ab1349*ab1678, ab2367*ab2489 + 
+  ab2349*ab2678, -(ab1368*ab1479) + 
+  ab1347*ab1689, -(ab2368*ab2479) + 
+  ab2347*ab2689, -(ab1367*ab1489) + 
+  ab1348*ab1679, -(ab2367*ab2489) + 
+  ab2348*ab2679, ab1379*ab1468 + 
+  ab1348*ab1679, ab2379*ab2468 + 
+  ab2348*ab2679, ab1378*ab1469 + 
+  ab1349*ab1678, ab2378*ab2469 + 
+  ab2349*ab2678, -(ab1379*ab1468) - 
+  ab1346*ab1789, -(ab2379*ab2468) - 
+  ab2346*ab2789, -(ab1378*ab1469) + 
+  ab1346*ab1789, -(ab2378*ab2469) + 
+  ab2346*ab2789, ab1389*ab1467 + 
+  ab1347*ab1689, ab2389*ab2467 + 
+  ab2347*ab2689, -(ab1389*ab1467) + 
+  ab1346*ab1789, -(ab2389*ab2467) + 
+  ab2346*ab2789, -(ab1379*ab1468) + 
+  ab1368*ab1479, -(ab2379*ab2468) + 
+  ab2368*ab2479, -(ab1378*ab1469) + 
+  ab1369*ab1478, -(ab2378*ab2469) + 
+  ab2369*ab2478, -(ab1389*ab1467) + 
+  ab1367*ab1489, -(ab2389*ab2467) + 
+  ab2367*ab2489, ab1589*ab2679 - 
+  ab1279*ab5689, ab1579*ab2689 - 
+  ab1289*ab5679, -(ab1589*ab2679) - 
+  ab1269*ab5789, ab1569*ab2789 + 
+  ab1289*ab5679, -(ab1579*ab2689) + 
+  ab1269*ab5789, -(ab1569*ab2789) + 
+  ab1279*ab5689, -(ab1589*ab2678) + 
+  ab1278*ab5689, -(ab1578*ab2689) + 
+  ab1289*ab5678, ab1589*ab2678 + 
+  ab1268*ab5789, -(ab1568*ab2789) - 
+  ab1289*ab5678, ab1578*ab2689 - 
+  ab1268*ab5789, ab1568*ab2789 - 
+  ab1278*ab5689, ab1579*ab2678 - 
+  ab1278*ab5679, ab1578*ab2679 - 
+  ab1279*ab5678, -(ab1579*ab2678) - 
+  ab1267*ab5789, ab1567*ab2789 + 
+  ab1279*ab5678, -(ab1578*ab2679) + 
+  ab1267*ab5789, -(ab1567*ab2789) + 
+  ab1278*ab5679, -(ab1569*ab2678) + 
+  ab1268*ab5679, -(ab1568*ab2679) + 
+  ab1269*ab5678, ab1569*ab2678 + 
+  ab1267*ab5689, -(ab1567*ab2689) - 
+  ab1269*ab5678, ab1568*ab2679 - 
+  ab1267*ab5689, ab1567*ab2689 - 
+  ab1268*ab5679, ab1689*ab2579 + 
+  ab1279*ab5689, ab1679*ab2589 + 
+  ab1289*ab5679, -(ab1689*ab2579) - 
+  ab1259*ab6789, -(ab1679*ab2589) + 
+  ab1259*ab6789, -(ab1689*ab2578) - 
+  ab1278*ab5689, -(ab1678*ab2589) - 
+  ab1289*ab5678, ab1689*ab2578 + 
+  ab1258*ab6789, ab1678*ab2589 - 
+  ab1258*ab6789, ab1679*ab2578 + 
+  ab1278*ab5679, ab1678*ab2579 + 
+  ab1279*ab5678, -(ab1679*ab2578) - 
+  ab1257*ab6789, -(ab1678*ab2579) + 
+  ab1257*ab6789, ab1569*ab2578 - 
+  ab1258*ab5679, ab1568*ab2579 - 
+  ab1259*ab5678, -(ab1569*ab2578) - 
+  ab1257*ab5689, ab1567*ab2589 + 
+  ab1259*ab5678, -(ab1568*ab2579) + 
+  ab1257*ab5689, -(ab1567*ab2589) + 
+  ab1258*ab5679, ab1789*ab2569 + 
+  ab1269*ab5789, -(ab1789*ab2569) + 
+  ab1259*ab6789, -(ab1789*ab2568) - 
+  ab1268*ab5789, ab1789*ab2568 - 
+  ab1258*ab6789, -(ab1679*ab2568) - 
+  ab1268*ab5679, -(ab1678*ab2569) - 
+  ab1269*ab5678, ab1679*ab2568 + 
+  ab1256*ab6789, ab1678*ab2569 - 
+  ab1256*ab6789, ab1579*ab2568 + 
+  ab1258*ab5679, ab1578*ab2569 + 
+  ab1259*ab5678, -(ab1579*ab2568) - 
+  ab1256*ab5789, -(ab1578*ab2569) + 
+  ab1256*ab5789, ab1789*ab2567 + 
+  ab1267*ab5789, -(ab1789*ab2567) + 
+  ab1257*ab6789, -(ab1689*ab2567) - 
+  ab1267*ab5689, ab1689*ab2567 - 
+  ab1256*ab6789, ab1589*ab2567 + 
+  ab1257*ab5689, -(ab1589*ab2567) + 
+  ab1256*ab5789, ab1589*ab3679 - 
+  ab1379*ab5689, ab1579*ab3689 - 
+  ab1389*ab5679, -(ab1589*ab3679) - 
+  ab1369*ab5789, ab1569*ab3789 + 
+  ab1389*ab5679, -(ab1579*ab3689) + 
+  ab1369*ab5789, -(ab1569*ab3789) + 
+  ab1379*ab5689, -(ab1589*ab3678) + 
+  ab1378*ab5689, -(ab1578*ab3689) + 
+  ab1389*ab5678, ab1589*ab3678 + 
+  ab1368*ab5789, -(ab1568*ab3789) - 
+  ab1389*ab5678, ab1578*ab3689 - 
+  ab1368*ab5789, ab1568*ab3789 - 
+  ab1378*ab5689, ab1579*ab3678 - 
+  ab1378*ab5679, ab1578*ab3679 - 
+  ab1379*ab5678, -(ab1579*ab3678) - 
+  ab1367*ab5789, ab1567*ab3789 + 
+  ab1379*ab5678, -(ab1578*ab3679) + 
+  ab1367*ab5789, -(ab1567*ab3789) + 
+  ab1378*ab5679, -(ab1569*ab3678) + 
+  ab1368*ab5679, -(ab1568*ab3679) + 
+  ab1369*ab5678, ab1569*ab3678 + 
+  ab1367*ab5689, -(ab1567*ab3689) - 
+  ab1369*ab5678, ab1568*ab3679 - 
+  ab1367*ab5689, ab1567*ab3689 - 
+  ab1368*ab5679, ab1689*ab3579 + 
+  ab1379*ab5689, ab1679*ab3589 + 
+  ab1389*ab5679, -(ab1689*ab3579) - 
+  ab1359*ab6789, -(ab1679*ab3589) + 
+  ab1359*ab6789, -(ab1689*ab3578) - 
+  ab1378*ab5689, -(ab1678*ab3589) - 
+  ab1389*ab5678, ab1689*ab3578 + 
+  ab1358*ab6789, ab1678*ab3589 - 
+  ab1358*ab6789, ab1679*ab3578 + 
+  ab1378*ab5679, ab1678*ab3579 + 
+  ab1379*ab5678, -(ab1679*ab3578) - 
+  ab1357*ab6789, -(ab1678*ab3579) + 
+  ab1357*ab6789, ab1569*ab3578 - 
+  ab1358*ab5679, ab1568*ab3579 - 
+  ab1359*ab5678, -(ab1569*ab3578) - 
+  ab1357*ab5689, ab1567*ab3589 + 
+  ab1359*ab5678, -(ab1568*ab3579) + 
+  ab1357*ab5689, -(ab1567*ab3589) + 
+  ab1358*ab5679, ab1789*ab3569 + 
+  ab1369*ab5789, -(ab1789*ab3569) + 
+  ab1359*ab6789, -(ab1789*ab3568) - 
+  ab1368*ab5789, ab1789*ab3568 - 
+  ab1358*ab6789, -(ab1679*ab3568) - 
+  ab1368*ab5679, -(ab1678*ab3569) - 
+  ab1369*ab5678, ab1679*ab3568 + 
+  ab1356*ab6789, ab1678*ab3569 - 
+  ab1356*ab6789, ab1579*ab3568 + 
+  ab1358*ab5679, ab1578*ab3569 + 
+  ab1359*ab5678, -(ab1579*ab3568) - 
+  ab1356*ab5789, -(ab1578*ab3569) + 
+  ab1356*ab5789, ab1789*ab3567 + 
+  ab1367*ab5789, -(ab1789*ab3567) + 
+  ab1357*ab6789, -(ab1689*ab3567) - 
+  ab1367*ab5689, ab1689*ab3567 - 
+  ab1356*ab6789, ab1589*ab3567 + 
+  ab1357*ab5689, -(ab1589*ab3567) + 
+  ab1356*ab5789, -(ab1689*ab2579) + 
+  ab1579*ab2689, -(ab1679*ab2589) + 
+  ab1589*ab2679, ab1689*ab2578 - 
+  ab1578*ab2689, ab1678*ab2589 - 
+  ab1589*ab2678, -(ab1679*ab2578) + 
+  ab1578*ab2679, -(ab1678*ab2579) + 
+  ab1579*ab2678, -(ab1689*ab3579) + 
+  ab1579*ab3689, -(ab1679*ab3589) + 
+  ab1589*ab3679, ab1689*ab3578 - 
+  ab1578*ab3689, ab1678*ab3589 - 
+  ab1589*ab3678, -(ab1679*ab3578) + 
+  ab1578*ab3679, -(ab1678*ab3579) + 
+  ab1579*ab3678, -(ab1269*ab2578) + 
+  ab1258*ab2679, -(ab1369*ab3578) + 
+  ab1358*ab3679, -(ab1268*ab2579) + 
+  ab1259*ab2678, -(ab1368*ab3579) + 
+  ab1359*ab3678, ab1269*ab2578 + 
+  ab1257*ab2689, ab1369*ab3578 + 
+  ab1357*ab3689, -(ab1267*ab2589) - 
+  ab1259*ab2678, -(ab1367*ab3589) - 
+  ab1359*ab3678, ab1268*ab2579 - 
+  ab1257*ab2689, ab1368*ab3579 - 
+  ab1357*ab3689, ab1267*ab2589 - 
+  ab1258*ab2679, ab1367*ab3589 - 
+  ab1358*ab3679, -(ab1789*ab2569) + 
+  ab1569*ab2789, ab1789*ab2568 - 
+  ab1568*ab2789, ab1679*ab2568 - 
+  ab1568*ab2679, ab1678*ab2569 - 
+  ab1569*ab2678, -(ab1789*ab3569) + 
+  ab1569*ab3789, ab1789*ab3568 - 
+  ab1568*ab3789, ab1679*ab3568 - 
+  ab1568*ab3679, ab1678*ab3569 - 
+  ab1569*ab3678, -(ab1279*ab2568) - 
+  ab1258*ab2679, -(ab1379*ab3568) - 
+  ab1358*ab3679, -(ab1278*ab2569) - 
+  ab1259*ab2678, -(ab1378*ab3569) - 
+  ab1359*ab3678, ab1279*ab2568 + 
+  ab1256*ab2789, ab1379*ab3568 + 
+  ab1356*ab3789, ab1278*ab2569 - 
+  ab1256*ab2789, ab1378*ab3569 - 
+  ab1356*ab3789, -(ab1789*ab2567) + 
+  ab1567*ab2789, ab1689*ab2567 - 
+  ab1567*ab2689, -(ab1789*ab3567) + 
+  ab1567*ab3789, ab1689*ab3567 - 
+  ab1567*ab3689, -(ab1289*ab2567) - 
+  ab1257*ab2689, -(ab1389*ab3567) - 
+  ab1357*ab3689, ab1289*ab2567 - 
+  ab1256*ab2789, ab1389*ab3567 - 
+  ab1356*ab3789, -(ab1579*ab2568) + 
+  ab1568*ab2579, -(ab1578*ab2569) + 
+  ab1569*ab2578, -(ab1579*ab3568) + 
+  ab1568*ab3579, -(ab1578*ab3569) + 
+  ab1569*ab3578, ab1279*ab2568 - 
+  ab1268*ab2579, ab1379*ab3568 - 
+  ab1368*ab3579, ab1278*ab2569 - 
+  ab1269*ab2578, ab1378*ab3569 - 
+  ab1369*ab3578, -(ab1589*ab2567) + 
+  ab1567*ab2589, -(ab1589*ab3567) + 
+  ab1567*ab3589, ab1289*ab2567 - 
+  ab1267*ab2589, ab1389*ab3567 - 
+  ab1367*ab3589, ab2589*ab3679 - 
+  ab2379*ab5689, ab2579*ab3689 - 
+  ab2389*ab5679, -(ab2589*ab3679) - 
+  ab2369*ab5789, ab2569*ab3789 + 
+  ab2389*ab5679, -(ab2579*ab3689) + 
+  ab2369*ab5789, -(ab2569*ab3789) + 
+  ab2379*ab5689, -(ab2589*ab3678) + 
+  ab2378*ab5689, -(ab2578*ab3689) + 
+  ab2389*ab5678, ab2589*ab3678 + 
+  ab2368*ab5789, -(ab2568*ab3789) - 
+  ab2389*ab5678, ab2578*ab3689 - 
+  ab2368*ab5789, ab2568*ab3789 - 
+  ab2378*ab5689, ab2579*ab3678 - 
+  ab2378*ab5679, ab2578*ab3679 - 
+  ab2379*ab5678, -(ab2579*ab3678) - 
+  ab2367*ab5789, ab2567*ab3789 + 
+  ab2379*ab5678, -(ab2578*ab3679) + 
+  ab2367*ab5789, -(ab2567*ab3789) + 
+  ab2378*ab5679, -(ab2569*ab3678) + 
+  ab2368*ab5679, -(ab2568*ab3679) + 
+  ab2369*ab5678, ab2569*ab3678 + 
+  ab2367*ab5689, -(ab2567*ab3689) - 
+  ab2369*ab5678, ab2568*ab3679 - 
+  ab2367*ab5689, ab2567*ab3689 - 
+  ab2368*ab5679, ab2689*ab3579 + 
+  ab2379*ab5689, ab2679*ab3589 + 
+  ab2389*ab5679, -(ab2689*ab3579) - 
+  ab2359*ab6789, -(ab2679*ab3589) + 
+  ab2359*ab6789, -(ab2689*ab3578) - 
+  ab2378*ab5689, -(ab2678*ab3589) - 
+  ab2389*ab5678, ab2689*ab3578 + 
+  ab2358*ab6789, ab2678*ab3589 - 
+  ab2358*ab6789, ab2679*ab3578 + 
+  ab2378*ab5679, ab2678*ab3579 + 
+  ab2379*ab5678, -(ab2679*ab3578) - 
+  ab2357*ab6789, -(ab2678*ab3579) + 
+  ab2357*ab6789, ab2569*ab3578 - 
+  ab2358*ab5679, ab2568*ab3579 - 
+  ab2359*ab5678, -(ab2569*ab3578) - 
+  ab2357*ab5689, ab2567*ab3589 + 
+  ab2359*ab5678, -(ab2568*ab3579) + 
+  ab2357*ab5689, -(ab2567*ab3589) + 
+  ab2358*ab5679, ab2789*ab3569 + 
+  ab2369*ab5789, -(ab2789*ab3569) + 
+  ab2359*ab6789, -(ab2789*ab3568) - 
+  ab2368*ab5789, ab2789*ab3568 - 
+  ab2358*ab6789, -(ab2679*ab3568) - 
+  ab2368*ab5679, -(ab2678*ab3569) - 
+  ab2369*ab5678, ab2679*ab3568 + 
+  ab2356*ab6789, ab2678*ab3569 - 
+  ab2356*ab6789, ab2579*ab3568 + 
+  ab2358*ab5679, ab2578*ab3569 + 
+  ab2359*ab5678, -(ab2579*ab3568) - 
+  ab2356*ab5789, -(ab2578*ab3569) + 
+  ab2356*ab5789, ab2789*ab3567 + 
+  ab2367*ab5789, -(ab2789*ab3567) + 
+  ab2357*ab6789, -(ab2689*ab3567) - 
+  ab2367*ab5689, ab2689*ab3567 - 
+  ab2356*ab6789, ab2589*ab3567 + 
+  ab2357*ab5689, -(ab2589*ab3567) + 
+  ab2356*ab5789, -(ab2689*ab3579) + 
+  ab2579*ab3689, -(ab2679*ab3589) + 
+  ab2589*ab3679, ab2689*ab3578 - 
+  ab2578*ab3689, ab2678*ab3589 - 
+  ab2589*ab3678, -(ab2679*ab3578) + 
+  ab2578*ab3679, -(ab2678*ab3579) + 
+  ab2579*ab3678, ab1269*ab1578 - 
+  ab1258*ab1679, -(ab2369*ab3578) + 
+  ab2358*ab3679, ab1268*ab1579 - 
+  ab1259*ab1678, -(ab2368*ab3579) + 
+  ab2359*ab3678, -(ab1269*ab1578) - 
+  ab1257*ab1689, ab2369*ab3578 + 
+  ab2357*ab3689, ab1267*ab1589 + 
+  ab1259*ab1678, -(ab2367*ab3589) - 
+  ab2359*ab3678, -(ab1268*ab1579) + 
+  ab1257*ab1689, ab2368*ab3579 - 
+  ab2357*ab3689, -(ab1267*ab1589) + 
+  ab1258*ab1679, ab2367*ab3589 - 
+  ab2358*ab3679, -(ab2789*ab3569) + 
+  ab2569*ab3789, ab2789*ab3568 - 
+  ab2568*ab3789, ab2679*ab3568 - 
+  ab2568*ab3679, ab2678*ab3569 - 
+  ab2569*ab3678, ab1279*ab1568 + 
+  ab1258*ab1679, -(ab2379*ab3568) - 
+  ab2358*ab3679, ab1278*ab1569 + 
+  ab1259*ab1678, -(ab2378*ab3569) - 
+  ab2359*ab3678, -(ab1279*ab1568) - 
+  ab1256*ab1789, ab2379*ab3568 + 
+  ab2356*ab3789, -(ab1278*ab1569) + 
+  ab1256*ab1789, ab2378*ab3569 - 
+  ab2356*ab3789, -(ab2789*ab3567) + 
+  ab2567*ab3789, ab2689*ab3567 - 
+  ab2567*ab3689, ab1289*ab1567 + 
+  ab1257*ab1689, -(ab2389*ab3567) - 
+  ab2357*ab3689, -(ab1289*ab1567) + 
+  ab1256*ab1789, ab2389*ab3567 - 
+  ab2356*ab3789, -(ab2579*ab3568) + 
+  ab2568*ab3579, -(ab2578*ab3569) + 
+  ab2569*ab3578, -(ab1279*ab1568) + 
+  ab1268*ab1579, ab2379*ab3568 - 
+  ab2368*ab3579, -(ab1278*ab1569) + 
+  ab1269*ab1578, ab2378*ab3569 - 
+  ab2369*ab3578, -(ab2589*ab3567) + 
+  ab2567*ab3589, -(ab1289*ab1567) + 
+  ab1267*ab1589, ab2389*ab3567 - 
+  ab2367*ab3589, ab1369*ab1578 - 
+  ab1358*ab1679, ab2369*ab2578 - 
+  ab2358*ab2679, ab1368*ab1579 - 
+  ab1359*ab1678, ab2368*ab2579 - 
+  ab2359*ab2678, -(ab1369*ab1578) - 
+  ab1357*ab1689, -(ab2369*ab2578) - 
+  ab2357*ab2689, ab1367*ab1589 + 
+  ab1359*ab1678, ab2367*ab2589 + 
+  ab2359*ab2678, -(ab1368*ab1579) + 
+  ab1357*ab1689, -(ab2368*ab2579) + 
+  ab2357*ab2689, -(ab1367*ab1589) + 
+  ab1358*ab1679, -(ab2367*ab2589) + 
+  ab2358*ab2679, ab1379*ab1568 + 
+  ab1358*ab1679, ab2379*ab2568 + 
+  ab2358*ab2679, ab1378*ab1569 + 
+  ab1359*ab1678, ab2378*ab2569 + 
+  ab2359*ab2678, -(ab1379*ab1568) - 
+  ab1356*ab1789, -(ab2379*ab2568) - 
+  ab2356*ab2789, -(ab1378*ab1569) + 
+  ab1356*ab1789, -(ab2378*ab2569) + 
+  ab2356*ab2789, ab1389*ab1567 + 
+  ab1357*ab1689, ab2389*ab2567 + 
+  ab2357*ab2689, -(ab1389*ab1567) + 
+  ab1356*ab1789, -(ab2389*ab2567) + 
+  ab2356*ab2789, -(ab1379*ab1568) + 
+  ab1368*ab1579, -(ab2379*ab2568) + 
+  ab2368*ab2579, -(ab1378*ab1569) + 
+  ab1369*ab1578, -(ab2378*ab2569) + 
+  ab2369*ab2578, -(ab1389*ab1567) + 
+  ab1367*ab1589, -(ab2389*ab2567) + 
+  ab2367*ab2589, ab1589*ab4679 - 
+  ab1479*ab5689, ab1579*ab4689 - 
+  ab1489*ab5679, -(ab1589*ab4679) - 
+  ab1469*ab5789, ab1569*ab4789 + 
+  ab1489*ab5679, -(ab1579*ab4689) + 
+  ab1469*ab5789, -(ab1569*ab4789) + 
+  ab1479*ab5689, -(ab1589*ab4678) + 
+  ab1478*ab5689, -(ab1578*ab4689) + 
+  ab1489*ab5678, ab1589*ab4678 + 
+  ab1468*ab5789, -(ab1568*ab4789) - 
+  ab1489*ab5678, ab1578*ab4689 - 
+  ab1468*ab5789, ab1568*ab4789 - 
+  ab1478*ab5689, ab1579*ab4678 - 
+  ab1478*ab5679, ab1578*ab4679 - 
+  ab1479*ab5678, -(ab1579*ab4678) - 
+  ab1467*ab5789, ab1567*ab4789 + 
+  ab1479*ab5678, -(ab1578*ab4679) + 
+  ab1467*ab5789, -(ab1567*ab4789) + 
+  ab1478*ab5679, -(ab1569*ab4678) + 
+  ab1468*ab5679, -(ab1568*ab4679) + 
+  ab1469*ab5678, ab1569*ab4678 + 
+  ab1467*ab5689, -(ab1567*ab4689) - 
+  ab1469*ab5678, ab1568*ab4679 - 
+  ab1467*ab5689, ab1567*ab4689 - 
+  ab1468*ab5679, ab1689*ab4579 + 
+  ab1479*ab5689, ab1679*ab4589 + 
+  ab1489*ab5679, -(ab1689*ab4579) - 
+  ab1459*ab6789, -(ab1679*ab4589) + 
+  ab1459*ab6789, -(ab1689*ab4578) - 
+  ab1478*ab5689, -(ab1678*ab4589) - 
+  ab1489*ab5678, ab1689*ab4578 + 
+  ab1458*ab6789, ab1678*ab4589 - 
+  ab1458*ab6789, ab1679*ab4578 + 
+  ab1478*ab5679, ab1678*ab4579 + 
+  ab1479*ab5678, -(ab1679*ab4578) - 
+  ab1457*ab6789, -(ab1678*ab4579) + 
+  ab1457*ab6789, ab1569*ab4578 - 
+  ab1458*ab5679, ab1568*ab4579 - 
+  ab1459*ab5678, -(ab1569*ab4578) - 
+  ab1457*ab5689, ab1567*ab4589 + 
+  ab1459*ab5678, -(ab1568*ab4579) + 
+  ab1457*ab5689, -(ab1567*ab4589) + 
+  ab1458*ab5679, ab1789*ab4569 + 
+  ab1469*ab5789, -(ab1789*ab4569) + 
+  ab1459*ab6789, -(ab1789*ab4568) - 
+  ab1468*ab5789, ab1789*ab4568 - 
+  ab1458*ab6789, -(ab1679*ab4568) - 
+  ab1468*ab5679, -(ab1678*ab4569) - 
+  ab1469*ab5678, ab1679*ab4568 + 
+  ab1456*ab6789, ab1678*ab4569 - 
+  ab1456*ab6789, ab1579*ab4568 + 
+  ab1458*ab5679, ab1578*ab4569 + 
+  ab1459*ab5678, -(ab1579*ab4568) - 
+  ab1456*ab5789, -(ab1578*ab4569) + 
+  ab1456*ab5789, ab1789*ab4567 + 
+  ab1467*ab5789, -(ab1789*ab4567) + 
+  ab1457*ab6789, -(ab1689*ab4567) - 
+  ab1467*ab5689, ab1689*ab4567 - 
+  ab1456*ab6789, ab1589*ab4567 + 
+  ab1457*ab5689, -(ab1589*ab4567) + 
+  ab1456*ab5789, -(ab1689*ab4579) + 
+  ab1579*ab4689, -(ab1679*ab4589) + 
+  ab1589*ab4679, ab1689*ab4578 - 
+  ab1578*ab4689, ab1678*ab4589 - 
+  ab1589*ab4678, -(ab1679*ab4578) + 
+  ab1578*ab4679, -(ab1678*ab4579) + 
+  ab1579*ab4678, -(ab1469*ab4578) + 
+  ab1458*ab4679, -(ab1468*ab4579) + 
+  ab1459*ab4678, ab1469*ab4578 + 
+  ab1457*ab4689, -(ab1467*ab4589) - 
+  ab1459*ab4678, ab1468*ab4579 - 
+  ab1457*ab4689, ab1467*ab4589 - 
+  ab1458*ab4679, -(ab1789*ab4569) + 
+  ab1569*ab4789, ab1789*ab4568 - 
+  ab1568*ab4789, ab1679*ab4568 - 
+  ab1568*ab4679, ab1678*ab4569 - 
+  ab1569*ab4678, -(ab1479*ab4568) - 
+  ab1458*ab4679, -(ab1478*ab4569) - 
+  ab1459*ab4678, ab1479*ab4568 + 
+  ab1456*ab4789, ab1478*ab4569 - 
+  ab1456*ab4789, -(ab1789*ab4567) + 
+  ab1567*ab4789, ab1689*ab4567 - 
+  ab1567*ab4689, -(ab1489*ab4567) - 
+  ab1457*ab4689, ab1489*ab4567 - 
+  ab1456*ab4789, -(ab1579*ab4568) + 
+  ab1568*ab4579, -(ab1578*ab4569) + 
+  ab1569*ab4578, ab1479*ab4568 - 
+  ab1468*ab4579, ab1478*ab4569 - 
+  ab1469*ab4578, -(ab1589*ab4567) + 
+  ab1567*ab4589, ab1489*ab4567 - 
+  ab1467*ab4589, ab2589*ab4679 - 
+  ab2479*ab5689, ab2579*ab4689 - 
+  ab2489*ab5679, -(ab2589*ab4679) - 
+  ab2469*ab5789, ab2569*ab4789 + 
+  ab2489*ab5679, -(ab2579*ab4689) + 
+  ab2469*ab5789, -(ab2569*ab4789) + 
+  ab2479*ab5689, -(ab2589*ab4678) + 
+  ab2478*ab5689, -(ab2578*ab4689) + 
+  ab2489*ab5678, ab2589*ab4678 + 
+  ab2468*ab5789, -(ab2568*ab4789) - 
+  ab2489*ab5678, ab2578*ab4689 - 
+  ab2468*ab5789, ab2568*ab4789 - 
+  ab2478*ab5689, ab2579*ab4678 - 
+  ab2478*ab5679, ab2578*ab4679 - 
+  ab2479*ab5678, -(ab2579*ab4678) - 
+  ab2467*ab5789, ab2567*ab4789 + 
+  ab2479*ab5678, -(ab2578*ab4679) + 
+  ab2467*ab5789, -(ab2567*ab4789) + 
+  ab2478*ab5679, -(ab2569*ab4678) + 
+  ab2468*ab5679, -(ab2568*ab4679) + 
+  ab2469*ab5678, ab2569*ab4678 + 
+  ab2467*ab5689, -(ab2567*ab4689) - 
+  ab2469*ab5678, ab2568*ab4679 - 
+  ab2467*ab5689, ab2567*ab4689 - 
+  ab2468*ab5679, ab2689*ab4579 + 
+  ab2479*ab5689, ab2679*ab4589 + 
+  ab2489*ab5679, -(ab2689*ab4579) - 
+  ab2459*ab6789, -(ab2679*ab4589) + 
+  ab2459*ab6789, -(ab2689*ab4578) - 
+  ab2478*ab5689, -(ab2678*ab4589) - 
+  ab2489*ab5678, ab2689*ab4578 + 
+  ab2458*ab6789, ab2678*ab4589 - 
+  ab2458*ab6789, ab2679*ab4578 + 
+  ab2478*ab5679, ab2678*ab4579 + 
+  ab2479*ab5678, -(ab2679*ab4578) - 
+  ab2457*ab6789, -(ab2678*ab4579) + 
+  ab2457*ab6789, ab2569*ab4578 - 
+  ab2458*ab5679, ab2568*ab4579 - 
+  ab2459*ab5678, -(ab2569*ab4578) - 
+  ab2457*ab5689, ab2567*ab4589 + 
+  ab2459*ab5678, -(ab2568*ab4579) + 
+  ab2457*ab5689, -(ab2567*ab4589) + 
+  ab2458*ab5679, ab2789*ab4569 + 
+  ab2469*ab5789, -(ab2789*ab4569) + 
+  ab2459*ab6789, -(ab2789*ab4568) - 
+  ab2468*ab5789, ab2789*ab4568 - 
+  ab2458*ab6789, -(ab2679*ab4568) - 
+  ab2468*ab5679, -(ab2678*ab4569) - 
+  ab2469*ab5678, ab2679*ab4568 + 
+  ab2456*ab6789, ab2678*ab4569 - 
+  ab2456*ab6789, ab2579*ab4568 + 
+  ab2458*ab5679, ab2578*ab4569 + 
+  ab2459*ab5678, -(ab2579*ab4568) - 
+  ab2456*ab5789, -(ab2578*ab4569) + 
+  ab2456*ab5789, ab2789*ab4567 + 
+  ab2467*ab5789, -(ab2789*ab4567) + 
+  ab2457*ab6789, -(ab2689*ab4567) - 
+  ab2467*ab5689, ab2689*ab4567 - 
+  ab2456*ab6789, ab2589*ab4567 + 
+  ab2457*ab5689, -(ab2589*ab4567) + 
+  ab2456*ab5789, -(ab2689*ab4579) + 
+  ab2579*ab4689, -(ab2679*ab4589) + 
+  ab2589*ab4679, ab2689*ab4578 - 
+  ab2578*ab4689, ab2678*ab4589 - 
+  ab2589*ab4678, -(ab2679*ab4578) + 
+  ab2578*ab4679, -(ab2678*ab4579) + 
+  ab2579*ab4678, -(ab2469*ab4578) + 
+  ab2458*ab4679, -(ab2468*ab4579) + 
+  ab2459*ab4678, ab2469*ab4578 + 
+  ab2457*ab4689, -(ab2467*ab4589) - 
+  ab2459*ab4678, ab2468*ab4579 - 
+  ab2457*ab4689, ab2467*ab4589 - 
+  ab2458*ab4679, -(ab2789*ab4569) + 
+  ab2569*ab4789, ab2789*ab4568 - 
+  ab2568*ab4789, ab2679*ab4568 - 
+  ab2568*ab4679, ab2678*ab4569 - 
+  ab2569*ab4678, -(ab2479*ab4568) - 
+  ab2458*ab4679, -(ab2478*ab4569) - 
+  ab2459*ab4678, ab2479*ab4568 + 
+  ab2456*ab4789, ab2478*ab4569 - 
+  ab2456*ab4789, -(ab2789*ab4567) + 
+  ab2567*ab4789, ab2689*ab4567 - 
+  ab2567*ab4689, -(ab2489*ab4567) - 
+  ab2457*ab4689, ab2489*ab4567 - 
+  ab2456*ab4789, -(ab2579*ab4568) + 
+  ab2568*ab4579, -(ab2578*ab4569) + 
+  ab2569*ab4578, ab2479*ab4568 - 
+  ab2468*ab4579, ab2478*ab4569 - 
+  ab2469*ab4578, -(ab2589*ab4567) + 
+  ab2567*ab4589, ab2489*ab4567 - 
+  ab2467*ab4589, ab1469*ab1578 - 
+  ab1458*ab1679, ab2469*ab2578 - 
+  ab2458*ab2679, ab1468*ab1579 - 
+  ab1459*ab1678, ab2468*ab2579 - 
+  ab2459*ab2678, -(ab1469*ab1578) - 
+  ab1457*ab1689, -(ab2469*ab2578) - 
+  ab2457*ab2689, ab1467*ab1589 + 
+  ab1459*ab1678, ab2467*ab2589 + 
+  ab2459*ab2678, -(ab1468*ab1579) + 
+  ab1457*ab1689, -(ab2468*ab2579) + 
+  ab2457*ab2689, -(ab1467*ab1589) + 
+  ab1458*ab1679, -(ab2467*ab2589) + 
+  ab2458*ab2679, ab1479*ab1568 + 
+  ab1458*ab1679, ab2479*ab2568 + 
+  ab2458*ab2679, ab1478*ab1569 + 
+  ab1459*ab1678, ab2478*ab2569 + 
+  ab2459*ab2678, -(ab1479*ab1568) - 
+  ab1456*ab1789, -(ab2479*ab2568) - 
+  ab2456*ab2789, -(ab1478*ab1569) + 
+  ab1456*ab1789, -(ab2478*ab2569) + 
+  ab2456*ab2789, ab1489*ab1567 + 
+  ab1457*ab1689, ab2489*ab2567 + 
+  ab2457*ab2689, -(ab1489*ab1567) + 
+  ab1456*ab1789, -(ab2489*ab2567) + 
+  ab2456*ab2789, -(ab1479*ab1568) + 
+  ab1468*ab1579, -(ab2479*ab2568) + 
+  ab2468*ab2579, -(ab1478*ab1569) + 
+  ab1469*ab1578, -(ab2478*ab2569) + 
+  ab2469*ab2578, -(ab1489*ab1567) + 
+  ab1467*ab1589, -(ab2489*ab2567) + 
+  ab2467*ab2589, ab3589*ab4679 - 
+  ab3479*ab5689, ab3579*ab4689 - 
+  ab3489*ab5679, -(ab3589*ab4679) - 
+  ab3469*ab5789, ab3569*ab4789 + 
+  ab3489*ab5679, -(ab3579*ab4689) + 
+  ab3469*ab5789, -(ab3569*ab4789) + 
+  ab3479*ab5689, -(ab3589*ab4678) + 
+  ab3478*ab5689, -(ab3578*ab4689) + 
+  ab3489*ab5678, ab3589*ab4678 + 
+  ab3468*ab5789, -(ab3568*ab4789) - 
+  ab3489*ab5678, ab3578*ab4689 - 
+  ab3468*ab5789, ab3568*ab4789 - 
+  ab3478*ab5689, ab3579*ab4678 - 
+  ab3478*ab5679, ab3578*ab4679 - 
+  ab3479*ab5678, -(ab3579*ab4678) - 
+  ab3467*ab5789, ab3567*ab4789 + 
+  ab3479*ab5678, -(ab3578*ab4679) + 
+  ab3467*ab5789, -(ab3567*ab4789) + 
+  ab3478*ab5679, -(ab3569*ab4678) + 
+  ab3468*ab5679, -(ab3568*ab4679) + 
+  ab3469*ab5678, ab3569*ab4678 + 
+  ab3467*ab5689, -(ab3567*ab4689) - 
+  ab3469*ab5678, ab3568*ab4679 - 
+  ab3467*ab5689, ab3567*ab4689 - 
+  ab3468*ab5679, ab3689*ab4579 + 
+  ab3479*ab5689, ab3679*ab4589 + 
+  ab3489*ab5679, -(ab3689*ab4579) - 
+  ab3459*ab6789, -(ab3679*ab4589) + 
+  ab3459*ab6789, -(ab3689*ab4578) - 
+  ab3478*ab5689, -(ab3678*ab4589) - 
+  ab3489*ab5678, ab3689*ab4578 + 
+  ab3458*ab6789, ab3678*ab4589 - 
+  ab3458*ab6789, ab3679*ab4578 + 
+  ab3478*ab5679, ab3678*ab4579 + 
+  ab3479*ab5678, -(ab3679*ab4578) - 
+  ab3457*ab6789, -(ab3678*ab4579) + 
+  ab3457*ab6789, ab3569*ab4578 - 
+  ab3458*ab5679, ab3568*ab4579 - 
+  ab3459*ab5678, -(ab3569*ab4578) - 
+  ab3457*ab5689, ab3567*ab4589 + 
+  ab3459*ab5678, -(ab3568*ab4579) + 
+  ab3457*ab5689, -(ab3567*ab4589) + 
+  ab3458*ab5679, ab3789*ab4569 + 
+  ab3469*ab5789, -(ab3789*ab4569) + 
+  ab3459*ab6789, -(ab3789*ab4568) - 
+  ab3468*ab5789, ab3789*ab4568 - 
+  ab3458*ab6789, -(ab3679*ab4568) - 
+  ab3468*ab5679, -(ab3678*ab4569) - 
+  ab3469*ab5678, ab3679*ab4568 + 
+  ab3456*ab6789, ab3678*ab4569 - 
+  ab3456*ab6789, ab3579*ab4568 + 
+  ab3458*ab5679, ab3578*ab4569 + 
+  ab3459*ab5678, -(ab3579*ab4568) - 
+  ab3456*ab5789, -(ab3578*ab4569) + 
+  ab3456*ab5789, ab3789*ab4567 + 
+  ab3467*ab5789, -(ab3789*ab4567) + 
+  ab3457*ab6789, -(ab3689*ab4567) - 
+  ab3467*ab5689, ab3689*ab4567 - 
+  ab3456*ab6789, ab3589*ab4567 + 
+  ab3457*ab5689, -(ab3589*ab4567) + 
+  ab3456*ab5789, -(ab3689*ab4579) + 
+  ab3579*ab4689, -(ab3679*ab4589) + 
+  ab3589*ab4679, ab3689*ab4578 - 
+  ab3578*ab4689, ab3678*ab4589 - 
+  ab3589*ab4678, -(ab3679*ab4578) + 
+  ab3578*ab4679, -(ab3678*ab4579) + 
+  ab3579*ab4678, -(ab3469*ab4578) + 
+  ab3458*ab4679, -(ab3468*ab4579) + 
+  ab3459*ab4678, ab3469*ab4578 + 
+  ab3457*ab4689, -(ab3467*ab4589) - 
+  ab3459*ab4678, ab3468*ab4579 - 
+  ab3457*ab4689, ab3467*ab4589 - 
+  ab3458*ab4679, -(ab3789*ab4569) + 
+  ab3569*ab4789, ab3789*ab4568 - 
+  ab3568*ab4789, ab3679*ab4568 - 
+  ab3568*ab4679, ab3678*ab4569 - 
+  ab3569*ab4678, -(ab3479*ab4568) - 
+  ab3458*ab4679, -(ab3478*ab4569) - 
+  ab3459*ab4678, ab3479*ab4568 + 
+  ab3456*ab4789, ab3478*ab4569 - 
+  ab3456*ab4789, -(ab3789*ab4567) + 
+  ab3567*ab4789, ab3689*ab4567 - 
+  ab3567*ab4689, -(ab3489*ab4567) - 
+  ab3457*ab4689, ab3489*ab4567 - 
+  ab3456*ab4789, -(ab3579*ab4568) + 
+  ab3568*ab4579, -(ab3578*ab4569) + 
+  ab3569*ab4578, ab3479*ab4568 - 
+  ab3468*ab4579, ab3478*ab4569 - 
+  ab3469*ab4578, -(ab3589*ab4567) + 
+  ab3567*ab4589, ab3489*ab4567 - 
+  ab3467*ab4589, ab3469*ab3578 - 
+  ab3458*ab3679, ab3468*ab3579 - 
+  ab3459*ab3678, -(ab3469*ab3578) - 
+  ab3457*ab3689, ab3467*ab3589 + 
+  ab3459*ab3678, -(ab3468*ab3579) + 
+  ab3457*ab3689, -(ab3467*ab3589) + 
+  ab3458*ab3679, ab3479*ab3568 + 
+  ab3458*ab3679, ab3478*ab3569 + 
+  ab3459*ab3678, -(ab3479*ab3568) - 
+  ab3456*ab3789, -(ab3478*ab3569) + 
+  ab3456*ab3789, ab3489*ab3567 + 
+  ab3457*ab3689, -(ab3489*ab3567) + 
+  ab3456*ab3789, -(ab3479*ab3568) + 
+  ab3468*ab3579, -(ab3478*ab3569) + 
+  ab3469*ab3578, -(ab3489*ab3567) + 
+  ab3467*ab3589, -(ab1235*ab4678) + 
+  ab1234*ab5678, -(ab1236*ab4578) - 
+  ab1234*ab5678, -(ab1237*ab4568) + 
+  ab1234*ab5678, -(ab1238*ab4567) - 
+  ab1234*ab5678, ab1236*ab4578 - 
+  ab1235*ab4678, ab1237*ab4568 + 
+  ab1235*ab4678, ab1238*ab4567 - 
+  ab1235*ab4678, -(ab1237*ab4568) + 
+  ab1236*ab4578, -(ab1238*ab4567) - 
+  ab1236*ab4578, ab1238*ab4567 - 
+  ab1237*ab4568, -(ab1245*ab3678) - 
+  ab1234*ab5678, -(ab1246*ab3578) + 
+  ab1234*ab5678, -(ab1247*ab3568) - 
+  ab1234*ab5678, -(ab1248*ab3567) + 
+  ab1234*ab5678, ab1246*ab3578 - 
+  ab1245*ab3678, ab1247*ab3568 + 
+  ab1245*ab3678, ab1248*ab3567 - 
+  ab1245*ab3678, -(ab1247*ab3568) + 
+  ab1246*ab3578, -(ab1248*ab3567) - 
+  ab1246*ab3578, ab1248*ab3567 - 
+  ab1247*ab3568, ab1245*ab3678 - 
+  ab1235*ab4678, -(ab1256*ab3478) + 
+  ab1235*ab4678, -(ab1257*ab3468) - 
+  ab1235*ab4678, -(ab1258*ab3467) + 
+  ab1235*ab4678, ab1256*ab3478 + 
+  ab1245*ab3678, ab1257*ab3468 - 
+  ab1245*ab3678, ab1258*ab3467 + 
+  ab1245*ab3678, -(ab1257*ab3468) + 
+  ab1256*ab3478, -(ab1258*ab3467) - 
+  ab1256*ab3478, ab1258*ab3467 - 
+  ab1257*ab3468, ab1246*ab3578 - 
+  ab1236*ab4578, ab1256*ab3478 + 
+  ab1236*ab4578, -(ab1267*ab3458) - 
+  ab1236*ab4578, -(ab1268*ab3457) + 
+  ab1236*ab4578, -(ab1256*ab3478) + 
+  ab1246*ab3578, ab1267*ab3458 - 
+  ab1246*ab3578, ab1268*ab3457 + 
+  ab1246*ab3578, -(ab1267*ab3458) - 
+  ab1256*ab3478, -(ab1268*ab3457) + 
+  ab1256*ab3478, ab1268*ab3457 - 
+  ab1267*ab3458, ab1247*ab3568 - 
+  ab1237*ab4568, ab1257*ab3468 + 
+  ab1237*ab4568, ab1267*ab3458 - 
+  ab1237*ab4568, -(ab1278*ab3456) + 
+  ab1237*ab4568, -(ab1257*ab3468) + 
+  ab1247*ab3568, -(ab1267*ab3458) - 
+  ab1247*ab3568, ab1278*ab3456 + 
+  ab1247*ab3568, ab1267*ab3458 - 
+  ab1257*ab3468, -(ab1278*ab3456) + 
+  ab1257*ab3468, ab1278*ab3456 + 
+  ab1267*ab3458, ab1248*ab3567 - 
+  ab1238*ab4567, ab1258*ab3467 + 
+  ab1238*ab4567, ab1268*ab3457 - 
+  ab1238*ab4567, ab1278*ab3456 + 
+  ab1238*ab4567, -(ab1258*ab3467) + 
+  ab1248*ab3567, -(ab1268*ab3457) - 
+  ab1248*ab3567, -(ab1278*ab3456) + 
+  ab1248*ab3567, ab1268*ab3457 - 
+  ab1258*ab3467, ab1278*ab3456 + 
+  ab1258*ab3467, -(ab1278*ab3456) + 
+  ab1268*ab3457, -(ab1345*ab2678) + 
+  ab1234*ab5678, -(ab1346*ab2578) - 
+  ab1234*ab5678, -(ab1347*ab2568) + 
+  ab1234*ab5678, -(ab1348*ab2567) - 
+  ab1234*ab5678, ab1346*ab2578 - 
+  ab1345*ab2678, ab1347*ab2568 + 
+  ab1345*ab2678, ab1348*ab2567 - 
+  ab1345*ab2678, -(ab1347*ab2568) + 
+  ab1346*ab2578, -(ab1348*ab2567) - 
+  ab1346*ab2578, ab1348*ab2567 - 
+  ab1347*ab2568, ab1345*ab2678 + 
+  ab1235*ab4678, -(ab1356*ab2478) - 
+  ab1235*ab4678, -(ab1357*ab2468) + 
+  ab1235*ab4678, -(ab1358*ab2467) - 
+  ab1235*ab4678, ab1356*ab2478 + 
+  ab1345*ab2678, ab1357*ab2468 - 
+  ab1345*ab2678, ab1358*ab2467 + 
+  ab1345*ab2678, -(ab1357*ab2468) + 
+  ab1356*ab2478, -(ab1358*ab2467) - 
+  ab1356*ab2478, ab1358*ab2467 - 
+  ab1357*ab2468, ab1346*ab2578 + 
+  ab1236*ab4578, ab1356*ab2478 - 
+  ab1236*ab4578, -(ab1367*ab2458) + 
+  ab1236*ab4578, -(ab1368*ab2457) - 
+  ab1236*ab4578, -(ab1356*ab2478) + 
+  ab1346*ab2578, ab1367*ab2458 - 
+  ab1346*ab2578, ab1368*ab2457 + 
+  ab1346*ab2578, -(ab1367*ab2458) - 
+  ab1356*ab2478, -(ab1368*ab2457) + 
+  ab1356*ab2478, ab1368*ab2457 - 
+  ab1367*ab2458, ab1347*ab2568 + 
+  ab1237*ab4568, ab1357*ab2468 - 
+  ab1237*ab4568, ab1367*ab2458 + 
+  ab1237*ab4568, -(ab1378*ab2456) - 
+  ab1237*ab4568, -(ab1357*ab2468) + 
+  ab1347*ab2568, -(ab1367*ab2458) - 
+  ab1347*ab2568, ab1378*ab2456 + 
+  ab1347*ab2568, ab1367*ab2458 - 
+  ab1357*ab2468, -(ab1378*ab2456) + 
+  ab1357*ab2468, ab1378*ab2456 + 
+  ab1367*ab2458, ab1348*ab2567 + 
+  ab1238*ab4567, ab1358*ab2467 - 
+  ab1238*ab4567, ab1368*ab2457 + 
+  ab1238*ab4567, ab1378*ab2456 - 
+  ab1238*ab4567, -(ab1358*ab2467) + 
+  ab1348*ab2567, -(ab1368*ab2457) - 
+  ab1348*ab2567, -(ab1378*ab2456) + 
+  ab1348*ab2567, ab1368*ab2457 - 
+  ab1358*ab2467, ab1378*ab2456 + 
+  ab1358*ab2467, -(ab1378*ab2456) + 
+  ab1368*ab2457, -(ab1345*ab2678) + 
+  ab1245*ab3678, -(ab1456*ab2378) - 
+  ab1245*ab3678, -(ab1457*ab2368) + 
+  ab1245*ab3678, -(ab1458*ab2367) - 
+  ab1245*ab3678, ab1456*ab2378 - 
+  ab1345*ab2678, ab1457*ab2368 + 
+  ab1345*ab2678, ab1458*ab2367 - 
+  ab1345*ab2678, -(ab1457*ab2368) + 
+  ab1456*ab2378, -(ab1458*ab2367) - 
+  ab1456*ab2378, ab1458*ab2367 - 
+  ab1457*ab2368, -(ab1346*ab2578) + 
+  ab1246*ab3578, ab1456*ab2378 - 
+  ab1246*ab3578, -(ab1467*ab2358) + 
+  ab1246*ab3578, -(ab1468*ab2357) - 
+  ab1246*ab3578, -(ab1456*ab2378) - 
+  ab1346*ab2578, ab1467*ab2358 + 
+  ab1346*ab2578, ab1468*ab2357 - 
+  ab1346*ab2578, -(ab1467*ab2358) - 
+  ab1456*ab2378, -(ab1468*ab2357) + 
+  ab1456*ab2378, ab1468*ab2357 - 
+  ab1467*ab2358, -(ab1347*ab2568) + 
+  ab1247*ab3568, ab1457*ab2368 - 
+  ab1247*ab3568, ab1467*ab2358 + 
+  ab1247*ab3568, -(ab1478*ab2356) - 
+  ab1247*ab3568, -(ab1457*ab2368) - 
+  ab1347*ab2568, -(ab1467*ab2358) + 
+  ab1347*ab2568, ab1478*ab2356 - 
+  ab1347*ab2568, ab1467*ab2358 - 
+  ab1457*ab2368, -(ab1478*ab2356) + 
+  ab1457*ab2368, ab1478*ab2356 + 
+  ab1467*ab2358, -(ab1348*ab2567) + 
+  ab1248*ab3567, ab1458*ab2367 - 
+  ab1248*ab3567, ab1468*ab2357 + 
+  ab1248*ab3567, ab1478*ab2356 - 
+  ab1248*ab3567, -(ab1458*ab2367) - 
+  ab1348*ab2567, -(ab1468*ab2357) + 
+  ab1348*ab2567, -(ab1478*ab2356) - 
+  ab1348*ab2567, ab1468*ab2357 - 
+  ab1458*ab2367, ab1478*ab2356 + 
+  ab1458*ab2367, -(ab1478*ab2356) + 
+  ab1468*ab2357, -(ab1356*ab2478) + 
+  ab1256*ab3478, -(ab1456*ab2378) - 
+  ab1256*ab3478, -(ab1567*ab2348) + 
+  ab1256*ab3478, -(ab1568*ab2347) - 
+  ab1256*ab3478, ab1456*ab2378 - 
+  ab1356*ab2478, ab1567*ab2348 + 
+  ab1356*ab2478, ab1568*ab2347 - 
+  ab1356*ab2478, -(ab1567*ab2348) + 
+  ab1456*ab2378, -(ab1568*ab2347) - 
+  ab1456*ab2378, ab1568*ab2347 - 
+  ab1567*ab2348, -(ab1357*ab2468) + 
+  ab1257*ab3468, -(ab1457*ab2368) - 
+  ab1257*ab3468, ab1567*ab2348 + 
+  ab1257*ab3468, -(ab1578*ab2346) - 
+  ab1257*ab3468, ab1457*ab2368 - 
+  ab1357*ab2468, -(ab1567*ab2348) + 
+  ab1357*ab2468, ab1578*ab2346 - 
+  ab1357*ab2468, ab1567*ab2348 + 
+  ab1457*ab2368, -(ab1578*ab2346) - 
+  ab1457*ab2368, ab1578*ab2346 + 
+  ab1567*ab2348, -(ab1358*ab2467) + 
+  ab1258*ab3467, -(ab1458*ab2367) - 
+  ab1258*ab3467, ab1568*ab2347 + 
+  ab1258*ab3467, ab1578*ab2346 - 
+  ab1258*ab3467, ab1458*ab2367 - 
+  ab1358*ab2467, -(ab1568*ab2347) + 
+  ab1358*ab2467, -(ab1578*ab2346) - 
+  ab1358*ab2467, ab1568*ab2347 + 
+  ab1458*ab2367, ab1578*ab2346 - 
+  ab1458*ab2367, -(ab1578*ab2346) + 
+  ab1568*ab2347, -(ab1367*ab2458) + 
+  ab1267*ab3458, -(ab1467*ab2358) - 
+  ab1267*ab3458, -(ab1567*ab2348) + 
+  ab1267*ab3458, -(ab1678*ab2345) - 
+  ab1267*ab3458, ab1467*ab2358 - 
+  ab1367*ab2458, ab1567*ab2348 + 
+  ab1367*ab2458, ab1678*ab2345 - 
+  ab1367*ab2458, -(ab1567*ab2348) + 
+  ab1467*ab2358, -(ab1678*ab2345) - 
+  ab1467*ab2358, ab1678*ab2345 - 
+  ab1567*ab2348, -(ab1368*ab2457) + 
+  ab1268*ab3457, -(ab1468*ab2357) - 
+  ab1268*ab3457, -(ab1568*ab2347) + 
+  ab1268*ab3457, ab1678*ab2345 - 
+  ab1268*ab3457, ab1468*ab2357 - 
+  ab1368*ab2457, ab1568*ab2347 + 
+  ab1368*ab2457, -(ab1678*ab2345) - 
+  ab1368*ab2457, -(ab1568*ab2347) + 
+  ab1468*ab2357, ab1678*ab2345 - 
+  ab1468*ab2357, -(ab1678*ab2345) - 
+  ab1568*ab2347, -(ab1378*ab2456) + 
+  ab1278*ab3456, -(ab1478*ab2356) - 
+  ab1278*ab3456, -(ab1578*ab2346) + 
+  ab1278*ab3456, -(ab1678*ab2345) - 
+  ab1278*ab3456, ab1478*ab2356 - 
+  ab1378*ab2456, ab1578*ab2346 + 
+  ab1378*ab2456, ab1678*ab2345 - 
+  ab1378*ab2456, -(ab1578*ab2346) + 
+  ab1478*ab2356, -(ab1678*ab2345) - 
+  ab1478*ab2356, ab1678*ab2345 - 
+  ab1578*ab2346, -(ab1678*ab2345) - 
+  ab1234*ab5678, -(ab1578*ab2346) + 
+  ab1234*ab5678, -(ab1568*ab2347) - 
+  ab1234*ab5678, -(ab1567*ab2348) + 
+  ab1234*ab5678, ab1678*ab2345 - 
+  ab1235*ab4678, -(ab1478*ab2356) + 
+  ab1235*ab4678, -(ab1468*ab2357) - 
+  ab1235*ab4678, -(ab1467*ab2358) + 
+  ab1235*ab4678, ab1578*ab2346 - 
+  ab1236*ab4578, ab1478*ab2356 + 
+  ab1236*ab4578, -(ab1458*ab2367) - 
+  ab1236*ab4578, -(ab1457*ab2368) + 
+  ab1236*ab4578, ab1568*ab2347 - 
+  ab1237*ab4568, ab1468*ab2357 + 
+  ab1237*ab4568, ab1458*ab2367 - 
+  ab1237*ab4568, -(ab1456*ab2378) + 
+  ab1237*ab4568, ab1567*ab2348 - 
+  ab1238*ab4567, ab1467*ab2358 + 
+  ab1238*ab4567, ab1457*ab2368 - 
+  ab1238*ab4567, ab1456*ab2378 + 
+  ab1238*ab4567, -(ab1678*ab2345) - 
+  ab1245*ab3678, -(ab1378*ab2456) + 
+  ab1245*ab3678, -(ab1368*ab2457) - 
+  ab1245*ab3678, -(ab1367*ab2458) + 
+  ab1245*ab3678, -(ab1578*ab2346) - 
+  ab1246*ab3578, ab1378*ab2456 + 
+  ab1246*ab3578, -(ab1358*ab2467) - 
+  ab1246*ab3578, -(ab1357*ab2468) + 
+  ab1246*ab3578, -(ab1568*ab2347) - 
+  ab1247*ab3568, ab1368*ab2457 + 
+  ab1247*ab3568, ab1358*ab2467 - 
+  ab1247*ab3568, -(ab1356*ab2478) + 
+  ab1247*ab3568, -(ab1567*ab2348) - 
+  ab1248*ab3567, ab1367*ab2458 + 
+  ab1248*ab3567, ab1357*ab2468 - 
+  ab1248*ab3567, ab1356*ab2478 + 
+  ab1248*ab3567, -(ab1478*ab2356) - 
+  ab1256*ab3478, -(ab1378*ab2456) + 
+  ab1256*ab3478, -(ab1348*ab2567) - 
+  ab1256*ab3478, -(ab1347*ab2568) + 
+  ab1256*ab3478, -(ab1468*ab2357) - 
+  ab1257*ab3468, -(ab1368*ab2457) + 
+  ab1257*ab3468, ab1348*ab2567 - 
+  ab1257*ab3468, -(ab1346*ab2578) + 
+  ab1257*ab3468, -(ab1467*ab2358) - 
+  ab1258*ab3467, -(ab1367*ab2458) + 
+  ab1258*ab3467, ab1347*ab2568 - 
+  ab1258*ab3467, ab1346*ab2578 + 
+  ab1258*ab3467, -(ab1458*ab2367) - 
+  ab1267*ab3458, -(ab1358*ab2467) + 
+  ab1267*ab3458, -(ab1348*ab2567) - 
+  ab1267*ab3458, -(ab1345*ab2678) + 
+  ab1267*ab3458, -(ab1457*ab2368) - 
+  ab1268*ab3457, -(ab1357*ab2468) + 
+  ab1268*ab3457, -(ab1347*ab2568) - 
+  ab1268*ab3457, ab1345*ab2678 + 
+  ab1268*ab3457, -(ab1456*ab2378) - 
+  ab1278*ab3456, -(ab1356*ab2478) + 
+  ab1278*ab3456, -(ab1346*ab2578) - 
+  ab1278*ab3456, -(ab1345*ab2678) + 
+  ab1278*ab3456, ab1678*ab2345 - 
+  ab1345*ab2678, ab1578*ab2346 - 
+  ab1346*ab2578, ab1568*ab2347 - 
+  ab1347*ab2568, ab1567*ab2348 - 
+  ab1348*ab2567, ab1478*ab2356 - 
+  ab1356*ab2478, ab1468*ab2357 - 
+  ab1357*ab2468, ab1467*ab2358 - 
+  ab1358*ab2467, ab1458*ab2367 - 
+  ab1367*ab2458, ab1457*ab2368 - 
+  ab1368*ab2457, ab1456*ab2378 - 
+  ab1378*ab2456, -(ab1235*ab4679) + 
+  ab1234*ab5679, -(ab1236*ab4579) - 
+  ab1234*ab5679, -(ab1237*ab4569) + 
+  ab1234*ab5679, -(ab1239*ab4567) - 
+  ab1234*ab5679, ab1236*ab4579 - 
+  ab1235*ab4679, ab1237*ab4569 + 
+  ab1235*ab4679, ab1239*ab4567 - 
+  ab1235*ab4679, -(ab1237*ab4569) + 
+  ab1236*ab4579, -(ab1239*ab4567) - 
+  ab1236*ab4579, ab1239*ab4567 - 
+  ab1237*ab4569, -(ab1245*ab3679) - 
+  ab1234*ab5679, -(ab1246*ab3579) + 
+  ab1234*ab5679, -(ab1247*ab3569) - 
+  ab1234*ab5679, -(ab1249*ab3567) + 
+  ab1234*ab5679, ab1246*ab3579 - 
+  ab1245*ab3679, ab1247*ab3569 + 
+  ab1245*ab3679, ab1249*ab3567 - 
+  ab1245*ab3679, -(ab1247*ab3569) + 
+  ab1246*ab3579, -(ab1249*ab3567) - 
+  ab1246*ab3579, ab1249*ab3567 - 
+  ab1247*ab3569, ab1245*ab3679 - 
+  ab1235*ab4679, -(ab1256*ab3479) + 
+  ab1235*ab4679, -(ab1257*ab3469) - 
+  ab1235*ab4679, -(ab1259*ab3467) + 
+  ab1235*ab4679, ab1256*ab3479 + 
+  ab1245*ab3679, ab1257*ab3469 - 
+  ab1245*ab3679, ab1259*ab3467 + 
+  ab1245*ab3679, -(ab1257*ab3469) + 
+  ab1256*ab3479, -(ab1259*ab3467) - 
+  ab1256*ab3479, ab1259*ab3467 - 
+  ab1257*ab3469, ab1246*ab3579 - 
+  ab1236*ab4579, ab1256*ab3479 + 
+  ab1236*ab4579, -(ab1267*ab3459) - 
+  ab1236*ab4579, -(ab1269*ab3457) + 
+  ab1236*ab4579, -(ab1256*ab3479) + 
+  ab1246*ab3579, ab1267*ab3459 - 
+  ab1246*ab3579, ab1269*ab3457 + 
+  ab1246*ab3579, -(ab1267*ab3459) - 
+  ab1256*ab3479, -(ab1269*ab3457) + 
+  ab1256*ab3479, ab1269*ab3457 - 
+  ab1267*ab3459, ab1247*ab3569 - 
+  ab1237*ab4569, ab1257*ab3469 + 
+  ab1237*ab4569, ab1267*ab3459 - 
+  ab1237*ab4569, -(ab1279*ab3456) + 
+  ab1237*ab4569, -(ab1257*ab3469) + 
+  ab1247*ab3569, -(ab1267*ab3459) - 
+  ab1247*ab3569, ab1279*ab3456 + 
+  ab1247*ab3569, ab1267*ab3459 - 
+  ab1257*ab3469, -(ab1279*ab3456) + 
+  ab1257*ab3469, ab1279*ab3456 + 
+  ab1267*ab3459, ab1249*ab3567 - 
+  ab1239*ab4567, ab1259*ab3467 + 
+  ab1239*ab4567, ab1269*ab3457 - 
+  ab1239*ab4567, ab1279*ab3456 + 
+  ab1239*ab4567, -(ab1259*ab3467) + 
+  ab1249*ab3567, -(ab1269*ab3457) - 
+  ab1249*ab3567, -(ab1279*ab3456) + 
+  ab1249*ab3567, ab1269*ab3457 - 
+  ab1259*ab3467, ab1279*ab3456 + 
+  ab1259*ab3467, -(ab1279*ab3456) + 
+  ab1269*ab3457, -(ab1345*ab2679) + 
+  ab1234*ab5679, -(ab1346*ab2579) - 
+  ab1234*ab5679, -(ab1347*ab2569) + 
+  ab1234*ab5679, -(ab1349*ab2567) - 
+  ab1234*ab5679, ab1346*ab2579 - 
+  ab1345*ab2679, ab1347*ab2569 + 
+  ab1345*ab2679, ab1349*ab2567 - 
+  ab1345*ab2679, -(ab1347*ab2569) + 
+  ab1346*ab2579, -(ab1349*ab2567) - 
+  ab1346*ab2579, ab1349*ab2567 - 
+  ab1347*ab2569, ab1345*ab2679 + 
+  ab1235*ab4679, -(ab1356*ab2479) - 
+  ab1235*ab4679, -(ab1357*ab2469) + 
+  ab1235*ab4679, -(ab1359*ab2467) - 
+  ab1235*ab4679, ab1356*ab2479 + 
+  ab1345*ab2679, ab1357*ab2469 - 
+  ab1345*ab2679, ab1359*ab2467 + 
+  ab1345*ab2679, -(ab1357*ab2469) + 
+  ab1356*ab2479, -(ab1359*ab2467) - 
+  ab1356*ab2479, ab1359*ab2467 - 
+  ab1357*ab2469, ab1346*ab2579 + 
+  ab1236*ab4579, ab1356*ab2479 - 
+  ab1236*ab4579, -(ab1367*ab2459) + 
+  ab1236*ab4579, -(ab1369*ab2457) - 
+  ab1236*ab4579, -(ab1356*ab2479) + 
+  ab1346*ab2579, ab1367*ab2459 - 
+  ab1346*ab2579, ab1369*ab2457 + 
+  ab1346*ab2579, -(ab1367*ab2459) - 
+  ab1356*ab2479, -(ab1369*ab2457) + 
+  ab1356*ab2479, ab1369*ab2457 - 
+  ab1367*ab2459, ab1347*ab2569 + 
+  ab1237*ab4569, ab1357*ab2469 - 
+  ab1237*ab4569, ab1367*ab2459 + 
+  ab1237*ab4569, -(ab1379*ab2456) - 
+  ab1237*ab4569, -(ab1357*ab2469) + 
+  ab1347*ab2569, -(ab1367*ab2459) - 
+  ab1347*ab2569, ab1379*ab2456 + 
+  ab1347*ab2569, ab1367*ab2459 - 
+  ab1357*ab2469, -(ab1379*ab2456) + 
+  ab1357*ab2469, ab1379*ab2456 + 
+  ab1367*ab2459, ab1349*ab2567 + 
+  ab1239*ab4567, ab1359*ab2467 - 
+  ab1239*ab4567, ab1369*ab2457 + 
+  ab1239*ab4567, ab1379*ab2456 - 
+  ab1239*ab4567, -(ab1359*ab2467) + 
+  ab1349*ab2567, -(ab1369*ab2457) - 
+  ab1349*ab2567, -(ab1379*ab2456) + 
+  ab1349*ab2567, ab1369*ab2457 - 
+  ab1359*ab2467, ab1379*ab2456 + 
+  ab1359*ab2467, -(ab1379*ab2456) + 
+  ab1369*ab2457, -(ab1345*ab2679) + 
+  ab1245*ab3679, -(ab1456*ab2379) - 
+  ab1245*ab3679, -(ab1457*ab2369) + 
+  ab1245*ab3679, -(ab1459*ab2367) - 
+  ab1245*ab3679, ab1456*ab2379 - 
+  ab1345*ab2679, ab1457*ab2369 + 
+  ab1345*ab2679, ab1459*ab2367 - 
+  ab1345*ab2679, -(ab1457*ab2369) + 
+  ab1456*ab2379, -(ab1459*ab2367) - 
+  ab1456*ab2379, ab1459*ab2367 - 
+  ab1457*ab2369, -(ab1346*ab2579) + 
+  ab1246*ab3579, ab1456*ab2379 - 
+  ab1246*ab3579, -(ab1467*ab2359) + 
+  ab1246*ab3579, -(ab1469*ab2357) - 
+  ab1246*ab3579, -(ab1456*ab2379) - 
+  ab1346*ab2579, ab1467*ab2359 + 
+  ab1346*ab2579, ab1469*ab2357 - 
+  ab1346*ab2579, -(ab1467*ab2359) - 
+  ab1456*ab2379, -(ab1469*ab2357) + 
+  ab1456*ab2379, ab1469*ab2357 - 
+  ab1467*ab2359, -(ab1347*ab2569) + 
+  ab1247*ab3569, ab1457*ab2369 - 
+  ab1247*ab3569, ab1467*ab2359 + 
+  ab1247*ab3569, -(ab1479*ab2356) - 
+  ab1247*ab3569, -(ab1457*ab2369) - 
+  ab1347*ab2569, -(ab1467*ab2359) + 
+  ab1347*ab2569, ab1479*ab2356 - 
+  ab1347*ab2569, ab1467*ab2359 - 
+  ab1457*ab2369, -(ab1479*ab2356) + 
+  ab1457*ab2369, ab1479*ab2356 + 
+  ab1467*ab2359, -(ab1349*ab2567) + 
+  ab1249*ab3567, ab1459*ab2367 - 
+  ab1249*ab3567, ab1469*ab2357 + 
+  ab1249*ab3567, ab1479*ab2356 - 
+  ab1249*ab3567, -(ab1459*ab2367) - 
+  ab1349*ab2567, -(ab1469*ab2357) + 
+  ab1349*ab2567, -(ab1479*ab2356) - 
+  ab1349*ab2567, ab1469*ab2357 - 
+  ab1459*ab2367, ab1479*ab2356 + 
+  ab1459*ab2367, -(ab1479*ab2356) + 
+  ab1469*ab2357, -(ab1356*ab2479) + 
+  ab1256*ab3479, -(ab1456*ab2379) - 
+  ab1256*ab3479, -(ab1567*ab2349) + 
+  ab1256*ab3479, -(ab1569*ab2347) - 
+  ab1256*ab3479, ab1456*ab2379 - 
+  ab1356*ab2479, ab1567*ab2349 + 
+  ab1356*ab2479, ab1569*ab2347 - 
+  ab1356*ab2479, -(ab1567*ab2349) + 
+  ab1456*ab2379, -(ab1569*ab2347) - 
+  ab1456*ab2379, ab1569*ab2347 - 
+  ab1567*ab2349, -(ab1357*ab2469) + 
+  ab1257*ab3469, -(ab1457*ab2369) - 
+  ab1257*ab3469, ab1567*ab2349 + 
+  ab1257*ab3469, -(ab1579*ab2346) - 
+  ab1257*ab3469, ab1457*ab2369 - 
+  ab1357*ab2469, -(ab1567*ab2349) + 
+  ab1357*ab2469, ab1579*ab2346 - 
+  ab1357*ab2469, ab1567*ab2349 + 
+  ab1457*ab2369, -(ab1579*ab2346) - 
+  ab1457*ab2369, ab1579*ab2346 + 
+  ab1567*ab2349, -(ab1359*ab2467) + 
+  ab1259*ab3467, -(ab1459*ab2367) - 
+  ab1259*ab3467, ab1569*ab2347 + 
+  ab1259*ab3467, ab1579*ab2346 - 
+  ab1259*ab3467, ab1459*ab2367 - 
+  ab1359*ab2467, -(ab1569*ab2347) + 
+  ab1359*ab2467, -(ab1579*ab2346) - 
+  ab1359*ab2467, ab1569*ab2347 + 
+  ab1459*ab2367, ab1579*ab2346 - 
+  ab1459*ab2367, -(ab1579*ab2346) + 
+  ab1569*ab2347, -(ab1367*ab2459) + 
+  ab1267*ab3459, -(ab1467*ab2359) - 
+  ab1267*ab3459, -(ab1567*ab2349) + 
+  ab1267*ab3459, -(ab1679*ab2345) - 
+  ab1267*ab3459, ab1467*ab2359 - 
+  ab1367*ab2459, ab1567*ab2349 + 
+  ab1367*ab2459, ab1679*ab2345 - 
+  ab1367*ab2459, -(ab1567*ab2349) + 
+  ab1467*ab2359, -(ab1679*ab2345) - 
+  ab1467*ab2359, ab1679*ab2345 - 
+  ab1567*ab2349, -(ab1369*ab2457) + 
+  ab1269*ab3457, -(ab1469*ab2357) - 
+  ab1269*ab3457, -(ab1569*ab2347) + 
+  ab1269*ab3457, ab1679*ab2345 - 
+  ab1269*ab3457, ab1469*ab2357 - 
+  ab1369*ab2457, ab1569*ab2347 + 
+  ab1369*ab2457, -(ab1679*ab2345) - 
+  ab1369*ab2457, -(ab1569*ab2347) + 
+  ab1469*ab2357, ab1679*ab2345 - 
+  ab1469*ab2357, -(ab1679*ab2345) - 
+  ab1569*ab2347, -(ab1379*ab2456) + 
+  ab1279*ab3456, -(ab1479*ab2356) - 
+  ab1279*ab3456, -(ab1579*ab2346) + 
+  ab1279*ab3456, -(ab1679*ab2345) - 
+  ab1279*ab3456, ab1479*ab2356 - 
+  ab1379*ab2456, ab1579*ab2346 + 
+  ab1379*ab2456, ab1679*ab2345 - 
+  ab1379*ab2456, -(ab1579*ab2346) + 
+  ab1479*ab2356, -(ab1679*ab2345) - 
+  ab1479*ab2356, ab1679*ab2345 - 
+  ab1579*ab2346, -(ab1679*ab2345) - 
+  ab1234*ab5679, -(ab1579*ab2346) + 
+  ab1234*ab5679, -(ab1569*ab2347) - 
+  ab1234*ab5679, -(ab1567*ab2349) + 
+  ab1234*ab5679, ab1679*ab2345 - 
+  ab1235*ab4679, -(ab1479*ab2356) + 
+  ab1235*ab4679, -(ab1469*ab2357) - 
+  ab1235*ab4679, -(ab1467*ab2359) + 
+  ab1235*ab4679, ab1579*ab2346 - 
+  ab1236*ab4579, ab1479*ab2356 + 
+  ab1236*ab4579, -(ab1459*ab2367) - 
+  ab1236*ab4579, -(ab1457*ab2369) + 
+  ab1236*ab4579, ab1569*ab2347 - 
+  ab1237*ab4569, ab1469*ab2357 + 
+  ab1237*ab4569, ab1459*ab2367 - 
+  ab1237*ab4569, -(ab1456*ab2379) + 
+  ab1237*ab4569, ab1567*ab2349 - 
+  ab1239*ab4567, ab1467*ab2359 + 
+  ab1239*ab4567, ab1457*ab2369 - 
+  ab1239*ab4567, ab1456*ab2379 + 
+  ab1239*ab4567, -(ab1679*ab2345) - 
+  ab1245*ab3679, -(ab1379*ab2456) + 
+  ab1245*ab3679, -(ab1369*ab2457) - 
+  ab1245*ab3679, -(ab1367*ab2459) + 
+  ab1245*ab3679, -(ab1579*ab2346) - 
+  ab1246*ab3579, ab1379*ab2456 + 
+  ab1246*ab3579, -(ab1359*ab2467) - 
+  ab1246*ab3579, -(ab1357*ab2469) + 
+  ab1246*ab3579, -(ab1569*ab2347) - 
+  ab1247*ab3569, ab1369*ab2457 + 
+  ab1247*ab3569, ab1359*ab2467 - 
+  ab1247*ab3569, -(ab1356*ab2479) + 
+  ab1247*ab3569, -(ab1567*ab2349) - 
+  ab1249*ab3567, ab1367*ab2459 + 
+  ab1249*ab3567, ab1357*ab2469 - 
+  ab1249*ab3567, ab1356*ab2479 + 
+  ab1249*ab3567, -(ab1479*ab2356) - 
+  ab1256*ab3479, -(ab1379*ab2456) + 
+  ab1256*ab3479, -(ab1349*ab2567) - 
+  ab1256*ab3479, -(ab1347*ab2569) + 
+  ab1256*ab3479, -(ab1469*ab2357) - 
+  ab1257*ab3469, -(ab1369*ab2457) + 
+  ab1257*ab3469, ab1349*ab2567 - 
+  ab1257*ab3469, -(ab1346*ab2579) + 
+  ab1257*ab3469, -(ab1467*ab2359) - 
+  ab1259*ab3467, -(ab1367*ab2459) + 
+  ab1259*ab3467, ab1347*ab2569 - 
+  ab1259*ab3467, ab1346*ab2579 + 
+  ab1259*ab3467, -(ab1459*ab2367) - 
+  ab1267*ab3459, -(ab1359*ab2467) + 
+  ab1267*ab3459, -(ab1349*ab2567) - 
+  ab1267*ab3459, -(ab1345*ab2679) + 
+  ab1267*ab3459, -(ab1457*ab2369) - 
+  ab1269*ab3457, -(ab1357*ab2469) + 
+  ab1269*ab3457, -(ab1347*ab2569) - 
+  ab1269*ab3457, ab1345*ab2679 + 
+  ab1269*ab3457, -(ab1456*ab2379) - 
+  ab1279*ab3456, -(ab1356*ab2479) + 
+  ab1279*ab3456, -(ab1346*ab2579) - 
+  ab1279*ab3456, -(ab1345*ab2679) + 
+  ab1279*ab3456, ab1679*ab2345 - 
+  ab1345*ab2679, ab1579*ab2346 - 
+  ab1346*ab2579, ab1569*ab2347 - 
+  ab1347*ab2569, ab1567*ab2349 - 
+  ab1349*ab2567, ab1479*ab2356 - 
+  ab1356*ab2479, ab1469*ab2357 - 
+  ab1357*ab2469, ab1467*ab2359 - 
+  ab1359*ab2467, ab1459*ab2367 - 
+  ab1367*ab2459, ab1457*ab2369 - 
+  ab1369*ab2457, ab1456*ab2379 - 
+  ab1379*ab2456, -(ab1235*ab4689) + 
+  ab1234*ab5689, -(ab1236*ab4589) - 
+  ab1234*ab5689, -(ab1238*ab4569) + 
+  ab1234*ab5689, -(ab1239*ab4568) - 
+  ab1234*ab5689, ab1236*ab4589 - 
+  ab1235*ab4689, ab1238*ab4569 + 
+  ab1235*ab4689, ab1239*ab4568 - 
+  ab1235*ab4689, -(ab1238*ab4569) + 
+  ab1236*ab4589, -(ab1239*ab4568) - 
+  ab1236*ab4589, ab1239*ab4568 - 
+  ab1238*ab4569, -(ab1245*ab3689) - 
+  ab1234*ab5689, -(ab1246*ab3589) + 
+  ab1234*ab5689, -(ab1248*ab3569) - 
+  ab1234*ab5689, -(ab1249*ab3568) + 
+  ab1234*ab5689, ab1246*ab3589 - 
+  ab1245*ab3689, ab1248*ab3569 + 
+  ab1245*ab3689, ab1249*ab3568 - 
+  ab1245*ab3689, -(ab1248*ab3569) + 
+  ab1246*ab3589, -(ab1249*ab3568) - 
+  ab1246*ab3589, ab1249*ab3568 - 
+  ab1248*ab3569, ab1245*ab3689 - 
+  ab1235*ab4689, -(ab1256*ab3489) + 
+  ab1235*ab4689, -(ab1258*ab3469) - 
+  ab1235*ab4689, -(ab1259*ab3468) + 
+  ab1235*ab4689, ab1256*ab3489 + 
+  ab1245*ab3689, ab1258*ab3469 - 
+  ab1245*ab3689, ab1259*ab3468 + 
+  ab1245*ab3689, -(ab1258*ab3469) + 
+  ab1256*ab3489, -(ab1259*ab3468) - 
+  ab1256*ab3489, ab1259*ab3468 - 
+  ab1258*ab3469, ab1246*ab3589 - 
+  ab1236*ab4589, ab1256*ab3489 + 
+  ab1236*ab4589, -(ab1268*ab3459) - 
+  ab1236*ab4589, -(ab1269*ab3458) + 
+  ab1236*ab4589, -(ab1256*ab3489) + 
+  ab1246*ab3589, ab1268*ab3459 - 
+  ab1246*ab3589, ab1269*ab3458 + 
+  ab1246*ab3589, -(ab1268*ab3459) - 
+  ab1256*ab3489, -(ab1269*ab3458) + 
+  ab1256*ab3489, ab1269*ab3458 - 
+  ab1268*ab3459, ab1248*ab3569 - 
+  ab1238*ab4569, ab1258*ab3469 + 
+  ab1238*ab4569, ab1268*ab3459 - 
+  ab1238*ab4569, -(ab1289*ab3456) + 
+  ab1238*ab4569, -(ab1258*ab3469) + 
+  ab1248*ab3569, -(ab1268*ab3459) - 
+  ab1248*ab3569, ab1289*ab3456 + 
+  ab1248*ab3569, ab1268*ab3459 - 
+  ab1258*ab3469, -(ab1289*ab3456) + 
+  ab1258*ab3469, ab1289*ab3456 + 
+  ab1268*ab3459, ab1249*ab3568 - 
+  ab1239*ab4568, ab1259*ab3468 + 
+  ab1239*ab4568, ab1269*ab3458 - 
+  ab1239*ab4568, ab1289*ab3456 + 
+  ab1239*ab4568, -(ab1259*ab3468) + 
+  ab1249*ab3568, -(ab1269*ab3458) - 
+  ab1249*ab3568, -(ab1289*ab3456) + 
+  ab1249*ab3568, ab1269*ab3458 - 
+  ab1259*ab3468, ab1289*ab3456 + 
+  ab1259*ab3468, -(ab1289*ab3456) + 
+  ab1269*ab3458, -(ab1345*ab2689) + 
+  ab1234*ab5689, -(ab1346*ab2589) - 
+  ab1234*ab5689, -(ab1348*ab2569) + 
+  ab1234*ab5689, -(ab1349*ab2568) - 
+  ab1234*ab5689, ab1346*ab2589 - 
+  ab1345*ab2689, ab1348*ab2569 + 
+  ab1345*ab2689, ab1349*ab2568 - 
+  ab1345*ab2689, -(ab1348*ab2569) + 
+  ab1346*ab2589, -(ab1349*ab2568) - 
+  ab1346*ab2589, ab1349*ab2568 - 
+  ab1348*ab2569, ab1345*ab2689 + 
+  ab1235*ab4689, -(ab1356*ab2489) - 
+  ab1235*ab4689, -(ab1358*ab2469) + 
+  ab1235*ab4689, -(ab1359*ab2468) - 
+  ab1235*ab4689, ab1356*ab2489 + 
+  ab1345*ab2689, ab1358*ab2469 - 
+  ab1345*ab2689, ab1359*ab2468 + 
+  ab1345*ab2689, -(ab1358*ab2469) + 
+  ab1356*ab2489, -(ab1359*ab2468) - 
+  ab1356*ab2489, ab1359*ab2468 - 
+  ab1358*ab2469, ab1346*ab2589 + 
+  ab1236*ab4589, ab1356*ab2489 - 
+  ab1236*ab4589, -(ab1368*ab2459) + 
+  ab1236*ab4589, -(ab1369*ab2458) - 
+  ab1236*ab4589, -(ab1356*ab2489) + 
+  ab1346*ab2589, ab1368*ab2459 - 
+  ab1346*ab2589, ab1369*ab2458 + 
+  ab1346*ab2589, -(ab1368*ab2459) - 
+  ab1356*ab2489, -(ab1369*ab2458) + 
+  ab1356*ab2489, ab1369*ab2458 - 
+  ab1368*ab2459, ab1348*ab2569 + 
+  ab1238*ab4569, ab1358*ab2469 - 
+  ab1238*ab4569, ab1368*ab2459 + 
+  ab1238*ab4569, -(ab1389*ab2456) - 
+  ab1238*ab4569, -(ab1358*ab2469) + 
+  ab1348*ab2569, -(ab1368*ab2459) - 
+  ab1348*ab2569, ab1389*ab2456 + 
+  ab1348*ab2569, ab1368*ab2459 - 
+  ab1358*ab2469, -(ab1389*ab2456) + 
+  ab1358*ab2469, ab1389*ab2456 + 
+  ab1368*ab2459, ab1349*ab2568 + 
+  ab1239*ab4568, ab1359*ab2468 - 
+  ab1239*ab4568, ab1369*ab2458 + 
+  ab1239*ab4568, ab1389*ab2456 - 
+  ab1239*ab4568, -(ab1359*ab2468) + 
+  ab1349*ab2568, -(ab1369*ab2458) - 
+  ab1349*ab2568, -(ab1389*ab2456) + 
+  ab1349*ab2568, ab1369*ab2458 - 
+  ab1359*ab2468, ab1389*ab2456 + 
+  ab1359*ab2468, -(ab1389*ab2456) + 
+  ab1369*ab2458, -(ab1345*ab2689) + 
+  ab1245*ab3689, -(ab1456*ab2389) - 
+  ab1245*ab3689, -(ab1458*ab2369) + 
+  ab1245*ab3689, -(ab1459*ab2368) - 
+  ab1245*ab3689, ab1456*ab2389 - 
+  ab1345*ab2689, ab1458*ab2369 + 
+  ab1345*ab2689, ab1459*ab2368 - 
+  ab1345*ab2689, -(ab1458*ab2369) + 
+  ab1456*ab2389, -(ab1459*ab2368) - 
+  ab1456*ab2389, ab1459*ab2368 - 
+  ab1458*ab2369, -(ab1346*ab2589) + 
+  ab1246*ab3589, ab1456*ab2389 - 
+  ab1246*ab3589, -(ab1468*ab2359) + 
+  ab1246*ab3589, -(ab1469*ab2358) - 
+  ab1246*ab3589, -(ab1456*ab2389) - 
+  ab1346*ab2589, ab1468*ab2359 + 
+  ab1346*ab2589, ab1469*ab2358 - 
+  ab1346*ab2589, -(ab1468*ab2359) - 
+  ab1456*ab2389, -(ab1469*ab2358) + 
+  ab1456*ab2389, ab1469*ab2358 - 
+  ab1468*ab2359, -(ab1348*ab2569) + 
+  ab1248*ab3569, ab1458*ab2369 - 
+  ab1248*ab3569, ab1468*ab2359 + 
+  ab1248*ab3569, -(ab1489*ab2356) - 
+  ab1248*ab3569, -(ab1458*ab2369) - 
+  ab1348*ab2569, -(ab1468*ab2359) + 
+  ab1348*ab2569, ab1489*ab2356 - 
+  ab1348*ab2569, ab1468*ab2359 - 
+  ab1458*ab2369, -(ab1489*ab2356) + 
+  ab1458*ab2369, ab1489*ab2356 + 
+  ab1468*ab2359, -(ab1349*ab2568) + 
+  ab1249*ab3568, ab1459*ab2368 - 
+  ab1249*ab3568, ab1469*ab2358 + 
+  ab1249*ab3568, ab1489*ab2356 - 
+  ab1249*ab3568, -(ab1459*ab2368) - 
+  ab1349*ab2568, -(ab1469*ab2358) + 
+  ab1349*ab2568, -(ab1489*ab2356) - 
+  ab1349*ab2568, ab1469*ab2358 - 
+  ab1459*ab2368, ab1489*ab2356 + 
+  ab1459*ab2368, -(ab1489*ab2356) + 
+  ab1469*ab2358, -(ab1356*ab2489) + 
+  ab1256*ab3489, -(ab1456*ab2389) - 
+  ab1256*ab3489, -(ab1568*ab2349) + 
+  ab1256*ab3489, -(ab1569*ab2348) - 
+  ab1256*ab3489, ab1456*ab2389 - 
+  ab1356*ab2489, ab1568*ab2349 + 
+  ab1356*ab2489, ab1569*ab2348 - 
+  ab1356*ab2489, -(ab1568*ab2349) + 
+  ab1456*ab2389, -(ab1569*ab2348) - 
+  ab1456*ab2389, ab1569*ab2348 - 
+  ab1568*ab2349, -(ab1358*ab2469) + 
+  ab1258*ab3469, -(ab1458*ab2369) - 
+  ab1258*ab3469, ab1568*ab2349 + 
+  ab1258*ab3469, -(ab1589*ab2346) - 
+  ab1258*ab3469, ab1458*ab2369 - 
+  ab1358*ab2469, -(ab1568*ab2349) + 
+  ab1358*ab2469, ab1589*ab2346 - 
+  ab1358*ab2469, ab1568*ab2349 + 
+  ab1458*ab2369, -(ab1589*ab2346) - 
+  ab1458*ab2369, ab1589*ab2346 + 
+  ab1568*ab2349, -(ab1359*ab2468) + 
+  ab1259*ab3468, -(ab1459*ab2368) - 
+  ab1259*ab3468, ab1569*ab2348 + 
+  ab1259*ab3468, ab1589*ab2346 - 
+  ab1259*ab3468, ab1459*ab2368 - 
+  ab1359*ab2468, -(ab1569*ab2348) + 
+  ab1359*ab2468, -(ab1589*ab2346) - 
+  ab1359*ab2468, ab1569*ab2348 + 
+  ab1459*ab2368, ab1589*ab2346 - 
+  ab1459*ab2368, -(ab1589*ab2346) + 
+  ab1569*ab2348, -(ab1368*ab2459) + 
+  ab1268*ab3459, -(ab1468*ab2359) - 
+  ab1268*ab3459, -(ab1568*ab2349) + 
+  ab1268*ab3459, -(ab1689*ab2345) - 
+  ab1268*ab3459, ab1468*ab2359 - 
+  ab1368*ab2459, ab1568*ab2349 + 
+  ab1368*ab2459, ab1689*ab2345 - 
+  ab1368*ab2459, -(ab1568*ab2349) + 
+  ab1468*ab2359, -(ab1689*ab2345) - 
+  ab1468*ab2359, ab1689*ab2345 - 
+  ab1568*ab2349, -(ab1369*ab2458) + 
+  ab1269*ab3458, -(ab1469*ab2358) - 
+  ab1269*ab3458, -(ab1569*ab2348) + 
+  ab1269*ab3458, ab1689*ab2345 - 
+  ab1269*ab3458, ab1469*ab2358 - 
+  ab1369*ab2458, ab1569*ab2348 + 
+  ab1369*ab2458, -(ab1689*ab2345) - 
+  ab1369*ab2458, -(ab1569*ab2348) + 
+  ab1469*ab2358, ab1689*ab2345 - 
+  ab1469*ab2358, -(ab1689*ab2345) - 
+  ab1569*ab2348, -(ab1389*ab2456) + 
+  ab1289*ab3456, -(ab1489*ab2356) - 
+  ab1289*ab3456, -(ab1589*ab2346) + 
+  ab1289*ab3456, -(ab1689*ab2345) - 
+  ab1289*ab3456, ab1489*ab2356 - 
+  ab1389*ab2456, ab1589*ab2346 + 
+  ab1389*ab2456, ab1689*ab2345 - 
+  ab1389*ab2456, -(ab1589*ab2346) + 
+  ab1489*ab2356, -(ab1689*ab2345) - 
+  ab1489*ab2356, ab1689*ab2345 - 
+  ab1589*ab2346, -(ab1689*ab2345) - 
+  ab1234*ab5689, -(ab1589*ab2346) + 
+  ab1234*ab5689, -(ab1569*ab2348) - 
+  ab1234*ab5689, -(ab1568*ab2349) + 
+  ab1234*ab5689, ab1689*ab2345 - 
+  ab1235*ab4689, -(ab1489*ab2356) + 
+  ab1235*ab4689, -(ab1469*ab2358) - 
+  ab1235*ab4689, -(ab1468*ab2359) + 
+  ab1235*ab4689, ab1589*ab2346 - 
+  ab1236*ab4589, ab1489*ab2356 + 
+  ab1236*ab4589, -(ab1459*ab2368) - 
+  ab1236*ab4589, -(ab1458*ab2369) + 
+  ab1236*ab4589, ab1569*ab2348 - 
+  ab1238*ab4569, ab1469*ab2358 + 
+  ab1238*ab4569, ab1459*ab2368 - 
+  ab1238*ab4569, -(ab1456*ab2389) + 
+  ab1238*ab4569, ab1568*ab2349 - 
+  ab1239*ab4568, ab1468*ab2359 + 
+  ab1239*ab4568, ab1458*ab2369 - 
+  ab1239*ab4568, ab1456*ab2389 + 
+  ab1239*ab4568, -(ab1689*ab2345) - 
+  ab1245*ab3689, -(ab1389*ab2456) + 
+  ab1245*ab3689, -(ab1369*ab2458) - 
+  ab1245*ab3689, -(ab1368*ab2459) + 
+  ab1245*ab3689, -(ab1589*ab2346) - 
+  ab1246*ab3589, ab1389*ab2456 + 
+  ab1246*ab3589, -(ab1359*ab2468) - 
+  ab1246*ab3589, -(ab1358*ab2469) + 
+  ab1246*ab3589, -(ab1569*ab2348) - 
+  ab1248*ab3569, ab1369*ab2458 + 
+  ab1248*ab3569, ab1359*ab2468 - 
+  ab1248*ab3569, -(ab1356*ab2489) + 
+  ab1248*ab3569, -(ab1568*ab2349) - 
+  ab1249*ab3568, ab1368*ab2459 + 
+  ab1249*ab3568, ab1358*ab2469 - 
+  ab1249*ab3568, ab1356*ab2489 + 
+  ab1249*ab3568, -(ab1489*ab2356) - 
+  ab1256*ab3489, -(ab1389*ab2456) + 
+  ab1256*ab3489, -(ab1349*ab2568) - 
+  ab1256*ab3489, -(ab1348*ab2569) + 
+  ab1256*ab3489, -(ab1469*ab2358) - 
+  ab1258*ab3469, -(ab1369*ab2458) + 
+  ab1258*ab3469, ab1349*ab2568 - 
+  ab1258*ab3469, -(ab1346*ab2589) + 
+  ab1258*ab3469, -(ab1468*ab2359) - 
+  ab1259*ab3468, -(ab1368*ab2459) + 
+  ab1259*ab3468, ab1348*ab2569 - 
+  ab1259*ab3468, ab1346*ab2589 + 
+  ab1259*ab3468, -(ab1459*ab2368) - 
+  ab1268*ab3459, -(ab1359*ab2468) + 
+  ab1268*ab3459, -(ab1349*ab2568) - 
+  ab1268*ab3459, -(ab1345*ab2689) + 
+  ab1268*ab3459, -(ab1458*ab2369) - 
+  ab1269*ab3458, -(ab1358*ab2469) + 
+  ab1269*ab3458, -(ab1348*ab2569) - 
+  ab1269*ab3458, ab1345*ab2689 + 
+  ab1269*ab3458, -(ab1456*ab2389) - 
+  ab1289*ab3456, -(ab1356*ab2489) + 
+  ab1289*ab3456, -(ab1346*ab2589) - 
+  ab1289*ab3456, -(ab1345*ab2689) + 
+  ab1289*ab3456, ab1689*ab2345 - 
+  ab1345*ab2689, ab1589*ab2346 - 
+  ab1346*ab2589, ab1569*ab2348 - 
+  ab1348*ab2569, ab1568*ab2349 - 
+  ab1349*ab2568, ab1489*ab2356 - 
+  ab1356*ab2489, ab1469*ab2358 - 
+  ab1358*ab2469, ab1468*ab2359 - 
+  ab1359*ab2468, ab1459*ab2368 - 
+  ab1368*ab2459, ab1458*ab2369 - 
+  ab1369*ab2458, ab1456*ab2389 - 
+  ab1389*ab2456, -(ab1235*ab4789) + 
+  ab1234*ab5789, -(ab1237*ab4589) - 
+  ab1234*ab5789, -(ab1238*ab4579) + 
+  ab1234*ab5789, -(ab1239*ab4578) - 
+  ab1234*ab5789, ab1237*ab4589 - 
+  ab1235*ab4789, ab1238*ab4579 + 
+  ab1235*ab4789, ab1239*ab4578 - 
+  ab1235*ab4789, -(ab1238*ab4579) + 
+  ab1237*ab4589, -(ab1239*ab4578) - 
+  ab1237*ab4589, ab1239*ab4578 - 
+  ab1238*ab4579, -(ab1245*ab3789) - 
+  ab1234*ab5789, -(ab1247*ab3589) + 
+  ab1234*ab5789, -(ab1248*ab3579) - 
+  ab1234*ab5789, -(ab1249*ab3578) + 
+  ab1234*ab5789, ab1247*ab3589 - 
+  ab1245*ab3789, ab1248*ab3579 + 
+  ab1245*ab3789, ab1249*ab3578 - 
+  ab1245*ab3789, -(ab1248*ab3579) + 
+  ab1247*ab3589, -(ab1249*ab3578) - 
+  ab1247*ab3589, ab1249*ab3578 - 
+  ab1248*ab3579, ab1245*ab3789 - 
+  ab1235*ab4789, -(ab1257*ab3489) + 
+  ab1235*ab4789, -(ab1258*ab3479) - 
+  ab1235*ab4789, -(ab1259*ab3478) + 
+  ab1235*ab4789, ab1257*ab3489 + 
+  ab1245*ab3789, ab1258*ab3479 - 
+  ab1245*ab3789, ab1259*ab3478 + 
+  ab1245*ab3789, -(ab1258*ab3479) + 
+  ab1257*ab3489, -(ab1259*ab3478) - 
+  ab1257*ab3489, ab1259*ab3478 - 
+  ab1258*ab3479, ab1247*ab3589 - 
+  ab1237*ab4589, ab1257*ab3489 + 
+  ab1237*ab4589, -(ab1278*ab3459) - 
+  ab1237*ab4589, -(ab1279*ab3458) + 
+  ab1237*ab4589, -(ab1257*ab3489) + 
+  ab1247*ab3589, ab1278*ab3459 - 
+  ab1247*ab3589, ab1279*ab3458 + 
+  ab1247*ab3589, -(ab1278*ab3459) - 
+  ab1257*ab3489, -(ab1279*ab3458) + 
+  ab1257*ab3489, ab1279*ab3458 - 
+  ab1278*ab3459, ab1248*ab3579 - 
+  ab1238*ab4579, ab1258*ab3479 + 
+  ab1238*ab4579, ab1278*ab3459 - 
+  ab1238*ab4579, -(ab1289*ab3457) + 
+  ab1238*ab4579, -(ab1258*ab3479) + 
+  ab1248*ab3579, -(ab1278*ab3459) - 
+  ab1248*ab3579, ab1289*ab3457 + 
+  ab1248*ab3579, ab1278*ab3459 - 
+  ab1258*ab3479, -(ab1289*ab3457) + 
+  ab1258*ab3479, ab1289*ab3457 + 
+  ab1278*ab3459, ab1249*ab3578 - 
+  ab1239*ab4578, ab1259*ab3478 + 
+  ab1239*ab4578, ab1279*ab3458 - 
+  ab1239*ab4578, ab1289*ab3457 + 
+  ab1239*ab4578, -(ab1259*ab3478) + 
+  ab1249*ab3578, -(ab1279*ab3458) - 
+  ab1249*ab3578, -(ab1289*ab3457) + 
+  ab1249*ab3578, ab1279*ab3458 - 
+  ab1259*ab3478, ab1289*ab3457 + 
+  ab1259*ab3478, -(ab1289*ab3457) + 
+  ab1279*ab3458, -(ab1345*ab2789) + 
+  ab1234*ab5789, -(ab1347*ab2589) - 
+  ab1234*ab5789, -(ab1348*ab2579) + 
+  ab1234*ab5789, -(ab1349*ab2578) - 
+  ab1234*ab5789, ab1347*ab2589 - 
+  ab1345*ab2789, ab1348*ab2579 + 
+  ab1345*ab2789, ab1349*ab2578 - 
+  ab1345*ab2789, -(ab1348*ab2579) + 
+  ab1347*ab2589, -(ab1349*ab2578) - 
+  ab1347*ab2589, ab1349*ab2578 - 
+  ab1348*ab2579, ab1345*ab2789 + 
+  ab1235*ab4789, -(ab1357*ab2489) - 
+  ab1235*ab4789, -(ab1358*ab2479) + 
+  ab1235*ab4789, -(ab1359*ab2478) - 
+  ab1235*ab4789, ab1357*ab2489 + 
+  ab1345*ab2789, ab1358*ab2479 - 
+  ab1345*ab2789, ab1359*ab2478 + 
+  ab1345*ab2789, -(ab1358*ab2479) + 
+  ab1357*ab2489, -(ab1359*ab2478) - 
+  ab1357*ab2489, ab1359*ab2478 - 
+  ab1358*ab2479, ab1347*ab2589 + 
+  ab1237*ab4589, ab1357*ab2489 - 
+  ab1237*ab4589, -(ab1378*ab2459) + 
+  ab1237*ab4589, -(ab1379*ab2458) - 
+  ab1237*ab4589, -(ab1357*ab2489) + 
+  ab1347*ab2589, ab1378*ab2459 - 
+  ab1347*ab2589, ab1379*ab2458 + 
+  ab1347*ab2589, -(ab1378*ab2459) - 
+  ab1357*ab2489, -(ab1379*ab2458) + 
+  ab1357*ab2489, ab1379*ab2458 - 
+  ab1378*ab2459, ab1348*ab2579 + 
+  ab1238*ab4579, ab1358*ab2479 - 
+  ab1238*ab4579, ab1378*ab2459 + 
+  ab1238*ab4579, -(ab1389*ab2457) - 
+  ab1238*ab4579, -(ab1358*ab2479) + 
+  ab1348*ab2579, -(ab1378*ab2459) - 
+  ab1348*ab2579, ab1389*ab2457 + 
+  ab1348*ab2579, ab1378*ab2459 - 
+  ab1358*ab2479, -(ab1389*ab2457) + 
+  ab1358*ab2479, ab1389*ab2457 + 
+  ab1378*ab2459, ab1349*ab2578 + 
+  ab1239*ab4578, ab1359*ab2478 - 
+  ab1239*ab4578, ab1379*ab2458 + 
+  ab1239*ab4578, ab1389*ab2457 - 
+  ab1239*ab4578, -(ab1359*ab2478) + 
+  ab1349*ab2578, -(ab1379*ab2458) - 
+  ab1349*ab2578, -(ab1389*ab2457) + 
+  ab1349*ab2578, ab1379*ab2458 - 
+  ab1359*ab2478, ab1389*ab2457 + 
+  ab1359*ab2478, -(ab1389*ab2457) + 
+  ab1379*ab2458, -(ab1345*ab2789) + 
+  ab1245*ab3789, -(ab1457*ab2389) - 
+  ab1245*ab3789, -(ab1458*ab2379) + 
+  ab1245*ab3789, -(ab1459*ab2378) - 
+  ab1245*ab3789, ab1457*ab2389 - 
+  ab1345*ab2789, ab1458*ab2379 + 
+  ab1345*ab2789, ab1459*ab2378 - 
+  ab1345*ab2789, -(ab1458*ab2379) + 
+  ab1457*ab2389, -(ab1459*ab2378) - 
+  ab1457*ab2389, ab1459*ab2378 - 
+  ab1458*ab2379, -(ab1347*ab2589) + 
+  ab1247*ab3589, ab1457*ab2389 - 
+  ab1247*ab3589, -(ab1478*ab2359) + 
+  ab1247*ab3589, -(ab1479*ab2358) - 
+  ab1247*ab3589, -(ab1457*ab2389) - 
+  ab1347*ab2589, ab1478*ab2359 + 
+  ab1347*ab2589, ab1479*ab2358 - 
+  ab1347*ab2589, -(ab1478*ab2359) - 
+  ab1457*ab2389, -(ab1479*ab2358) + 
+  ab1457*ab2389, ab1479*ab2358 - 
+  ab1478*ab2359, -(ab1348*ab2579) + 
+  ab1248*ab3579, ab1458*ab2379 - 
+  ab1248*ab3579, ab1478*ab2359 + 
+  ab1248*ab3579, -(ab1489*ab2357) - 
+  ab1248*ab3579, -(ab1458*ab2379) - 
+  ab1348*ab2579, -(ab1478*ab2359) + 
+  ab1348*ab2579, ab1489*ab2357 - 
+  ab1348*ab2579, ab1478*ab2359 - 
+  ab1458*ab2379, -(ab1489*ab2357) + 
+  ab1458*ab2379, ab1489*ab2357 + 
+  ab1478*ab2359, -(ab1349*ab2578) + 
+  ab1249*ab3578, ab1459*ab2378 - 
+  ab1249*ab3578, ab1479*ab2358 + 
+  ab1249*ab3578, ab1489*ab2357 - 
+  ab1249*ab3578, -(ab1459*ab2378) - 
+  ab1349*ab2578, -(ab1479*ab2358) + 
+  ab1349*ab2578, -(ab1489*ab2357) - 
+  ab1349*ab2578, ab1479*ab2358 - 
+  ab1459*ab2378, ab1489*ab2357 + 
+  ab1459*ab2378, -(ab1489*ab2357) + 
+  ab1479*ab2358, -(ab1357*ab2489) + 
+  ab1257*ab3489, -(ab1457*ab2389) - 
+  ab1257*ab3489, -(ab1578*ab2349) + 
+  ab1257*ab3489, -(ab1579*ab2348) - 
+  ab1257*ab3489, ab1457*ab2389 - 
+  ab1357*ab2489, ab1578*ab2349 + 
+  ab1357*ab2489, ab1579*ab2348 - 
+  ab1357*ab2489, -(ab1578*ab2349) + 
+  ab1457*ab2389, -(ab1579*ab2348) - 
+  ab1457*ab2389, ab1579*ab2348 - 
+  ab1578*ab2349, -(ab1358*ab2479) + 
+  ab1258*ab3479, -(ab1458*ab2379) - 
+  ab1258*ab3479, ab1578*ab2349 + 
+  ab1258*ab3479, -(ab1589*ab2347) - 
+  ab1258*ab3479, ab1458*ab2379 - 
+  ab1358*ab2479, -(ab1578*ab2349) + 
+  ab1358*ab2479, ab1589*ab2347 - 
+  ab1358*ab2479, ab1578*ab2349 + 
+  ab1458*ab2379, -(ab1589*ab2347) - 
+  ab1458*ab2379, ab1589*ab2347 + 
+  ab1578*ab2349, -(ab1359*ab2478) + 
+  ab1259*ab3478, -(ab1459*ab2378) - 
+  ab1259*ab3478, ab1579*ab2348 + 
+  ab1259*ab3478, ab1589*ab2347 - 
+  ab1259*ab3478, ab1459*ab2378 - 
+  ab1359*ab2478, -(ab1579*ab2348) + 
+  ab1359*ab2478, -(ab1589*ab2347) - 
+  ab1359*ab2478, ab1579*ab2348 + 
+  ab1459*ab2378, ab1589*ab2347 - 
+  ab1459*ab2378, -(ab1589*ab2347) + 
+  ab1579*ab2348, -(ab1378*ab2459) + 
+  ab1278*ab3459, -(ab1478*ab2359) - 
+  ab1278*ab3459, -(ab1578*ab2349) + 
+  ab1278*ab3459, -(ab1789*ab2345) - 
+  ab1278*ab3459, ab1478*ab2359 - 
+  ab1378*ab2459, ab1578*ab2349 + 
+  ab1378*ab2459, ab1789*ab2345 - 
+  ab1378*ab2459, -(ab1578*ab2349) + 
+  ab1478*ab2359, -(ab1789*ab2345) - 
+  ab1478*ab2359, ab1789*ab2345 - 
+  ab1578*ab2349, -(ab1379*ab2458) + 
+  ab1279*ab3458, -(ab1479*ab2358) - 
+  ab1279*ab3458, -(ab1579*ab2348) + 
+  ab1279*ab3458, ab1789*ab2345 - 
+  ab1279*ab3458, ab1479*ab2358 - 
+  ab1379*ab2458, ab1579*ab2348 + 
+  ab1379*ab2458, -(ab1789*ab2345) - 
+  ab1379*ab2458, -(ab1579*ab2348) + 
+  ab1479*ab2358, ab1789*ab2345 - 
+  ab1479*ab2358, -(ab1789*ab2345) - 
+  ab1579*ab2348, -(ab1389*ab2457) + 
+  ab1289*ab3457, -(ab1489*ab2357) - 
+  ab1289*ab3457, -(ab1589*ab2347) + 
+  ab1289*ab3457, -(ab1789*ab2345) - 
+  ab1289*ab3457, ab1489*ab2357 - 
+  ab1389*ab2457, ab1589*ab2347 + 
+  ab1389*ab2457, ab1789*ab2345 - 
+  ab1389*ab2457, -(ab1589*ab2347) + 
+  ab1489*ab2357, -(ab1789*ab2345) - 
+  ab1489*ab2357, ab1789*ab2345 - 
+  ab1589*ab2347, -(ab1789*ab2345) - 
+  ab1234*ab5789, -(ab1589*ab2347) + 
+  ab1234*ab5789, -(ab1579*ab2348) - 
+  ab1234*ab5789, -(ab1578*ab2349) + 
+  ab1234*ab5789, ab1789*ab2345 - 
+  ab1235*ab4789, -(ab1489*ab2357) + 
+  ab1235*ab4789, -(ab1479*ab2358) - 
+  ab1235*ab4789, -(ab1478*ab2359) + 
+  ab1235*ab4789, ab1589*ab2347 - 
+  ab1237*ab4589, ab1489*ab2357 + 
+  ab1237*ab4589, -(ab1459*ab2378) - 
+  ab1237*ab4589, -(ab1458*ab2379) + 
+  ab1237*ab4589, ab1579*ab2348 - 
+  ab1238*ab4579, ab1479*ab2358 + 
+  ab1238*ab4579, ab1459*ab2378 - 
+  ab1238*ab4579, -(ab1457*ab2389) + 
+  ab1238*ab4579, ab1578*ab2349 - 
+  ab1239*ab4578, ab1478*ab2359 + 
+  ab1239*ab4578, ab1458*ab2379 - 
+  ab1239*ab4578, ab1457*ab2389 + 
+  ab1239*ab4578, -(ab1789*ab2345) - 
+  ab1245*ab3789, -(ab1389*ab2457) + 
+  ab1245*ab3789, -(ab1379*ab2458) - 
+  ab1245*ab3789, -(ab1378*ab2459) + 
+  ab1245*ab3789, -(ab1589*ab2347) - 
+  ab1247*ab3589, ab1389*ab2457 + 
+  ab1247*ab3589, -(ab1359*ab2478) - 
+  ab1247*ab3589, -(ab1358*ab2479) + 
+  ab1247*ab3589, -(ab1579*ab2348) - 
+  ab1248*ab3579, ab1379*ab2458 + 
+  ab1248*ab3579, ab1359*ab2478 - 
+  ab1248*ab3579, -(ab1357*ab2489) + 
+  ab1248*ab3579, -(ab1578*ab2349) - 
+  ab1249*ab3578, ab1378*ab2459 + 
+  ab1249*ab3578, ab1358*ab2479 - 
+  ab1249*ab3578, ab1357*ab2489 + 
+  ab1249*ab3578, -(ab1489*ab2357) - 
+  ab1257*ab3489, -(ab1389*ab2457) + 
+  ab1257*ab3489, -(ab1349*ab2578) - 
+  ab1257*ab3489, -(ab1348*ab2579) + 
+  ab1257*ab3489, -(ab1479*ab2358) - 
+  ab1258*ab3479, -(ab1379*ab2458) + 
+  ab1258*ab3479, ab1349*ab2578 - 
+  ab1258*ab3479, -(ab1347*ab2589) + 
+  ab1258*ab3479, -(ab1478*ab2359) - 
+  ab1259*ab3478, -(ab1378*ab2459) + 
+  ab1259*ab3478, ab1348*ab2579 - 
+  ab1259*ab3478, ab1347*ab2589 + 
+  ab1259*ab3478, -(ab1459*ab2378) - 
+  ab1278*ab3459, -(ab1359*ab2478) + 
+  ab1278*ab3459, -(ab1349*ab2578) - 
+  ab1278*ab3459, -(ab1345*ab2789) + 
+  ab1278*ab3459, -(ab1458*ab2379) - 
+  ab1279*ab3458, -(ab1358*ab2479) + 
+  ab1279*ab3458, -(ab1348*ab2579) - 
+  ab1279*ab3458, ab1345*ab2789 + 
+  ab1279*ab3458, -(ab1457*ab2389) - 
+  ab1289*ab3457, -(ab1357*ab2489) + 
+  ab1289*ab3457, -(ab1347*ab2589) - 
+  ab1289*ab3457, -(ab1345*ab2789) + 
+  ab1289*ab3457, ab1789*ab2345 - 
+  ab1345*ab2789, ab1589*ab2347 - 
+  ab1347*ab2589, ab1579*ab2348 - 
+  ab1348*ab2579, ab1578*ab2349 - 
+  ab1349*ab2578, ab1489*ab2357 - 
+  ab1357*ab2489, ab1479*ab2358 - 
+  ab1358*ab2479, ab1478*ab2359 - 
+  ab1359*ab2478, ab1459*ab2378 - 
+  ab1378*ab2459, ab1458*ab2379 - 
+  ab1379*ab2458, ab1457*ab2389 - 
+  ab1389*ab2457, -(ab1236*ab4789) + 
+  ab1234*ab6789, -(ab1237*ab4689) - 
+  ab1234*ab6789, -(ab1238*ab4679) + 
+  ab1234*ab6789, -(ab1239*ab4678) - 
+  ab1234*ab6789, ab1237*ab4689 - 
+  ab1236*ab4789, ab1238*ab4679 + 
+  ab1236*ab4789, ab1239*ab4678 - 
+  ab1236*ab4789, -(ab1238*ab4679) + 
+  ab1237*ab4689, -(ab1239*ab4678) - 
+  ab1237*ab4689, ab1239*ab4678 - 
+  ab1238*ab4679, -(ab1246*ab3789) - 
+  ab1234*ab6789, -(ab1247*ab3689) + 
+  ab1234*ab6789, -(ab1248*ab3679) - 
+  ab1234*ab6789, -(ab1249*ab3678) + 
+  ab1234*ab6789, ab1247*ab3689 - 
+  ab1246*ab3789, ab1248*ab3679 + 
+  ab1246*ab3789, ab1249*ab3678 - 
+  ab1246*ab3789, -(ab1248*ab3679) + 
+  ab1247*ab3689, -(ab1249*ab3678) - 
+  ab1247*ab3689, ab1249*ab3678 - 
+  ab1248*ab3679, ab1246*ab3789 - 
+  ab1236*ab4789, -(ab1267*ab3489) + 
+  ab1236*ab4789, -(ab1268*ab3479) - 
+  ab1236*ab4789, -(ab1269*ab3478) + 
+  ab1236*ab4789, ab1267*ab3489 + 
+  ab1246*ab3789, ab1268*ab3479 - 
+  ab1246*ab3789, ab1269*ab3478 + 
+  ab1246*ab3789, -(ab1268*ab3479) + 
+  ab1267*ab3489, -(ab1269*ab3478) - 
+  ab1267*ab3489, ab1269*ab3478 - 
+  ab1268*ab3479, ab1247*ab3689 - 
+  ab1237*ab4689, ab1267*ab3489 + 
+  ab1237*ab4689, -(ab1278*ab3469) - 
+  ab1237*ab4689, -(ab1279*ab3468) + 
+  ab1237*ab4689, -(ab1267*ab3489) + 
+  ab1247*ab3689, ab1278*ab3469 - 
+  ab1247*ab3689, ab1279*ab3468 + 
+  ab1247*ab3689, -(ab1278*ab3469) - 
+  ab1267*ab3489, -(ab1279*ab3468) + 
+  ab1267*ab3489, ab1279*ab3468 - 
+  ab1278*ab3469, ab1248*ab3679 - 
+  ab1238*ab4679, ab1268*ab3479 + 
+  ab1238*ab4679, ab1278*ab3469 - 
+  ab1238*ab4679, -(ab1289*ab3467) + 
+  ab1238*ab4679, -(ab1268*ab3479) + 
+  ab1248*ab3679, -(ab1278*ab3469) - 
+  ab1248*ab3679, ab1289*ab3467 + 
+  ab1248*ab3679, ab1278*ab3469 - 
+  ab1268*ab3479, -(ab1289*ab3467) + 
+  ab1268*ab3479, ab1289*ab3467 + 
+  ab1278*ab3469, ab1249*ab3678 - 
+  ab1239*ab4678, ab1269*ab3478 + 
+  ab1239*ab4678, ab1279*ab3468 - 
+  ab1239*ab4678, ab1289*ab3467 + 
+  ab1239*ab4678, -(ab1269*ab3478) + 
+  ab1249*ab3678, -(ab1279*ab3468) - 
+  ab1249*ab3678, -(ab1289*ab3467) + 
+  ab1249*ab3678, ab1279*ab3468 - 
+  ab1269*ab3478, ab1289*ab3467 + 
+  ab1269*ab3478, -(ab1289*ab3467) + 
+  ab1279*ab3468, -(ab1346*ab2789) + 
+  ab1234*ab6789, -(ab1347*ab2689) - 
+  ab1234*ab6789, -(ab1348*ab2679) + 
+  ab1234*ab6789, -(ab1349*ab2678) - 
+  ab1234*ab6789, ab1347*ab2689 - 
+  ab1346*ab2789, ab1348*ab2679 + 
+  ab1346*ab2789, ab1349*ab2678 - 
+  ab1346*ab2789, -(ab1348*ab2679) + 
+  ab1347*ab2689, -(ab1349*ab2678) - 
+  ab1347*ab2689, ab1349*ab2678 - 
+  ab1348*ab2679, ab1346*ab2789 + 
+  ab1236*ab4789, -(ab1367*ab2489) - 
+  ab1236*ab4789, -(ab1368*ab2479) + 
+  ab1236*ab4789, -(ab1369*ab2478) - 
+  ab1236*ab4789, ab1367*ab2489 + 
+  ab1346*ab2789, ab1368*ab2479 - 
+  ab1346*ab2789, ab1369*ab2478 + 
+  ab1346*ab2789, -(ab1368*ab2479) + 
+  ab1367*ab2489, -(ab1369*ab2478) - 
+  ab1367*ab2489, ab1369*ab2478 - 
+  ab1368*ab2479, ab1347*ab2689 + 
+  ab1237*ab4689, ab1367*ab2489 - 
+  ab1237*ab4689, -(ab1378*ab2469) + 
+  ab1237*ab4689, -(ab1379*ab2468) - 
+  ab1237*ab4689, -(ab1367*ab2489) + 
+  ab1347*ab2689, ab1378*ab2469 - 
+  ab1347*ab2689, ab1379*ab2468 + 
+  ab1347*ab2689, -(ab1378*ab2469) - 
+  ab1367*ab2489, -(ab1379*ab2468) + 
+  ab1367*ab2489, ab1379*ab2468 - 
+  ab1378*ab2469, ab1348*ab2679 + 
+  ab1238*ab4679, ab1368*ab2479 - 
+  ab1238*ab4679, ab1378*ab2469 + 
+  ab1238*ab4679, -(ab1389*ab2467) - 
+  ab1238*ab4679, -(ab1368*ab2479) + 
+  ab1348*ab2679, -(ab1378*ab2469) - 
+  ab1348*ab2679, ab1389*ab2467 + 
+  ab1348*ab2679, ab1378*ab2469 - 
+  ab1368*ab2479, -(ab1389*ab2467) + 
+  ab1368*ab2479, ab1389*ab2467 + 
+  ab1378*ab2469, ab1349*ab2678 + 
+  ab1239*ab4678, ab1369*ab2478 - 
+  ab1239*ab4678, ab1379*ab2468 + 
+  ab1239*ab4678, ab1389*ab2467 - 
+  ab1239*ab4678, -(ab1369*ab2478) + 
+  ab1349*ab2678, -(ab1379*ab2468) - 
+  ab1349*ab2678, -(ab1389*ab2467) + 
+  ab1349*ab2678, ab1379*ab2468 - 
+  ab1369*ab2478, ab1389*ab2467 + 
+  ab1369*ab2478, -(ab1389*ab2467) + 
+  ab1379*ab2468, -(ab1346*ab2789) + 
+  ab1246*ab3789, -(ab1467*ab2389) - 
+  ab1246*ab3789, -(ab1468*ab2379) + 
+  ab1246*ab3789, -(ab1469*ab2378) - 
+  ab1246*ab3789, ab1467*ab2389 - 
+  ab1346*ab2789, ab1468*ab2379 + 
+  ab1346*ab2789, ab1469*ab2378 - 
+  ab1346*ab2789, -(ab1468*ab2379) + 
+  ab1467*ab2389, -(ab1469*ab2378) - 
+  ab1467*ab2389, ab1469*ab2378 - 
+  ab1468*ab2379, -(ab1347*ab2689) + 
+  ab1247*ab3689, ab1467*ab2389 - 
+  ab1247*ab3689, -(ab1478*ab2369) + 
+  ab1247*ab3689, -(ab1479*ab2368) - 
+  ab1247*ab3689, -(ab1467*ab2389) - 
+  ab1347*ab2689, ab1478*ab2369 + 
+  ab1347*ab2689, ab1479*ab2368 - 
+  ab1347*ab2689, -(ab1478*ab2369) - 
+  ab1467*ab2389, -(ab1479*ab2368) + 
+  ab1467*ab2389, ab1479*ab2368 - 
+  ab1478*ab2369, -(ab1348*ab2679) + 
+  ab1248*ab3679, ab1468*ab2379 - 
+  ab1248*ab3679, ab1478*ab2369 + 
+  ab1248*ab3679, -(ab1489*ab2367) - 
+  ab1248*ab3679, -(ab1468*ab2379) - 
+  ab1348*ab2679, -(ab1478*ab2369) + 
+  ab1348*ab2679, ab1489*ab2367 - 
+  ab1348*ab2679, ab1478*ab2369 - 
+  ab1468*ab2379, -(ab1489*ab2367) + 
+  ab1468*ab2379, ab1489*ab2367 + 
+  ab1478*ab2369, -(ab1349*ab2678) + 
+  ab1249*ab3678, ab1469*ab2378 - 
+  ab1249*ab3678, ab1479*ab2368 + 
+  ab1249*ab3678, ab1489*ab2367 - 
+  ab1249*ab3678, -(ab1469*ab2378) - 
+  ab1349*ab2678, -(ab1479*ab2368) + 
+  ab1349*ab2678, -(ab1489*ab2367) - 
+  ab1349*ab2678, ab1479*ab2368 - 
+  ab1469*ab2378, ab1489*ab2367 + 
+  ab1469*ab2378, -(ab1489*ab2367) + 
+  ab1479*ab2368, -(ab1367*ab2489) + 
+  ab1267*ab3489, -(ab1467*ab2389) - 
+  ab1267*ab3489, -(ab1678*ab2349) + 
+  ab1267*ab3489, -(ab1679*ab2348) - 
+  ab1267*ab3489, ab1467*ab2389 - 
+  ab1367*ab2489, ab1678*ab2349 + 
+  ab1367*ab2489, ab1679*ab2348 - 
+  ab1367*ab2489, -(ab1678*ab2349) + 
+  ab1467*ab2389, -(ab1679*ab2348) - 
+  ab1467*ab2389, ab1679*ab2348 - 
+  ab1678*ab2349, -(ab1368*ab2479) + 
+  ab1268*ab3479, -(ab1468*ab2379) - 
+  ab1268*ab3479, ab1678*ab2349 + 
+  ab1268*ab3479, -(ab1689*ab2347) - 
+  ab1268*ab3479, ab1468*ab2379 - 
+  ab1368*ab2479, -(ab1678*ab2349) + 
+  ab1368*ab2479, ab1689*ab2347 - 
+  ab1368*ab2479, ab1678*ab2349 + 
+  ab1468*ab2379, -(ab1689*ab2347) - 
+  ab1468*ab2379, ab1689*ab2347 + 
+  ab1678*ab2349, -(ab1369*ab2478) + 
+  ab1269*ab3478, -(ab1469*ab2378) - 
+  ab1269*ab3478, ab1679*ab2348 + 
+  ab1269*ab3478, ab1689*ab2347 - 
+  ab1269*ab3478, ab1469*ab2378 - 
+  ab1369*ab2478, -(ab1679*ab2348) + 
+  ab1369*ab2478, -(ab1689*ab2347) - 
+  ab1369*ab2478, ab1679*ab2348 + 
+  ab1469*ab2378, ab1689*ab2347 - 
+  ab1469*ab2378, -(ab1689*ab2347) + 
+  ab1679*ab2348, -(ab1378*ab2469) + 
+  ab1278*ab3469, -(ab1478*ab2369) - 
+  ab1278*ab3469, -(ab1678*ab2349) + 
+  ab1278*ab3469, -(ab1789*ab2346) - 
+  ab1278*ab3469, ab1478*ab2369 - 
+  ab1378*ab2469, ab1678*ab2349 + 
+  ab1378*ab2469, ab1789*ab2346 - 
+  ab1378*ab2469, -(ab1678*ab2349) + 
+  ab1478*ab2369, -(ab1789*ab2346) - 
+  ab1478*ab2369, ab1789*ab2346 - 
+  ab1678*ab2349, -(ab1379*ab2468) + 
+  ab1279*ab3468, -(ab1479*ab2368) - 
+  ab1279*ab3468, -(ab1679*ab2348) + 
+  ab1279*ab3468, ab1789*ab2346 - 
+  ab1279*ab3468, ab1479*ab2368 - 
+  ab1379*ab2468, ab1679*ab2348 + 
+  ab1379*ab2468, -(ab1789*ab2346) - 
+  ab1379*ab2468, -(ab1679*ab2348) + 
+  ab1479*ab2368, ab1789*ab2346 - 
+  ab1479*ab2368, -(ab1789*ab2346) - 
+  ab1679*ab2348, -(ab1389*ab2467) + 
+  ab1289*ab3467, -(ab1489*ab2367) - 
+  ab1289*ab3467, -(ab1689*ab2347) + 
+  ab1289*ab3467, -(ab1789*ab2346) - 
+  ab1289*ab3467, ab1489*ab2367 - 
+  ab1389*ab2467, ab1689*ab2347 + 
+  ab1389*ab2467, ab1789*ab2346 - 
+  ab1389*ab2467, -(ab1689*ab2347) + 
+  ab1489*ab2367, -(ab1789*ab2346) - 
+  ab1489*ab2367, ab1789*ab2346 - 
+  ab1689*ab2347, -(ab1789*ab2346) - 
+  ab1234*ab6789, -(ab1689*ab2347) + 
+  ab1234*ab6789, -(ab1679*ab2348) - 
+  ab1234*ab6789, -(ab1678*ab2349) + 
+  ab1234*ab6789, ab1789*ab2346 - 
+  ab1236*ab4789, -(ab1489*ab2367) + 
+  ab1236*ab4789, -(ab1479*ab2368) - 
+  ab1236*ab4789, -(ab1478*ab2369) + 
+  ab1236*ab4789, ab1689*ab2347 - 
+  ab1237*ab4689, ab1489*ab2367 + 
+  ab1237*ab4689, -(ab1469*ab2378) - 
+  ab1237*ab4689, -(ab1468*ab2379) + 
+  ab1237*ab4689, ab1679*ab2348 - 
+  ab1238*ab4679, ab1479*ab2368 + 
+  ab1238*ab4679, ab1469*ab2378 - 
+  ab1238*ab4679, -(ab1467*ab2389) + 
+  ab1238*ab4679, ab1678*ab2349 - 
+  ab1239*ab4678, ab1478*ab2369 + 
+  ab1239*ab4678, ab1468*ab2379 - 
+  ab1239*ab4678, ab1467*ab2389 + 
+  ab1239*ab4678, -(ab1789*ab2346) - 
+  ab1246*ab3789, -(ab1389*ab2467) + 
+  ab1246*ab3789, -(ab1379*ab2468) - 
+  ab1246*ab3789, -(ab1378*ab2469) + 
+  ab1246*ab3789, -(ab1689*ab2347) - 
+  ab1247*ab3689, ab1389*ab2467 + 
+  ab1247*ab3689, -(ab1369*ab2478) - 
+  ab1247*ab3689, -(ab1368*ab2479) + 
+  ab1247*ab3689, -(ab1679*ab2348) - 
+  ab1248*ab3679, ab1379*ab2468 + 
+  ab1248*ab3679, ab1369*ab2478 - 
+  ab1248*ab3679, -(ab1367*ab2489) + 
+  ab1248*ab3679, -(ab1678*ab2349) - 
+  ab1249*ab3678, ab1378*ab2469 + 
+  ab1249*ab3678, ab1368*ab2479 - 
+  ab1249*ab3678, ab1367*ab2489 + 
+  ab1249*ab3678, -(ab1489*ab2367) - 
+  ab1267*ab3489, -(ab1389*ab2467) + 
+  ab1267*ab3489, -(ab1349*ab2678) - 
+  ab1267*ab3489, -(ab1348*ab2679) + 
+  ab1267*ab3489, -(ab1479*ab2368) - 
+  ab1268*ab3479, -(ab1379*ab2468) + 
+  ab1268*ab3479, ab1349*ab2678 - 
+  ab1268*ab3479, -(ab1347*ab2689) + 
+  ab1268*ab3479, -(ab1478*ab2369) - 
+  ab1269*ab3478, -(ab1378*ab2469) + 
+  ab1269*ab3478, ab1348*ab2679 - 
+  ab1269*ab3478, ab1347*ab2689 + 
+  ab1269*ab3478, -(ab1469*ab2378) - 
+  ab1278*ab3469, -(ab1369*ab2478) + 
+  ab1278*ab3469, -(ab1349*ab2678) - 
+  ab1278*ab3469, -(ab1346*ab2789) + 
+  ab1278*ab3469, -(ab1468*ab2379) - 
+  ab1279*ab3468, -(ab1368*ab2479) + 
+  ab1279*ab3468, -(ab1348*ab2679) - 
+  ab1279*ab3468, ab1346*ab2789 + 
+  ab1279*ab3468, -(ab1467*ab2389) - 
+  ab1289*ab3467, -(ab1367*ab2489) + 
+  ab1289*ab3467, -(ab1347*ab2689) - 
+  ab1289*ab3467, -(ab1346*ab2789) + 
+  ab1289*ab3467, ab1789*ab2346 - 
+  ab1346*ab2789, ab1689*ab2347 - 
+  ab1347*ab2689, ab1679*ab2348 - 
+  ab1348*ab2679, ab1678*ab2349 - 
+  ab1349*ab2678, ab1489*ab2367 - 
+  ab1367*ab2489, ab1479*ab2368 - 
+  ab1368*ab2479, ab1478*ab2369 - 
+  ab1369*ab2478, ab1469*ab2378 - 
+  ab1378*ab2469, ab1468*ab2379 - 
+  ab1379*ab2468, ab1467*ab2389 - 
+  ab1389*ab2467, -(ab1236*ab5789) + 
+  ab1235*ab6789, -(ab1237*ab5689) - 
+  ab1235*ab6789, -(ab1238*ab5679) + 
+  ab1235*ab6789, -(ab1239*ab5678) - 
+  ab1235*ab6789, ab1237*ab5689 - 
+  ab1236*ab5789, ab1238*ab5679 + 
+  ab1236*ab5789, ab1239*ab5678 - 
+  ab1236*ab5789, -(ab1238*ab5679) + 
+  ab1237*ab5689, -(ab1239*ab5678) - 
+  ab1237*ab5689, ab1239*ab5678 - 
+  ab1238*ab5679, -(ab1256*ab3789) - 
+  ab1235*ab6789, -(ab1257*ab3689) + 
+  ab1235*ab6789, -(ab1258*ab3679) - 
+  ab1235*ab6789, -(ab1259*ab3678) + 
+  ab1235*ab6789, ab1257*ab3689 - 
+  ab1256*ab3789, ab1258*ab3679 + 
+  ab1256*ab3789, ab1259*ab3678 - 
+  ab1256*ab3789, -(ab1258*ab3679) + 
+  ab1257*ab3689, -(ab1259*ab3678) - 
+  ab1257*ab3689, ab1259*ab3678 - 
+  ab1258*ab3679, ab1256*ab3789 - 
+  ab1236*ab5789, -(ab1267*ab3589) + 
+  ab1236*ab5789, -(ab1268*ab3579) - 
+  ab1236*ab5789, -(ab1269*ab3578) + 
+  ab1236*ab5789, ab1267*ab3589 + 
+  ab1256*ab3789, ab1268*ab3579 - 
+  ab1256*ab3789, ab1269*ab3578 + 
+  ab1256*ab3789, -(ab1268*ab3579) + 
+  ab1267*ab3589, -(ab1269*ab3578) - 
+  ab1267*ab3589, ab1269*ab3578 - 
+  ab1268*ab3579, ab1257*ab3689 - 
+  ab1237*ab5689, ab1267*ab3589 + 
+  ab1237*ab5689, -(ab1278*ab3569) - 
+  ab1237*ab5689, -(ab1279*ab3568) + 
+  ab1237*ab5689, -(ab1267*ab3589) + 
+  ab1257*ab3689, ab1278*ab3569 - 
+  ab1257*ab3689, ab1279*ab3568 + 
+  ab1257*ab3689, -(ab1278*ab3569) - 
+  ab1267*ab3589, -(ab1279*ab3568) + 
+  ab1267*ab3589, ab1279*ab3568 - 
+  ab1278*ab3569, ab1258*ab3679 - 
+  ab1238*ab5679, ab1268*ab3579 + 
+  ab1238*ab5679, ab1278*ab3569 - 
+  ab1238*ab5679, -(ab1289*ab3567) + 
+  ab1238*ab5679, -(ab1268*ab3579) + 
+  ab1258*ab3679, -(ab1278*ab3569) - 
+  ab1258*ab3679, ab1289*ab3567 + 
+  ab1258*ab3679, ab1278*ab3569 - 
+  ab1268*ab3579, -(ab1289*ab3567) + 
+  ab1268*ab3579, ab1289*ab3567 + 
+  ab1278*ab3569, ab1259*ab3678 - 
+  ab1239*ab5678, ab1269*ab3578 + 
+  ab1239*ab5678, ab1279*ab3568 - 
+  ab1239*ab5678, ab1289*ab3567 + 
+  ab1239*ab5678, -(ab1269*ab3578) + 
+  ab1259*ab3678, -(ab1279*ab3568) - 
+  ab1259*ab3678, -(ab1289*ab3567) + 
+  ab1259*ab3678, ab1279*ab3568 - 
+  ab1269*ab3578, ab1289*ab3567 + 
+  ab1269*ab3578, -(ab1289*ab3567) + 
+  ab1279*ab3568, -(ab1356*ab2789) + 
+  ab1235*ab6789, -(ab1357*ab2689) - 
+  ab1235*ab6789, -(ab1358*ab2679) + 
+  ab1235*ab6789, -(ab1359*ab2678) - 
+  ab1235*ab6789, ab1357*ab2689 - 
+  ab1356*ab2789, ab1358*ab2679 + 
+  ab1356*ab2789, ab1359*ab2678 - 
+  ab1356*ab2789, -(ab1358*ab2679) + 
+  ab1357*ab2689, -(ab1359*ab2678) - 
+  ab1357*ab2689, ab1359*ab2678 - 
+  ab1358*ab2679, ab1356*ab2789 + 
+  ab1236*ab5789, -(ab1367*ab2589) - 
+  ab1236*ab5789, -(ab1368*ab2579) + 
+  ab1236*ab5789, -(ab1369*ab2578) - 
+  ab1236*ab5789, ab1367*ab2589 + 
+  ab1356*ab2789, ab1368*ab2579 - 
+  ab1356*ab2789, ab1369*ab2578 + 
+  ab1356*ab2789, -(ab1368*ab2579) + 
+  ab1367*ab2589, -(ab1369*ab2578) - 
+  ab1367*ab2589, ab1369*ab2578 - 
+  ab1368*ab2579, ab1357*ab2689 + 
+  ab1237*ab5689, ab1367*ab2589 - 
+  ab1237*ab5689, -(ab1378*ab2569) + 
+  ab1237*ab5689, -(ab1379*ab2568) - 
+  ab1237*ab5689, -(ab1367*ab2589) + 
+  ab1357*ab2689, ab1378*ab2569 - 
+  ab1357*ab2689, ab1379*ab2568 + 
+  ab1357*ab2689, -(ab1378*ab2569) - 
+  ab1367*ab2589, -(ab1379*ab2568) + 
+  ab1367*ab2589, ab1379*ab2568 - 
+  ab1378*ab2569, ab1358*ab2679 + 
+  ab1238*ab5679, ab1368*ab2579 - 
+  ab1238*ab5679, ab1378*ab2569 + 
+  ab1238*ab5679, -(ab1389*ab2567) - 
+  ab1238*ab5679, -(ab1368*ab2579) + 
+  ab1358*ab2679, -(ab1378*ab2569) - 
+  ab1358*ab2679, ab1389*ab2567 + 
+  ab1358*ab2679, ab1378*ab2569 - 
+  ab1368*ab2579, -(ab1389*ab2567) + 
+  ab1368*ab2579, ab1389*ab2567 + 
+  ab1378*ab2569, ab1359*ab2678 + 
+  ab1239*ab5678, ab1369*ab2578 - 
+  ab1239*ab5678, ab1379*ab2568 + 
+  ab1239*ab5678, ab1389*ab2567 - 
+  ab1239*ab5678, -(ab1369*ab2578) + 
+  ab1359*ab2678, -(ab1379*ab2568) - 
+  ab1359*ab2678, -(ab1389*ab2567) + 
+  ab1359*ab2678, ab1379*ab2568 - 
+  ab1369*ab2578, ab1389*ab2567 + 
+  ab1369*ab2578, -(ab1389*ab2567) + 
+  ab1379*ab2568, -(ab1356*ab2789) + 
+  ab1256*ab3789, -(ab1567*ab2389) - 
+  ab1256*ab3789, -(ab1568*ab2379) + 
+  ab1256*ab3789, -(ab1569*ab2378) - 
+  ab1256*ab3789, ab1567*ab2389 - 
+  ab1356*ab2789, ab1568*ab2379 + 
+  ab1356*ab2789, ab1569*ab2378 - 
+  ab1356*ab2789, -(ab1568*ab2379) + 
+  ab1567*ab2389, -(ab1569*ab2378) - 
+  ab1567*ab2389, ab1569*ab2378 - 
+  ab1568*ab2379, -(ab1357*ab2689) + 
+  ab1257*ab3689, ab1567*ab2389 - 
+  ab1257*ab3689, -(ab1578*ab2369) + 
+  ab1257*ab3689, -(ab1579*ab2368) - 
+  ab1257*ab3689, -(ab1567*ab2389) - 
+  ab1357*ab2689, ab1578*ab2369 + 
+  ab1357*ab2689, ab1579*ab2368 - 
+  ab1357*ab2689, -(ab1578*ab2369) - 
+  ab1567*ab2389, -(ab1579*ab2368) + 
+  ab1567*ab2389, ab1579*ab2368 - 
+  ab1578*ab2369, -(ab1358*ab2679) + 
+  ab1258*ab3679, ab1568*ab2379 - 
+  ab1258*ab3679, ab1578*ab2369 + 
+  ab1258*ab3679, -(ab1589*ab2367) - 
+  ab1258*ab3679, -(ab1568*ab2379) - 
+  ab1358*ab2679, -(ab1578*ab2369) + 
+  ab1358*ab2679, ab1589*ab2367 - 
+  ab1358*ab2679, ab1578*ab2369 - 
+  ab1568*ab2379, -(ab1589*ab2367) + 
+  ab1568*ab2379, ab1589*ab2367 + 
+  ab1578*ab2369, -(ab1359*ab2678) + 
+  ab1259*ab3678, ab1569*ab2378 - 
+  ab1259*ab3678, ab1579*ab2368 + 
+  ab1259*ab3678, ab1589*ab2367 - 
+  ab1259*ab3678, -(ab1569*ab2378) - 
+  ab1359*ab2678, -(ab1579*ab2368) + 
+  ab1359*ab2678, -(ab1589*ab2367) - 
+  ab1359*ab2678, ab1579*ab2368 - 
+  ab1569*ab2378, ab1589*ab2367 + 
+  ab1569*ab2378, -(ab1589*ab2367) + 
+  ab1579*ab2368, -(ab1367*ab2589) + 
+  ab1267*ab3589, -(ab1567*ab2389) - 
+  ab1267*ab3589, -(ab1678*ab2359) + 
+  ab1267*ab3589, -(ab1679*ab2358) - 
+  ab1267*ab3589, ab1567*ab2389 - 
+  ab1367*ab2589, ab1678*ab2359 + 
+  ab1367*ab2589, ab1679*ab2358 - 
+  ab1367*ab2589, -(ab1678*ab2359) + 
+  ab1567*ab2389, -(ab1679*ab2358) - 
+  ab1567*ab2389, ab1679*ab2358 - 
+  ab1678*ab2359, -(ab1368*ab2579) + 
+  ab1268*ab3579, -(ab1568*ab2379) - 
+  ab1268*ab3579, ab1678*ab2359 + 
+  ab1268*ab3579, -(ab1689*ab2357) - 
+  ab1268*ab3579, ab1568*ab2379 - 
+  ab1368*ab2579, -(ab1678*ab2359) + 
+  ab1368*ab2579, ab1689*ab2357 - 
+  ab1368*ab2579, ab1678*ab2359 + 
+  ab1568*ab2379, -(ab1689*ab2357) - 
+  ab1568*ab2379, ab1689*ab2357 + 
+  ab1678*ab2359, -(ab1369*ab2578) + 
+  ab1269*ab3578, -(ab1569*ab2378) - 
+  ab1269*ab3578, ab1679*ab2358 + 
+  ab1269*ab3578, ab1689*ab2357 - 
+  ab1269*ab3578, ab1569*ab2378 - 
+  ab1369*ab2578, -(ab1679*ab2358) + 
+  ab1369*ab2578, -(ab1689*ab2357) - 
+  ab1369*ab2578, ab1679*ab2358 + 
+  ab1569*ab2378, ab1689*ab2357 - 
+  ab1569*ab2378, -(ab1689*ab2357) + 
+  ab1679*ab2358, -(ab1378*ab2569) + 
+  ab1278*ab3569, -(ab1578*ab2369) - 
+  ab1278*ab3569, -(ab1678*ab2359) + 
+  ab1278*ab3569, -(ab1789*ab2356) - 
+  ab1278*ab3569, ab1578*ab2369 - 
+  ab1378*ab2569, ab1678*ab2359 + 
+  ab1378*ab2569, ab1789*ab2356 - 
+  ab1378*ab2569, -(ab1678*ab2359) + 
+  ab1578*ab2369, -(ab1789*ab2356) - 
+  ab1578*ab2369, ab1789*ab2356 - 
+  ab1678*ab2359, -(ab1379*ab2568) + 
+  ab1279*ab3568, -(ab1579*ab2368) - 
+  ab1279*ab3568, -(ab1679*ab2358) + 
+  ab1279*ab3568, ab1789*ab2356 - 
+  ab1279*ab3568, ab1579*ab2368 - 
+  ab1379*ab2568, ab1679*ab2358 + 
+  ab1379*ab2568, -(ab1789*ab2356) - 
+  ab1379*ab2568, -(ab1679*ab2358) + 
+  ab1579*ab2368, ab1789*ab2356 - 
+  ab1579*ab2368, -(ab1789*ab2356) - 
+  ab1679*ab2358, -(ab1389*ab2567) + 
+  ab1289*ab3567, -(ab1589*ab2367) - 
+  ab1289*ab3567, -(ab1689*ab2357) + 
+  ab1289*ab3567, -(ab1789*ab2356) - 
+  ab1289*ab3567, ab1589*ab2367 - 
+  ab1389*ab2567, ab1689*ab2357 + 
+  ab1389*ab2567, ab1789*ab2356 - 
+  ab1389*ab2567, -(ab1689*ab2357) + 
+  ab1589*ab2367, -(ab1789*ab2356) - 
+  ab1589*ab2367, ab1789*ab2356 - 
+  ab1689*ab2357, -(ab1789*ab2356) - 
+  ab1235*ab6789, -(ab1689*ab2357) + 
+  ab1235*ab6789, -(ab1679*ab2358) - 
+  ab1235*ab6789, -(ab1678*ab2359) + 
+  ab1235*ab6789, ab1789*ab2356 - 
+  ab1236*ab5789, -(ab1589*ab2367) + 
+  ab1236*ab5789, -(ab1579*ab2368) - 
+  ab1236*ab5789, -(ab1578*ab2369) + 
+  ab1236*ab5789, ab1689*ab2357 - 
+  ab1237*ab5689, ab1589*ab2367 + 
+  ab1237*ab5689, -(ab1569*ab2378) - 
+  ab1237*ab5689, -(ab1568*ab2379) + 
+  ab1237*ab5689, ab1679*ab2358 - 
+  ab1238*ab5679, ab1579*ab2368 + 
+  ab1238*ab5679, ab1569*ab2378 - 
+  ab1238*ab5679, -(ab1567*ab2389) + 
+  ab1238*ab5679, ab1678*ab2359 - 
+  ab1239*ab5678, ab1578*ab2369 + 
+  ab1239*ab5678, ab1568*ab2379 - 
+  ab1239*ab5678, ab1567*ab2389 + 
+  ab1239*ab5678, -(ab1789*ab2356) - 
+  ab1256*ab3789, -(ab1389*ab2567) + 
+  ab1256*ab3789, -(ab1379*ab2568) - 
+  ab1256*ab3789, -(ab1378*ab2569) + 
+  ab1256*ab3789, -(ab1689*ab2357) - 
+  ab1257*ab3689, ab1389*ab2567 + 
+  ab1257*ab3689, -(ab1369*ab2578) - 
+  ab1257*ab3689, -(ab1368*ab2579) + 
+  ab1257*ab3689, -(ab1679*ab2358) - 
+  ab1258*ab3679, ab1379*ab2568 + 
+  ab1258*ab3679, ab1369*ab2578 - 
+  ab1258*ab3679, -(ab1367*ab2589) + 
+  ab1258*ab3679, -(ab1678*ab2359) - 
+  ab1259*ab3678, ab1378*ab2569 + 
+  ab1259*ab3678, ab1368*ab2579 - 
+  ab1259*ab3678, ab1367*ab2589 + 
+  ab1259*ab3678, -(ab1589*ab2367) - 
+  ab1267*ab3589, -(ab1389*ab2567) + 
+  ab1267*ab3589, -(ab1359*ab2678) - 
+  ab1267*ab3589, -(ab1358*ab2679) + 
+  ab1267*ab3589, -(ab1579*ab2368) - 
+  ab1268*ab3579, -(ab1379*ab2568) + 
+  ab1268*ab3579, ab1359*ab2678 - 
+  ab1268*ab3579, -(ab1357*ab2689) + 
+  ab1268*ab3579, -(ab1578*ab2369) - 
+  ab1269*ab3578, -(ab1378*ab2569) + 
+  ab1269*ab3578, ab1358*ab2679 - 
+  ab1269*ab3578, ab1357*ab2689 + 
+  ab1269*ab3578, -(ab1569*ab2378) - 
+  ab1278*ab3569, -(ab1369*ab2578) + 
+  ab1278*ab3569, -(ab1359*ab2678) - 
+  ab1278*ab3569, -(ab1356*ab2789) + 
+  ab1278*ab3569, -(ab1568*ab2379) - 
+  ab1279*ab3568, -(ab1368*ab2579) + 
+  ab1279*ab3568, -(ab1358*ab2679) - 
+  ab1279*ab3568, ab1356*ab2789 + 
+  ab1279*ab3568, -(ab1567*ab2389) - 
+  ab1289*ab3567, -(ab1367*ab2589) + 
+  ab1289*ab3567, -(ab1357*ab2689) - 
+  ab1289*ab3567, -(ab1356*ab2789) + 
+  ab1289*ab3567, ab1789*ab2356 - 
+  ab1356*ab2789, ab1689*ab2357 - 
+  ab1357*ab2689, ab1679*ab2358 - 
+  ab1358*ab2679, ab1678*ab2359 - 
+  ab1359*ab2678, ab1589*ab2367 - 
+  ab1367*ab2589, ab1579*ab2368 - 
+  ab1368*ab2579, ab1578*ab2369 - 
+  ab1369*ab2578, ab1569*ab2378 - 
+  ab1378*ab2569, ab1568*ab2379 - 
+  ab1379*ab2568, ab1567*ab2389 - 
+  ab1389*ab2567, -(ab1246*ab5789) + 
+  ab1245*ab6789, -(ab1247*ab5689) - 
+  ab1245*ab6789, -(ab1248*ab5679) + 
+  ab1245*ab6789, -(ab1249*ab5678) - 
+  ab1245*ab6789, ab1247*ab5689 - 
+  ab1246*ab5789, ab1248*ab5679 + 
+  ab1246*ab5789, ab1249*ab5678 - 
+  ab1246*ab5789, -(ab1248*ab5679) + 
+  ab1247*ab5689, -(ab1249*ab5678) - 
+  ab1247*ab5689, ab1249*ab5678 - 
+  ab1248*ab5679, -(ab1256*ab4789) - 
+  ab1245*ab6789, -(ab1257*ab4689) + 
+  ab1245*ab6789, -(ab1258*ab4679) - 
+  ab1245*ab6789, -(ab1259*ab4678) + 
+  ab1245*ab6789, ab1257*ab4689 - 
+  ab1256*ab4789, ab1258*ab4679 + 
+  ab1256*ab4789, ab1259*ab4678 - 
+  ab1256*ab4789, -(ab1258*ab4679) + 
+  ab1257*ab4689, -(ab1259*ab4678) - 
+  ab1257*ab4689, ab1259*ab4678 - 
+  ab1258*ab4679, ab1256*ab4789 - 
+  ab1246*ab5789, -(ab1267*ab4589) + 
+  ab1246*ab5789, -(ab1268*ab4579) - 
+  ab1246*ab5789, -(ab1269*ab4578) + 
+  ab1246*ab5789, ab1267*ab4589 + 
+  ab1256*ab4789, ab1268*ab4579 - 
+  ab1256*ab4789, ab1269*ab4578 + 
+  ab1256*ab4789, -(ab1268*ab4579) + 
+  ab1267*ab4589, -(ab1269*ab4578) - 
+  ab1267*ab4589, ab1269*ab4578 - 
+  ab1268*ab4579, ab1257*ab4689 - 
+  ab1247*ab5689, ab1267*ab4589 + 
+  ab1247*ab5689, -(ab1278*ab4569) - 
+  ab1247*ab5689, -(ab1279*ab4568) + 
+  ab1247*ab5689, -(ab1267*ab4589) + 
+  ab1257*ab4689, ab1278*ab4569 - 
+  ab1257*ab4689, ab1279*ab4568 + 
+  ab1257*ab4689, -(ab1278*ab4569) - 
+  ab1267*ab4589, -(ab1279*ab4568) + 
+  ab1267*ab4589, ab1279*ab4568 - 
+  ab1278*ab4569, ab1258*ab4679 - 
+  ab1248*ab5679, ab1268*ab4579 + 
+  ab1248*ab5679, ab1278*ab4569 - 
+  ab1248*ab5679, -(ab1289*ab4567) + 
+  ab1248*ab5679, -(ab1268*ab4579) + 
+  ab1258*ab4679, -(ab1278*ab4569) - 
+  ab1258*ab4679, ab1289*ab4567 + 
+  ab1258*ab4679, ab1278*ab4569 - 
+  ab1268*ab4579, -(ab1289*ab4567) + 
+  ab1268*ab4579, ab1289*ab4567 + 
+  ab1278*ab4569, ab1259*ab4678 - 
+  ab1249*ab5678, ab1269*ab4578 + 
+  ab1249*ab5678, ab1279*ab4568 - 
+  ab1249*ab5678, ab1289*ab4567 + 
+  ab1249*ab5678, -(ab1269*ab4578) + 
+  ab1259*ab4678, -(ab1279*ab4568) - 
+  ab1259*ab4678, -(ab1289*ab4567) + 
+  ab1259*ab4678, ab1279*ab4568 - 
+  ab1269*ab4578, ab1289*ab4567 + 
+  ab1269*ab4578, -(ab1289*ab4567) + 
+  ab1279*ab4568, -(ab1456*ab2789) + 
+  ab1245*ab6789, -(ab1457*ab2689) - 
+  ab1245*ab6789, -(ab1458*ab2679) + 
+  ab1245*ab6789, -(ab1459*ab2678) - 
+  ab1245*ab6789, ab1457*ab2689 - 
+  ab1456*ab2789, ab1458*ab2679 + 
+  ab1456*ab2789, ab1459*ab2678 - 
+  ab1456*ab2789, -(ab1458*ab2679) + 
+  ab1457*ab2689, -(ab1459*ab2678) - 
+  ab1457*ab2689, ab1459*ab2678 - 
+  ab1458*ab2679, ab1456*ab2789 + 
+  ab1246*ab5789, -(ab1467*ab2589) - 
+  ab1246*ab5789, -(ab1468*ab2579) + 
+  ab1246*ab5789, -(ab1469*ab2578) - 
+  ab1246*ab5789, ab1467*ab2589 + 
+  ab1456*ab2789, ab1468*ab2579 - 
+  ab1456*ab2789, ab1469*ab2578 + 
+  ab1456*ab2789, -(ab1468*ab2579) + 
+  ab1467*ab2589, -(ab1469*ab2578) - 
+  ab1467*ab2589, ab1469*ab2578 - 
+  ab1468*ab2579, ab1457*ab2689 + 
+  ab1247*ab5689, ab1467*ab2589 - 
+  ab1247*ab5689, -(ab1478*ab2569) + 
+  ab1247*ab5689, -(ab1479*ab2568) - 
+  ab1247*ab5689, -(ab1467*ab2589) + 
+  ab1457*ab2689, ab1478*ab2569 - 
+  ab1457*ab2689, ab1479*ab2568 + 
+  ab1457*ab2689, -(ab1478*ab2569) - 
+  ab1467*ab2589, -(ab1479*ab2568) + 
+  ab1467*ab2589, ab1479*ab2568 - 
+  ab1478*ab2569, ab1458*ab2679 + 
+  ab1248*ab5679, ab1468*ab2579 - 
+  ab1248*ab5679, ab1478*ab2569 + 
+  ab1248*ab5679, -(ab1489*ab2567) - 
+  ab1248*ab5679, -(ab1468*ab2579) + 
+  ab1458*ab2679, -(ab1478*ab2569) - 
+  ab1458*ab2679, ab1489*ab2567 + 
+  ab1458*ab2679, ab1478*ab2569 - 
+  ab1468*ab2579, -(ab1489*ab2567) + 
+  ab1468*ab2579, ab1489*ab2567 + 
+  ab1478*ab2569, ab1459*ab2678 + 
+  ab1249*ab5678, ab1469*ab2578 - 
+  ab1249*ab5678, ab1479*ab2568 + 
+  ab1249*ab5678, ab1489*ab2567 - 
+  ab1249*ab5678, -(ab1469*ab2578) + 
+  ab1459*ab2678, -(ab1479*ab2568) - 
+  ab1459*ab2678, -(ab1489*ab2567) + 
+  ab1459*ab2678, ab1479*ab2568 - 
+  ab1469*ab2578, ab1489*ab2567 + 
+  ab1469*ab2578, -(ab1489*ab2567) + 
+  ab1479*ab2568, -(ab1456*ab2789) + 
+  ab1256*ab4789, -(ab1567*ab2489) - 
+  ab1256*ab4789, -(ab1568*ab2479) + 
+  ab1256*ab4789, -(ab1569*ab2478) - 
+  ab1256*ab4789, ab1567*ab2489 - 
+  ab1456*ab2789, ab1568*ab2479 + 
+  ab1456*ab2789, ab1569*ab2478 - 
+  ab1456*ab2789, -(ab1568*ab2479) + 
+  ab1567*ab2489, -(ab1569*ab2478) - 
+  ab1567*ab2489, ab1569*ab2478 - 
+  ab1568*ab2479, -(ab1457*ab2689) + 
+  ab1257*ab4689, ab1567*ab2489 - 
+  ab1257*ab4689, -(ab1578*ab2469) + 
+  ab1257*ab4689, -(ab1579*ab2468) - 
+  ab1257*ab4689, -(ab1567*ab2489) - 
+  ab1457*ab2689, ab1578*ab2469 + 
+  ab1457*ab2689, ab1579*ab2468 - 
+  ab1457*ab2689, -(ab1578*ab2469) - 
+  ab1567*ab2489, -(ab1579*ab2468) + 
+  ab1567*ab2489, ab1579*ab2468 - 
+  ab1578*ab2469, -(ab1458*ab2679) + 
+  ab1258*ab4679, ab1568*ab2479 - 
+  ab1258*ab4679, ab1578*ab2469 + 
+  ab1258*ab4679, -(ab1589*ab2467) - 
+  ab1258*ab4679, -(ab1568*ab2479) - 
+  ab1458*ab2679, -(ab1578*ab2469) + 
+  ab1458*ab2679, ab1589*ab2467 - 
+  ab1458*ab2679, ab1578*ab2469 - 
+  ab1568*ab2479, -(ab1589*ab2467) + 
+  ab1568*ab2479, ab1589*ab2467 + 
+  ab1578*ab2469, -(ab1459*ab2678) + 
+  ab1259*ab4678, ab1569*ab2478 - 
+  ab1259*ab4678, ab1579*ab2468 + 
+  ab1259*ab4678, ab1589*ab2467 - 
+  ab1259*ab4678, -(ab1569*ab2478) - 
+  ab1459*ab2678, -(ab1579*ab2468) + 
+  ab1459*ab2678, -(ab1589*ab2467) - 
+  ab1459*ab2678, ab1579*ab2468 - 
+  ab1569*ab2478, ab1589*ab2467 + 
+  ab1569*ab2478, -(ab1589*ab2467) + 
+  ab1579*ab2468, -(ab1467*ab2589) + 
+  ab1267*ab4589, -(ab1567*ab2489) - 
+  ab1267*ab4589, -(ab1678*ab2459) + 
+  ab1267*ab4589, -(ab1679*ab2458) - 
+  ab1267*ab4589, ab1567*ab2489 - 
+  ab1467*ab2589, ab1678*ab2459 + 
+  ab1467*ab2589, ab1679*ab2458 - 
+  ab1467*ab2589, -(ab1678*ab2459) + 
+  ab1567*ab2489, -(ab1679*ab2458) - 
+  ab1567*ab2489, ab1679*ab2458 - 
+  ab1678*ab2459, -(ab1468*ab2579) + 
+  ab1268*ab4579, -(ab1568*ab2479) - 
+  ab1268*ab4579, ab1678*ab2459 + 
+  ab1268*ab4579, -(ab1689*ab2457) - 
+  ab1268*ab4579, ab1568*ab2479 - 
+  ab1468*ab2579, -(ab1678*ab2459) + 
+  ab1468*ab2579, ab1689*ab2457 - 
+  ab1468*ab2579, ab1678*ab2459 + 
+  ab1568*ab2479, -(ab1689*ab2457) - 
+  ab1568*ab2479, ab1689*ab2457 + 
+  ab1678*ab2459, -(ab1469*ab2578) + 
+  ab1269*ab4578, -(ab1569*ab2478) - 
+  ab1269*ab4578, ab1679*ab2458 + 
+  ab1269*ab4578, ab1689*ab2457 - 
+  ab1269*ab4578, ab1569*ab2478 - 
+  ab1469*ab2578, -(ab1679*ab2458) + 
+  ab1469*ab2578, -(ab1689*ab2457) - 
+  ab1469*ab2578, ab1679*ab2458 + 
+  ab1569*ab2478, ab1689*ab2457 - 
+  ab1569*ab2478, -(ab1689*ab2457) + 
+  ab1679*ab2458, -(ab1478*ab2569) + 
+  ab1278*ab4569, -(ab1578*ab2469) - 
+  ab1278*ab4569, -(ab1678*ab2459) + 
+  ab1278*ab4569, -(ab1789*ab2456) - 
+  ab1278*ab4569, ab1578*ab2469 - 
+  ab1478*ab2569, ab1678*ab2459 + 
+  ab1478*ab2569, ab1789*ab2456 - 
+  ab1478*ab2569, -(ab1678*ab2459) + 
+  ab1578*ab2469, -(ab1789*ab2456) - 
+  ab1578*ab2469, ab1789*ab2456 - 
+  ab1678*ab2459, -(ab1479*ab2568) + 
+  ab1279*ab4568, -(ab1579*ab2468) - 
+  ab1279*ab4568, -(ab1679*ab2458) + 
+  ab1279*ab4568, ab1789*ab2456 - 
+  ab1279*ab4568, ab1579*ab2468 - 
+  ab1479*ab2568, ab1679*ab2458 + 
+  ab1479*ab2568, -(ab1789*ab2456) - 
+  ab1479*ab2568, -(ab1679*ab2458) + 
+  ab1579*ab2468, ab1789*ab2456 - 
+  ab1579*ab2468, -(ab1789*ab2456) - 
+  ab1679*ab2458, -(ab1489*ab2567) + 
+  ab1289*ab4567, -(ab1589*ab2467) - 
+  ab1289*ab4567, -(ab1689*ab2457) + 
+  ab1289*ab4567, -(ab1789*ab2456) - 
+  ab1289*ab4567, ab1589*ab2467 - 
+  ab1489*ab2567, ab1689*ab2457 + 
+  ab1489*ab2567, ab1789*ab2456 - 
+  ab1489*ab2567, -(ab1689*ab2457) + 
+  ab1589*ab2467, -(ab1789*ab2456) - 
+  ab1589*ab2467, ab1789*ab2456 - 
+  ab1689*ab2457, -(ab1789*ab2456) - 
+  ab1245*ab6789, -(ab1689*ab2457) + 
+  ab1245*ab6789, -(ab1679*ab2458) - 
+  ab1245*ab6789, -(ab1678*ab2459) + 
+  ab1245*ab6789, ab1789*ab2456 - 
+  ab1246*ab5789, -(ab1589*ab2467) + 
+  ab1246*ab5789, -(ab1579*ab2468) - 
+  ab1246*ab5789, -(ab1578*ab2469) + 
+  ab1246*ab5789, ab1689*ab2457 - 
+  ab1247*ab5689, ab1589*ab2467 + 
+  ab1247*ab5689, -(ab1569*ab2478) - 
+  ab1247*ab5689, -(ab1568*ab2479) + 
+  ab1247*ab5689, ab1679*ab2458 - 
+  ab1248*ab5679, ab1579*ab2468 + 
+  ab1248*ab5679, ab1569*ab2478 - 
+  ab1248*ab5679, -(ab1567*ab2489) + 
+  ab1248*ab5679, ab1678*ab2459 - 
+  ab1249*ab5678, ab1578*ab2469 + 
+  ab1249*ab5678, ab1568*ab2479 - 
+  ab1249*ab5678, ab1567*ab2489 + 
+  ab1249*ab5678, -(ab1789*ab2456) - 
+  ab1256*ab4789, -(ab1489*ab2567) + 
+  ab1256*ab4789, -(ab1479*ab2568) - 
+  ab1256*ab4789, -(ab1478*ab2569) + 
+  ab1256*ab4789, -(ab1689*ab2457) - 
+  ab1257*ab4689, ab1489*ab2567 + 
+  ab1257*ab4689, -(ab1469*ab2578) - 
+  ab1257*ab4689, -(ab1468*ab2579) + 
+  ab1257*ab4689, -(ab1679*ab2458) - 
+  ab1258*ab4679, ab1479*ab2568 + 
+  ab1258*ab4679, ab1469*ab2578 - 
+  ab1258*ab4679, -(ab1467*ab2589) + 
+  ab1258*ab4679, -(ab1678*ab2459) - 
+  ab1259*ab4678, ab1478*ab2569 + 
+  ab1259*ab4678, ab1468*ab2579 - 
+  ab1259*ab4678, ab1467*ab2589 + 
+  ab1259*ab4678, -(ab1589*ab2467) - 
+  ab1267*ab4589, -(ab1489*ab2567) + 
+  ab1267*ab4589, -(ab1459*ab2678) - 
+  ab1267*ab4589, -(ab1458*ab2679) + 
+  ab1267*ab4589, -(ab1579*ab2468) - 
+  ab1268*ab4579, -(ab1479*ab2568) + 
+  ab1268*ab4579, ab1459*ab2678 - 
+  ab1268*ab4579, -(ab1457*ab2689) + 
+  ab1268*ab4579, -(ab1578*ab2469) - 
+  ab1269*ab4578, -(ab1478*ab2569) + 
+  ab1269*ab4578, ab1458*ab2679 - 
+  ab1269*ab4578, ab1457*ab2689 + 
+  ab1269*ab4578, -(ab1569*ab2478) - 
+  ab1278*ab4569, -(ab1469*ab2578) + 
+  ab1278*ab4569, -(ab1459*ab2678) - 
+  ab1278*ab4569, -(ab1456*ab2789) + 
+  ab1278*ab4569, -(ab1568*ab2479) - 
+  ab1279*ab4568, -(ab1468*ab2579) + 
+  ab1279*ab4568, -(ab1458*ab2679) - 
+  ab1279*ab4568, ab1456*ab2789 + 
+  ab1279*ab4568, -(ab1567*ab2489) - 
+  ab1289*ab4567, -(ab1467*ab2589) + 
+  ab1289*ab4567, -(ab1457*ab2689) - 
+  ab1289*ab4567, -(ab1456*ab2789) + 
+  ab1289*ab4567, ab1789*ab2456 - 
+  ab1456*ab2789, ab1689*ab2457 - 
+  ab1457*ab2689, ab1679*ab2458 - 
+  ab1458*ab2679, ab1678*ab2459 - 
+  ab1459*ab2678, ab1589*ab2467 - 
+  ab1467*ab2589, ab1579*ab2468 - 
+  ab1468*ab2579, ab1578*ab2469 - 
+  ab1469*ab2578, ab1569*ab2478 - 
+  ab1478*ab2569, ab1568*ab2479 - 
+  ab1479*ab2568, ab1567*ab2489 - 
+  ab1489*ab2567, -(ab1346*ab5789) + 
+  ab1345*ab6789, -(ab1347*ab5689) - 
+  ab1345*ab6789, -(ab1348*ab5679) + 
+  ab1345*ab6789, -(ab1349*ab5678) - 
+  ab1345*ab6789, ab1347*ab5689 - 
+  ab1346*ab5789, ab1348*ab5679 + 
+  ab1346*ab5789, ab1349*ab5678 - 
+  ab1346*ab5789, -(ab1348*ab5679) + 
+  ab1347*ab5689, -(ab1349*ab5678) - 
+  ab1347*ab5689, ab1349*ab5678 - 
+  ab1348*ab5679, -(ab1356*ab4789) - 
+  ab1345*ab6789, -(ab1357*ab4689) + 
+  ab1345*ab6789, -(ab1358*ab4679) - 
+  ab1345*ab6789, -(ab1359*ab4678) + 
+  ab1345*ab6789, ab1357*ab4689 - 
+  ab1356*ab4789, ab1358*ab4679 + 
+  ab1356*ab4789, ab1359*ab4678 - 
+  ab1356*ab4789, -(ab1358*ab4679) + 
+  ab1357*ab4689, -(ab1359*ab4678) - 
+  ab1357*ab4689, ab1359*ab4678 - 
+  ab1358*ab4679, ab1356*ab4789 - 
+  ab1346*ab5789, -(ab1367*ab4589) + 
+  ab1346*ab5789, -(ab1368*ab4579) - 
+  ab1346*ab5789, -(ab1369*ab4578) + 
+  ab1346*ab5789, ab1367*ab4589 + 
+  ab1356*ab4789, ab1368*ab4579 - 
+  ab1356*ab4789, ab1369*ab4578 + 
+  ab1356*ab4789, -(ab1368*ab4579) + 
+  ab1367*ab4589, -(ab1369*ab4578) - 
+  ab1367*ab4589, ab1369*ab4578 - 
+  ab1368*ab4579, ab1357*ab4689 - 
+  ab1347*ab5689, ab1367*ab4589 + 
+  ab1347*ab5689, -(ab1378*ab4569) - 
+  ab1347*ab5689, -(ab1379*ab4568) + 
+  ab1347*ab5689, -(ab1367*ab4589) + 
+  ab1357*ab4689, ab1378*ab4569 - 
+  ab1357*ab4689, ab1379*ab4568 + 
+  ab1357*ab4689, -(ab1378*ab4569) - 
+  ab1367*ab4589, -(ab1379*ab4568) + 
+  ab1367*ab4589, ab1379*ab4568 - 
+  ab1378*ab4569, ab1358*ab4679 - 
+  ab1348*ab5679, ab1368*ab4579 + 
+  ab1348*ab5679, ab1378*ab4569 - 
+  ab1348*ab5679, -(ab1389*ab4567) + 
+  ab1348*ab5679, -(ab1368*ab4579) + 
+  ab1358*ab4679, -(ab1378*ab4569) - 
+  ab1358*ab4679, ab1389*ab4567 + 
+  ab1358*ab4679, ab1378*ab4569 - 
+  ab1368*ab4579, -(ab1389*ab4567) + 
+  ab1368*ab4579, ab1389*ab4567 + 
+  ab1378*ab4569, ab1359*ab4678 - 
+  ab1349*ab5678, ab1369*ab4578 + 
+  ab1349*ab5678, ab1379*ab4568 - 
+  ab1349*ab5678, ab1389*ab4567 + 
+  ab1349*ab5678, -(ab1369*ab4578) + 
+  ab1359*ab4678, -(ab1379*ab4568) - 
+  ab1359*ab4678, -(ab1389*ab4567) + 
+  ab1359*ab4678, ab1379*ab4568 - 
+  ab1369*ab4578, ab1389*ab4567 + 
+  ab1369*ab4578, -(ab1389*ab4567) + 
+  ab1379*ab4568, -(ab1456*ab3789) + 
+  ab1345*ab6789, -(ab1457*ab3689) - 
+  ab1345*ab6789, -(ab1458*ab3679) + 
+  ab1345*ab6789, -(ab1459*ab3678) - 
+  ab1345*ab6789, ab1457*ab3689 - 
+  ab1456*ab3789, ab1458*ab3679 + 
+  ab1456*ab3789, ab1459*ab3678 - 
+  ab1456*ab3789, -(ab1458*ab3679) + 
+  ab1457*ab3689, -(ab1459*ab3678) - 
+  ab1457*ab3689, ab1459*ab3678 - 
+  ab1458*ab3679, ab1456*ab3789 + 
+  ab1346*ab5789, -(ab1467*ab3589) - 
+  ab1346*ab5789, -(ab1468*ab3579) + 
+  ab1346*ab5789, -(ab1469*ab3578) - 
+  ab1346*ab5789, ab1467*ab3589 + 
+  ab1456*ab3789, ab1468*ab3579 - 
+  ab1456*ab3789, ab1469*ab3578 + 
+  ab1456*ab3789, -(ab1468*ab3579) + 
+  ab1467*ab3589, -(ab1469*ab3578) - 
+  ab1467*ab3589, ab1469*ab3578 - 
+  ab1468*ab3579, ab1457*ab3689 + 
+  ab1347*ab5689, ab1467*ab3589 - 
+  ab1347*ab5689, -(ab1478*ab3569) + 
+  ab1347*ab5689, -(ab1479*ab3568) - 
+  ab1347*ab5689, -(ab1467*ab3589) + 
+  ab1457*ab3689, ab1478*ab3569 - 
+  ab1457*ab3689, ab1479*ab3568 + 
+  ab1457*ab3689, -(ab1478*ab3569) - 
+  ab1467*ab3589, -(ab1479*ab3568) + 
+  ab1467*ab3589, ab1479*ab3568 - 
+  ab1478*ab3569, ab1458*ab3679 + 
+  ab1348*ab5679, ab1468*ab3579 - 
+  ab1348*ab5679, ab1478*ab3569 + 
+  ab1348*ab5679, -(ab1489*ab3567) - 
+  ab1348*ab5679, -(ab1468*ab3579) + 
+  ab1458*ab3679, -(ab1478*ab3569) - 
+  ab1458*ab3679, ab1489*ab3567 + 
+  ab1458*ab3679, ab1478*ab3569 - 
+  ab1468*ab3579, -(ab1489*ab3567) + 
+  ab1468*ab3579, ab1489*ab3567 + 
+  ab1478*ab3569, ab1459*ab3678 + 
+  ab1349*ab5678, ab1469*ab3578 - 
+  ab1349*ab5678, ab1479*ab3568 + 
+  ab1349*ab5678, ab1489*ab3567 - 
+  ab1349*ab5678, -(ab1469*ab3578) + 
+  ab1459*ab3678, -(ab1479*ab3568) - 
+  ab1459*ab3678, -(ab1489*ab3567) + 
+  ab1459*ab3678, ab1479*ab3568 - 
+  ab1469*ab3578, ab1489*ab3567 + 
+  ab1469*ab3578, -(ab1489*ab3567) + 
+  ab1479*ab3568, -(ab1456*ab3789) + 
+  ab1356*ab4789, -(ab1567*ab3489) - 
+  ab1356*ab4789, -(ab1568*ab3479) + 
+  ab1356*ab4789, -(ab1569*ab3478) - 
+  ab1356*ab4789, ab1567*ab3489 - 
+  ab1456*ab3789, ab1568*ab3479 + 
+  ab1456*ab3789, ab1569*ab3478 - 
+  ab1456*ab3789, -(ab1568*ab3479) + 
+  ab1567*ab3489, -(ab1569*ab3478) - 
+  ab1567*ab3489, ab1569*ab3478 - 
+  ab1568*ab3479, -(ab1457*ab3689) + 
+  ab1357*ab4689, ab1567*ab3489 - 
+  ab1357*ab4689, -(ab1578*ab3469) + 
+  ab1357*ab4689, -(ab1579*ab3468) - 
+  ab1357*ab4689, -(ab1567*ab3489) - 
+  ab1457*ab3689, ab1578*ab3469 + 
+  ab1457*ab3689, ab1579*ab3468 - 
+  ab1457*ab3689, -(ab1578*ab3469) - 
+  ab1567*ab3489, -(ab1579*ab3468) + 
+  ab1567*ab3489, ab1579*ab3468 - 
+  ab1578*ab3469, -(ab1458*ab3679) + 
+  ab1358*ab4679, ab1568*ab3479 - 
+  ab1358*ab4679, ab1578*ab3469 + 
+  ab1358*ab4679, -(ab1589*ab3467) - 
+  ab1358*ab4679, -(ab1568*ab3479) - 
+  ab1458*ab3679, -(ab1578*ab3469) + 
+  ab1458*ab3679, ab1589*ab3467 - 
+  ab1458*ab3679, ab1578*ab3469 - 
+  ab1568*ab3479, -(ab1589*ab3467) + 
+  ab1568*ab3479, ab1589*ab3467 + 
+  ab1578*ab3469, -(ab1459*ab3678) + 
+  ab1359*ab4678, ab1569*ab3478 - 
+  ab1359*ab4678, ab1579*ab3468 + 
+  ab1359*ab4678, ab1589*ab3467 - 
+  ab1359*ab4678, -(ab1569*ab3478) - 
+  ab1459*ab3678, -(ab1579*ab3468) + 
+  ab1459*ab3678, -(ab1589*ab3467) - 
+  ab1459*ab3678, ab1579*ab3468 - 
+  ab1569*ab3478, ab1589*ab3467 + 
+  ab1569*ab3478, -(ab1589*ab3467) + 
+  ab1579*ab3468, -(ab1467*ab3589) + 
+  ab1367*ab4589, -(ab1567*ab3489) - 
+  ab1367*ab4589, -(ab1678*ab3459) + 
+  ab1367*ab4589, -(ab1679*ab3458) - 
+  ab1367*ab4589, ab1567*ab3489 - 
+  ab1467*ab3589, ab1678*ab3459 + 
+  ab1467*ab3589, ab1679*ab3458 - 
+  ab1467*ab3589, -(ab1678*ab3459) + 
+  ab1567*ab3489, -(ab1679*ab3458) - 
+  ab1567*ab3489, ab1679*ab3458 - 
+  ab1678*ab3459, -(ab1468*ab3579) + 
+  ab1368*ab4579, -(ab1568*ab3479) - 
+  ab1368*ab4579, ab1678*ab3459 + 
+  ab1368*ab4579, -(ab1689*ab3457) - 
+  ab1368*ab4579, ab1568*ab3479 - 
+  ab1468*ab3579, -(ab1678*ab3459) + 
+  ab1468*ab3579, ab1689*ab3457 - 
+  ab1468*ab3579, ab1678*ab3459 + 
+  ab1568*ab3479, -(ab1689*ab3457) - 
+  ab1568*ab3479, ab1689*ab3457 + 
+  ab1678*ab3459, -(ab1469*ab3578) + 
+  ab1369*ab4578, -(ab1569*ab3478) - 
+  ab1369*ab4578, ab1679*ab3458 + 
+  ab1369*ab4578, ab1689*ab3457 - 
+  ab1369*ab4578, ab1569*ab3478 - 
+  ab1469*ab3578, -(ab1679*ab3458) + 
+  ab1469*ab3578, -(ab1689*ab3457) - 
+  ab1469*ab3578, ab1679*ab3458 + 
+  ab1569*ab3478, ab1689*ab3457 - 
+  ab1569*ab3478, -(ab1689*ab3457) + 
+  ab1679*ab3458, -(ab1478*ab3569) + 
+  ab1378*ab4569, -(ab1578*ab3469) - 
+  ab1378*ab4569, -(ab1678*ab3459) + 
+  ab1378*ab4569, -(ab1789*ab3456) - 
+  ab1378*ab4569, ab1578*ab3469 - 
+  ab1478*ab3569, ab1678*ab3459 + 
+  ab1478*ab3569, ab1789*ab3456 - 
+  ab1478*ab3569, -(ab1678*ab3459) + 
+  ab1578*ab3469, -(ab1789*ab3456) - 
+  ab1578*ab3469, ab1789*ab3456 - 
+  ab1678*ab3459, -(ab1479*ab3568) + 
+  ab1379*ab4568, -(ab1579*ab3468) - 
+  ab1379*ab4568, -(ab1679*ab3458) + 
+  ab1379*ab4568, ab1789*ab3456 - 
+  ab1379*ab4568, ab1579*ab3468 - 
+  ab1479*ab3568, ab1679*ab3458 + 
+  ab1479*ab3568, -(ab1789*ab3456) - 
+  ab1479*ab3568, -(ab1679*ab3458) + 
+  ab1579*ab3468, ab1789*ab3456 - 
+  ab1579*ab3468, -(ab1789*ab3456) - 
+  ab1679*ab3458, -(ab1489*ab3567) + 
+  ab1389*ab4567, -(ab1589*ab3467) - 
+  ab1389*ab4567, -(ab1689*ab3457) + 
+  ab1389*ab4567, -(ab1789*ab3456) - 
+  ab1389*ab4567, ab1589*ab3467 - 
+  ab1489*ab3567, ab1689*ab3457 + 
+  ab1489*ab3567, ab1789*ab3456 - 
+  ab1489*ab3567, -(ab1689*ab3457) + 
+  ab1589*ab3467, -(ab1789*ab3456) - 
+  ab1589*ab3467, ab1789*ab3456 - 
+  ab1689*ab3457, -(ab1789*ab3456) - 
+  ab1345*ab6789, -(ab1689*ab3457) + 
+  ab1345*ab6789, -(ab1679*ab3458) - 
+  ab1345*ab6789, -(ab1678*ab3459) + 
+  ab1345*ab6789, ab1789*ab3456 - 
+  ab1346*ab5789, -(ab1589*ab3467) + 
+  ab1346*ab5789, -(ab1579*ab3468) - 
+  ab1346*ab5789, -(ab1578*ab3469) + 
+  ab1346*ab5789, ab1689*ab3457 - 
+  ab1347*ab5689, ab1589*ab3467 + 
+  ab1347*ab5689, -(ab1569*ab3478) - 
+  ab1347*ab5689, -(ab1568*ab3479) + 
+  ab1347*ab5689, ab1679*ab3458 - 
+  ab1348*ab5679, ab1579*ab3468 + 
+  ab1348*ab5679, ab1569*ab3478 - 
+  ab1348*ab5679, -(ab1567*ab3489) + 
+  ab1348*ab5679, ab1678*ab3459 - 
+  ab1349*ab5678, ab1578*ab3469 + 
+  ab1349*ab5678, ab1568*ab3479 - 
+  ab1349*ab5678, ab1567*ab3489 + 
+  ab1349*ab5678, -(ab1789*ab3456) - 
+  ab1356*ab4789, -(ab1489*ab3567) + 
+  ab1356*ab4789, -(ab1479*ab3568) - 
+  ab1356*ab4789, -(ab1478*ab3569) + 
+  ab1356*ab4789, -(ab1689*ab3457) - 
+  ab1357*ab4689, ab1489*ab3567 + 
+  ab1357*ab4689, -(ab1469*ab3578) - 
+  ab1357*ab4689, -(ab1468*ab3579) + 
+  ab1357*ab4689, -(ab1679*ab3458) - 
+  ab1358*ab4679, ab1479*ab3568 + 
+  ab1358*ab4679, ab1469*ab3578 - 
+  ab1358*ab4679, -(ab1467*ab3589) + 
+  ab1358*ab4679, -(ab1678*ab3459) - 
+  ab1359*ab4678, ab1478*ab3569 + 
+  ab1359*ab4678, ab1468*ab3579 - 
+  ab1359*ab4678, ab1467*ab3589 + 
+  ab1359*ab4678, -(ab1589*ab3467) - 
+  ab1367*ab4589, -(ab1489*ab3567) + 
+  ab1367*ab4589, -(ab1459*ab3678) - 
+  ab1367*ab4589, -(ab1458*ab3679) + 
+  ab1367*ab4589, -(ab1579*ab3468) - 
+  ab1368*ab4579, -(ab1479*ab3568) + 
+  ab1368*ab4579, ab1459*ab3678 - 
+  ab1368*ab4579, -(ab1457*ab3689) + 
+  ab1368*ab4579, -(ab1578*ab3469) - 
+  ab1369*ab4578, -(ab1478*ab3569) + 
+  ab1369*ab4578, ab1458*ab3679 - 
+  ab1369*ab4578, ab1457*ab3689 + 
+  ab1369*ab4578, -(ab1569*ab3478) - 
+  ab1378*ab4569, -(ab1469*ab3578) + 
+  ab1378*ab4569, -(ab1459*ab3678) - 
+  ab1378*ab4569, -(ab1456*ab3789) + 
+  ab1378*ab4569, -(ab1568*ab3479) - 
+  ab1379*ab4568, -(ab1468*ab3579) + 
+  ab1379*ab4568, -(ab1458*ab3679) - 
+  ab1379*ab4568, ab1456*ab3789 + 
+  ab1379*ab4568, -(ab1567*ab3489) - 
+  ab1389*ab4567, -(ab1467*ab3589) + 
+  ab1389*ab4567, -(ab1457*ab3689) - 
+  ab1389*ab4567, -(ab1456*ab3789) + 
+  ab1389*ab4567, ab1789*ab3456 - 
+  ab1456*ab3789, ab1689*ab3457 - 
+  ab1457*ab3689, ab1679*ab3458 - 
+  ab1458*ab3679, ab1678*ab3459 - 
+  ab1459*ab3678, ab1589*ab3467 - 
+  ab1467*ab3589, ab1579*ab3468 - 
+  ab1468*ab3579, ab1578*ab3469 - 
+  ab1469*ab3578, ab1569*ab3478 - 
+  ab1478*ab3569, ab1568*ab3479 - 
+  ab1479*ab3568, ab1567*ab3489 - 
+  ab1489*ab3567, -(ab2346*ab5789) + 
+  ab2345*ab6789, -(ab2347*ab5689) - 
+  ab2345*ab6789, -(ab2348*ab5679) + 
+  ab2345*ab6789, -(ab2349*ab5678) - 
+  ab2345*ab6789, ab2347*ab5689 - 
+  ab2346*ab5789, ab2348*ab5679 + 
+  ab2346*ab5789, ab2349*ab5678 - 
+  ab2346*ab5789, -(ab2348*ab5679) + 
+  ab2347*ab5689, -(ab2349*ab5678) - 
+  ab2347*ab5689, ab2349*ab5678 - 
+  ab2348*ab5679, -(ab2356*ab4789) - 
+  ab2345*ab6789, -(ab2357*ab4689) + 
+  ab2345*ab6789, -(ab2358*ab4679) - 
+  ab2345*ab6789, -(ab2359*ab4678) + 
+  ab2345*ab6789, ab2357*ab4689 - 
+  ab2356*ab4789, ab2358*ab4679 + 
+  ab2356*ab4789, ab2359*ab4678 - 
+  ab2356*ab4789, -(ab2358*ab4679) + 
+  ab2357*ab4689, -(ab2359*ab4678) - 
+  ab2357*ab4689, ab2359*ab4678 - 
+  ab2358*ab4679, ab2356*ab4789 - 
+  ab2346*ab5789, -(ab2367*ab4589) + 
+  ab2346*ab5789, -(ab2368*ab4579) - 
+  ab2346*ab5789, -(ab2369*ab4578) + 
+  ab2346*ab5789, ab2367*ab4589 + 
+  ab2356*ab4789, ab2368*ab4579 - 
+  ab2356*ab4789, ab2369*ab4578 + 
+  ab2356*ab4789, -(ab2368*ab4579) + 
+  ab2367*ab4589, -(ab2369*ab4578) - 
+  ab2367*ab4589, ab2369*ab4578 - 
+  ab2368*ab4579, ab2357*ab4689 - 
+  ab2347*ab5689, ab2367*ab4589 + 
+  ab2347*ab5689, -(ab2378*ab4569) - 
+  ab2347*ab5689, -(ab2379*ab4568) + 
+  ab2347*ab5689, -(ab2367*ab4589) + 
+  ab2357*ab4689, ab2378*ab4569 - 
+  ab2357*ab4689, ab2379*ab4568 + 
+  ab2357*ab4689, -(ab2378*ab4569) - 
+  ab2367*ab4589, -(ab2379*ab4568) + 
+  ab2367*ab4589, ab2379*ab4568 - 
+  ab2378*ab4569, ab2358*ab4679 - 
+  ab2348*ab5679, ab2368*ab4579 + 
+  ab2348*ab5679, ab2378*ab4569 - 
+  ab2348*ab5679, -(ab2389*ab4567) + 
+  ab2348*ab5679, -(ab2368*ab4579) + 
+  ab2358*ab4679, -(ab2378*ab4569) - 
+  ab2358*ab4679, ab2389*ab4567 + 
+  ab2358*ab4679, ab2378*ab4569 - 
+  ab2368*ab4579, -(ab2389*ab4567) + 
+  ab2368*ab4579, ab2389*ab4567 + 
+  ab2378*ab4569, ab2359*ab4678 - 
+  ab2349*ab5678, ab2369*ab4578 + 
+  ab2349*ab5678, ab2379*ab4568 - 
+  ab2349*ab5678, ab2389*ab4567 + 
+  ab2349*ab5678, -(ab2369*ab4578) + 
+  ab2359*ab4678, -(ab2379*ab4568) - 
+  ab2359*ab4678, -(ab2389*ab4567) + 
+  ab2359*ab4678, ab2379*ab4568 - 
+  ab2369*ab4578, ab2389*ab4567 + 
+  ab2369*ab4578, -(ab2389*ab4567) + 
+  ab2379*ab4568, -(ab2456*ab3789) + 
+  ab2345*ab6789, -(ab2457*ab3689) - 
+  ab2345*ab6789, -(ab2458*ab3679) + 
+  ab2345*ab6789, -(ab2459*ab3678) - 
+  ab2345*ab6789, ab2457*ab3689 - 
+  ab2456*ab3789, ab2458*ab3679 + 
+  ab2456*ab3789, ab2459*ab3678 - 
+  ab2456*ab3789, -(ab2458*ab3679) + 
+  ab2457*ab3689, -(ab2459*ab3678) - 
+  ab2457*ab3689, ab2459*ab3678 - 
+  ab2458*ab3679, ab2456*ab3789 + 
+  ab2346*ab5789, -(ab2467*ab3589) - 
+  ab2346*ab5789, -(ab2468*ab3579) + 
+  ab2346*ab5789, -(ab2469*ab3578) - 
+  ab2346*ab5789, ab2467*ab3589 + 
+  ab2456*ab3789, ab2468*ab3579 - 
+  ab2456*ab3789, ab2469*ab3578 + 
+  ab2456*ab3789, -(ab2468*ab3579) + 
+  ab2467*ab3589, -(ab2469*ab3578) - 
+  ab2467*ab3589, ab2469*ab3578 - 
+  ab2468*ab3579, ab2457*ab3689 + 
+  ab2347*ab5689, ab2467*ab3589 - 
+  ab2347*ab5689, -(ab2478*ab3569) + 
+  ab2347*ab5689, -(ab2479*ab3568) - 
+  ab2347*ab5689, -(ab2467*ab3589) + 
+  ab2457*ab3689, ab2478*ab3569 - 
+  ab2457*ab3689, ab2479*ab3568 + 
+  ab2457*ab3689, -(ab2478*ab3569) - 
+  ab2467*ab3589, -(ab2479*ab3568) + 
+  ab2467*ab3589, ab2479*ab3568 - 
+  ab2478*ab3569, ab2458*ab3679 + 
+  ab2348*ab5679, ab2468*ab3579 - 
+  ab2348*ab5679, ab2478*ab3569 + 
+  ab2348*ab5679, -(ab2489*ab3567) - 
+  ab2348*ab5679, -(ab2468*ab3579) + 
+  ab2458*ab3679, -(ab2478*ab3569) - 
+  ab2458*ab3679, ab2489*ab3567 + 
+  ab2458*ab3679, ab2478*ab3569 - 
+  ab2468*ab3579, -(ab2489*ab3567) + 
+  ab2468*ab3579, ab2489*ab3567 + 
+  ab2478*ab3569, ab2459*ab3678 + 
+  ab2349*ab5678, ab2469*ab3578 - 
+  ab2349*ab5678, ab2479*ab3568 + 
+  ab2349*ab5678, ab2489*ab3567 - 
+  ab2349*ab5678, -(ab2469*ab3578) + 
+  ab2459*ab3678, -(ab2479*ab3568) - 
+  ab2459*ab3678, -(ab2489*ab3567) + 
+  ab2459*ab3678, ab2479*ab3568 - 
+  ab2469*ab3578, ab2489*ab3567 + 
+  ab2469*ab3578, -(ab2489*ab3567) + 
+  ab2479*ab3568, -(ab2456*ab3789) + 
+  ab2356*ab4789, -(ab2567*ab3489) - 
+  ab2356*ab4789, -(ab2568*ab3479) + 
+  ab2356*ab4789, -(ab2569*ab3478) - 
+  ab2356*ab4789, ab2567*ab3489 - 
+  ab2456*ab3789, ab2568*ab3479 + 
+  ab2456*ab3789, ab2569*ab3478 - 
+  ab2456*ab3789, -(ab2568*ab3479) + 
+  ab2567*ab3489, -(ab2569*ab3478) - 
+  ab2567*ab3489, ab2569*ab3478 - 
+  ab2568*ab3479, -(ab2457*ab3689) + 
+  ab2357*ab4689, ab2567*ab3489 - 
+  ab2357*ab4689, -(ab2578*ab3469) + 
+  ab2357*ab4689, -(ab2579*ab3468) - 
+  ab2357*ab4689, -(ab2567*ab3489) - 
+  ab2457*ab3689, ab2578*ab3469 + 
+  ab2457*ab3689, ab2579*ab3468 - 
+  ab2457*ab3689, -(ab2578*ab3469) - 
+  ab2567*ab3489, -(ab2579*ab3468) + 
+  ab2567*ab3489, ab2579*ab3468 - 
+  ab2578*ab3469, -(ab2458*ab3679) + 
+  ab2358*ab4679, ab2568*ab3479 - 
+  ab2358*ab4679, ab2578*ab3469 + 
+  ab2358*ab4679, -(ab2589*ab3467) - 
+  ab2358*ab4679, -(ab2568*ab3479) - 
+  ab2458*ab3679, -(ab2578*ab3469) + 
+  ab2458*ab3679, ab2589*ab3467 - 
+  ab2458*ab3679, ab2578*ab3469 - 
+  ab2568*ab3479, -(ab2589*ab3467) + 
+  ab2568*ab3479, ab2589*ab3467 + 
+  ab2578*ab3469, -(ab2459*ab3678) + 
+  ab2359*ab4678, ab2569*ab3478 - 
+  ab2359*ab4678, ab2579*ab3468 + 
+  ab2359*ab4678, ab2589*ab3467 - 
+  ab2359*ab4678, -(ab2569*ab3478) - 
+  ab2459*ab3678, -(ab2579*ab3468) + 
+  ab2459*ab3678, -(ab2589*ab3467) - 
+  ab2459*ab3678, ab2579*ab3468 - 
+  ab2569*ab3478, ab2589*ab3467 + 
+  ab2569*ab3478, -(ab2589*ab3467) + 
+  ab2579*ab3468, -(ab2467*ab3589) + 
+  ab2367*ab4589, -(ab2567*ab3489) - 
+  ab2367*ab4589, -(ab2678*ab3459) + 
+  ab2367*ab4589, -(ab2679*ab3458) - 
+  ab2367*ab4589, ab2567*ab3489 - 
+  ab2467*ab3589, ab2678*ab3459 + 
+  ab2467*ab3589, ab2679*ab3458 - 
+  ab2467*ab3589, -(ab2678*ab3459) + 
+  ab2567*ab3489, -(ab2679*ab3458) - 
+  ab2567*ab3489, ab2679*ab3458 - 
+  ab2678*ab3459, -(ab2468*ab3579) + 
+  ab2368*ab4579, -(ab2568*ab3479) - 
+  ab2368*ab4579, ab2678*ab3459 + 
+  ab2368*ab4579, -(ab2689*ab3457) - 
+  ab2368*ab4579, ab2568*ab3479 - 
+  ab2468*ab3579, -(ab2678*ab3459) + 
+  ab2468*ab3579, ab2689*ab3457 - 
+  ab2468*ab3579, ab2678*ab3459 + 
+  ab2568*ab3479, -(ab2689*ab3457) - 
+  ab2568*ab3479, ab2689*ab3457 + 
+  ab2678*ab3459, -(ab2469*ab3578) + 
+  ab2369*ab4578, -(ab2569*ab3478) - 
+  ab2369*ab4578, ab2679*ab3458 + 
+  ab2369*ab4578, ab2689*ab3457 - 
+  ab2369*ab4578, ab2569*ab3478 - 
+  ab2469*ab3578, -(ab2679*ab3458) + 
+  ab2469*ab3578, -(ab2689*ab3457) - 
+  ab2469*ab3578, ab2679*ab3458 + 
+  ab2569*ab3478, ab2689*ab3457 - 
+  ab2569*ab3478, -(ab2689*ab3457) + 
+  ab2679*ab3458, -(ab2478*ab3569) + 
+  ab2378*ab4569, -(ab2578*ab3469) - 
+  ab2378*ab4569, -(ab2678*ab3459) + 
+  ab2378*ab4569, -(ab2789*ab3456) - 
+  ab2378*ab4569, ab2578*ab3469 - 
+  ab2478*ab3569, ab2678*ab3459 + 
+  ab2478*ab3569, ab2789*ab3456 - 
+  ab2478*ab3569, -(ab2678*ab3459) + 
+  ab2578*ab3469, -(ab2789*ab3456) - 
+  ab2578*ab3469, ab2789*ab3456 - 
+  ab2678*ab3459, -(ab2479*ab3568) + 
+  ab2379*ab4568, -(ab2579*ab3468) - 
+  ab2379*ab4568, -(ab2679*ab3458) + 
+  ab2379*ab4568, ab2789*ab3456 - 
+  ab2379*ab4568, ab2579*ab3468 - 
+  ab2479*ab3568, ab2679*ab3458 + 
+  ab2479*ab3568, -(ab2789*ab3456) - 
+  ab2479*ab3568, -(ab2679*ab3458) + 
+  ab2579*ab3468, ab2789*ab3456 - 
+  ab2579*ab3468, -(ab2789*ab3456) - 
+  ab2679*ab3458, -(ab2489*ab3567) + 
+  ab2389*ab4567, -(ab2589*ab3467) - 
+  ab2389*ab4567, -(ab2689*ab3457) + 
+  ab2389*ab4567, -(ab2789*ab3456) - 
+  ab2389*ab4567, ab2589*ab3467 - 
+  ab2489*ab3567, ab2689*ab3457 + 
+  ab2489*ab3567, ab2789*ab3456 - 
+  ab2489*ab3567, -(ab2689*ab3457) + 
+  ab2589*ab3467, -(ab2789*ab3456) - 
+  ab2589*ab3467, ab2789*ab3456 - 
+  ab2689*ab3457, -(ab2789*ab3456) - 
+  ab2345*ab6789, -(ab2689*ab3457) + 
+  ab2345*ab6789, -(ab2679*ab3458) - 
+  ab2345*ab6789, -(ab2678*ab3459) + 
+  ab2345*ab6789, ab2789*ab3456 - 
+  ab2346*ab5789, -(ab2589*ab3467) + 
+  ab2346*ab5789, -(ab2579*ab3468) - 
+  ab2346*ab5789, -(ab2578*ab3469) + 
+  ab2346*ab5789, ab2689*ab3457 - 
+  ab2347*ab5689, ab2589*ab3467 + 
+  ab2347*ab5689, -(ab2569*ab3478) - 
+  ab2347*ab5689, -(ab2568*ab3479) + 
+  ab2347*ab5689, ab2679*ab3458 - 
+  ab2348*ab5679, ab2579*ab3468 + 
+  ab2348*ab5679, ab2569*ab3478 - 
+  ab2348*ab5679, -(ab2567*ab3489) + 
+  ab2348*ab5679, ab2678*ab3459 - 
+  ab2349*ab5678, ab2578*ab3469 + 
+  ab2349*ab5678, ab2568*ab3479 - 
+  ab2349*ab5678, ab2567*ab3489 + 
+  ab2349*ab5678, -(ab2789*ab3456) - 
+  ab2356*ab4789, -(ab2489*ab3567) + 
+  ab2356*ab4789, -(ab2479*ab3568) - 
+  ab2356*ab4789, -(ab2478*ab3569) + 
+  ab2356*ab4789, -(ab2689*ab3457) - 
+  ab2357*ab4689, ab2489*ab3567 + 
+  ab2357*ab4689, -(ab2469*ab3578) - 
+  ab2357*ab4689, -(ab2468*ab3579) + 
+  ab2357*ab4689, -(ab2679*ab3458) - 
+  ab2358*ab4679, ab2479*ab3568 + 
+  ab2358*ab4679, ab2469*ab3578 - 
+  ab2358*ab4679, -(ab2467*ab3589) + 
+  ab2358*ab4679, -(ab2678*ab3459) - 
+  ab2359*ab4678, ab2478*ab3569 + 
+  ab2359*ab4678, ab2468*ab3579 - 
+  ab2359*ab4678, ab2467*ab3589 + 
+  ab2359*ab4678, -(ab2589*ab3467) - 
+  ab2367*ab4589, -(ab2489*ab3567) + 
+  ab2367*ab4589, -(ab2459*ab3678) - 
+  ab2367*ab4589, -(ab2458*ab3679) + 
+  ab2367*ab4589, -(ab2579*ab3468) - 
+  ab2368*ab4579, -(ab2479*ab3568) + 
+  ab2368*ab4579, ab2459*ab3678 - 
+  ab2368*ab4579, -(ab2457*ab3689) + 
+  ab2368*ab4579, -(ab2578*ab3469) - 
+  ab2369*ab4578, -(ab2478*ab3569) + 
+  ab2369*ab4578, ab2458*ab3679 - 
+  ab2369*ab4578, ab2457*ab3689 + 
+  ab2369*ab4578, -(ab2569*ab3478) - 
+  ab2378*ab4569, -(ab2469*ab3578) + 
+  ab2378*ab4569, -(ab2459*ab3678) - 
+  ab2378*ab4569, -(ab2456*ab3789) + 
+  ab2378*ab4569, -(ab2568*ab3479) - 
+  ab2379*ab4568, -(ab2468*ab3579) + 
+  ab2379*ab4568, -(ab2458*ab3679) - 
+  ab2379*ab4568, ab2456*ab3789 + 
+  ab2379*ab4568, -(ab2567*ab3489) - 
+  ab2389*ab4567, -(ab2467*ab3589) + 
+  ab2389*ab4567, -(ab2457*ab3689) - 
+  ab2389*ab4567, -(ab2456*ab3789) + 
+  ab2389*ab4567, ab2789*ab3456 - 
+  ab2456*ab3789, ab2689*ab3457 - 
+  ab2457*ab3689, ab2679*ab3458 - 
+  ab2458*ab3679, ab2678*ab3459 - 
+  ab2459*ab3678, ab2589*ab3467 - 
+  ab2467*ab3589, ab2579*ab3468 - 
+  ab2468*ab3579, ab2578*ab3469 - 
+  ab2469*ab3578, ab2569*ab3478 - 
+  ab2478*ab3569, ab2568*ab3479 - 
+  ab2479*ab3568, ab2567*ab3489 - 
+  ab2489*ab3567});
 
 return result;
 }

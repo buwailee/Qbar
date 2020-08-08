@@ -11,8 +11,8 @@
 
 using namespace Eigen;
 
-inline int ab(wll::matrix<int> mat, int i, int j, int k, int l){
-    Matrix<int,4,4> minor;
+inline long long int ab(wll::matrix<int> mat, int i, int j, int k, int l){
+    Matrix<long long int,4,4> minor;
     int ind[] = {i-1,j-1,k-1,l-1};
     for (auto row = 0; row < 4; row++)
         for (auto col = 0; col < 4; col++)
@@ -20,7 +20,7 @@ inline int ab(wll::matrix<int> mat, int i, int j, int k, int l){
     return minor.determinant();
 }
 
-wll::list<int> numabs(wll::matrix<int> mat){
+std::vector<long long int> numabs(wll::matrix<int> mat){
 int ab1234 = ab(mat, 1, 2, 3, 4);
 int ab1235 = ab(mat, 1, 2, 3, 5);
 int ab1236 = ab(mat, 1, 2, 3, 6);
@@ -148,7 +148,8 @@ int ab5689 = ab(mat, 5, 6, 8, 9);
 int ab5789 = ab(mat, 5, 7, 8, 9);
 int ab6789 = ab(mat, 6, 7, 8, 9);
  
-wll::list<int> result({ }, {ab1234, ab1235, ab1236, ab1237, 
+std::vector<long long int> result = 
+{ab1234, ab1235, ab1236, ab1237, 
  ab1238, ab1239, ab1245, ab1246, 
  ab1247, ab1248, ab1249, ab1256, 
  ab1257, ab1258, ab1259, ab1267, 
@@ -6479,9 +6480,22 @@ wll::list<int> result({ }, {ab1234, ab1235, ab1236, ab1237,
   ab2469*ab3578, ab2569*ab3478 - 
   ab2478*ab3569, ab2568*ab3479 - 
   ab2479*ab3568, ab2567*ab3489 - 
-  ab2489*ab3567});
+  ab2489*ab3567};
 
 return result;
 }
 
-DEFINE_WLL_FUNCTION(numabs)
+wll::list<int> isfactorabs(wll::matrix<int> mat, double prenum){
+    auto numlist = numabs(mat);
+    wll::list<int> result({numlist.size()});
+    for (size_t i = 0; i < numlist.size(); i++){
+        auto num = static_cast<long long int>(prenum);
+        if (numlist[i] == 0)
+            result[i] = (num == 0);
+        else
+            result[i] = ((num % numlist[i]) == 0);
+    }
+    return result;
+}
+
+DEFINE_WLL_FUNCTION(isfactorabs)

@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\input{package}
+
+
+
+\title{Notes on $\bar{Q}$ Equation}
+\author{Chi Zhang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\subsection*{1. $R[i_{1},i_{2},(i_{2},i_{3})\cap(i_{4},i_{5},i_{6}),(i_{2},i_{3},i_{4})\cap(i_{5},i_{6}),i_{6}]R[i_{2},i_{3},i_{4},i_{5},i_{6}]$}
+\begin{align*}
+    &R[i_{1},i_{2},(i_{2},i_{3})\cap(i_{4},n,n{+1}),(i_{2},i_{3},i_{4})\cap(n,n{+}1),n{+1}] R[i_{2},i_{3},i_{4},n,n{+}1] \to  \\
+    &\begin{cases}
+        R[i_{1},i_{2},i_{3},i_{4},n]\biggl(\bar{Q}\log\frac{\langle n(n{-}1\,1)(i_{1}\,i_{2})(i_{3}\,i_{4})\rangle}{\langle \bar{n} i_{1}\rangle\langle i_{2}i_{3}i_{4}n\rangle}\dif \log\frac{\langle Xi_{1}i_{2}\rangle}{\langle Xi_{3}i_{4}\rangle}+\bar{Q}\log\frac{\langle \bar{n}i_{1}\rangle}{\langle\bar{n}i_{4}\rangle}\dif\log\frac{\langle Xi_{1}i_{4}\rangle}{\langle Xi_{3}i_{4}\rangle}\biggr) & 1<i_{1} \text{ and  }i_{4}<n{-}1 \\
+        R[i_{1},i_{2},i_{3},n{-}1,n]\bar{Q}\log\frac{\langle\bar{n}i_{1}\rangle}{\langle\bar{n}i_{3}\rangle}\dif\log\frac{\tau}{\langle Xi_{1}i_{2}\rangle} & 1<i_{1} \text{ and }i_{4}=n{-1} \\
+        R[1,i_{2},i_{3},i_{4},n]\bar{Q}\log\frac{\langle\bar{n}i_{4}\rangle}{\langle\bar{n}i_{2}\rangle}\dif\log\langle Xi_{3}i_{4}\rangle  & i_{1}=1 \text{ and }i_{4}<n{-1} \\
+        R[1,i_{2},i_{3},n{-1},n] \bar{Q}\log\frac{\langle\bar{n}2\rangle}{\langle\bar{n}i_{2}\rangle}\dif\log\tau &i_{1}=1 \text{ and }i_{4}=n{-1}
+    \end{cases}
+\end{align*}
+\begin{align*}
+    &R[i_{2},i_{3},(i_{3},i_{4})\cap(n,n{+1},i_{1}),(i_{3},i_{4},n)\cap(n{+}1,i_{1}),i_{1}]R[i_{3},i_{4},n,n{+1},i_{1}] \to \\
+    &R[i_{1},i_{2},i_{3},i_{4},n]R[i_{1},i_{3},(i_{3},i_{4})\cap(i_{1},i_{2},n),n,n{+1}]
+\end{align*}
+\begin{align*}
+    &R[i_{3},i_{4},(i_{4},n)\cap(n{+1},i_{1},i_{2}),(i_{4},n,n{+}1)\cap(i_{1},i_{2}),i_{2}]R[i_{3},i_{4},n,n{+1},i_{1}] \to \\
+    &R[i_{1},i_{2},i_{3},i_{4},n]R[i_{1},(i_{1},i_{2})\cap(i_{3},i_{4},n),i_{4},n,n{+1}]
+\end{align*}
+\begin{align*}
+        &R[i_{4},n,(n,n{+}1)\cap(i_{1},i_{2},i_{3}),(n,n{+1},i_{1})\cap(i_{2},i_{3}),i_{3}] R[i_{1},i_{2},i_{3},n,n{+}1]\to \\
+        &R[i_{1},i_{2},(i_{2},i_{3})\cap(i_{4},n,n{+1}),(i_{2},i_{3},i_{4})\cap(n,n{+}1),n{+1}] R[i_{2},i_{3},i_{4},n,n{+}1] 
+\end{align*}
+\begin{align*}
+    &R[n,n{+1},(n{+}1,i_{1})\cap(i_{2},i_{3},i_{4}),(n{+}1,i_{1},i_{2})\cap(i_{3},i_{4}),i_{4}]R[i_{1},i_{2},i_{3},i_{4},n{+}1] \to \\
+    &R[(n,i_{1})\cap(i_{2},i_{3},i_{4}),(n,i_{1},i_{2})\cap(i_{3},i_{4}),i_{4},n,n{+}1]R[i_{1},i_{2},i_{3},i_{4},n]
+\end{align*}
+\begin{align*}
+    R[n{+1},i_{1},(i_{1},i_{2})\cap(i_{3},i_{4},n),(i_{1},i_{2},i_{3})\cap(i_{4},n),n] R[i_{1},i_{2},i_{3},i_{4},n]
+\end{align*}
+\subsection*{2. $R[i_{1},i_{2},(i_{3},i_{4})\cap(i_{5},i_{6},i_{7}),(i_{3},i_{4},i_{5})\cap(i_{6},i_{7}),i_{7}]R[i_{3},i_{4},i_{5},i_{6},i_{7}]$}
+\begin{align*}
+    &R[i_{1},i_{2},(i_{3},i_{4})\cap(i_{5},n,n{+1}),(i_{3},i_{4},i_{5})\cap(n,n{+}1),n{+}1]R[i_{3},i_{4},i_{5},n,n{+}1] \to \\
+    &\bar{Q}\log\frac{\langle\bar{n} (i_{1}i_{2})\cap(i_{3}i_{4}i_{5})\rangle}{\langle\bar{n}{i_{5}}\rangle\langle i_{1}i_{2}i_{3}i_{4}\rangle} R[i_{1},i_{2},i_{3},i_{4},i_{5}] \dif\log\frac{\langle Xi_{5}(i_{1}i_{2})\cap(i_{3}i_{4}i_{5})\rangle}{\langle X i_{1}i_{2} \rangle}
+    +\bar{Q}\log\frac{\langle\bar{n}i_{1}\rangle}{\langle\bar{n}i_{5}\rangle} R[i_{1},i_{3},i_{4},i_{5},n] \dif\log\frac{\langle X i_{1}i_{5}\rangle}{\langle X i_{1}i_{2}\rangle} \\
+    &-\bar{Q}\log\frac{\langle\bar{n}i_{2}\rangle}{\langle\bar{n}i_{5}\rangle} R[i_{2},i_{3},i_{4},i_{5},n] \dif\log\frac{\langle X i_{2}i_{5}\rangle}{\langle X i_{1}i_{2}\rangle} 
+    +\bar{Q}\log\frac{\langle n(n{-1}\,1)(i_{1}i_{2})(i_{3}i_{5})\rangle}{\langle\bar{n}i_{5}\rangle\langle i_{1}i_{2}i_{3}n\rangle} R[i_{1},i_{2},i_{3},i_{5},n] \dif\log\frac{\langle X i_{3}i_{5}\rangle}{\langle Xi_{1}i_{2}\rangle} \\
+    &-\bar{Q}\log\frac{\langle n(n{-1}\,1)(i_{1}i_{2})(i_{4}i_{5})\rangle}{\langle\bar{n}i_{5}\rangle\langle i_{1}i_{2}i_{4}n\rangle} R[i_{1},i_{2},i_{4},i_{5},n] \dif\log\frac{\langle X i_{4}i_{5}\rangle}{\langle Xi_{1}i_{2}\rangle} \\
+    &-\bar{Q}\log\frac{\langle n(n{-}1\,1)(i_{1}i_{2})(i_{3}i_{4})\rangle}{\langle \bar{n}i_{5}\rangle\langle i_{1}i_{2}i_{3}i_{4}\rangle} R[i_{1},i_{2},i_{3},i_{4},n]\dif\log\frac{\langle Xi_{5}(i_{1}i_{2})\cap(i_{3}i_{4}n)\rangle}{\langle Xi_{1}i_{2}\rangle}
+\end{align*}
+
+\begin{align*}
+    &R[i_{1},i_{2},(i_{3},i_{4})\cap(n{-}1,n,n{+1}),(i_{3},i_{4},n{-}1)\cap(n,n{+}1),n{+}1]R[i_{3},i_{4},i_{5},n,n{+}1] \to \\
+    &\dif\log\frac{\tau}{\langle Xi_{1}i_{2}\rangle}
+    \biggl(\bar{Q}\log\frac{\langle n(n{-}1\,1)(i_{1}i_{2})(i_{3}i_{4})\rangle}{\langle \bar{n}i_{4}\rangle\langle i_{1}i_{2}i_{3}n\rangle}R[i_{1},i_{2},i_{3},i_{4},n]-\bar{Q}\log\frac{\langle n{-}1(n\,1)(i_{1}i_{2})(i_{3}i_{4})\rangle}{\langle \bar{n}i_{4}\rangle\langle i_{1}i_{2}i_{3}\,n{-}1\rangle}R[i_{1},i_{2},i_{3},i_{4},n{-}1] \\
+    &-R[i_{1},i_{2},i_{3},n{-}1\,n]\bar{Q}\log\frac{\langle\bar{n}i_{3}\rangle}{\langle\bar{n}i_{4}\rangle}-R[i_{1},i_{3},i_{4},n{-}1,n]
+    \bar{Q}\log\frac{\langle\bar{n}i_{1}\rangle}{\langle\bar{n}i_{4}\rangle}
+    +R[i_{2},i_{3},i_{4},n{-}1,n]\bar{Q}\log\frac{\langle\bar{n}i_{2}\rangle}{\langle\bar{n}i_{4}\rangle}
+    \biggr)
+\end{align*}
+\begin{align*}
+    &R[1,i_{2},(i_{3},i_{4})\cap(i_{5},n,n{+1}),(i_{3},i_{4},i_{5})\cap(n,n{+}1),n{+}1]R[i_{3},i_{4},i_{5},n,n{+}1] \to \\
+    &\bar{Q}\log\frac{\langle\bar{n}i_{2}\rangle}{\langle\bar{n}i_{5}\rangle}\biggl(R[1,i_{2},i_{3},i_{4},i_{5}]\dif\log\langle Xi_{5}(1i_{2})\cap(i_{3}i_{4}i_{5})\rangle -R[1,i_{2},i_{3},i_{4},n]\dif\log\langle Xi_{5}(1i_{2})\cap(i_{3}i_{4}n)\rangle \\
+    &-R[i_{2},i_{3},i_{4},i_{5},n]\dif\log\langle Xi_{2}i_{5}\rangle+R[1,i_{2},i_{3},i_{5},n]\dif\log\langle Xi_{3}i_{5}\rangle -R[1,i_{2},i_{4},i_{5},n]\dif\log\langle Xi_{4}i_{5}\rangle\biggr)
+\end{align*}
+\begin{align*}
+    &R[1,i_{2},(i_{3},i_{4})\cap(n{-}1,n,n{+1}),(i_{3},i_{4},n{-1})\cap(n,n{+}1),n{+}1]R[i_{3},i_{4},n{-1},n,n{+}1] \to \\
+    &\bar{Q}\log\frac{\langle\bar{n}2\rangle}{\langle\bar{n}i_{4}\rangle} R[1,i_{3},i_{4},n{-}1,n]\dif\log\tau
+\end{align*}
+
+\begin{align*}
+  & R[i_{2},i_{3},(i_{4},i_{5})\cap(n,n{+}1,i_{1}),(i_{4},i_{5},n)\cap(n{+1},i_{1}),i_{1}] R[i_{1},i_{4},i_{5},n,n{+}1] \to \\
+  &R[i_{1},i_{2},i_{3},i_{4},n]R[i_{1},i_{4},i_{5},n,n{+}1] +
+  R[i_{1},(i_{4},i_{5})\cap(i_{2},i_{3},n),i_{5},n,n{+1}]R[i_{2},i_{3},i_{4},i_{5},n] \\
+  &-R[i_{1},(i_{4},i_{5})\cap(i_{1},i_{2},i_{3}),i_{5},n,n{+}1]R[i_{1},i_{2},i_{3},i_{4},i_{5}]+R[i_{1},(i_{4},i_{5})\cap(i_{1},i_{2},n),i_{5},n,n{+}1]R[i_{1},i_{2},i_{4},i_{5},n] \\
+  &-R[i_{1},(i_{4},i_{5})\cap(i_{1},i_{3},n),i_{5},n,n{+}1]R[i_{1},i_{3},i_{4},i_{5},n]
+\end{align*}
+\begin{align*}
+   & R[i_{3},i_{4},(i_{5},n)\cap(n{+}1,i_{1},i_{2}),(i_{5},n,n{+}1)\cap(i_{1},i_{2})] R[i_{1},i_{2},i_{5},n,n{+1}] \to  \\
+    &R[i_{1},(i_{1},i_{2})\cap(i_{3},i_{4},n),i_{5},n,n{+1}]R[i_{1},i_{2},i_{3},i_{4},n]
+\end{align*}
+\end{document}
